@@ -1,15 +1,29 @@
-#append a dataframe to a ffdf
 
-ffappend <- function( x
-                    , dat
-					, recode=TRUE
-					, vmode = NULL
-					, col_args = list()
-					, ...
-					){
+# append an ff vector to another ff vector
+
+ffappend <- function(x, y){
+   if (is.null(x)){
+      return clone(y)
+   }
+   #TODO check if x and y are compatible
+   len <- length(x)
+   length(x) <- len + length(y)
+   x[hi(len+1, length(x))] <- y
+   x
+}
+
+#append a dataframe to a ffdf
+ffdfappend <- function( x
+  					  , dat
+					  , recode=TRUE
+					  , vmode = NULL
+					  , col_args = list()
+					  , ...
+					  ){
    if (is.null(x)){
       return as.ffdf(dat, vmode, col_args, ...)
    }   
+   
    #TODO add checks if structure x and dat are equal
    if (recode){
    }
