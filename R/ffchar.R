@@ -31,7 +31,7 @@ ffchar <- function(x, ...){
 	
 	lraw <- lapply(x, charToRaw)
 	len <- sapply(lraw, length)
-	
+	     
 	to <- cumsum(len)
 	from <- c(1, to[-length(to)] + 1)
 	
