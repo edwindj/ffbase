@@ -1,5 +1,7 @@
-library(ff)
+# fffunctions Edwin de Jonge
 
+library(ff)
+ 
 mean.ff <- function(x, trim=0, ...){
 
     if (trim > 0){
