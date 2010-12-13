@@ -3,7 +3,7 @@
 
 ffappend <- function(x, y){
    if (is.null(x)){
-      return clone(y)
+      return(clone(y))
    }
    #TODO check if x and y are compatible
    len <- length(x)
