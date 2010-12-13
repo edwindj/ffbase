@@ -18,22 +18,16 @@ mean.ff <- function(x, trim=0, ...){
 	   return(mean(x, trim=0, ...))
 	}
 	
-	cmean <- function(res){
-		res <- crbind(res)
-		weighted.mean(res[,'mean'], res[,'w'])
-	}
-
-   res <- ffvecapply( c( mean=mean(x[i1:i2], ...)
-                       , w = (1+(i2-i1))/length(x)
-			 	       )
-					 , X=x
-					 , RETURN = TRUE
-					 , CFUN = "list"
-#					 , BATCHSIZE = length(x)/2
-#					 , VERBOSE = TRUE
-					 )
-	cmean(res)
-}
+   
+   res <- sapply( chunk(x, from=1, along.with=x)
+                , function(i){
+				     c( mean=mean(x[i], ...)
+					  , w = sum(i)/max(i)
+					  )
+                  }
+				)
+   weighted.mean(res['mean',], res['w',])
+ }
 
 #other implementation of mean, prepared for "foreach"
 mean2 <- function(x, ...){

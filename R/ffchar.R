@@ -2,23 +2,6 @@
 
 library(ff)
 
-DATALENGTH <- 1e4
-IDLENGTH <- DATALENGTH/10
-
-xf <- ff(length=DATALENGTH, vmode = "integer")
-id <- ff(length=DATALENGTH, vmode = "integer")
-
-ffapply(xf[i1:i2] <- runif(1+i2-i1, max = 10), X = xf, BATCHSIZE = DATALENGTH/2, VERBOSE = TRUE)
-ffapply(id[i1:i2] <- runif(1+i2-i1, min=1, max=IDLENGTH+1), X = id, BATCHSIZE = DATALENGTH/2, VERBOSE = TRUE)
-
-#xf
-#id[]
-
-
-#ffapply(summary(id[i1:i2]), X = xf, RETURN=TRUE, CFUN="list", BATCHSIZE = DATALENGTH/2, VERBOSE = TRUE)
-
-clist <- c("Hello","World!")
-
 ffchar <- function(x, ...){
     #TODO check if x is a character vector
     #TODO if x is an ffchar, copy and reorder/compact it
@@ -82,7 +65,6 @@ ffchar <- function(x, ...){
                   , from2
 		          , to2
 		  )
-		  
    if (any(empty)){
       clist[empty] <- ""
    }
@@ -106,9 +88,3 @@ print.ffchar <- function(x){
    print(x[1:min(10,length(x))])
 }
 
-clist <- c("Hello", "", "World!", "", "?")
-is.na(clist) <- c(4)
-
-fc <- ffchar(clist)
-fc
-fc[1]

@@ -1,14 +1,32 @@
 
 # append an ff vector to another ff vector
+c.ff <- function(...){
+   l <- list(...)
+   f <- NULL
+   for (x in l){
+      f <- ffappend(f, x)
+   }
+   f
+}
 
 ffappend <- function(x, y){
    if (is.null(x)){
-      return(clone(y))
+      if (is.ff(y)){
+		return(clone(y))
+	  }
+	  else {
+		return(as.ff(y))
+	  }
    }
    #TODO check if x and y are compatible
    len <- length(x)
    length(x) <- len + length(y)
-   x[hi(len+1, length(x))] <- y
+   for (i in chunk(x, from=1, to=length(y))){
+       if (is.vector(y)){
+			i <- as.which(i)
+	   }
+	   x[(i+len)] <- y[i]
+   }
    x
 }
 
@@ -21,7 +39,7 @@ ffdfappend <- function( x
 					  , ...
 					  ){
    if (is.null(x)){
-      return as.ffdf(dat, vmode, col_args, ...)
+      return(as.ffdf(dat, vmode, col_args, ...))
    }   
    
    #TODO add checks if structure x and dat are equal
