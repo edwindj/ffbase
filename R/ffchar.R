@@ -2,12 +2,8 @@
 
 library(ff)
 
-ffchar <- function(x, ...){
-    #TODO check if x is a character vector
-    #TODO if x is an ffchar, copy and reorder/compact it
-    #TODO deal with NA's
-	
-    na <- is.na(x)
+.charToList <- function(x){
+	na <- is.na(x)
 	if (any(na)){
 		x[na] <- ''
 	}
@@ -23,11 +19,37 @@ ffchar <- function(x, ...){
 	
 	raw <- c(lraw, recursive=TRUE)
 	
-	fc <- list( from = ff(from)
-	          , len  = ff(len)
-			  , raw  = ff(raw)
+	fc <- list( from = from
+	          , len  = len
+			  , raw  = raw
 			  )
-	
+	fc
+}
+
+.appendCharList <- function(x, y){
+   if (is.ffchar(y)){
+      for (i in chunk(y$from)){
+	     x <- .appendCharList(x,y[i])
+	  }
+   }
+   else {
+      fc <- .charToList(y)
+	  len <- length(x)
+	  nlen <- length(y)
+	  length(x) <- len + nlen
+	  i <- hi(len+1, len+nlen)
+	  x$from[i] <- fc$from + len
+	  x$len[i] <- fc$len
+      x$raw <- ffappend(x$raw, fc$raw)	  
+   }
+   x
+}
+
+ffchar <- function(x, ...){
+    #TODO check if x is a character vector
+    #TODO if x is an ffchar, copy and reorder/compact it
+    #TODO deal with NA's
+    fc <- lapply(.charToList(x), ff)
 	class(fc) <- c("ffchar")
     return(fc)
 }
@@ -74,6 +96,34 @@ ffchar <- function(x, ...){
    return(clist)
 }
 
+`[<-.ffchar` <- function(x,i,value){
+   stopifnot(is.character(value))
+   
+   #just append the new character vector at the end...
+   nff <- .charToList(value)
+   
+   len <- length(x$raw)
+   nlen <- length(nff$raw)
+   length(x$raw) <- len + nlen
+   
+   x$raw[hi(len+1, len+nlen)] <- nff$raw
+   x$len[i] <- nff$len
+   x$from[i] <- nff$from + len
+   
+   x
+}
+
+is.ffchar <- function(x){
+   inherits(x, "ffchar")
+}
+
+compact <- function(x){
+   y <- x
+   y$len <- clone(x$len)
+   y$from <- clone(x$from)
+   y
+}
+
 length.ffchar <- function(x){
    return(length(x$from))
 }
@@ -85,6 +135,9 @@ length.ffchar <- function(x){
 }
 
 print.ffchar <- function(x){
-   print(x[1:min(10,length(x))])
+   r <- 1:min(10,length(x))
+   s <- x[r]
+   names(s) <- paste("[",r,"]", sep="")
+   print(s)
 }
 

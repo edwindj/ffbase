@@ -15,7 +15,7 @@ ffappend <- function(x, y){
 		return(clone(y))
 	  }
 	  else {
-		return(as.ff(y))
+		return(as.ff(y)) 
 	  }
    }
    #TODO check if x and y are compatible

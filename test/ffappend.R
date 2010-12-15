@@ -8,7 +8,6 @@ test_that("Appending ff vector works",{
    
    fz <- ffappend(NULL, x)
    expect_equal(length(fz), length(x))
-   print(str(fz))
    fz <- ffappend(fz, y)
    expect_equal(length(fz), length(x)+length(y))
    expect_identical(fz[], c(x,y))
