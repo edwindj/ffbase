@@ -1,1 +1,10 @@
-# saves a ffdf frame into a subdirectory
+# saves a ffdf frame including its ff columns into a subdirectory
+
+ffdfsave <- function( x, path, move=TRUE){
+   path <- file
+   #make subdir for all columns
+   for (col in names(x)){
+      #filename(x[col]) <- ""
+   }
+   save(x, file=path)
+}
