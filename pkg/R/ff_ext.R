@@ -50,7 +50,8 @@ mean2 <- function(x, ...){
    .final(acc)
 }
 
-
+#' @method sum ff
+#' @export
 sum.ff <- function(x, ...){
    res <- ffvecapply(  sum(x[i1:i2], ...)
 					 , X=x
@@ -60,16 +61,6 @@ sum.ff <- function(x, ...){
 #					 , VERBOSE = TRUE
 					 )
 	res
-}
-
-min.ff <- function(x, ...){
-	min(sapply( chunk(x)
-	          , function(i){
-					min(x[i], ...)
-	            }
-	          )
-	   , ...
-	   )
 }
 
 max.ff <- function(x, ...){
@@ -82,6 +73,10 @@ max.ff <- function(x, ...){
 	   )
 }
 
+#' test 1, 2, 3
+#' @title BRange
+#' @method range ff
+#' @export
 range.ff <- function(x, ...){
    range(sapply(chunk(x)
                , function(i){
