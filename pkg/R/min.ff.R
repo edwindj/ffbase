@@ -1,5 +1,4 @@
-#' Minimum method for ff, behaviour is equal to normal min
-#'
+#' @method min ff
 #' @export
 min.ff <- function(x, ...){
 	min(sapply( chunk(x)
