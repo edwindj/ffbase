@@ -27,8 +27,9 @@ mean.ff <- function(x, trim=0, ...){
    weighted.mean(res['mean',], res['w',])
 }
 
+#' @export
 mean.ffdf <- function(x, ...){
-   sapply(colnames(x)
+   sapply(physical(x), mean)
 }
 
 #other implementation of mean, prepared for "foreach"

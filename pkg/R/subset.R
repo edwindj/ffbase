@@ -1,6 +1,10 @@
+#' Subsetting a ff vector or ffdfdata frame
+#'
+#' @export subset.ff subset.ffdf
+#' @aliases subset.ff subset.ffdf
 #' @method subset ff
-#' @export
-#' @param x ff vector to be subset
+#' @param x ff vector or ffdf dataframe to be subset
+#' @param subset an expression, bit or logical ff vector that can be used to index x
 #' @return a new ff vector containing the subset, data is physically copied
 subset.ff <- function(x, subset, ...){
 	#y <- ff(length=sum(subset), vmode=vmode(x))
@@ -10,10 +14,6 @@ subset.ff <- function(x, subset, ...){
 	y
 }
 
-#' @method subset ffdf
-#' @export
-#' @param x ffdf data frame
-#' @return a new ffdf data.frame containing the subset, data is physically copied
 subset.ffdf <- function(x, subset, ...){
 	y <- clone(x)
 	n <- 0

@@ -5,9 +5,12 @@ Version: 0.2
 Date: 2010-12-23
 Author: Edwin de Jonge
 Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
-Description: Implementation for min,max, mean, table, etc. for package ff
+Description: Implementation for min,max, mean, table, etc. for package
+    ff
 License: GPL version 3
 LazyLoad: yes
 Depends: ff (>= 2.2-0)
 URL: http://code.google.com/p/fffunctions/
-Collate: 'ff_ext.R' 'ffappend.R' 'ffchar.R' 'ffsave.R' 'min.R'
+Collate: 'cut.ff.R' 'ffappend.R' 'ffchar.R' 'ffsave.R' 'fftable.R'
+    'fftabulate.R' 'max.ff.R' 'mean.R' 'min.ff.R' 'range.ff.R'
+    'subset.R' 'sum.ff.R'

@@ -1,6 +1,4 @@
-# fffunctions Edwin de Jonge
-
-library(ff)
+# ff fucntions
 
 .charToList <- function(x){
 	na <- is.na(x)
@@ -45,6 +43,11 @@ library(ff)
    x
 }
 
+#' ff character function
+#' 
+#' Implementation of character vector in ff
+#' @export
+#' @return an ffchar object
 ffchar <- function(x, ...){
     #TODO check if x is a character vector
     #TODO if x is an ffchar, copy and reorder/compact it
@@ -54,10 +57,12 @@ ffchar <- function(x, ...){
     return(fc)
 }
 
-#' @method `[` ffchar
+#' Extracting character from ffchar
+#'
 #' @name Extract
-#' @aliases `[`
-#' @export
+#' @aliases "[.ffchar" "[<-.ffchar"
+#' @method "[" ffchar "[<-." ffchar
+#' @export "[.ffchar" "[<-.ffchar"
 `[.ffchar` <- function(x,i,...){
    len <- x$len[i]
    
@@ -101,7 +106,6 @@ ffchar <- function(x, ...){
 
 #' @method `[<-` ffchar
 #' @name AssignffChar
-#' @export
 `[<-.ffchar` <- function(x,i,value){
    stopifnot(is.character(value))
    
@@ -119,10 +123,16 @@ ffchar <- function(x, ...){
    x
 }
 
+#' Check if objects is an ffchar
+#' @export
 is.ffchar <- function(x){
    inherits(x, "ffchar")
 }
 
+#' Compactify an ffchar function
+#'
+#' When elements of an ffchar object are changed, the physical object will grow. 
+#' @export
 compact <- function(x){
    y <- x
    y$len <- clone(x$len)
@@ -130,27 +140,25 @@ compact <- function(x){
    y
 }
 
+#' Length of ffchar
+#' 
+#' @aliases length length<-
 #' @method length ffchar
-#' @export
+#' @method length<- ffchar
 length.ffchar <- function(x){
    return(length(x$from))
 }
 
-#' @method `length<-` ffchar
-#' @name assignlength
-#' @export `length<-`
 `length<-.ffchar` <- function(x, value){
    length(x$from) <- value
    length(x$len) <- value
    x
 }
 
-#' @method `length<-` ffchar
-#' @export
-print.ffchar <- function(x){
+#' @method `print<-` ffchar
+print.ffchar <- function(x, ...){
    r <- 1:min(10,length(x))
    s <- x[r]
    names(s) <- paste("[",r,"]", sep="")
    print(s)
 }
-
