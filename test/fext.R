@@ -1,4 +1,5 @@
 library(testthat)
+library(ff)
 
 test_that("Cut works for ff vectors",{
 	x <- 1:10
