@@ -1,5 +1,9 @@
+#' Mean of ff vector
+#' 
+#' @usage
 #' @method mean ff
 #' @export
+#' @param x a ff vector
 mean.ff <- function(x, trim=0, ...){
 
     if (trim > 0){
@@ -27,6 +31,10 @@ mean.ff <- function(x, trim=0, ...){
    weighted.mean(res['mean',], res['w',])
 }
 
+#' Mean of ffdf vector
+#' 
+#' @usage
+#' @method mean ff
 #' @export
 mean.ffdf <- function(x, ...){
    sapply(physical(x), mean)
