@@ -59,9 +59,11 @@ ffchar <- function(x, ...){
 
 #' Extracting character from ffchar
 #'
-#' @name Extract
-#' @aliases "[.ffchar" "[<-.ffchar"
-#' @method "[" ffchar "[<-." ffchar
+#' @name Extract.ffchar
+#' @aliases [.ffchar [<-.ffchar
+#' @usage
+#' \method{[}{ffchar}(x, i, \dots)
+#' \method{[}{ffchar}(x, i, \dots) <- value
 #' @export "[.ffchar" "[<-.ffchar"
 `[.ffchar` <- function(x,i,...){
    len <- x$len[i]
@@ -104,8 +106,6 @@ ffchar <- function(x, ...){
    return(clist)
 }
 
-#' @method `[<-` ffchar
-#' @name AssignffChar
 `[<-.ffchar` <- function(x,i,value){
    stopifnot(is.character(value))
    
@@ -142,9 +142,10 @@ compact <- function(x){
 
 #' Length of ffchar
 #' 
-#' @aliases length length<-
+#' @aliases length.ffchar length<-.ffchar
 #' @method length ffchar
 #' @method length<- ffchar
+#' @export length.ffchar `length<-.ffchar`
 length.ffchar <- function(x){
    return(length(x$from))
 }
@@ -155,7 +156,8 @@ length.ffchar <- function(x){
    x
 }
 
-#' @method `print<-` ffchar
+#' export print.ffchar
+#' @method print ffchar
 print.ffchar <- function(x, ...){
    r <- 1:min(10,length(x))
    s <- x[r]
