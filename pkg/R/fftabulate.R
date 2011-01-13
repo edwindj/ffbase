@@ -8,21 +8,20 @@ fftabulate <- function( bin
                       , nbins=max(bin, 1, na.rm=TRUE)
 					  , FFRETURN=FALSE
 					  ){ 
-   #TODO test if bin is integer
-   #TODO test if nbins is missing if not, length should be set to max(bin)
    if (is.factor(bin)){
       levels(bin) <- NULL
    }
+   
    if (missing(nbins)){
-      maxbins <- nbins
+      maxbins <- nbins + 1
    }
    else {
-      maxbins <- max(bin, 1, na.rm=TRUE)
+      maxbins <- max(bin, 1, na.rm=TRUE) + 1
    }
    
    tab <- ff(vmode="integer", length=maxbins)
    for (i in chunk(bin)){
-      tab[bin[i], add=TRUE] <- 1
+      tab[na.omit(bin[i]), add=TRUE] <- 1
    }   
    length(tab) <- nbins
    
