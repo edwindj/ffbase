@@ -1,6 +1,5 @@
 #' Mean of ff vector
 #' 
-#' @usage
 #' @method mean ff
 #' @export
 #' @param x a ff vector
@@ -33,7 +32,6 @@ mean.ff <- function(x, trim=0, ...){
 
 #' Mean of ffdf vector
 #' 
-#' @usage
 #' @method mean ff
 #' @export
 mean.ffdf <- function(x, ...){

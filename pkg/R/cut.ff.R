@@ -1,4 +1,9 @@
+#' cut divides the range of x into intervals and codes the values in x according to which interval they fall. The leftmost interval corresponds to level one, the next leftmost to level two and so on. 
+#'
+#' The cut method for ff mimics the behaviour of cut
+#' @title Convert Numeric ff vector to factor ff
 #' @method cut ff
+#' @return ff
 #' @export
 cut.ff <- function(x, breaks, ...){
    f <- NULL

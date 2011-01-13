@@ -1,6 +1,5 @@
 #' Summing an ff vector
 #'
-#' @usage
 #' @method sum ff
 #' @export
 sum.ff <- function(x, na.rm=FALSE, ..., from=1, to=length(x)){
