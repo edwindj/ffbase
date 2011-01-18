@@ -19,7 +19,13 @@ fftabulate <- function( bin
       maxbins <- max(bin, 1, na.rm=TRUE) + 1
    }
    
-   tab <- ff(vmode="integer", length=maxbins)
+   tab <- if (is.ff(FFRETURN)) {
+             FFRETURN
+		  }
+          else {
+		     ff(vmode="integer", length=maxbins)
+		  }
+		  
    for (i in chunk(bin)){
       tab[na.omit(bin[i]), add=TRUE] <- 1
    }   

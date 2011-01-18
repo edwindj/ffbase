@@ -1,3 +1,4 @@
+#' split using ri
 #' @export
 risplit <- function(x, f){
    UseMethod("risplit")

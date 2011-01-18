@@ -1,3 +1,4 @@
+#' max
 #' @method max ff
 #' @export
 max.ff <- function(x, ...){

@@ -1,5 +1,5 @@
 
-# append an ff vector to another ff vector
+#' append an ff vector to another ff vector
 c.ff <- function(...){
    l <- list(...)
    f <- NULL
@@ -9,6 +9,7 @@ c.ff <- function(...){
    f
 }
 
+#' append an ff vector to another ff vector
 ffappend <- function(x, y){
    if (is.null(x)){
       if (is.ff(y)){
@@ -30,7 +31,7 @@ ffappend <- function(x, y){
    x
 }
 
-#append a dataframe to a ffdf
+#' append a dataframe to a ffdf
 ffdfappend <- function( x
   					  , dat
 					  , recode=TRUE

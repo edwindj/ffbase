@@ -1,6 +1,5 @@
-# Summary methods for ff objects
-
-#'@export
+#' Summary methods for ff objects
+#' @export
 all.ff <- function(..., na.rm=FALSE){
   y <- list(...)
   for (x in y){
@@ -13,7 +12,8 @@ all.ff <- function(..., na.rm=FALSE){
   TRUE
 }
 
-#'@export
+#' Summary methods for ff objects
+#' @export
 any.ff <- function(..., na.rm=FALSE){
   y <- list(...)
   for (x in y){
