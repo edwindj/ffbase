@@ -4,6 +4,10 @@
 #' @export
 #' @title Tabulation for ff vectors
 #' @usage fftabulate(bin, nbins = max(1, bin, na.rm = TRUE))
+#' @param bin
+#' @param nbins
+#' @param FFRETURN
+#' @return integer vector
 fftabulate <- function( bin
                       , nbins=max(bin, 1, na.rm=TRUE)
 					  , FFRETURN=FALSE
@@ -19,6 +23,14 @@ fftabulate <- function( bin
       maxbins <- max(bin, 1, na.rm=TRUE) + 1
    }
    
+   if (FFRETURN == FALSE){
+	   tab <- integer(nbins)
+	   for (i in chunk(bin)){
+		  tab <- tab + tabulate(bin[i], nbins)
+	   }
+	   return(tab)
+   }
+   
    tab <- if (is.ff(FFRETURN)) {
              FFRETURN
 		  }
@@ -30,9 +42,5 @@ fftabulate <- function( bin
       tab[na.omit(bin[i]), add=TRUE] <- 1
    }   
    length(tab) <- nbins
-   
-   if (FFRETURN){
-      return(tab)
-   }
-   tab[]
-}
+   tab
+ }

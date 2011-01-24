@@ -1,5 +1,8 @@
 library(testthat)
 
 test_that("fftable works",{
-   fftable(NULL)
+   b <- factor(rep(c("A","B","C"), 10))
+   bf <- ff(b)
+   #print(bf)
+   fftable(bf)
 }) 
