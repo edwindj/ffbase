@@ -1,8 +1,39 @@
 library(testthat)
 
-test_that("fftable works",{
-   b <- factor(rep(c("A","B","C"), 10))
-   bf <- ff(b)
-   #print(bf)
-   fftable(bf)
-}) 
+test_that("fftable works for one factor",{
+   a <- factor(rep(c("A","B","C"), 10))
+   af <- ff(a)
+
+   t <- table(a)
+   ft <- fftable(af)
+   
+   names(dimnames(t)) <- NULL
+   names(dimnames(ft)) <- NULL
+   
+   expect_equal(t, ft)
+})  
+
+test_that("fftable works for two factors",{
+   A <- factor(rep(c("A","B","C"), 10))
+   a <- factor(rep(c("a","b"), 15))
+
+   Af <- ff(A)
+   af <- ff(a)
+
+   t <- table(A,a)
+   ft <- fftable(Af,af)
+   
+   names(dimnames(t)) <- NULL
+   names(dimnames(ft)) <- NULL
+   
+   expect_equal(t, ft)
+})  
+
+test_that("fftable works for a large factor",{
+   x <- ff(length=1e7, vmode="integer")
+   for (i in chunk(x)){
+      x[i] <- repfromto(c(1,2,3,3,3), i[1], i[2])
+   }
+   levels(x) <- c("A","B","C")
+   expect_equal(as.integer(fftable(x)), c(2000000, 2000000, 6000000))
+})  
