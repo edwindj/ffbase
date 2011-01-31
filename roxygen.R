@@ -1,5 +1,6 @@
 library(roxygen)
 
+unlink( 'pkg/man', TRUE)
 roxygenize( 'pkg'
           , roxygen.dir='pkg'
 		  , copy.package=FALSE
@@ -7,4 +8,4 @@ roxygenize( 'pkg'
 		  , use.Rd2 = TRUE
 		  )
 
-unlink( 'pkg/inst', TRUE)
+unlink( 'pkg/inst/doc', TRUE)
