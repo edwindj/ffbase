@@ -1,25 +1,24 @@
-unique.ff <- function(x, incomparables = FALSE, fromLast = FALSE, ...){
-   z <- NULL
-   for (i in chunk(x)){
-      z <- unique(c(z,x[i]), incomparables, fromLast, ...)
-   }
-   z
-}
-
 #' fftable uses the cross-classifying factors to build a contingency table of the 
 #' counts at each combination of factor levels.
 #'
+#' @seealso \code{\link{table}}
 #' @export
+#' @param ... \code{ff} factors
+#' @param exclude see \code{\link{table}}
+#' @param useNA see \code{\link{table}}
+#' @param deparse.level see \code{\link{table}}
+#' @return \code{table} object
 fftable <- function (...
                     , exclude = if (useNA == "no") c(NA, NaN)
-					, useNA = c("no","ifany", "always")
-					#, dnn = list.names(...)
-					, deparse.level = 1
-					){
-	
+                    , useNA = c("no","ifany", "always")
+                    , deparse.level = 1
+                    ){
 	args <- list(...)
 	tab <- NULL
-	for (i in chunk(args[[1]])){
+   
+   dat <- do.call(ffdf, args) # create a ffdf  for estimating good chunking size and checking if ... have equal length
+   
+	for (i in chunk(dat)){
 	   factors <- lapply(args, function(f){
 	      f[i]
 	   })
@@ -34,7 +33,7 @@ fftable <- function (...
 			  }
 	          else { tab + ttab
 			  }
-	   names(dimnames(tab)) <- names(dimnames(ttab))
+	   #names(dimnames(tab)) <- names(dimnames(ttab))
 	}
 	return(tab)	
 }

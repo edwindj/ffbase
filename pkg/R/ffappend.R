@@ -1,5 +1,10 @@
-
-#' append an ff vector to another ff vector
+#' Concatenate \code{ff} vectors
+#' 
+#' @export
+#' @seealso \code{link{ffappend}}
+#' @method c ff
+#' @param ... \code{ff} ff vectors to be combined
+#' @return a new \code{ff} object, data is physically copied
 c.ff <- function(...){
    l <- list(...)
    f <- NULL
@@ -9,7 +14,14 @@ c.ff <- function(...){
    f
 }
 
-#' append an ff vector to another ff vector
+#' Append a ff vector to another ff vector
+#' 
+#' Appends (\code{ff}) vector to \code{ff} vector \code{x}. 
+#' Please note that the data of \code{y} will be coerced to the type of \code{x}.
+#' @seealso \code{\link{c.ff}}
+#' @param x \code{ff} object where data will be appended to. If \code{x==NULL} a new \code{ff} object will be created
+#' @param y \code{ff} object or vector object
+#' @return \code{ff} object with same physical storage as \code{x}
 ffappend <- function(x, y){
    if (is.null(x)){
       if (is.ff(y)){
@@ -32,15 +44,22 @@ ffappend <- function(x, y){
 }
 
 #' append a dataframe to a ffdf
-ffdfappend <- function( x
-  					  , dat
-					  , recode=TRUE
-					  , vmode = NULL
-					  , col_args = list()
-					  , ...
-					  ){
+#' 
+#' Appends (\code{ff}) vector to \code{ff} vector \code{x}. 
+#' Please note that the data of \code{y} will be coerced to the type of \code{x}.
+#' @seealso \code{\link{c.ff}}
+#' @param x \code{ffdf} object where data will be appended to. If \code{x==NULL} a new \code{ff} object will be created
+#' @param dat \code{ffdf} object or \code{data.frame} object
+#' @param recode should factors be recoded (default), or not (faster)
+#' @param ... Further arguments passed to \code{\link{as.ffdf}}, when \code{x==NULL}
+#' @return \code{ffdf} object with same physical storage as \code{x}
+ffdfappend <- function(  x
+                       , dat
+                       , recode=TRUE
+                       , ...
+                       ){
    if (is.null(x)){
-      return(as.ffdf(dat, vmode, col_args, ...))
+      return(as.ffdf(dat, ...))
    }   
    
    #TODO add checks if structure x and dat are equal

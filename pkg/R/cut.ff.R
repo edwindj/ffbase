@@ -1,53 +1,40 @@
 #' cut divides the range of x into intervals and codes the values in x according to which interval they fall. The leftmost interval corresponds to level one, the next leftmost to level two and so on. 
 #'
-#' The cut method for ff mimics the behaviour of cut
+#' The \code{cut} method for ff with the behaviour of \code{link{cut}}
 #' @title Convert Numeric ff vector to factor ff
-#' @method cut ff
-#' @return ff
 #' @export
+#' @seealso cut
+#' @method cut ff
+#' @param x a (numeric) ff object that will be cut in to pieces
+#' @param breaks specifies the breaks for cutting this
+#' @param ... other parameters that can be given to \code{\link{cut.default}}
+#' @return ff a new \code{link{ff}} object with the newly created factor
 cut.ff <- function(x, breaks, ...){
    f <- NULL
-	if (length(breaks) == 1L) {
-		if (is.na(breaks) | breaks < 2L) 
+   
+   #### borrowed code from cut.default
+	if (length(breaks) == 1) {
+		if (is.na(breaks) | breaks < 2) 
 			stop("invalid number of intervals")
 		nb <- as.integer(breaks + 1)
 		dx <- diff(rx <- range(x, na.rm = TRUE))
 		if (dx == 0) 
-			dx <- abs(rx[1L])
-		breaks <- seq.int(rx[1L] - dx/1000, rx[2L] + dx/1000, 
-		length.out = nb)
+			dx <- abs(rx[1])
+		breaks <- seq.int( rx[1] - dx/1000
+                       , rx[2L] + dx/1000
+                       , length.out = nb
+                       )
 	}
-    else 
-		nb <- length(breaks <- sort.int(as.double(breaks)))
-    if (anyDuplicated(breaks)) 
-        stop("'breaks' are not unique")
-    
-	codes.only <- FALSE
-    if (is.null(labels)) {
-        for (dig in dig.lab:max(12, dig.lab)) {
-            ch.br <- formatC(breaks, digits = dig, width = 1)
-            if (ok <- all(ch.br[-1L] != ch.br[-nb])) 
-                break
-        }
-        labels <- if (ok) 
-            paste(if (right) 
-                "("
-            else "[", ch.br[-nb], ",", ch.br[-1L], if (right) 
-                "]"
-            else ")", sep = "")
-        else paste("Range", seq_len(nb - 1L), sep = "_")
-        if (ok && include.lowest) {
-            if (right) 
-                substr(labels[1L], 1L, 1L) <- "["
-            else substring(labels[nb - 1L], nchar(labels[nb - 
-                1L], "c")) <- "]"
-        }
-    }
-	   r <- range(x, na.rm=TRUE)
-	   for (i in chunk(x)){
-		  f <- ffappend( f
-		               , ff(cut(x[i], breaks, labels, ...))
-					   )
-	   }
-    f
+   ####
+   
+   args <- list(...)
+   
+   args$breaks <- breaks
+   for (i in chunk(x)){
+     args$x <- x[i]
+     f <- ffappend( f
+                  , do.call(cut, args)
+               )
+   }
+   f
 }

@@ -1,17 +1,16 @@
 #' \code{fftabulate} takes the integer-valued ff vector bin and counts the number of times each integer occurs in it. 
 #'
-#' Mimics behaviour of \code{\link{tabulate}}
+#' Behaviour of \code{\link{tabulate}}
 #' @export
 #' @title Tabulation for ff vectors
-#' @usage fftabulate(bin, nbins = max(1, bin, na.rm = TRUE))
-#' @param bin
-#' @param nbins
-#' @param FFRETURN
-#' @return integer vector
+#' @param bin factor to be binned.
+#' @param nbins number of bins
+#' @param FFRETURN should the tabulation be done within an \code{ff} vector?
+#' @return integer vector or if \code{FFRETURN} is \code{TRUE} a \code{ff} vector
 fftabulate <- function( bin
-                      , nbins=max(bin, 1, na.rm=TRUE)
-					  , FFRETURN=FALSE
-					  ){ 
+                      , nbins = max(bin, 1, na.rm=TRUE)
+					       , FFRETURN = FALSE
+					       ){ 
    if (is.factor(bin)){
       levels(bin) <- NULL
    }

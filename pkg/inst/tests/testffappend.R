@@ -32,7 +32,7 @@ test_that("Concatenating ff vector works",{
 })
 
 test_that("Appending dataframe to ffdf works",{
-    dat <- data.frame(x=1:3, y=3:1, z=as.factor(c("a","b","c")))
+   dat <- data.frame(x=1:3, y=3:1, z=as.factor(c("a","b","c")))
 	fdat <- NULL
 	fdat <-ffdfappend(fdat, dat)
 	expect_identical(dat,fdat[,])

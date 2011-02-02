@@ -3,58 +3,41 @@
 #' @method mean ff
 #' @export
 #' @param x a ff vector
-mean.ff <- function(x, trim=0, ...){
-
+#' @param trim percentage of robustness, between 0 and 1
+#' @param ... other arguments passed to \code{mean}
+#' @param range a \code{ri} or an \code{integer} vector of \code{length==2} giving a range restriction for chunked processing
+#' @return mean value
+mean.ff <- function(x, trim=0, ..., range=NULL){
+    r <- checkRange(range, x)
+    
     if (trim > 0){
 	   trim <- min(trim, 0.5)
-	   x <- ffsort(x)
-	   n <- length(x)
-	   lo <- floor(n * trim)
-	   hi <- n - lo
-	   if (hi == lo) { 
-		lo <- lo -1
-		hi <- hi + 1
-	   }
-	   vw(x) <- c(lo, hi-lo, n - hi)
-	   return(mean(x, trim=0, ...))
+      #TODO if range then make a selection
+	   x <- ffsort(x)  #sort x
+	   n <- length(x)     #calculate length
+	   r[1] <- floor(n * trim)
+	   r[2] <- n - r[1]
 	}
 	
    
    res <- sapply( chunk(x, from=1, along.with=x)
                 , function(i){
-				     c( mean=mean(x[i], ...)
-					  , w = sum(i)/max(i)
-					  )
+                     c( mean=mean(x[i], ...)
+                      , w = sum(i)/max(i)
+                      )
                   }
-				)
+				    )
    weighted.mean(res['mean',], res['w',])
 }
 
 #' Mean of ffdf vector
 #' 
-#' @method mean ff
+#' @method mean ffdf
 #' @export
-mean.ffdf <- function(x, ...){
-   sapply(physical(x), mean)
-}
-
-#other implementation of mean, prepared for "foreach"
-mean2 <- function(x, ...){
-	.combine <- function(x, y){
-	  z <- rbind(x,y)
-	  mu <- z[,"mu"]
-	  n <- z[,"n"]
-      
-	  c( mu = sum(mu*(n/sum(n)))
-	   , n  = sum(n))
-	}
-	
-	.final <- function(x) {as.numeric(x[1])}
-	
-   acc <- NULL
-   
-   for (i in chunk(x)){
-	  acc <- .combine(acc, c(mu=mean(x[i]), n=sum(i)))
-   }
-   .final(acc)
+#' @param x a \code{ffdf}
+#' @param ... other arguments passed to \code{\link{mean.ff}}
+#' @param range a \code{ri} or an \code{integer} vector of \code{length==2} giving a range restriction for chunked processing
+#' @return a vector with the mean values
+mean.ffdf <- function(x, ..., range=NULL){
+   sapply(physical(x), mean, ..., range=range)
 }

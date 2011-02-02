@@ -3,13 +3,15 @@
 #' @export subset.ff subset.ffdf
 #' @aliases subset.ff subset.ffdf
 #' @method subset ff
-#' @param x ff vector or ffdf dataframe to be subset
-#' @param subset an expression, bit or logical ff vector that can be used to index x
+#' @param x \code{ff} vector or \code{ffdf} data.frame to be subset
+#' @param subset an expression, \code{ri}, \code{bit} or logical \code{ff} vector that can be used to index x
+#' @param ... not used
 #' @return a new ff vector containing the subset, data is physically copied
 subset.ff <- function(x, subset, ...){
 	#y <- ff(length=sum(subset), vmode=vmode(x))
 	y <- clone(x)
 	length(y) <- sum(subset, na.rm=TRUE)
+   #TODO fix this for very large subsets...
 	y[] <- x[subset]
 	y
 }
