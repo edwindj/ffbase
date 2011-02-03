@@ -11,6 +11,6 @@ License: GPL version 3
 LazyLoad: yes
 Depends: ff (>= 2.2-0)
 URL: http://code.google.com/p/fffunctions/
-Collate: 'Arith.ff.R' 'auxilary.R' 'cut.ff.R' 'droplevels.R'
-    'ffappend.R' 'ffdfsave.R' 'fftable.R' 'fftabulate.R' 'mean.R'
-    'risplit.R' 'subset.R' 'Summary.ff.R' 'unique.R'
+Collate: 'Arith.ff.R' 'auxilary.R' 'chunkify.R' 'cut.ff.R'
+    'droplevels.R' 'ffappend.R' 'ffdfsave.R' 'fftable.R' 'fftabulate.R'
+    'mean.R' 'risplit.R' 'subset.R' 'Summary.ff.R' 'unique.R'

@@ -13,7 +13,6 @@ test_that("droplevels.ffdf works",{
  
 	dat <- data.frame(x=x, y=x, z=x)
 	fdat <- as.ffdf(dat)
-#	print(fdat[,])
 	
 	expect_identical(droplevels(dat), (droplevels(fdat))[,]) 
 	expect_identical(droplevels(dat,except="x"), (droplevels(fdat, except="x"))[,]) 

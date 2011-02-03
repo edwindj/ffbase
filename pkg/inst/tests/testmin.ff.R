@@ -30,10 +30,7 @@ test_that("Min ff works for a range",{
   #x <- runif(100)
   x <- 1:10
   fx <- ff(x)
-  
-  print(min(x[2:10]))
-  print(min(ri(2,10)))
-  
+    
   expect_equal( min(x[2:10])
               , min(fx, range=ri(2,10))
               )  
