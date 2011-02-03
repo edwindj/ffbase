@@ -53,7 +53,6 @@ sum.ff <- function(x, ..., na.rm=FALSE, range=NULL){
               , function(i){
 	               sum(x[i], na.rm)
                 }
-	           , ...
 	           )
 	   )
 }
