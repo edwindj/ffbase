@@ -16,7 +16,7 @@ c.ff <- function(...){
 
 #' Append a ff vector to another ff vector
 #' 
-#' Appends (\code{ff}) vector to \code{ff} vector \code{x}. 
+#' Appends (\code{ff}) vector \code{y} to \code{ff} vector \code{x}. 
 #' Please note that the data of \code{y} will be coerced to the type of \code{x}.
 #' @seealso \code{\link{c.ff}}
 #' @param x \code{ff} object where data will be appended to. If \code{x==NULL} a new \code{ff} object will be created

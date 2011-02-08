@@ -5,10 +5,12 @@
 #' @export
 #' @seealso cut
 #' @method cut ff
-#' @param x a (numeric) ff object that will be cut in to pieces
+#' 
+#' @param x a (numeric) ff object that will be cut into pieces
 #' @param breaks specifies the breaks for cutting this
 #' @param ... other parameters that can be given to \code{\link{cut.default}}
-#' @return ff a new \code{link{ff}} object with the newly created factor
+#' 
+#' @return ff a new \code{\link{ff}} object with the newly created factor
 cut.ff <- function(x, breaks, ...){
    f <- NULL
    
