@@ -9,4 +9,6 @@ roxygenize( 'pkg'
           , use.Rd2 = TRUE
 		    )
 
-unlink( 'pkg/inst/doc', TRUE)
+if (length(list.files('pkg/inst/doc')) == 0){
+   unlink( 'pkg/inst/doc', TRUE)   
+}
