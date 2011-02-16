@@ -24,4 +24,4 @@
 
 `^.ff` <- function(e1,e2){
    stop("Not implemented")
-}
+}                

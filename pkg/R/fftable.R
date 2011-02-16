@@ -1,18 +1,39 @@
-#' fftable uses the cross-classifying factors to build a contingency table of the 
+#' table.ff uses the cross-classifying factors to build a contingency table of the 
 #' counts at each combination of factor levels.
 #'
 #' @seealso \code{\link{table}}
 #' @export
+#'
 #' @param ... \code{ff} factors
 #' @param exclude see \code{\link{table}}
 #' @param useNA see \code{\link{table}}
 #' @param deparse.level see \code{\link{table}}
+#'
 #' @return \code{table} object
-fftable <- function (...
+table.ff <- function (...
                     , exclude = if (useNA == "no") c(NA, NaN)
                     , useNA = c("no","ifany", "always")
+                    , dnn = list.names(...)
                     , deparse.level = 1
                     ){
+   #borrowed from table
+   list.names <- function(...) {
+      l <- as.list(substitute(list(...)))[-1L]
+      nm <- names(l)
+      fixup <- if (is.null(nm)) 
+         seq_along(l)
+      else nm == ""
+      dep <- sapply(l[fixup], function(x) switch(deparse.level + 
+         1, "", if (is.symbol(x)) as.character(x) else "", 
+         deparse(x, nlines = 1)[1L]))
+      if (is.null(nm)) 
+         dep
+      else {
+         nm[fixup] <- dep
+         nm
+      }
+   }
+   ###
 	args <- list(...)
 	tab <- NULL
    
@@ -37,3 +58,17 @@ fftable <- function (...
 	}
 	return(tab)	
 }
+
+setGeneric("table"
+          , signature="..."
+          )
+          
+setMethod("table"
+         , "ff"
+         , table.ff
+         )
+
+setMethod("table"
+         , "ff_vector"
+         , table.ff
+         )
