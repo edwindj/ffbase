@@ -44,7 +44,7 @@ evalInChunks <- function(e, ...){
    else {
       #TODO check if all arguments are ff and of same length   
       dat <- do.call(ffdf, args)
-      print(dat)
+      #print(dat)
    }
    e <- substitute(e)
    

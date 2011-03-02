@@ -1,11 +1,11 @@
 #' split using ri
-#' @export
+#' @nord
 risplit <- function(x, f){
    UseMethod("risplit")
 }
 
 #' @method risplit ff
-#' @export
+#' @nord
 risplit.default <- function(x, f){
   if (is.factor(f)){
      
@@ -37,8 +37,8 @@ risplit.default <- function(x, f){
 }
 
 #' @method risplit ff
-#' @export
 #' 
+#' @nord
 #' @param ff object to be splitted
 #' @param f \code{ff factor} object used for splitting 
 risplit.ff <- function(x, f){
@@ -86,7 +86,7 @@ risplit.ff <- function(x, f){
 }
 
 #' @method risplit ffdf
-#' @export
+#' @nord
 risplit.ffdf <- function(x, f){
   stop("Not implemented")
 }

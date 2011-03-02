@@ -2,6 +2,8 @@
 #'
 #' Behaviour of \code{\link{tabulate}}
 #' @export
+#' @exportMethod tabulate
+#'
 #' @title Tabulation for ff vectors
 #' @param bin factor to be binned.
 #' @param nbins number of bins
@@ -47,7 +49,7 @@ tabulate.ff <- function( bin
 setGeneric( "tabulate"
           , signature="bin"
           )
-          
+
 setMethod("tabulate"
          , "ff"
          , tabulate.ff

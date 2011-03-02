@@ -1,6 +1,6 @@
 library(roxygen)
 
-unlink( 'pkg/man', TRUE)
+unlink('pkg/man', TRUE)
 
 roxygenize( 'pkg'
           , roxygen.dir='pkg'

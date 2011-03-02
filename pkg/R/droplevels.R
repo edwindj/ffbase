@@ -33,8 +33,8 @@ droplevels.ff <- function(x, ..., inplace=FALSE){
 #' @export
 #' @method droplevels ffdf
 #' @param x \code{ffdf} object
-#' @param ... further arguments passed to \code{\link{droplevel.ff}}
 #' @param except specify which columns will be excluded from dropping levels
+#' @param ... further arguments passed to \code{\link{droplevels.ff}}
 #' @param inplace if \code{TRUE} the columns will be physically changed, 
 #' otherwise (default) new \code{ff} vectors will be created
 #' @return \code{ffdf} object where levels of factors are dropped

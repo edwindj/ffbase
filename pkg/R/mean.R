@@ -20,7 +20,7 @@ mean.ff <- function(x, trim=0, ..., range=NULL){
 	}
 	
    
-   res <- sapply( chunk(x, from=1, along.with=x)
+   res <- sapply( chunk(x, from=min(r), to=max(r))
                 , function(i){
                      c( mean=mean(x[i], ...)
                       , w = sum(i)/max(i)
