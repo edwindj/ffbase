@@ -46,16 +46,16 @@ tabulate.ff <- function( bin
    tab
  }
 
-setGeneric( "tabulate"
-          , signature="bin"
-          )
+# setGeneric( "tabulate"
+          # , signature="bin"
+          # )
 
-setMethod("tabulate"
-         , "ff"
-         , tabulate.ff
-         )
+# setMethod("tabulate"
+         # , "ff"
+         # , tabulate.ff
+         # )
 
-setMethod("tabulate"
-         , "ff_vector"
-         , tabulate.ff
-         )
+# setMethod("tabulate"
+         # , "ff_vector"
+         # , tabulate.ff
+         # )

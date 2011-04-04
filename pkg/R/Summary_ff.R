@@ -65,7 +65,7 @@ sum.ff <- function(x, ..., na.rm=FALSE, range=NULL){
 #' @method range ff
 #' @example examples/minmaxrange.R
 #' @aliases min max range
-#' @export min max range
+#' @export min.ff max.ff range.ff
 #' @param x a \code{ff} object
 #' @param ... optional other (\code{ff}) objects
 #' @param na.rm should \code{NA} be removed?

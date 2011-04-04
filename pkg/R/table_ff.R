@@ -1,8 +1,10 @@
 #' table.ff uses the cross-classifying factors to build a contingency table of the 
 #' counts at each combination of factor levels.
 #'
+#' Details 
 #' @seealso \code{\link{table}}
 #' @export
+#' @exportMethod table
 #'
 #' @param ... \code{ff} factors
 #' @param exclude see \code{\link{table}}
@@ -11,7 +13,7 @@
 #' @param deparse.level see \code{\link{table}}
 #'
 #' @return \code{table} object
-table.ff <- function(...
+table.ff <- function( ...
                     , exclude = if (useNA == "no") c(NA, NaN)
                     , useNA = c("no","ifany", "always")
                     , dnn = list.names(...)
@@ -60,17 +62,16 @@ list.names <- function(...) {
    }
 }
 
-#' @exportMethod table
-setGeneric( "table"
-          , signature="..."
-          )
+# setGeneric( "table"
+          # , signature="..."
+          # )
           
-setMethod( "table"
-         , "ff"
-         , table.ff
-         )
+# setMethod( "table"
+         # , "ff"
+         # , table.ff
+         # )
 
-setMethod( "table"
-         , "ff_vector"
-         , table.ff
-         )
+# setMethod( "table"
+         # , "ff_vector"
+         # , table.ff
+         # )

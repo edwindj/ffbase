@@ -5,7 +5,7 @@ test_that("table.ff works for one factor",{
    af <- ff(a)
 
    t <- table(a)
-   ft <- table(af)
+   ft <- table.ff(af)
    
    names(dimnames(t)) <- NULL
    names(dimnames(ft)) <- NULL
@@ -21,7 +21,7 @@ test_that("table.ff works for two factors",{
    af <- ff(a)
 
    t <- table(A,a)
-   ft <- table(Af,af)
+   ft <- table.ff(Af,af)
    
    names(dimnames(t)) <- NULL
    names(dimnames(ft)) <- NULL
@@ -35,5 +35,5 @@ test_that("table.ff works for a large factor",{
       x[i] <- repfromto(c(1,2,3,3,3), i[1], i[2])
    }
    levels(x) <- c("A","B","C") 
-   #expect_equal(as.integer(table(x)), c(2000000, 2000000, 6000000))
-})  
+   expect_equal(as.integer(table.ff(x)), c(2000000, 2000000, 6000000))
+})
