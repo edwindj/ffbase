@@ -17,12 +17,10 @@ test_that("risplit works for ff",{
    rs1 <- risplit(x,fa)
    rs2 <- risplit(xf,faf)
    
-   attributes(rs1) <- NULL
-   attributes(rs2) <- NULL
-   
-   expect_identical( rs1
-                   , rs2
-                   )
+   expect_equivalent( rs1
+                    , rs2
+                    )
+
 })
 
 test_that("risplit works for ffdf",{

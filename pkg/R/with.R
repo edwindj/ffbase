@@ -1,11 +1,12 @@
 #' Evaluate an expression in a ffdf data environment 
 #' 
 #' Same functionality as \code{\link{with}}. Please note that you should write
-#' your expression as if it is a normal \code{data.frame}. The resulting data.frame
-#' however will be a \code{ffdf} data.frame.
+#' your expression as if it is a normal \code{data.frame}. The resulting return value
+#' however will be a \code{ff} object.
 #' @method with ffdf 
 #' @export
 #'
+#' @example examples/with.R
 #' @param data \code{\link{ffdf}} data object used as an environment for evaluation.
 #' @param expr expression to evaluate.
 #' @param ... arguments to be passed to future methods.
@@ -36,6 +37,19 @@ with.ffdf <- function(data, expr, ...){
    res
 }
 
+#' Evaluate an expression in a ffdf data environment 
+#' 
+#' Same functionality as \code{\link{within}}. Please note that you should write
+#' your expression as if it is a normal \code{data.frame}. The resulting data.frame
+#' however will be a \code{ffdf} data.frame.
+#' @method within ffdf 
+#' @export
+#'
+#' @example examples/within.R
+#' @param data \code{\link{ffdf}} data object used as an environment for evaluation.
+#' @param expr expression to evaluate.
+#' @param ... arguments to be passed to future methods.
+#' @return a modified clone of \code{data}.
 within.ffdf <- function(data, expr, ...){
     expr <- substitute(expr)
     parent <- parent.frame()
