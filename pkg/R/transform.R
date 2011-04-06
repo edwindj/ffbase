@@ -3,7 +3,10 @@
 #' Same functionality as \code{\link{transform}}, but on a \code{ffdf} object. Please note that you should write
 #' your expression as if it is a normal \code{data.frame}. The resulting data.frame
 #' however will be a \code{ffdf} data.frame.
-#' @export
+#' @usage 
+#' \method{transform}{ffdf}(`_data`, \dots)
+#'
+#' @export transform.ffdf
 #'
 #' @example examples/transform.R
 #' @param _data \code{\link{ffdf}} data object to be transformed.

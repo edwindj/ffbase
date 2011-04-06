@@ -10,7 +10,7 @@
 #' otherwise (default) a new \code{ff} vector will be created
 #' @return \code{ff} object where levels of factors are dropped
 droplevels.ff <- function(x, ..., inplace=FALSE){
-   if (!is.factor(x)){
+   if (!is.factor.ff(x)){
 		stop("droplevels can only applied to a factor")      
    }
    
@@ -40,7 +40,7 @@ droplevels.ff <- function(x, ..., inplace=FALSE){
 #' @return \code{ffdf} object where levels of factors are dropped
 droplevels.ffdf <- function(x, except=NULL, ..., inplace=FALSE){
    ffs <- physical(x)
-   ix <- sapply(ffs, is.factor)
+   ix <- sapply(ffs, is.factor.ff)
    if (!is.null(except)) 
         ix[except] <- FALSE
 	
