@@ -4,7 +4,6 @@
 #' Details 
 #' @seealso \code{\link{table}}
 #' @export
-#' @exportMethod table
 #'
 #' @param ... \code{ff} factors
 #' @param exclude see \code{\link{table}}
