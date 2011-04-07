@@ -1,7 +1,7 @@
 Package: ffbase
 Type: Package
 Title: Basic statistical functions for package ff
-Version: 0.2
+Version: 0.2-1
 Date: 2010-12-23
 Author: Edwin de Jonge
 Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
