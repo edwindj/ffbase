@@ -1,7 +1,7 @@
 #' Basic statistical functions for ff
 #' 
-#' Basic statistical functions for ff vectors and ffdf data.frames. 
-#' The aim of ffbase is make working with ff vectors and ffdf data.frame a little bit easier.
+#' Basic statistical functions for \code{\link{ff}} vectors and \code{\link{ffdf}} data.frames. 
+#' The aim of ffbase is to make working with ff vectors and ffdf data.frame a little bit easier.
 #'
 #' \itemize{
 #' \item{\code{\link{cut.ff}}}

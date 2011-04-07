@@ -5,8 +5,8 @@ Version: 0.2
 Date: 2010-12-23
 Author: Edwin de Jonge
 Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
-Description: Implementation for min,max, mean, tabulate, etc. for
-    package ff
+Description: Implementation for min,max, mean, tabulate, table, with,
+    within. for package ff
 License: GPL version 3
 LazyLoad: yes
 Depends: ff (>= 2.2-0)
