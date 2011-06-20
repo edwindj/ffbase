@@ -4,13 +4,11 @@ library(ff)
 src <- sapply(list.files("../pkg/R", full.names=TRUE), source)
 
 # load demos
-demos <- sapply(list.files("../pkg/demo", full.names=TRUE), source)
+#demos <- sapply(list.files("../pkg/demo", full.names=TRUE), source)
 
 # load examples
 examples <- sapply(list.files("../examples", full.names=TRUE), source)
 
-x <- 1:10
-fx <- ff(x)
-
-cut(x, breaks=2)
-cut(fx, breaks=2)
+x <- ff(as.integer(1:10))
+z <- compact(x)
+vmode(z)

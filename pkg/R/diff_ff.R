@@ -1,4 +1,3 @@
-
 diff.ff <- function(x, ...){
   #TODO generalize for lag and difference
   chunks <- chunk(x, by=2)
