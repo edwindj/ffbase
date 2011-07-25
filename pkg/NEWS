@@ -1,2 +1,5 @@
+version 0.2-1
+- bug fix, sum.ff with na.rm=TRUE is now working correctly (thanks to Andreas Borg)
+
 version 0.2
 - initial version

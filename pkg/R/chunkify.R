@@ -2,7 +2,6 @@
 #' 
 #' Chunkify creates a new function that operates on a ff vector. 
 #' It creates chunks from the ff vector and calls the orginal function \code{fun} on each chunk.
-#' @example examples/chunkify.R
 #' @export chunkify
 #' @param fun function to be 'chunkified', the function must accept a vector and 
 #'    return a vector of the same \code{length}

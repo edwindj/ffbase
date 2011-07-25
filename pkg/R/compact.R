@@ -7,6 +7,7 @@
 #' @export
 #' @param x \code{ff} or \code{ffdf} object
 #' @param use.na \code{logical} if TRUE the resulting ff vector can contain NA, otherwise not
+#' @param ... other parameters
 #' @return compact ff vector
 compact <- function(x, use.na=TRUE, ...){
    UseMethod("compact")
@@ -21,9 +22,6 @@ compact.ff <- function(x, use.na=TRUE,...){
               
               if (r[1] <= 0)
                 return(x)
-              
-              print(r)
-              z
               as.ff(x, vmode="byte")
             }
         , x

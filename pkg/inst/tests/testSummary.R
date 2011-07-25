@@ -16,7 +16,6 @@ test_that("all ff works",{
   x <- c(TRUE,NA)
   fx <- ff(x)
   expect_equal(all(x, na.rm=TRUE), all(fx, na.rm=TRUE))
-  print("test")
   expect_equal(all(x), all(fx))
 
   x <- c(FALSE,NA)

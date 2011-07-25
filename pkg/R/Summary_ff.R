@@ -51,7 +51,7 @@ sum.ff <- function(x, ..., na.rm=FALSE, range=NULL){
    sum( ...
       , sapply( chunk(x, from=min(r), to=max(r))
               , function(i){
-	               sum(x[i], na.rm)
+	               sum(x[i], na.rm=na.rm)
                 }
 	           )
 	   )

@@ -2,5 +2,5 @@ library(ffbase)
 
 if (require(testthat)){
    print("testing...")
-   #test_package("ffbase")
+   test_package("ffbase")
 }
