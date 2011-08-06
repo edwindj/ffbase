@@ -63,7 +63,7 @@ sum.ff <- function(x, ..., na.rm=FALSE, range=NULL){
 #' @method min ff
 #' @method max ff
 #' @method range ff
-#' @example examples/minmaxrange.R
+#' @example ../examples/minmaxrange.R
 #' @aliases min max range
 #' @export min.ff max.ff range.ff
 #' @aliases min.ff max.ff range.ff

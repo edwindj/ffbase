@@ -8,7 +8,7 @@
 #'
 #' @export transform.ffdf
 #'
-#' @example examples/transform.R
+#' @example ../examples/transform.R
 #' @param _data \code{\link{ffdf}} data object to be transformed.
 #' @param ... named arguments that will be added to the \code{ffdf} data.frame
 #' @return a modified clone of \code{`_data`}.

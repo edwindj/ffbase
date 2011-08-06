@@ -2,7 +2,7 @@
 #' 
 #' @method mean ff
 #' @export
-#' @example examples/mean.R
+#' @example ../examples/mean.R
 #' @param x a ff vector
 #' @param trim percentage of robustness, between 0 and 1
 #' @param ... other arguments passed to \code{mean}

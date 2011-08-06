@@ -1,5 +1,5 @@
 library(testthat)
 library(ff)
 
-source_dir("../pkg/R", env=parent.frame())
+#source_dir("../pkg/R", env=parent.frame())
 auto_test("../pkg/R", "../pkg/inst/tests")

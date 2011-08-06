@@ -6,7 +6,7 @@
 #' @method with ffdf 
 #' @export
 #'
-#' @example examples/with.R
+#' @example ../examples/with.R
 #' @param data \code{\link{ffdf}} data object used as an environment for evaluation.
 #' @param expr expression to evaluate.
 #' @param ... arguments to be passed to future methods.
@@ -45,7 +45,7 @@ with.ffdf <- function(data, expr, ...){
 #' @method within ffdf 
 #' @export
 #'
-#' @example examples/within.R
+#' @example ../examples/within.R
 #' @param data \code{\link{ffdf}} data object used as an environment for evaluation.
 #' @param expr expression to evaluate.
 #' @param ... arguments to be passed to future methods.

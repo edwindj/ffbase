@@ -1,7 +1,7 @@
 #' \code{tabulate.ff} takes the integer-valued ff vector bin and counts the number of times each integer occurs in it. 
 #'
 #' Behaviour of \code{\link{tabulate}}
-#' @example examples/tabulate_ff.R
+#' @example ../examples/tabulate_ff.R
 #' @export
 #'
 #' @title Tabulation for ff vectors

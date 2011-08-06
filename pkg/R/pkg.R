@@ -12,7 +12,7 @@
 #' \item{\code{\link{with.ffdf}}}
 #' \item{\code{\link{within.ffdf}}}
 #' }
-#' @example examples/pkg.R
+#' @example ../examples/pkg.R
 #' @name ffbase-package 
 #' @aliases ffbase ffbase-package
 #' @docType package 
