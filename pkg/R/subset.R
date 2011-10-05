@@ -25,8 +25,8 @@ subset.ffdf <- function(x, subset, ...){
 	for (i in chunk(x)){
 	   dat <- x[i,]
 	   row.names(dat) <- min(i):max(i)
-	   sel <- eval(substitute(subset), dat, parent.frame())
-	   dat <- dat[sel,]
+	   #sel <- eval(substitute(subset), dat, parent.frame())
+	   dat <- dat[subset[i],]
 	   s <- nrow(dat) 
 	   if (s > 0){
 	      y[(n+1):(n+s),] <- dat
