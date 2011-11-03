@@ -4,6 +4,7 @@
 #' \code{ff} columns in a subdirectory with the name "<filename>_ff". Each column
 #' will be named "<columnname>.ff".
 #' A saved ffdf data.frame is a .rdata file and can be loaded with the \code{load} function
+#' @example ../examples/ffdfsave.R
 #' @export
 #' @param dat \code{ffdf} data.frame, to be saved
 #' @param filename path where .rdata file will be save and <filename>_ff directory will be created
@@ -12,7 +13,7 @@ ffdfsave <- function(dat, filename){
    datname <- deparse(substitute(dat))
    
    # create a sub directory with "<filename>_ff"
-   dirnm <- sub("\\..+$","_ff",filename)
+   dirnm <- sub("(\\..+)?$","_ff",filename)
    dir.create(dirnm, showWarnings=FALSE)
    
    for (colname in names(dat)){
