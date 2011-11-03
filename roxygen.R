@@ -1,13 +1,12 @@
-library(roxygen)
+library(roxygen2)
+options(error=traceback)
+unlink( 'pkg/man', TRUE)
 
-unlink('pkg/man', TRUE)
-
-setwd("pkg")
+setwd('pkg')
 roxygenize( '.'
           , roxygen.dir='.'
           , copy.package=FALSE
           , unlink.target=TRUE
-          , use.Rd2 = TRUE
 		    )
 
 if (length(list.files('inst/doc')) == 0){
