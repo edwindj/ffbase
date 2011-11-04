@@ -25,7 +25,6 @@ ffdfsave <- function(dat, filename){
    
    # close all ff files...
    close(dat)
-   
    assign(datname, dat)
    # save ffdf with original name to <filename>
    save(list=datname, file=filename)

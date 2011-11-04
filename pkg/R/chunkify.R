@@ -25,3 +25,25 @@ chunkify <- function(fun){
    }
    cfun
 }
+
+## change to names
+chunkexpr <- function(x, expr){
+  es <- deparse(expr[[1]])
+  xs <- deparse(x[[1]])
+  print(list(es=es, xs=xs))  
+  if (is.ff(x)){
+      varre <- paste("\\b(",xs,")\\b", sep="")
+      es <- gsub(varre, "\\1[i]", es)
+
+  } else if (is.ffdf(x)){  
+      for (var in names(x)){
+        varre <- paste("\\b(",var,")\\b", sep="")
+        varsub <- paste(xs,"$\\1[i]", sep="")
+        es <- gsub(varre, varsub, es)
+        #print(list(varre=varre, varsub=varsub, es=es))
+      }
+  }
+  parse(text=es)
+}
+
+#chunkexpr(expression(x), expression(x>2))

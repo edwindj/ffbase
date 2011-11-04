@@ -33,4 +33,4 @@ Collate:
     'transform.R'
     'unique.R'
     'with.R'
-    'filter.R'
+    'makeffindex.R'
