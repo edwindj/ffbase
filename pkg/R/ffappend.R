@@ -22,6 +22,7 @@ c.ff <- function(...){
 #' @param x \code{ff} object where data will be appended to. If \code{x==NULL} a new \code{ff} object will be created
 #' @param y \code{ff} object or vector object
 #' @return \code{ff} object with same physical storage as \code{x}
+#' @export
 ffappend <- function(x, y){
    if (is.null(x)){
       if (is.ff(y)){

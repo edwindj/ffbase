@@ -1,14 +1,14 @@
-#' create a filter statement resulting in a ff integer vector that can be used for indexing
+#' create an index from  filter statement resulting in a ff integer vector that can be used for indexing
 #' @param x \code{ff} or \code{ffdf} object
 #' @param expr R code that evaluates to a logical
 #' @param ... not used
 #' @export
-filter <- function(x, expr, ...){
-  UseMethod("filter")
+makeffindex <- function(x, expr, ...){
+  UseMethod("makeffindex")
 }
 
-#' @method filter ff_vector
-filter.ff_vector <- function(x, expr, ...){
+#' @method makeffindex ff_vector
+makeffindex.ff_vector <- function(x, expr, ...){
   es <- deparse(substitute(expr))
   xs <- deparse(substitute(x))
   
@@ -22,8 +22,8 @@ filter.ff_vector <- function(x, expr, ...){
   fltr
 }
 
-#' @method filter ffdf
-filter.ffdf <- function(x, expr, ...){
+#' @method makeffindex ffdf
+makeffindex.ffdf <- function(x, expr, ...){
   es <- deparse(substitute(expr))
   xs <- deparse(substitute(x))
   
@@ -42,8 +42,8 @@ filter.ffdf <- function(x, expr, ...){
 }
 
 ###### quick testing
-# x <- ff(1:10)
-# filter(x, x < 5)
-# 
-# dat <- ffdf(x1=x, y1=x)
-# filter(dat, x1 < 5 & y1 > 2)
+x <- ff(1:10)
+makeffindex(x, x < 5)
+
+dat <- ffdf(x1=x, y1=x)
+makeffindex(dat, x1 < 5 & y1 > 2)
