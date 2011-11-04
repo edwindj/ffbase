@@ -1,7 +1,7 @@
-#' create a filter statement
-#' @S3method
+#' create a filter statement resulting in a ff integer vector that can be used for indexing
 #' @param x \code{ff} or \code{ffdf} object
-#' @expr R code that evaluates to a logical
+#' @param expr R code that evaluates to a logical
+#' @param ... not used
 #' @export
 filter <- function(x, expr, ...){
   UseMethod("filter")
@@ -27,7 +27,7 @@ filter.ffdf <- function(x, expr, ...){
   es <- deparse(substitute(expr))
   xs <- deparse(substitute(x))
   
-  for (var in names(dat)){
+  for (var in names(x)){
     varre <- paste("\\b(",var,")\\b", sep="")
     varsub <- paste(xs,"$\\1[i]", sep="")
     es <- gsub(varre, varsub, es)
