@@ -26,24 +26,20 @@ chunkify <- function(fun){
    cfun
 }
 
-## change to names
-chunkexpr <- function(x, expr){
-  es <- deparse(expr[[1]])
-  xs <- deparse(x[[1]])
-  print(list(es=es, xs=xs))  
-  if (is.ff(x)){
-      varre <- paste("\\b(",xs,")\\b", sep="")
-      es <- gsub(varre, "\\1[i]", es)
-
-  } else if (is.ffdf(x)){  
-      for (var in names(x)){
-        varre <- paste("\\b(",var,")\\b", sep="")
-        varsub <- paste(xs,"$\\1[i]", sep="")
-        es <- gsub(varre, varsub, es)
-        #print(list(varre=varre, varsub=varsub, es=es))
-      }
+#' Chunk an expression to be used in a chunk for loop
+#'@param x \code{character} with vars
+#'@param expr \code{expression} vector
+#'@param i name of index
+#'@keywords internal
+chunkexpr <- function(x, expr, i="i"){
+  es <- sapply(expr, deparse)
+  xs <- x
+  for (var in xs){
+    varre <- paste("\\b(",var,")\\b", sep="")
+    varsub <- paste("\\1[",i,"]", sep="")
+    es <- gsub(varre, varsub, es)
   }
   parse(text=es)
 }
 
-#chunkexpr(expression(x), expression(x>2))
+#chunkexpr(c("x","y"), expression(x>2 & y==1, z==3, y> 3))

@@ -25,7 +25,9 @@ makeffindex.ff_vector <- function(x, expr, ...){
   ###
   fltr <- NULL
   for (i in chunk(x)){
-    fltr <- ffappend(fltr, which(eval(e)))
+    a <- which(eval(e)) +  min(i) - 1L
+    if (length(a))
+      fltr <- ffappend(fltr, a)
   }
   fltr
 }
@@ -44,16 +46,18 @@ makeffindex.ffdf <- function(x, expr, ...){
   
   fltr <- NULL
   for (i in chunk(x)){
-    fltr <- ffappend(fltr, which(eval(e)))
+    a <- which(eval(e)) +  min(i) - 1L
+    if (length(a))
+      fltr <- ffappend(fltr, a)
   }
   fltr
 }
 
 ###### quick testing
-# x <- ff(10:1)
-# idx <- makeffindex(x, x < 5)
-# x[idx][]
-
+z <- ff(10:1)
+idx <- makeffindex(z, z < 5)
+z[idx][]
+# 
 # dat <- ffdf(x1=x, y1=x)
 # idx <- makeffindex(dat, x1 < 5 & y1 > 2)
 # dat[idx,][,]
