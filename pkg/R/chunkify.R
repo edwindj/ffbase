@@ -32,13 +32,14 @@ chunkify <- function(fun){
 #'@param i name of index
 #'@keywords internal
 chunkexpr <- function(x, expr, i="i"){
-  es <- sapply(expr, deparse)
+  es <- deparse(expr)
   xs <- x
   for (var in xs){
     varre <- paste("\\b(",var,")\\b", sep="")
     varsub <- paste("\\1[",i,"]", sep="")
     es <- gsub(varre, varsub, es)
   }
+  #print(es)
   parse(text=es)
 }
 
