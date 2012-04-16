@@ -17,6 +17,3 @@
 #' @aliases ffbase ffbase-package
 #' @docType package 
 {}
-
-
-

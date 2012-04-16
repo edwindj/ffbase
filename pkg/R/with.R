@@ -1,6 +1,7 @@
 #' Evaluate an expression in a ffdf data environment 
 #' 
-#' Same functionality as \code{\link{with}}. Please note that you should write
+#' Evaluate an R expression in an environment constructed from a ffdata data frame, possibly modifying the original data.
+#' (see \code{\link{with}}). Please note that you should write
 #' your expression as if it is a normal \code{data.frame}. The resulting return value
 #' however will be a \code{ff} object.
 #' @method with ffdf 
@@ -15,7 +16,7 @@
 with.ffdf <- function(data, expr, ...){
    e <- substitute(expr)
    #chunks <- chunk(data, by=2) #debug chunking
-   chunks <- chunk(data)
+   chunks <- chunk(data, ...)
    
    cdat <- data[chunks[[1]],,drop=FALSE]
    res <- eval(e, cdat, enclos=parent.frame())
