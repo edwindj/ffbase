@@ -1,13 +1,13 @@
 Package: ffbase
 Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
-License: GPL version 3
+License: GPL-3
 Title: Basic statistical functions for package ff
 Type: Package
 LazyLoad: yes
 Author: Edwin de Jonge
 Description: Implementation for min,max, mean, tabulate,
     table, with, within. for package ff
-Version: 0.3
+Version: 0.4
 URL: http://code.google.com/p/fffunctions/
 Date: 2011-11-1
 Depends:
