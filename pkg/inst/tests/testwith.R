@@ -38,3 +38,15 @@ test_that("Creating a factor vector works", {
                    , fz[]
                    )  
 })
+
+test_that("Creating a factor data.frame works", {
+  dat <- data.frame(x=1:10, y=10:1)
+  ffdat <- as.ffdf(dat)
+  
+  z <- with(dat, data.frame(a=factor(paste(x,y, sep=":"))))
+  fz <- with(ffdat, data.frame(a=factor(paste(x,y, sep=":"))), by=5)
+  
+  expect_equivalent( z
+                   , fz[,,drop=FALSE]
+                   )  
+})

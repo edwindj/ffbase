@@ -23,6 +23,9 @@ with.ffdf <- function(data, expr, ...){
    
    if (is.character(res)){
      res <- as.factor(res)
+   } else if (is.data.frame(res)){
+     fc <- sapply(res, function(x) is.factor(x) || is.character(x))
+     res[fc] <- lapply(res[fc], as.factor)
    }
    
    if (is.vector(res) || is.factor(res)){
@@ -40,7 +43,15 @@ with.ffdf <- function(data, expr, ...){
       res <- as.ffdf(res)
       nrow(res) <- nrow(data)
       for (i in chunks[-1]){
-         res[i,] <- eval(e, data[i,,drop=FALSE], enclos=parent.frame())
+        r <- eval(e, data[i,,drop=FALSE], enclos=parent.frame())
+        if (any(fc)){
+           r[fc] <- lapply(which(fc), function(x) {
+                r[[x]] <- as.factor(r[[x]])
+                levels(res[[x]]) <<- appendLevels(res[[x]], r[[x]])
+                r[[x]]
+             })
+        }
+        res[i,] <- r
       }
    }
    res

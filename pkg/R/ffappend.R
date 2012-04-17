@@ -37,6 +37,11 @@ ffappend <- function(x, y, ...){
    if (!to) return(x)
    
    length(x) <- len + to
+   
+   if (is.factor(x)){
+      levels(x) <- appendLevels(levels(x), levels(y))  
+   }
+   
    for (i in chunk(x, from=1, to=to)){
      if (is.vector(y)){
 			 i <- as.which(i)
