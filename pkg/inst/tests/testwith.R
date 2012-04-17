@@ -14,3 +14,27 @@ test_that("Chunkify a function",{
 	                , fz[]
 				    )
 })
+
+test_that("Creating a character vector works", {
+  dat <- data.frame(x=1:10, y=10:1) 
+  ffdat <- as.ffdf(dat)
+  
+  z <- with(dat, factor(paste(x,y)))
+  fz <- with(ffdat, paste(x,y))
+  
+  expect_identical( z
+                  , fz[]
+                  )  
+})
+
+test_that("Creating a factor vector works", {
+  dat <- data.frame(x=1:10, y=10:1)
+  ffdat <- as.ffdf(dat)
+  
+  z <- with(dat, factor(paste(x,y, sep=":")))
+  fz <- with(ffdat, factor(paste(x,y, sep=":")), by=5)
+  
+  expect_equivalent( z
+                   , fz[]
+                   )  
+})
