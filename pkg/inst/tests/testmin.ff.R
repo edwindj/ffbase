@@ -1,6 +1,8 @@
 library(testthat)
 library(ff)
 
+context("min")
+
 test_that("Min ff works",{
   x <- runif(100) 
   fx <- ff(x)

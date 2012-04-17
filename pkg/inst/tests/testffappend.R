@@ -1,5 +1,7 @@
 library(testthat)
 
+context("append")
+
 test_that("Appending ff vector works",{
    x <- c(1,3)
    y <- c(2,3)

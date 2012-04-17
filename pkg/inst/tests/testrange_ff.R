@@ -1,6 +1,8 @@
 library(testthat)
 library(ff)
 
+context("range")
+
 test_that("Range ff works",{
   x <- runif(100)
   fx <- ff(x)

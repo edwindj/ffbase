@@ -1,6 +1,8 @@
 library(testthat)
 library(ff)
 
+context("sum")
+
 test_that("Sum ff works",{
   x <- runif(100)
   fx <- ff(x)

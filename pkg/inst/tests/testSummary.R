@@ -1,5 +1,7 @@
 library(testthat)
 
+context("summary")
+
 test_that("all ff works",{
   x <- c(TRUE)
   fx <- ff(x)

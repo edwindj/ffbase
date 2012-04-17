@@ -28,7 +28,7 @@ mean.ff <- function(x, trim=0, ..., range=NULL){
                       )
                   }
 				    )
-   weighted.mean(res['mean',], res['w',])
+   stats::weighted.mean(res['mean',], res['w',])
 }
 
 #' Mean of ffdf vector

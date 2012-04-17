@@ -1,5 +1,7 @@
 library(testthat)
 
+context("table.ff")
+
 test_that("table.ff works for one factor",{
    a <- factor(rep(c("A","B","C"), 10))
    af <- ff(a)
@@ -29,11 +31,11 @@ test_that("table.ff works for two factors",{
    expect_equal(t, ft)
 })  
 
-test_that("table.ff works for a large factor",{
-   x <- ff(length=1e7, vmode="integer")
-   for (i in chunk(x)){
-      x[i] <- repfromto(c(1,2,3,3,3), i[1], i[2])
-   }
-   levels(x) <- c("A","B","C") 
-   expect_equal(as.integer(table.ff(x)), c(2000000, 2000000, 6000000))
-})
+# test_that("table.ff works for a large factor",{
+#    x <- ff(length=1e7, vmode="integer")
+#    for (i in chunk(x)){
+#       x[i] <- repfromto(c(1,2,3,3,3), i[1], i[2])
+#    }
+#    levels(x) <- c("A","B","C") 
+#    expect_equal(as.integer(table.ff(x)), c(2000000, 2000000, 6000000))
+# })

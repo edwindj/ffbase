@@ -1,6 +1,8 @@
 library(testthat)
 library(ff)
 
+context("cut")
+
 test_that("Cut works for ff vectors",{
 	x <- 1:10 
 	xf <- ff(x)

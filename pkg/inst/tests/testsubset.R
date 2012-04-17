@@ -1,6 +1,8 @@
 library(testthat)
 library(ff)
 
+context("subset")
+
 test_that("Subsetting ff vector works",{
    x <- 1:10
    ss <- x < 5

@@ -1,6 +1,8 @@
 library(testthat)
 library(ff)
 
+context("transform")
+
 test_that("transform works",{
 	dat <- data.frame(x=1:10, y=10:1) 
 	ffdat <- as.ffdf(dat)

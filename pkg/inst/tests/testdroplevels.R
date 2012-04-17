@@ -1,5 +1,7 @@
 library(testthat)
 
+context("droplevels")
+
 test_that("droplevels.ff works",{
     x <- factor(c("c","b"), levels=c("a","b","c"))
 	fx <- ff(x)

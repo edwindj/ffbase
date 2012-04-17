@@ -32,7 +32,7 @@ cut.ff <- function(x, breaks, ...){
    args <- list(...)
    
    args$breaks <- breaks
-   for (i in chunk(x)){
+   for (i in chunk(x, ...)){
      args$x <- x[i]
      f <- ffappend( f
                   , do.call(cut, args)
