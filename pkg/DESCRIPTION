@@ -4,7 +4,7 @@ License: GPL-3
 Title: Basic statistical functions for package ff
 Type: Package
 LazyLoad: yes
-Author: Edwin de Jonge
+Author: Edwin de Jonge, Jan Wijfels
 Description: Implementation for min,max, mean, tabulate,
     table, with, within. for package ff
 Version: 0.4
@@ -13,7 +13,8 @@ Date: 2011-11-1
 Depends:
     ff (>= 2.2-0)
 Suggests:
-    testthat, LaF
+    testthat,
+    LaF
 Collate:
     'auxilary.R'
     'chunkify.R'
@@ -33,4 +34,4 @@ Collate:
     'transform.R'
     'unique.R'
     'with.R'
-    'makeffindex.R'
+    'ffwhich.R'
