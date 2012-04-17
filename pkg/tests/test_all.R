@@ -1,6 +1,6 @@
-library(ffbase)
-
-if (require(testthat)){
-   print("testing...")
-   test_package("ffbase")
-}
+# library(ffbase)
+# 
+# if (require(testthat)){
+#    print("testing...")
+#    test_package("ffbase")
+# }
