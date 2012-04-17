@@ -16,7 +16,7 @@ makeffindex <- function(x, expr, ...){
 #' @export
 makeffindex.ff_vector <- function(x, expr, ...){
   #chunkify expression
-  es <- deparse(substitute(expr))
+  es <- substitute(expr)
   xs <- deparse(substitute(x))
   .x <- x
   
@@ -38,17 +38,15 @@ makeffindex.ff_vector <- function(x, expr, ...){
 #' @export
 makeffindex.ffdf <- function(x, expr, ...){
   #### chunkify expression
-  es <- deparse(substitute(expr))
-  for (var in names(x)){
-    varre <- paste("\\b(",var,")\\b", sep="")
-    es <- gsub(varre, "x$\\1[i]", es)
-  }
-  e <- parse(text=es)
+  es <- substitute(expr)
+  e <- chunkexpr(names(x), es)  
   ####
   
   fltr <- NULL
   for (i in chunk(x, ...)){
-    fltr <- ffappend(fltr, which(eval(e)))
+    a <- which(eval(e, envir=physical(x))) +  min(i) - 1L
+    if (length(a))
+      fltr <- ffappend(fltr, a)
   }
   fltr
 }
