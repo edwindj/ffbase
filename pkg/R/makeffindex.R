@@ -18,14 +18,18 @@ makeffindex.ff_vector <- function(x, expr, ...){
   #chunkify expression
   es <- deparse(substitute(expr))
   xs <- deparse(substitute(x))
+  .x <- x
   
   varre <- paste("\\b(",xs,")\\b", sep="")
-  es <- gsub(varre, "\\1[i]", es)
+  es <- gsub(varre, ".x[.i]", es)
+  #print(es)
   e <- parse(text=es)
   ###
+  
   fltr <- NULL
-  for (i in chunk(x)){
-    fltr <- ffappend(fltr, which(eval(e)))
+  for (.i in chunk(.x, ...)){
+    idx  <- which(eval(e))
+    fltr <- ffappend(fltr, idx, ...)
   }
   fltr
 }
@@ -43,7 +47,7 @@ makeffindex.ffdf <- function(x, expr, ...){
   ####
   
   fltr <- NULL
-  for (i in chunk(x)){
+  for (i in chunk(x, ...)){
     fltr <- ffappend(fltr, which(eval(e)))
   }
   fltr
@@ -53,7 +57,7 @@ makeffindex.ffdf <- function(x, expr, ...){
 # x <- ff(10:1)
 # idx <- makeffindex(x, x < 5)
 # x[idx][]
-
+# 
 # dat <- ffdf(x1=x, y1=x)
 # idx <- makeffindex(dat, x1 < 5 & y1 > 2)
 # dat[idx,][,]

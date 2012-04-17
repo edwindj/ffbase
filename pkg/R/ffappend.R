@@ -23,21 +23,23 @@ c.ff <- function(...){
 #' @param y \code{ff} object or vector object
 #' @return \code{ff} object with same physical storage as \code{x}
 #' @export
-ffappend <- function(x, y){
+ffappend <- function(x, y, ...){
    if (is.null(x)){
       if (is.ff(y)){
-		return(clone(y))
-	  }
-	  else {
-		return(as.ff(y)) 
-	  }
+		    return(clone(y))
+	    } else {
+        return (if (length(y)) as.ff(y, ...))
+	    }
    }
    #TODO check if x and y are compatible
    len <- length(x)
-   length(x) <- len + length(y)
-   for (i in chunk(x, from=1, to=length(y))){
-       if (is.vector(y)){
-			i <- as.which(i)
+   to <- length(y)
+   if (!to) return(x)
+   
+   length(x) <- len + to
+   for (i in chunk(x, from=1, to=to)){
+     if (is.vector(y)){
+			 i <- as.which(i)
 	   }
 	   x[(i+len)] <- y[i]
    }
