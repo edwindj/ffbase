@@ -1,0 +1,21 @@
+Package: ffbase
+Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
+License: GPL-3
+Title: Basic statistical functions for package ff
+Type: Package
+LazyLoad: yes
+Author: Edwin de Jonge, Jan Wijffels
+Description: Implementation for min,max, mean, tabulate,
+    table, with, within. for package ff
+Version: 0.4
+URL: http://code.google.com/p/fffunctions/
+Date: 2011-11-1
+Depends: ff (>= 2.2-0)
+Suggests: testthat, LaF
+Collate: 'auxilary.R' 'chunkify.R' 'compact.R' 'cut_ff.R' 'diff_ff.R'
+        'droplevels.R' 'ffappend.R' 'ffdfsave.R' 'mean.R' 'pkg.R'
+        'risplit.R' 'subset.R' 'Summary_ff.R' 'table_ff.R'
+        'tabulate_ff.R' 'transform.R' 'unique.R' 'with.R' 'ffwhich.R'
+        'ffplyr.R' 'zzz.R'
+Packaged: 2012-04-18 21:31:40 UTC; jan
+Built: R 2.14.1; x86_64-pc-linux-gnu; 2012-04-18 21:31:41 UTC; unix
