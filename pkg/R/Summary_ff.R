@@ -1,6 +1,7 @@
 #' Summary methods for ff objects
 #'
 #' @export
+#' @method all ff
 #' @param x a \code{ff} object
 #' @param ... optional other (\code{ff}) objects
 #' @param na.rm should \code{NA} be removed?
