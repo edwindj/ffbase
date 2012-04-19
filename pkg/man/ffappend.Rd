@@ -9,6 +9,9 @@
   If \code{x==NULL} a new \code{ff} object will be created}
 
   \item{y}{\code{ff} object or vector object}
+
+  \item{...}{parameter that will be passed on to
+  \code{chunk} interally}
 }
 \value{
   \code{ff} object with same physical storage as \code{x}

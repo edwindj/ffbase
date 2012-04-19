@@ -21,6 +21,7 @@ c.ff <- function(...){
 #' @seealso \code{\link{c.ff}}
 #' @param x \code{ff} object where data will be appended to. If \code{x==NULL} a new \code{ff} object will be created
 #' @param y \code{ff} object or vector object
+#' @param ... parameter that will be passed on to \code{chunk} interally 
 #' @return \code{ff} object with same physical storage as \code{x}
 #' @export
 ffappend <- function(x, y, ...){
@@ -28,7 +29,7 @@ ffappend <- function(x, y, ...){
       if (is.ff(y)){
 		    return(clone(y))
 	    } else {
-        return (if (length(y)) as.ff(y, ...))
+        return (if (length(y)) as.ff(y))
 	    }
    }
    #TODO check if x and y are compatible
@@ -42,7 +43,7 @@ ffappend <- function(x, y, ...){
       levels(x) <- appendLevels(levels(x), levels(y))  
    }
    
-   for (i in chunk(x, from=1, to=to)){
+   for (i in chunk(x, from=1, to=to, ...)){
      if (is.vector(y)){
 			 i <- as.which(i)
 	   }
@@ -67,7 +68,7 @@ ffdfappend <- function(  x
                        , ...
                        ){
    if (is.null(x)){
-      return(as.ffdf(dat, ...))
+      return(as.ffdf(dat))
    }   
    
    #TODO add checks if structure x and dat are equal
