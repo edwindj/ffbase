@@ -32,7 +32,7 @@ chunkify <- function(fun){
 #'@param i name of index
 #'@keywords internal
 chunkexpr <- function(x, expr, i="i"){
-  es <- deparse(expr)
+  es <- expr
   xs <- x
   for (var in xs){
     varre <- paste("\\b(",var,")\\b", sep="")
@@ -43,4 +43,4 @@ chunkexpr <- function(x, expr, i="i"){
   parse(text=es)
 }
 
-#chunkexpr(c("x","y"), expression(x>2 & y==1, z==3, y> 3))
+#chunkexpr(c("x","y"), c("x>2 & y==1\nz==3", "y > 3"), i=".i")
