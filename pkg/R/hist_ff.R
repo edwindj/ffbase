@@ -1,9 +1,10 @@
 #' hist for ff vectors
 #'
-#' @method hist ff_vector
-#' @param x \code{ff} vector
-#' @param breaks
-#' @plot
+#' @method hist ff 
+#' @param x \code{ff} vector of values for which the histogram is desired
+#' @param breaks a single numer given the number of cells for the histogram
+#' @param plot logical. If \code{TRUE} (default), a histogram is plotted, otherwise a list of breaks and counts is returned
+#' @param ... further arguments supplied to plot.
 hist.ff <- function(x, breaks=max(100, length(x)), plot=TRUE, ...){
   xname <- deparse(substitute(x))
   
@@ -35,7 +36,7 @@ hist.ff <- function(x, breaks=max(100, length(x)), plot=TRUE, ...){
                 , class = "histogram"
                 )
   if (plot){
-    plot(r)
+    plot(r, ...)
     invisible(r)
   } else {
     r

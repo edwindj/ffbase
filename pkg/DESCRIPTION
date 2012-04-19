@@ -38,3 +38,4 @@ Collate:
     'ffplyr.R'
     'zzz.R'
     'ffindex.R'
+    'hist_ff.R'
