@@ -1,0 +1,22 @@
+\name{grouprunningcumsum}
+\alias{grouprunningcumsum}
+\title{Groups the input integer vector into several groups if the running cumulative sum increases a certain maximum number}
+\usage{
+  grouprunningcumsum(x, max)
+}
+\arguments{
+  \item{x}{an integer vector}
+
+  \item{max}{the maximum running cumulative size before an
+  extra grouping is done}
+}
+\value{
+  An integer vector of the same length of x, indicating
+  groups
+}
+\description{
+  Groups the input integer vector into several groups if
+  the running cumulative sum increases a certain maximum
+  number
+}
+
