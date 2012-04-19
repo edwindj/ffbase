@@ -31,16 +31,16 @@ chunkify <- function(fun){
 #'@param expr \code{expression} vector
 #'@param i name of index
 #'@keywords internal
-chunkexpr <- function(x, expr, i="i"){
+chunkexpr <- function(x, expr, i=".i", prefix=""){
   es <- expr
   xs <- x
   for (var in xs){
     varre <- paste("\\b(",var,")\\b", sep="")
-    varsub <- paste("\\1[",i,"]", sep="")
+    varsub <- paste(prefix, "\\1[",i,"]", sep="")
     es <- gsub(varre, varsub, es)
   }
-  #print(es)
+  print(es)
   parse(text=es)
 }
 
-#chunkexpr(c("x","y"), c("x>2 & y==1\nz==3", "y > 3"), i=".i")
+#chunkexpr(c("x","y"), c("x>2 & y==1\nz==3", "y > 3"), i=".i", prefix="data$")

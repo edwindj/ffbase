@@ -2,7 +2,7 @@
 #' \code{ffwhich} creates an \code{\link{ff}} integer index vector
 #' from a filter expression. The resulting vector can be used to index or subset
 #' a ffdf or ff vector.
-#' @example ../examples/makeffindex.R
+#' @example ../examples/ffwhich.R
 #' @seealso ffindexget ffindexset
 #' @param x \code{ff} or \code{ffdf} object
 #' @param expr R code that evaluates to a logical
@@ -37,13 +37,13 @@ ffwhich.ff_vector <- function(x, expr, ...){
 #' @export
 ffwhich.ffdf <- function(x, expr, ...){
   #### chunkify expression
-  es <- substitute(expr)
-  e <- chunkexpr(names(x), es)  
+  es <- deparse(substitute(expr))
+  e <- chunkexpr(names(x), es, prefix="x$")
   ####
   
   fltr <- NULL
-  for (i in chunk(x, ...)){
-    a <- which(eval(e, envir=physical(x))) +  min(i) - 1L
+  for (.i in chunk(x, ...)){
+    a <- which(eval(e)) +  min(.i) - 1L
     if (length(a))
       fltr <- ffappend(fltr, a)
   }
