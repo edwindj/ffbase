@@ -21,11 +21,11 @@ void grouprunningcumsum(Sint *x, Sint *l, Sint *max) {
 			else{
 				runningcumul = runningcumul + x[i];
 				if (runningcumul > maxsize){
-					runningcumul = x[i];					
+					runningcumul = x[i];
 					x[i] = x[i-1]+1;					
 				}else{
 					x[i] = x[i-1];
 				}
 			}
-    }      
+    }
 }
