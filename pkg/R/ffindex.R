@@ -22,9 +22,13 @@ addffIndex <- function(x, addKey=FALSE, ...){
 
 #' @rdname ffindex
 ffindex <- function(x){
-  attr(x, "ffindex")
+  idx <- attr(x, "ffindex")
+  if (is.null(idx)){
+    fforder(x)
+  } else {
+    idx
+  }
 }
-
 
 #' @rdname ffindex
 ffkey <- function(x){
