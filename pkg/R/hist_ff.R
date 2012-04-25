@@ -1,11 +1,12 @@
 #' hist for ff vectors
 #'
+#' Currently this is a simple version of \code{\link{hist}} functionality.
 #' @method hist ff 
 #' @param x \code{ff} vector of values for which the histogram is desired
 #' @param breaks a single numer given the number of cells for the histogram
 #' @param plot logical. If \code{TRUE} (default), a histogram is plotted, otherwise a list of breaks and counts is returned
 #' @param ... further arguments supplied to plot.
-hist.ff <- function(x, breaks=max(100, length(x)), plot=TRUE, ...){
+hist.ff <- function(x, breaks=min(100, length(x)), plot=TRUE, ...){
   xname <- deparse(substitute(x))
   
   # TODO improve breaks...
@@ -43,5 +44,5 @@ hist.ff <- function(x, breaks=max(100, length(x)), plot=TRUE, ...){
   }
 }
 
-# x <- ff(rnorm(1000000))
-# hist.ff(x)
+#  x <- ff(rnorm(1000000))
+#  hist.ff(x)
