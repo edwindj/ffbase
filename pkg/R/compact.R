@@ -9,6 +9,7 @@
 #' @param use.na \code{logical} if TRUE the resulting ff vector can contain NA, otherwise not
 #' @param ... other parameters
 #' @return compact ff vector
+#' @keywords internal
 compact <- function(x, use.na=TRUE, ...){
    UseMethod("compact")
 }

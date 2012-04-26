@@ -1,20 +1,20 @@
 data(iris)
 ffiris <- as.ffdf(iris)
 
-result <- ffdfddply(x=ffiris, 
-	split=x$Species, 
-	FUN=function(x){
-		lowestbypetalwidth <- x[order(x$Petal.Width, decreasing=TRUE), ]
-		lowestbypetalwidth <- lowestbypetalwidth[!duplicated(lowestbypetalwidth[, c("Species","Petal.Width")]), ]
-		lowestbypetalwidth$group <- factor(x= "lowest", levels = c("lowest","highest"))
-		highestbypetalwidth <- x[order(x$Petal.Width, decreasing=FALSE), ]
-		highestbypetalwidth <- highestbypetalwidth[!duplicated(highestbypetalwidth[, c("Species","Petal.Width")]), ]
-		highestbypetalwidth$group <- factor(x= "highest", levels = c("lowest","highest"))
-		rbind(lowestbypetalwidth, highestbypetalwidth)
-}, 
-BATCHBYTES = 5000, 
-trace=TRUE)
-class(result)
+result <- ffdfdply( x = ffiris
+                  , split = x$Species
+                  , FUN = function(x){
+    dup <- duplicated(x[c("Species", "Petal.Width")])
+    o <- order(x$Petal.Width)
+    lowest_pw <- x[rev(o),][!dup,]
+    highest_pw <- x[o,][!dup,]
+    lowest_pw$group <- factor("lowest", levels=c("lowest", "highest"))
+    highest_pw$group <- factor("highest", levels=c("lowest", "highest"))
+		rbind(lowest_pw, highest_pw)
+                   }
+                  , BATCHBYTES = 5000
+                  , trace=TRUE
+                  )
 dim(result)
 dim(iris)
 result[1:10,]
