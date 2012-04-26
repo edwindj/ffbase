@@ -16,6 +16,7 @@ checkRange <- function(range, x){
 #' @param x an integer vector
 #' @param max the maximum running cumulative size before an extra grouping is done
 #' @return An integer vector of the same length of x, indicating groups
+#' @author Jan Wijffels
 grouprunningcumsum <- function(x, max){
 	l <- as.integer(length(x))
 	if(l == 0){

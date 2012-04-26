@@ -18,6 +18,7 @@
 #' an ffdf
 #' @export
 #' @seealso \code{\link{grouprunningcumsum}, \link{table.ff}}
+#' @author Jan Wijffels
 ffdfdply <- function(
 	x, 
 	split, 
