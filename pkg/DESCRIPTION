@@ -37,5 +37,5 @@ Collate:
     'zzz.R'
     'ffindex.R'
     'hist_ff.R'
-    'quantiles.R'
     'ffdfdply.R'
+    'quantile_ff.R'

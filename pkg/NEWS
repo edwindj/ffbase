@@ -1,3 +1,9 @@
+version 0.4
+- Added ffdfdply function 
+- Added ffwhich function
+- Added hist.ff function
+- Added quantile function
+
 version 0.3
 - Added ffdfsave function that can be used to save an ffdf data.frame
 
