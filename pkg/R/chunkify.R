@@ -12,7 +12,7 @@ chunkify <- function(fun){
                    , inplace=FALSE
 				       ){
                    
-     chunks <- chunk(x)
+     chunks <- chunk(x, ...)
      
      i <- chunks[[1]]
      ret <- as.ff(fun(x[i], ...))
@@ -26,7 +26,7 @@ chunkify <- function(fun){
    cfun
 }
 
-#' Chunk an expression to be used in a chunk for loop
+#' Chunk an expression to be used in a chunked for loop
 #'@param x \code{character} with vars
 #'@param expr \code{expression} vector
 #'@param i name of index

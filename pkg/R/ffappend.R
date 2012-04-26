@@ -1,9 +1,9 @@
 #' Concatenate \code{ff} vectors
 #' 
 #' @export
-#' @seealso \code{link{ffappend}}
+#' @seealso \code{\link{ffappend}}
 #' @method c ff
-#' @param ... \code{ff} ff vectors to be combined
+#' @param ... \code{ff} ff vectors to be concatenated
 #' @return a new \code{ff} object, data is physically copied
 c.ff <- function(...){
    l <- list(...)
