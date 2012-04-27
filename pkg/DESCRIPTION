@@ -35,7 +35,7 @@ Collate:
     'with.R'
     'ffwhich.R'
     'zzz.R'
-    'ffindex.R'
     'hist_ff.R'
     'ffdfdply.R'
     'quantile_ff.R'
+    'ffordered.R'

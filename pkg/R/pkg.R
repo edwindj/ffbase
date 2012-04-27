@@ -35,7 +35,7 @@
 #'
 #' @section Miscellaneous:
 #' \tabular{ll}{
-#'    \code{\link{ffindex}} \tab Add a sorted index to a \code{ff} vector.\cr
+#'    \code{\link{ffordered}} \tab Add a sorted index to a \code{ff} vector.\cr
 #'    \code{\link{ffdfsave}} \tab Save a \code{ffdf} in a directory with its containing \code{ff} columns.\cr
 #'    \code{\link{ffappend}} \tab Append data to a \code{ff} vector.\cr
 #'    \code{\link{ffdfappend}} \tab Append data to a \code{ffdf}.\cr

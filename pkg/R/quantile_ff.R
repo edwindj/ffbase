@@ -3,7 +3,7 @@
 #' The function quantile produces quantiles corresponding to the given 
 #' probabilities. The smallest observation corresponds to a probability of 0 and the largest to a probability of 1.
 #' Current implementation doesn't use the \code{type} parameter of \code{\link{quantile}}. For large \code{ff} vectors the
-#' difference between the types is (very) small.
+#' difference between the types is (very) small. If \code{x} has been \code{\link{ffordered}}, quantile is fast, otherwise it is $n log(n)$.
 #' @method quantile ff 
 #' @param x \code{ff} vector
 #' @param probs numeric vector of probabilities with values in [0,1].
@@ -21,8 +21,7 @@ quantile.ff <- function(x, probs = seq(0, 1, 0.25), na.rm = FALSE, names = TRUE,
   qnt <- 1L + as.integer(probs * (N-1))
   #print(qnt)
   
-  idx <- ffindex(x)
-  if (is.null(idx)) idx <- fforder(x)
+  idx <- ffordered(x)
   
   ql <- x[idx[qnt]]
   names(ql) <- nms
