@@ -1,7 +1,7 @@
 #' Merge two ffdf by common columns, or do other versions of database join operations. 
 #'
 #' Merge two ffdf by common columns, or do other versions of database join operations. \cr
-#' This method is similar as \code{merge} in the base package with a possible speedup which for inner and left outer joins. 
+#' This method is similar as \code{merge} in the base package with a possible speedup for inner and left outer joins. 
 #'
 #' @method merge ffdf
 #' @export
