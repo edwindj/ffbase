@@ -1,5 +1,6 @@
 #' Cumulative Sums, Products, and Extremes
 #'
+#' @method cumsum ff
 #' @example ../examples/cumsum.R
 #' @param x \code{ff} numeric vector or an object that can be coerced to one a numeric vector
 #' @param ... other parameters passed on to chunk
@@ -7,7 +8,7 @@
 #' An NA value in x causes the corresponding and following elements of the return value to be NA, as does integer overflow in cumsum (with a warning). 
 #' @rdname cumsum.ff
 #' @export cumsum.ff cumprod.ff cummax.ff cummin.ff
-#' @seealso \code{\link{cumsum}} cumprod cummax cummin
+#' @seealso \code{\link{cumsum}}, \code{\link{cumprod}}, \code{\link{cummax}}, \code{\link{cummin}}
 cumsum.ff <- function(x, ...){
 	result <- NULL
   for (i in chunk(x, ...)){
@@ -26,6 +27,7 @@ cumsum.ff <- function(x, ...){
 }
 
 #' @rdname cumsum.ff
+#' @method cumprod ff
 cumprod.ff <- function(x, ...){
 	result <- NULL
   for (i in chunk(x, ...)){
@@ -44,6 +46,7 @@ cumprod.ff <- function(x, ...){
 }
 
 #' @rdname cumsum.ff
+#' @method cummax ff
 cummax.ff <- function(x, ...){
 	result <- NULL
   for (i in chunk(x, ...)){
@@ -62,6 +65,7 @@ cummax.ff <- function(x, ...){
 }
 
 #' @rdname cumsum.ff
+#' @method cummin ff
 cummin.ff <- function(x, ...){
 	result <- NULL
   for (i in chunk(x, ...)){

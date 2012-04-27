@@ -11,5 +11,10 @@ table(tmp[] == cummin(x))
 tmp <- cumprod.ff(ff(x), BATCHBYTES=10000)
 table(tmp[] == cumprod(x))
 
+## S3 type of calling
+cumsum(ff(x))
+cummax(ff(x))
+cummin(ff(x))
+cumprod(ff(x))
 
 
