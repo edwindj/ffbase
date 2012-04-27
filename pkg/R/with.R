@@ -1,9 +1,10 @@
 #' Evaluate an expression in a ffdf data environment 
 #' 
-#' Evaluate an R expression in an environment constructed from a ffdata data frame, possibly modifying the original data.
+#' Evaluate an R expression in an environment constructed from a ffdata data frame.
 #' (see \code{\link{with}}). Please note that you should write
 #' your expression as if it is a normal \code{data.frame}. The resulting return value
 #' however will be a \code{ff} object.
+#' @seealso \code{\link{ffdfwith}}
 #' @method with ffdf 
 #' @export
 #'

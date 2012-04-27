@@ -10,6 +10,7 @@
 #' @return The updated vector \code{x}
 #' @rdname ffordered
 #' @export addfforder ffordered ffsorted
+#' @aliases addfforder ffordered ffsorted
 addfforder <- function(x, addsorted=FALSE, ...){
   ordered <- fforder(x)
   filename(ordered) <- sub("(\\.ff)?$", ".fforder", filename(x))

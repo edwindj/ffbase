@@ -30,6 +30,7 @@ chunkify <- function(fun){
 #'@param x \code{character} with vars
 #'@param expr \code{expression} vector
 #'@param i name of index
+#'@param prefix prefix for variables to be replaced.
 #'@keywords internal
 chunkexpr <- function(x, expr, i=".i", prefix=""){
   es <- expr
@@ -39,7 +40,6 @@ chunkexpr <- function(x, expr, i=".i", prefix=""){
     varsub <- paste(prefix, "\\1[",i,"]", sep="")
     es <- gsub(varre, varsub, es)
   }
-  print(es)
   parse(text=es)
 }
 
