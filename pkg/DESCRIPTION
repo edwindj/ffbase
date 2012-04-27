@@ -42,3 +42,4 @@ Collate:
     'laf_to_ffdf.R'
     'ffdfwith.R'
     'cumsum.R'
+    'merge.R'
