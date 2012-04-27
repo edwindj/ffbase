@@ -23,10 +23,13 @@
 #' \tabular{ll}{
 #'    \code{\link{hist.ff}} \tab Calculate a histogram for \code{ff} vector. \cr
 #'    \code{\link{quantile.ff}} \tab Get quantiles for \code{ff} vector. \cr
+#'    \code{\link{sum.ff}} \tab sum for a \code{ff} vector. \cr
 #'    \code{\link{mean.ff}} \tab (trimmed) mean for a \code{ff} vector. \cr
 #'    \code{\link{all.ff}} \tab all for logical \code{ff} vector. \cr
 #'    \code{\link{min.ff}} \tab min for \code{ff} vector. \cr
 #'    \code{\link{max.ff}} \tab max for \code{ff} vector. \cr
+#'    \code{\link{cumsum.ff}} \tab cumsum for \code{ff} vector. \cr
+#'    \code{\link{cumprod.ff}} \tab cumprod for \code{ff} vector. \cr
 #'    \code{\link{range.ff}} \tab range for \code{ff} vector. \cr
 #'    \code{\link{table.ff}} \tab table for \code{ff} vectors. \cr
 #'    \code{\link{tabulate.ff}} \tab tabulate for \code{ff} vectors. \cr
