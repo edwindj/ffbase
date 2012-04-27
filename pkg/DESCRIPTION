@@ -39,3 +39,4 @@ Collate:
     'ffdfdply.R'
     'quantile_ff.R'
     'ffordered.R'
+    'laf_to_ffdf.R'
