@@ -2,7 +2,7 @@ data(iris)
 ffiris <- as.ffdf(iris)
 
 result <- ffdfdply( x = ffiris
-                  , split = x$Species
+                  , split = ffiris$Species
                   , FUN = function(x){
     dup <- duplicated(x[c("Species", "Petal.Width")])
     o <- order(x$Petal.Width)

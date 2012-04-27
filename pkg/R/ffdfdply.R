@@ -18,7 +18,6 @@
 #' an ffdf
 #' @export
 #' @seealso \code{\link{grouprunningcumsum}, \link{table.ff}}
-#' @author Jan Wijffels
 ffdfdply <- function(
 	x, 
 	split, 
@@ -27,6 +26,9 @@ ffdfdply <- function(
 	RECORDBYTES = sum(.rambytes[vmode(x)]), 
 	trace=TRUE, ...){
 	
+	if(!is.factor.ff(split)){
+		stop("split needs to be an ff factor")
+	}
 	split.expr <- substitute(split)	
 	
 	## Detect how it is best to split the ffdf according to the split value -> more than 
