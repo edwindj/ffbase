@@ -1,3 +1,6 @@
+version 0.4.1
+- Added ffmatch function 
+
 version 0.4
 - Added ffdfdply function 
 - Added ffwhich function
