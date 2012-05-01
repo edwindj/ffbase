@@ -41,7 +41,7 @@ any.ff <- function(x, ..., na.rm=FALSE, range=NULL){
 #'
 #' @title Sum of \code{ff} vector Elements
 #' @method sum ff
-#' @export
+#' @export sum.ff
 #' @param x a \code{ff} object
 #' @param ... optional other (\code{ff}) objects
 #' @param na.rm should \code{NA} be removed?

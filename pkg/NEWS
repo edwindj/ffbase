@@ -1,3 +1,6 @@
+version 0.4-1
+- exported sum.ff, because RecordLinkage fails...
+
 version 0.4
 - Added ffdfdply function 
 - Added ffwhich function
