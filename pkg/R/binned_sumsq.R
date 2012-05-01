@@ -12,13 +12,22 @@
 #' @param nbins \code{integer} maximum bin number 
 #' @return \code{numeric} matrix where each row is a bin
 #' @export
-binned_sumsq <- function (x, mean=rep(0, length(x)), bin, nbins=max(bin)){
+binned_sumsq <- function (x, mean=rep(0, nbins), bin, nbins=max(bin)){
    stopifnot(length(x)==length(bin))
    stopifnot(length(x)==length(mean))
    res <- .Call("binned_sumsq", as.numeric(x), as.numeric(mean), as.integer(bin), as.integer(nbins), PACKAGE = "ffbase")
    dimnames(res) <- list(bin=1:nbins, c("count", "sumsq"))
    res
 }
+
+binned_sumsq.ff <- function(x, bin, nbins=max(bin), ...){
+  res <- matrix(0, nrow=nbins, ncol=2, dimnames=list(bin=1:nbins, c("count", "sumsq")))
+  for (i in chunk(x, ...)){
+    res <- res + .Call("binned_sumsq", as.numeric(x[i]), as.numeric(mean), as.integer(bin[i]), as.integer(nbins), PACKAGE = "ffbase")
+  }
+  res
+}
+
 
 ##### quick testing code ######
 # x <- as.numeric(1:100000)

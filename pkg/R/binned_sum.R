@@ -20,7 +20,6 @@ binned_sum <- function (x, bin, nbins=max(bin)){
 binned_sum.ff <- function(x, bin, nbins=max(bin), ...){
   res <- matrix(0, nrow=nbins, ncol=2, dimnames=list(bin=1:nbins, c("count", "sum")))
   for (i in chunk(x, ...)){
-    #cat("chunk:", i,"\n")
     res <- res + .Call("binned_sum", as.numeric(x[i]), as.integer(bin[i]), as.integer(nbins), PACKAGE = "ffbase")
   }
   res

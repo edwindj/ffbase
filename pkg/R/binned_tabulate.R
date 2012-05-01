@@ -22,14 +22,24 @@ binned_tabulate <- function (x, bin, nbins=max(bin), nlevels=nlevels(x)){
    res
 }
 
+binned_tabulate.ff <- function(x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
+  lev <- if (nlevels(x)) c("na", levels(x))
+         else c("na", 1:nlevels)
+  res <- matrix(0, nrow=nbins, ncol=length(lev), dimnames=list(bin=1:nbins, level=lev))
+  for (i in chunk(x, ...)){
+    res <- res + .Call("binned_tabulate", x[i], as.integer(bin[i]), as.integer(nbins), as.integer(nlevels), PACKAGE = "ffbase")
+  }
+  res
+}
+
 ####### quick test ###################
-# size <- 1e5
-# x <- sample(c(1:4,NA), size=size, replace=TRUE)
-# bin <- sample(1:100, size=size, replace=TRUE)
-# nbins <- max(bin, na.rm=TRUE)
-# nlevels <- max(x, na.rm=TRUE)
-# 
-# binned_tabulate(x, bin, nbins, nlevels)
+size <- 1e5
+x <- sample(c(1:4,NA), size=size, replace=TRUE)
+bin <- sample(1:100, size=size, replace=TRUE)
+nbins <- max(bin, na.rm=TRUE)
+nlevels <- max(x, na.rm=TRUE)
+
+binned_tabulate(x, bin, nbins, nlevels)
 # 
 # 
 # system.time(
