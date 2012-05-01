@@ -20,6 +20,8 @@ binned_sumsq <- function (x, mean=rep(0, nbins), bin, nbins=max(bin)){
    res
 }
 
+#' @rdname binned_sumsq
+#' @export
 binned_sumsq.ff <- function(x, bin, nbins=max(bin), ...){
   res <- matrix(0, nrow=nbins, ncol=2, dimnames=list(bin=1:nbins, c("count", "sumsq")))
   for (i in chunk(x, ...)){

@@ -17,6 +17,8 @@ binned_sum <- function (x, bin, nbins=max(bin)){
    res
 }
 
+#' @rdname binned_sum
+#' @export
 binned_sum.ff <- function(x, bin, nbins=max(bin), ...){
   res <- matrix(0, nrow=nbins, ncol=2, dimnames=list(bin=1:nbins, c("count", "sum")))
   for (i in chunk(x, ...)){

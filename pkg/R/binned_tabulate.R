@@ -22,6 +22,8 @@ binned_tabulate <- function (x, bin, nbins=max(bin), nlevels=nlevels(x)){
    res
 }
 
+#' @rdname binned_tabulate
+#' @export
 binned_tabulate.ff <- function(x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
   lev <- if (nlevels(x)) c("na", levels(x))
          else c("na", 1:nlevels)
