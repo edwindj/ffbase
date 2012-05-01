@@ -5,7 +5,7 @@
 #' Please note that incorrect use of this function may crash your R-session.
 #' the values of \code{bins} must be between \code{1} and \code{nbins} and may not contain \code{NA}.
 #' The values of \code{x} must be between \code{1} and \code{nlevels}.
-#' @useDynLib tabplot
+#' @useDynLib ffbase
 #' @param x \code{factor} or \code{integer} vector with the data to be tabulated
 #' @param bin \code{integer} vector with the bin number for each data point
 #' @param nbins \code{integer} maximum bin number 
@@ -33,13 +33,13 @@ binned_tabulate.ff <- function(x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
 }
 
 ####### quick test ###################
-size <- 1e5
-x <- sample(c(1:4,NA), size=size, replace=TRUE)
-bin <- sample(1:100, size=size, replace=TRUE)
-nbins <- max(bin, na.rm=TRUE)
-nlevels <- max(x, na.rm=TRUE)
-
-binned_tabulate(x, bin, nbins, nlevels)
+# size <- 1e5
+# x <- sample(c(1:4,NA), size=size, replace=TRUE)
+# bin <- sample(1:100, size=size, replace=TRUE)
+# nbins <- max(bin, na.rm=TRUE)
+# nlevels <- max(x, na.rm=TRUE)
+# 
+# binned_tabulate(x, bin, nbins, nlevels)
 # 
 # 
 # system.time(

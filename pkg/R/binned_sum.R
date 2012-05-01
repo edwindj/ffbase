@@ -4,7 +4,7 @@
 #' Please note that incorrect use of this function may crash your R-session.
 #' the values of \code{bins} must be in between 1:\code{nbins} and \code{bin} may not 
 #' contain \code{NA}
-#' @useDynLib tabplot
+#' @useDynLib ffbase
 #' @param x \code{numeric} vector with the data to be summed
 #' @param bin \code{integer} vector with the bin number for each data point
 #' @param nbins \code{integer} maximum bin number 
