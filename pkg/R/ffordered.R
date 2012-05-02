@@ -1,7 +1,7 @@
 #' Add the order of a ff vector of the \code{\link{ff}} vector \code{x}
 #' 
 #' Add a ff vector that contains the order of the \code{\link{ff}} vector \code{x} as an attribute.
-#' The or can be retrieved using \code{ffordered}. Note that you have to assign the result to the
+#' The order can be retrieved using \code{ffordered}. Note that you have to assign the result to the
 #' original vector \code{x}.
 #' @example ../examples/ffordered.R
 #' @param x \code{ff} vector to be indexed

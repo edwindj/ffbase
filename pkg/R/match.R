@@ -36,7 +36,7 @@ ffmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, trace
       if(trace) {
         message(sprintf("%s, working on table chunk %s:%s", Sys.time(), min(j), max(j)))      
       }
-      m[unmatched] <- match(x=xi[unmatched], table=table[j], incomparables=incomparables) +  min(j) - 1
+      m[unmatched] <- match(x=xi[unmatched], table=table[j], incomparables=incomparables) +  min(j) - 1L
       unmatched <- is.na(m)
       if (!any(unmatched)) break
     }
