@@ -4,6 +4,7 @@
 #' @param e1 a \code{ff} vector
 #' @param e2 a \code{ff} vector
 #' @param ... other parameters passed on to chunk 
+#' @export >.ff_vector
 #' @seealso \code{\link{groupGeneric}}
 ">.ff_vector" <- function(e1, e2, ...) {
 	res <- NULL
