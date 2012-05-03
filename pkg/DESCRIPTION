@@ -47,3 +47,4 @@ Collate:
     'match.R'
     'binned_sumsq.R'
     'binned_tabulate.R'
+    'isNA.R'
