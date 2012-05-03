@@ -1,3 +1,9 @@
+version 0.5
+- Added ffmatch function 
+
+version 0.4-1
+- exported sum.ff, because RecordLinkage fails...
+
 version 0.4
 - Added many new functions ffdfdply, ffwhich, hist.ff, quantile.ff, cumsum, cummax
 - Fixed bugs in 'with.ff' in combination with character and factor vectors.
