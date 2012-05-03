@@ -48,3 +48,4 @@ Collate:
     'binned_sumsq.R'
     'binned_tabulate.R'
     'isNA.R'
+    'operators.R'
