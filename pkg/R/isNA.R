@@ -10,16 +10,12 @@
 #' @example ../examples/isNA.R
 #' @param x a \code{ff} vector
 #' @param value a suitable ff index vector for use with x
-#' @param ... other parameters passed on to chunk 
+#' @param ... other parameters passed on to ffvecapply except VMODE and RETURN in case of is.na.ff and to chunk in case of is.na<-
 #' @return An logical \code{ff} vector of the same length of x indicating if the ff vector contains missing values. 
 #' @export is.na.ff is.na<-.ff
-#' @seealso \code{\link{is.na}}
+#' @seealso \code{\link[base]{is.na}, \link[ff]{ffvecapply}}
 is.na.ff <- function(x, ...){
-	res <- NULL
-  for (i in chunk(x, ...)){
-  	res <- ffappend(res, is.na(x[i]))  
-  }
-  res
+	ffvecapply(x[i1:i2] <- is.na(x[i1:i2]), X = x, VMODE = "boolean", RETURN = TRUE, ...)
 }
 
 #' @rdname is.na.ff
