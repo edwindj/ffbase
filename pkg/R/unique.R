@@ -23,7 +23,7 @@ unique.ff <- function(x, incomparables = FALSE, fromLast = FALSE, ...){
 #' Unique for ffdf objects
 #'
 #'
-#' @export
+#' @export 
 #' @method unique ffdf
 #' @example ../examples/unique.R
 #' @param x a \code{ffdf} object
@@ -70,3 +70,4 @@ unique.ffdf <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALSE, .
   }
   res
 }
+

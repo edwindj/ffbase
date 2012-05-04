@@ -49,3 +49,4 @@ Collate:
     'binned_tabulate.R'
     'isNA.R'
     'operators.R'
+    'duplicated.R'
