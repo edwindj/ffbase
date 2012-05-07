@@ -1,11 +1,12 @@
 #' Ops for ff vectors
 #'
 #' @rdname ff_vectoroperators
-#' @param e1 a \code{ff} vector
-#' @param e2 a \code{ff} vector
-#' @param ... other parameters passed on to chunk 
-#' @export >.ff_vector
-#' @seealso \code{\link{groupGeneric}}
+#' @usage TODO
+#' @aliases >.ff_vector
+
+
+#' @rdname ff_vectoroperators
+#' @export 
 ">.ff_vector" <- function(e1, e2, ...) {
 	res <- NULL
 	for (i in chunk(e1, ...)){
