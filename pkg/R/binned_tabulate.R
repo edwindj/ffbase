@@ -23,6 +23,8 @@ binned_tabulate <- function (x, bin, nbins=max(bin), nlevels=nlevels(x)){
 }
 
 #' @rdname binned_tabulate
+#' @usage \method{binned_tabulate}{ff} (x, bin, nbins=max(bin), nlevels=nlevels(x), ...)
+#' @param ... passed on to chunk
 #' @export
 binned_tabulate.ff <- function(x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
   lev <- if (nlevels(x)) c("na", levels(x))
