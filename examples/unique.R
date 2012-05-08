@@ -1,6 +1,12 @@
 data(iris)
 irisdouble <- rbind(iris, iris)
 ffiris <- as.ffdf(irisdouble)
+## unique.ff
+unique(ffiris$Sepal.Length)
+unique(ffiris$Petal.Length)  
+ffiris$Species[1] <- NA
+unique(ffiris$Species)
+levels(unique(ffiris$Species))
 ## unique.ffdf
 uiris <- unique(ffiris, trace=TRUE, by=10)[,]
 test <- unique(irisdouble)

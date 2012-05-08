@@ -1,32 +1,10 @@
-#' Unique values
+#' Unique values for ff and ffdf objects
 #'
-#' @export
+#' @rdname unique.ff
+#' @export unique.ff unique.ffdf
 #' @method unique ff
-#' @param x \code{ff} object
-#' @param incomparables a vector of values that cannot be compared. 
-#'   FALSE is a special value, meaning that all values can be compared, 
-#'   and may be the only value accepted for methods other than the default. 
-#'   It will be coerced internally to the same type as x.
-#' @param fromLast logical indicating if duplication should 
-#'   be considered from the last, i.e., the last (or rightmost) of identical elements will be kept
-#' @param ... Further arguments passed to \code{\link{unique}}
-#' @return vector with unique values of \code{x}
-unique.ff <- function(x, incomparables = FALSE, fromLast = FALSE, ...){
-   #TODO make a version that results in a ff vector
-   z <- NULL
-   for (i in chunk(x, ...)){
-      z <- unique(c(z,x[i]), incomparables, fromLast, ...)
-   }
-   z
-}
-
-#' Unique for ffdf objects
-#'
-#'
-#' @export 
-#' @method unique ffdf
 #' @example ../examples/unique.R
-#' @param x a \code{ffdf} object
+#' @param x \code{ff} object or \code{ffdf} object
 #' @param incomparables a vector of values that cannot be compared. 
 #'   FALSE is a special value, meaning that all values can be compared, 
 #'   and may be the only value accepted for methods other than the default. 
@@ -35,8 +13,48 @@ unique.ff <- function(x, incomparables = FALSE, fromLast = FALSE, ...){
 #'   be considered from the last, i.e., the last (or rightmost) of identical elements will be kept
 #' @param trace logical indicating to show on which chunk the function is computing
 #' @param ... other parameters passed on to chunk
-#' @return An ffdf with unique values in \code{x}. 
+#' @return An ffdf with unique values in \code{x} or an ff vector with unique values in \code{x} if x is a ff vector. 
 #' @seealso \code{\link[base]{unique}}
+unique.ff <- function(x, incomparables = FALSE, fromLast = FALSE, trace=FALSE, ...){
+  if (!identical(incomparables, FALSE)){
+    .NotYetUsed("incomparables != FALSE")
+  }
+  if(vmode(x) == "integer" & length(res <- levels(x))>0){    
+    ## Something strange is happening for factors with fforder, reported to ff maintainer, doing a workaround
+    if(any(is.na(x))){
+      res <- c(res, NA)
+    }
+    res <- ff(res, levels = res)
+  }else{
+    ## Order the ff    
+    xorder <- fforder(x, decreasing = fromLast, na.last = TRUE)
+    xchunk <- chunk(x, ...)
+    ## Chunkwise adding of unique elements to the unique ff_vector called res
+    res <- NULL
+    lastel <- NULL
+    for (i in xchunk){
+      if (trace){
+        message(sprintf("%s, working on x chunk %s:%s", Sys.time(), min(i), max(i)))
+      }
+      iorder <- xorder[i]
+      xi <- x[iorder]
+      xi <- unique(xi)
+      ## exclude the first row if it was already in the unique ffdf as this is the last one from the previous unique
+      if(sum(duplicated(c(xi[1], lastel)))>0){
+        xi <- xi[-1]  
+      }   
+      if(length(xi) > 0){   
+        ## Add the result to an ff_vector
+        lastel <- xi[length(xi)]
+        res <- ffappend(x=res, xi)
+      }
+    }
+  }  
+  res
+}
+
+#' @rdname unique.ff
+#' @method unique ffdf
 unique.ffdf <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALSE, ...){
   if (!identical(incomparables, FALSE)){
     .NotYetUsed("incomparables != FALSE")
