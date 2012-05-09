@@ -1,6 +1,6 @@
 #' Evaluate an expression in a ffdf data environment 
 #' 
-#' Evaluate an R expression in an environment constructed from a ffdata data frame.
+#' Evaluate an R expression in an environment constructed from a ffdf data frame.
 #' (see \code{\link{with}}). Please note that you should write
 #' your expression as if it is a normal \code{data.frame}. The resulting return value
 #' however will be a \code{ff} object.
@@ -62,7 +62,7 @@ with.ffdf <- function(data, expr, ...){
 #' 
 #' Same functionality as \code{\link{within}}. Please note that you should write
 #' your expression as if it is a normal \code{data.frame}. The resulting data.frame
-#' however will be a \code{ffdf} data.frame.
+#' however will be a new \code{ffdf} data.frame.
 #' @method within ffdf 
 #' @export
 #'

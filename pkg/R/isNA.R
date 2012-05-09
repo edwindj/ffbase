@@ -15,9 +15,9 @@
 #' @export is.na.ff is.na<-.ff
 #' @seealso \code{\link[base]{is.na}, \link[ff]{ffvecapply}}
 is.na.ff <- function(x, ...){
-	res <- NULL
+	res <- ff(vmode="logical", length=length(x))
 	for (i in chunk(x, ...)){		
-		res <- ffappend(res, is.na(x[i]))		
+		res[i] <- is.na(x[i])		
 	}
 	res		
 }
