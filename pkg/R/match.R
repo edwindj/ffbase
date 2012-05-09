@@ -27,7 +27,8 @@ ffmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, trace
   if(trace) {
     message(sprintf("%s, x has %s chunks, table has %s chunks", Sys.time(), length(xchunk), length(tablechunk)))
   }
-  res <- NULL
+  
+  res <- ff(nomatch, length=length(x), vmode="integer")
   ## First work on looping over x, then over the table
   for (i in xchunk){    
     if(inherits(x, "ffdf")){
@@ -55,7 +56,7 @@ ffmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, trace
       if (!any(unmatched)) break
     }
     m[unmatched] <- nomatch
-    res <- ffappend(x=res, y=m)
+    res[i] <- m
   }	
   res
 }
@@ -77,4 +78,4 @@ in.default <- get(x="%in%")
 
 
 # quick testing
-# ffmatch2(ff(factor(c("a", "c"))), ff(factor(c("b", "a"))), trace=TRUE, by=1)
+# ffmatch(ff(factor(c("a", "c"))), ff(factor(c("b", "a"))), trace=TRUE, by=1)
