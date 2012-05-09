@@ -11,8 +11,10 @@ hist.ff <- function(x, breaks=min(100, length(x)), plot=TRUE, ...){
   xname <- deparse(substitute(x))
   
   # TODO improve breaks...
-  rng <- range(x)
-  breaks <- seq(from=rng[1], to=rng[2], length.out=breaks+1)
+  if (length(breaks) <= 1){
+    rng <- range(x)    
+    breaks <- seq(from=rng[1], to=rng[2], length.out=breaks+1)
+  }
   nB <- length(breaks)
   n <- length(x)
   
@@ -45,5 +47,5 @@ hist.ff <- function(x, breaks=min(100, length(x)), plot=TRUE, ...){
   }
 }
 
-#  x <- ff(rnorm(1000000))
+#  x <- ff(rnorm(10000000))
 #  hist.ff(x)

@@ -1,9 +1,6 @@
 #' Fast summing in different bins
 #' 
 #' \code{binned_sum} implements fast summing for given bins by calling c-code.
-#' Please note that incorrect use of this function may crash your R-session.
-#' the values of \code{bins} must be in between 1:\code{nbins} and \code{bin} may not 
-#' contain \code{NA}
 #' @useDynLib ffbase
 #' @param x \code{numeric} vector with the data to be summed
 #' @param bin \code{integer} vector with the bin number for each data point
@@ -18,6 +15,8 @@ binned_sum <- function (x, bin, nbins=max(bin)){
 }
 
 #' @rdname binned_sum
+#' @usage \method{binned_sum}{ff} (x, bin, nbins = max(bin), ...)
+#' @param ... passed on to chunk
 #' @export
 binned_sum.ff <- function(x, bin, nbins=max(bin), ...){
   res <- matrix(0, nrow=nbins, ncol=2, dimnames=list(bin=1:nbins, c("count", "sum")))

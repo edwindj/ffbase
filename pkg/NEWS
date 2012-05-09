@@ -5,10 +5,9 @@ version 0.4-1
 - exported sum.ff, because RecordLinkage fails...
 
 version 0.4
-- Added ffdfdply function 
-- Added ffwhich function
-- Added hist.ff function
-- Added quantile function
+- Added many new functions ffdfdply, ffwhich, hist.ff, quantile.ff, cumsum, cummax
+- Fixed bugs in 'with.ff' in combination with character and factor vectors.
+- Welcomed a new contributer/author Jan Wijffels
 
 version 0.3
 - Added ffdfsave function that can be used to save an ffdf data.frame

@@ -47,5 +47,16 @@ ffmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, trace
   res
 }
 
+#' @rdname ffmatch
+#' @export
+"%in%" <- function(x, table){
+	if(inherits(x, "ff_vector") & inherits(table, "ff_vector")){
+		ffmatch(x=x, table=table, nomatch = 0) > 0
+	}else{
+		match(x=x, table=table, nomatch = 0) > 0
+	}	
+}
+
+
 # quick testing
 # ffmatch(ff(factor(c("a", "c"))), ff(factor(c("b", "a"))), trace=TRUE, by=1)

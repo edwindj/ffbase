@@ -83,4 +83,3 @@ cummin.ff <- function(x, ...){
   result
 }
 
-
