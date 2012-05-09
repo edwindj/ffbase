@@ -24,19 +24,19 @@ books <- as.ffdf(books)
 dim(books)
 dim(authors)
 ## Left outer join
-m1 <- merge(books, authors, by.x = "name", by.y = "surname", all.x=TRUE, all.y=FALSE, BATCHBYTES.x = 20000, BATCHBYTES.y = 20000, trace = TRUE)                     
-class(m1)
-dim(m1)
-names(books)
-names(m1)
+if(FALSE){
+	m1 <- merge(books, authors, by.x = "name", by.y = "surname", all.x=TRUE, all.y=FALSE, BATCHBYTES = 20000, trace = TRUE)                     
+	class(m1)
+	dim(m1)
+	names(books)
+	names(m1)
+}
 ## Inner join
-m1 <- merge(books, authors, by.x = "name", by.y = "surname", all.x=FALSE, all.y=FALSE, BATCHBYTES.x = 20000, BATCHBYTES.y = 20000, trace = TRUE)                     
+oldffbatchbytes <- getOption("ffbatchbytes")
+options(ffbatchbytes = 100)
+m1 <- merge(books, authors, by.x = "name", by.y = "surname", all.x=FALSE, all.y=FALSE, trace = TRUE)
 dim(m1)
-## Speedup for inner and left outer join
-m1 <- merge(books, authors, by.x = "name", by.y = "surname", all.x=FALSE, all.y=FALSE, speedup=TRUE, BATCHBYTES.x = 20000, BATCHBYTES.y = 20000, trace = FALSE)
-dim(m1)
-m1 <- merge(books, authors, by.x = "name", by.y = "surname", all.x=TRUE, all.y=FALSE, speedup=TRUE, BATCHBYTES.x = 20000, BATCHBYTES.y = 20000, trace = FALSE)
-dim(m1)
+options(ffbatchbytes = oldffbatchbytes)
 
 
 
