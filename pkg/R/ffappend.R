@@ -67,9 +67,23 @@ ffdfappend <- function(  x
                        , recode=TRUE
                        , ...
                        ){
-   if (is.null(x)){
+  
+  fc <- if (is.ffdf(dat)){ 
+    sapply(physical(dat), function(i) is.factor(i) || is.character(i))
+  } else {
+    sapply(dat, function(i) is.factor(i) || is.character(i))    
+  }
+  
+  if (any(fc)){
+    dat[fc] <- lapply( which(fc), function(i) {
+        as.factor(dat[[i]])
+    })
+  }
+  
+  if (is.null(x)){
       return(as.ffdf(dat))
-   }   
+  }
+  
    
    #TODO add checks if structure x and dat are equal
    if (recode){
@@ -82,6 +96,11 @@ ffdfappend <- function(  x
    if (nff==1) {nff<-0} 
    
    nrow(x) <- nff + n
+  
+   for (i in which(fc)){
+     levels(x[[i]]) <- appendLevels(levels(x[[i]]), dat[[i]])
+   }
+   
    i <- hi(nff+1, nff+n)
    x[i,] <- dat
    

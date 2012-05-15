@@ -9,6 +9,7 @@ laf_to_ffdf <- function(laf, ...){
     stop("This function needs the package 'LaF', which can be installed from CRAN")
   }
   data <- NULL
+  begin(laf)
   while(nrow(block <- next_block(laf, ...)))
     #TODO test if adding columns separately is faster/or that allocating the ff vectors first is faster
     data <- ffdfappend(data, block)
