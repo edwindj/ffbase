@@ -57,7 +57,7 @@ ffappend <- function(x, y, ...){
 #' Appends (\code{ff}) vector to \code{ff} vector \code{x}. 
 #' Please note that the data of \code{y} will be coerced to the type of \code{x}.
 #' @seealso \code{\link{c.ff}}
-#' @param x \code{ffdf} object where data will be appended to. If \code{x==NULL} a new \code{ff} object will be created
+#' @param x \code{ffdf} object where data will be appended to. If \code{x==NULL} a new \code{ffdf} object will be created
 #' @param dat \code{ffdf} object or \code{data.frame} object
 #' @param recode should factors be recoded (default), or not (faster)
 #' @param ... Further arguments passed to \code{\link{as.ffdf}}, when \code{x==NULL}
@@ -83,17 +83,9 @@ ffdfappend <- function(  x
   if (is.null(x)){
       return(as.ffdf(dat))
   }
-  
-   
-   #TODO add checks if structure x and dat are equal
-   if (recode){
-   }
-   
+     
    n <- nrow(dat)
    nff <- nrow(x)
-   
-   #it is not possible to have an empty ffdf so this trick lets
-   if (nff==1) {nff<-0} 
    
    nrow(x) <- nff + n
   
