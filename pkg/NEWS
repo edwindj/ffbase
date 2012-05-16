@@ -1,5 +1,7 @@
 version 0.5
 - Added ffmatch function 
+- Added ffwhich function
+- Added laf_to_ffdf
 
 version 0.4-1
 - exported sum.ff, because RecordLinkage fails...
