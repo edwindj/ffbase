@@ -2,7 +2,7 @@
 #'
 #' \code{match} returns an ff vector of the positions of (first) matches of its first argument in its second. 
 #' Similar as \code{\link[base]{match}}. \cr
-#' ffmatch also allows to match ffdf objects by \code{past}ing together the columns of the ffdf and matching on the pasted column.\cr \cr
+#' ffmatch also allows to match ffdf objects by \code{\link[base]{paste}}-ing together the columns of the ffdf and matching on the pasted column.\cr \cr
 #' \code{\%in\%} returns a logical ff vector indicating if there is a match or not for its left operand. 
 #' ffdf objects are also allowed in the left and right operand of the \code{\%in\%} operator. See the examples.
 #'
@@ -15,7 +15,7 @@
 #' @param trace logical indicating to show on which chunk the function is computing
 #' @param ... other parameters passed on to chunk
 #' @return An ff vector of the same length as \code{x}. An integer vector giving the position in table of the first match if there is a match, otherwise \code{nomatch}. 
-#' @seealso \code{\link[base]{match}}
+#' @seealso \code{\link[base]{match}, \link[base]{paste}}
 ffmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, trace=FALSE, ...){
 	stopifnot(any(c(inherits(x, "ff_vector"), inherits(table, "ff_vector"), inherits(x, "ffdf"), inherits(table, "ffdf"))))
 	stopifnot(inherits(x, "ff_vector") == inherits(table, "ff_vector"), inherits(x, "ffdf") == inherits(table, "ffdf"))
