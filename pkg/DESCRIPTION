@@ -50,3 +50,4 @@ Collate:
     'binned_sum.R'
     'binned_sumsq.R'
     'binned_tabulate.R'
+    'tsum.R'

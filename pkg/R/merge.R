@@ -1,7 +1,12 @@
 #' Merge two ffdf by common columns, or do other versions of database join operations. 
 #'
 #' Merge two ffdf by common columns, or do other versions of database join operations. \cr
-#' This method is similar as \code{merge} in the base package but only allows inner joins.
+#' This method is similar as \code{merge} in the base package but only allows inner and left outer joins.\cr
+#' Mark that joining is done based on ffmatch, meaning that only the first element in \code{y} will be added to \code{x} and ffmatch works on
+#' \code{link[base]{paste}}-ing together a key. So this might not be suited if your key contains columns of vmode double.\cr
+#'
+#' If a left outer join is performed and no matching record in x is found in y, columns with vmodes 'boolean', 'quad', 'nibble', 'ubyte', 'ushort' are
+#' coerced respectively to vmode 'logical', 'byte', 'byte', 'short', 'integer' to allow NA values.
 #'
 #' @method merge ffdf
 #' @export
@@ -15,6 +20,7 @@
 #' @param all.x if TRUE, then extra rows will be added to the output, one for each row in x that has no matching row in y. 
 #' These rows will have NAs in those columns that are usually filled with values from y. The default is FALSE, so that only rows with data from both x and y are included in the output. 
 #' @param all.y similar as all.x
+#' @param sort logical, currently not used yet, defaults to FALSE.
 #' @param suffixes character(2) specifying the suffixes to be used for making non-by names() unique.
 #' @param incomparables values which cannot be matched. See \code{\link{match}}. Currently not used.
 #' @param trace logical indicating to show on which chunk the function is computing
@@ -22,9 +28,8 @@
 #' @return 
 #' an ffdf
 #' @seealso \code{\link{merge}}
-merge.ffdf <- function(x, y, by = intersect(names(x), names(y)), by.x = by, by.y = by, all=FALSE, all.x = all, all.y = all, suffixes = c(".x",".y"), 
-		incomparables=NULL, 
-		trace=TRUE, ...){
+merge.ffdf <- function(x, y, by = intersect(names(x), names(y)), by.x = by, by.y = by, all=FALSE, all.x = all, all.y = all, sort=FALSE, 
+	suffixes = c(".x",".y"), incomparables=NULL, trace=FALSE, ...){
 	if (!is.null(incomparables)){
     .NotYetUsed("incomparables != NULL")
   }
@@ -37,6 +42,7 @@ merge.ffdf <- function(x, y, by = intersect(names(x), names(y)), by.x = by, by.y
   }else{
   	matchidx <- eval(ffmatch(x[by.x], y[by.y], trace = trace))
   }  
+  ## Define the type of join
   if(all.x == FALSE & all.y == FALSE){  	
 	  jointype <- "inner"
   }else if(all.x == TRUE & all.y == FALSE){
@@ -45,17 +51,59 @@ merge.ffdf <- function(x, y, by = intersect(names(x), names(y)), by.x = by, by.y
   		jointype <- "inner"
   	}
   }
-  if(jointype == "inner"){
-  	## Everything from the left is matched, we don't need to change the vmode
-  	res <- ffdfindexget(y, index=matchidx, ...)
-  	colnames(res) <- ifelse(colnames(res) %in% colnames(x), paste(colnames(res), suffixes[2], sep=""), colnames(res))  	
-  }else if(jointype == "left"){
-  	## We need to fix the vmode as we are adding NA's
-  	stop("merge.ffdf currently does not support left outer joins")
+  measures <- colnames(y)[!colnames(y) %in% by.y]
+  newnamesmeasures <- ifelse(measures %in% colnames(x), paste(measures, suffixes[2], sep=""), measures)
+  if(length(measures) == 0){
+  	stop("merge.ffdf requires at least 1 column in y not in by.y")
   }
-  # cbind it to the existing ffdf
-  for(measure in colnames(res)){
-  	x[[measure]] <- res[[measure]]
-  }  
+  ## JOIN  
+  if(jointype == "inner"){
+  	##
+  	## Everything from the left is matched, we don't need to change the vmode  	
+  	if(trace) {
+    	message(sprintf("%s, found match indexes, now starting to add y to x", Sys.time()))
+  	}
+  	updatepositions <- ffwhich(matchidx, !is.na(matchidx))
+  	res <- ffdfindexget(y[measures], index=matchidx[updatepositions], ...)
+  	colnames(res) <- newnamesmeasures
+  	## cbind it to the existing x ffdf if there is a match
+  	x <- ffdfindexget(x, index=updatepositions, ...)
+  	for(i in 1:length(measures)){
+  		x[[newnamesmeasures[i]]] <- res[[measures[i]]]
+  	}	  	 
+  }else if(jointype == "left"){
+  	##
+  	## We need to fix the vmode if needed as we are adding NA's
+  	if(trace){
+    	message(sprintf("%s, found match indexes, now starting to add y to x and coercing if needed", Sys.time()))
+  	}  	
+  	tocoerce <- coerce_to_allowNA(vmode(y[measures]))  	
+  	## First set everything to NA  	
+  	for(i in 1:length(measures)){
+  		x[[newnamesmeasures[i]]] <- clone(y[[measures[i]]], initdata=NA, length = nrow(x), vmode = tocoerce$coerceto[[measures[i]]])
+  	} 
+  	## Next coerce the right hand side if needed to allow NA values
+  	tocoerce.measures <- measures[tocoerce$x != tocoerce$coerceto]
+  	if(length(tocoerce.measures) > 0){
+  		warning(paste("coercing column ", paste(tocoerce.measures, collapse=", "), " to a higher vmode to allow NA's"), sep="")
+  		for(measure in tocoerce.measures){
+ 				y[[measure]] <- clone(y[[measure]], vmode = tocoerce$coerceto[[measure]])
+  		}
+  	} 		
+  	## Next update the existing x ffdf with the joined value if there is a match
+  	updatepositions <- ffwhich(matchidx, !is.na(matchidx))
+  	matchidx.nonmissing <- matchidx[updatepositions]
+  	x[updatepositions, newnamesmeasures] <- ffdfindexget(y[measures], index=matchidx.nonmissing)
+  	#res <- sapply(measures, FUN=function(measure, y, newlength, coerceto){
+  	#	clone(y[[measure]], initdata=NA, length = newlength, vmode = coerceto[[measure]])
+  	#}, y=y, newlength = nrow(x), coerceto = tocoerce$coerceto)
+  	#res <- as.ffdf(res)
+  	#res[updatepositions, ] <- ffdfindexget(res, index=matchidx.nonmissing)
+  	## cbind it to the existing ffdf
+  	#for(measure in colnames(res)){
+  	#	x[[measure]] <- res[[measure]]
+  	#} 
+  }    
 	x
 }
+

@@ -2,6 +2,9 @@ version 0.5
 - Added ffmatch function 
 - Added ffwhich function
 - Added laf_to_ffdf
+- Added duplicated and unique for ff and ffdf
+- Changed merge.ffdf to work based on ffmatch in order to handle left outer joins correctly
+- Fixed a bug in ffwhich.ff_vector
 
 version 0.4-1
 - exported sum.ff, because RecordLinkage fails...

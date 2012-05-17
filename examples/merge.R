@@ -23,20 +23,31 @@ books <- as.ffdf(books)
 
 dim(books)
 dim(authors)
-## Left outer join
-if(FALSE){
-	m1 <- merge(books, authors, by.x = "name", by.y = "surname", all.x=TRUE, all.y=FALSE, BATCHBYTES = 20000, trace = TRUE)                     
-	class(m1)
-	dim(m1)
-	names(books)
-	names(m1)
-}
 ## Inner join
 oldffbatchbytes <- getOption("ffbatchbytes")
 options(ffbatchbytes = 100)
 m1 <- merge(books, authors, by.x = "name", by.y = "surname", all.x=FALSE, all.y=FALSE, trace = TRUE)
 dim(m1)
+unique(paste(m1$name[], m1$nationality[]))
+unique(paste(m1$name[], m1$deceased[]))
+m2 <- merge(books[,], authors[,], by.x = "name", by.y = "surname", all.x=FALSE, all.y=FALSE, trace = TRUE, sort = FALSE)
+dim(m2)
+unique(paste(m2$name[], m2$nationality[]))
+unique(paste(m2$name[], m2$deceased[]))
+## Left outer join
+m1 <- merge(books, authors, by.x = "name", by.y = "surname", all.x=TRUE, all.y=FALSE, trace = TRUE)
+class(m1)
+dim(m1)
+names(books)
+names(m1)
+unique(paste(m1$name[], m1$nationality[]))
+unique(paste(m1$name[], m1$deceased[]))
+## Show coercion to allow NA's
+authors$test <- ff(TRUE, length=nrow(authors), vmode = "boolean")
+vmode(authors$test)
+m1 <- merge(books, authors, by.x = "name", by.y = "surname", all.x=TRUE, all.y=FALSE, trace = TRUE)
+vmode(m1$test)
+table(m1$test[], exclude=c())
 options(ffbatchbytes = oldffbatchbytes)
-
 
 
