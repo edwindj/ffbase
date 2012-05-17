@@ -1,8 +1,9 @@
 version 0.5
-- Added ffmatch function 
+- Added ffmatch function and overloaded the %in% operator
 - Added ffwhich function
 - Added laf_to_ffdf
 - Added duplicated and unique for ff and ffdf
+- Added is.na for ff vectors
 - Changed merge.ffdf to work based on ffmatch in order to handle left outer joins correctly
 - Fixed a bug in ffwhich.ff_vector
 
