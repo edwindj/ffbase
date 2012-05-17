@@ -27,7 +27,7 @@ ffwhich.ff_vector <- function(x, expr, ...){
   
   fltr <- NULL
   for (.i in chunk(.x, ...)){
-    idx  <- which(eval(e))
+    idx  <- which(eval(e)) +  min(.i) - 1L
     fltr <- ffappend(fltr, idx, ...)
   }
   fltr
