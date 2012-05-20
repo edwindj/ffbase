@@ -25,7 +25,7 @@ ffdfwith <- function(data, expr, ...){
    res <- eval(e)
    
    fc <- FALSE
-   if (is.character(res)){
+   if (is.character(res) || is.factor(res)){
      res <- as.factor(res)
      fc <- TRUE
    } else if (is.data.frame(res)){
