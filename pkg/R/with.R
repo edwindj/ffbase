@@ -21,20 +21,19 @@ with.ffdf <- function(data, expr, ...){
    
    cdat <- data[chunks[[1]],,drop=FALSE]
    res <- eval(e, cdat, enclos=parent.frame())
-   
    if (is.character(res)){
      res <- as.factor(res)
+     fc <- TRUE
    } else if (is.data.frame(res)){
      fc <- sapply(res, function(x) is.factor(x) || is.character(x))
      res[fc] <- lapply(res[fc], as.factor)
    }
-   
    if (is.vector(res) || is.factor(res)){
       res <- as.ff(res)
       length(res) <- nrow(data)
       for (i in chunks[-1]){
         r <- eval(e, data[i,,drop=FALSE], enclos=parent.frame())
-        if (is.factor(res)){
+        if (fc){ 
              r <- as.factor(r)
              levels(res) <- appendLevels(res, levels(r))
          }

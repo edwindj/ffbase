@@ -26,6 +26,7 @@ ffdfwith <- function(data, expr, ...){
    
    if (is.character(res)){
      res <- as.factor(res)
+     fc <- TRUE
    } else if (is.data.frame(res)){
      fc <- sapply(res, function(x) is.factor(x) || is.character(x))
      res[fc] <- lapply(res[fc], as.factor)
@@ -36,7 +37,7 @@ ffdfwith <- function(data, expr, ...){
       length(res) <- nrow(data)
       for (.i in chunks[-1]){
         r <- eval(e)
-        if (is.factor(res)){
+        if (fc){
              r <- as.factor(r)
              levels(res) <- appendLevels(res, levels(r))
          }
