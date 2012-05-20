@@ -24,6 +24,7 @@ ffdfwith <- function(data, expr, ...){
    .i <- chunks[[1]]
    res <- eval(e)
    
+   fc <- FALSE
    if (is.character(res)){
      res <- as.factor(res)
      fc <- TRUE

@@ -21,6 +21,7 @@ with.ffdf <- function(data, expr, ...){
    
    cdat <- data[chunks[[1]],,drop=FALSE]
    res <- eval(e, cdat, enclos=parent.frame())
+   fc <- FALSE
    if (is.character(res)){
      res <- as.factor(res)
      fc <- TRUE
