@@ -156,6 +156,7 @@ opsff_arith <- function(e1, e2, ops) {
 #' @aliases Arithmetic +.ff_vector -.ff_vector *.ff_vector /.ff_vector ^.ff_vector %%.ff_vector %/%.ff_vector
 #' @param x either a numeric \code{ff_vector} or a vector of length 1 in RAM in which case y should be an \code{ff_vector}
 #' @param y either a numeric \code{ff_vector} or a vector of length 1 in RAM in which case x should be an \code{ff_vector}
+#' @return an \code{ff_vector}. For the definition of the operators see the base package of R.
 
 #' @rdname ff_arithmetic
 #' @usage \method{+}{ff_vector} (x, y)
@@ -201,6 +202,7 @@ opsff_arith <- function(e1, e2, ops) {
 #' @aliases Operators >.ff_vector <.ff_vector ==.ff_vector !=.ff_vector <=.ff_vector >=.ff_vector &.ff_vector |.ff_vector !.ff_vector  
 #' @param x either a numeric \code{ff_vector} or a vector of length 1 in RAM in which case y should be an \code{ff_vector}
 #' @param y either a numeric \code{ff_vector} or a vector of length 1 in RAM in which case x should be an \code{ff_vector}
+#' @return an \code{ff_vector}. For the definition of the operators see the base package of R.
 
 #' @rdname ff_ops
 #' @usage \method{>}{ff_vector} (x, y)
@@ -256,6 +258,7 @@ opsff_arith <- function(e1, e2, ops) {
 #' @param base base for \code{log}
 #' @param digits digits for \code{round} and \code{signif}
 #' @param ... for \code{trunc}, currently not used
+#' @return an \code{ff_vector}. For the definition of the operators see the base package of R.
 
 #' @rdname ff_math
 #' @usage \method{abs}{ff_vector} (x)
