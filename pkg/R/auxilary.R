@@ -68,3 +68,15 @@ coerce_to_allowNA <- function(x){
   list(x = x, coerceto = coerceto)
 }
 
+
+ffbaseffdfindexget <- function(x, index, indexorder = NULL, ...){
+	os <- ffindexordersize(length=NROW(x), vmode="integer")
+	o <- ffindexorder(index, os$b)
+	res <- list()
+	for(measure in names(x)){
+		open(x[[measure]])
+		res[[measure]] <- ffindexget(x=x[[measure]], index=index, indexorder=o)
+		close(x[[measure]])
+	}
+	as.ffdf(res)
+}

@@ -63,11 +63,13 @@ merge.ffdf <- function(x, y, by = intersect(names(x), names(y)), by.x = by, by.y
   	if(trace) {
     	message(sprintf("%s, found match indexes, now starting to add y to x", Sys.time()))
   	}
-  	updatepositions <- ffwhich(matchidx, !is.na(matchidx))
-  	res <- ffdfindexget(y[measures], index=matchidx[updatepositions], ...)
+  	updatepositions <- ffwhich(matchidx, !is.na(matchidx))  	  	
+  	res <- ffbaseffdfindexget(y[measures], index=matchidx[updatepositions], ...)
+  	#res <- ffdfindexget(y[measures], index=matchidx[updatepositions], ...)
   	colnames(res) <- newnamesmeasures
   	## cbind it to the existing x ffdf if there is a match
-  	x <- ffdfindexget(x, index=updatepositions, ...)
+  	x <- ffbaseffdfindexget(x, index=updatepositions, ...)
+  	#x <- ffdfindexget(x, index=updatepositions, ...)
   	for(i in 1:length(measures)){
   		x[[newnamesmeasures[i]]] <- res[[measures[i]]]
   	}	  	 
@@ -93,7 +95,8 @@ merge.ffdf <- function(x, y, by = intersect(names(x), names(y)), by.x = by, by.y
   	## Next update the existing x ffdf with the joined value if there is a match
   	updatepositions <- ffwhich(matchidx, !is.na(matchidx))
   	matchidx.nonmissing <- matchidx[updatepositions]
-  	x[updatepositions, newnamesmeasures] <- ffdfindexget(y[measures], index=matchidx.nonmissing)
+  	x[updatepositions, newnamesmeasures] <- ffbaseffdfindexget(y[measures], index=matchidx.nonmissing)
+  	#x[updatepositions, newnamesmeasures] <- ffdfindexget(y[measures], index=matchidx.nonmissing)
   	#res <- sapply(measures, FUN=function(measure, y, newlength, coerceto){
   	#	clone(y[[measure]], initdata=NA, length = newlength, vmode = coerceto[[measure]])
   	#}, y=y, newlength = nrow(x), coerceto = tocoerce$coerceto)
