@@ -1,5 +1,5 @@
 version 0.5
-- Added Arithmetic (+, -, *, /, ^, \%\%, \%/\%) operators for ff vectors
+- Added Arithmetic (+, -, *, /, ^, %%, %/%) operators for ff vectors
 - Added Compare & Logic (==, !=, <, <=, >=, >, &, |, !) operators for ff vectors 
 - Added Math (abs, sign, sqrt, ceiling, floor, trunc, log, log10, log2, log1p, acos, acosh, asin, asinh, atan, atanh, exp, expm1, cos, cosh, sin, sinh, tan, tanh, gamma, lgamma, digamma, trigamma, round, signif) functions for ff vectors
 - Added ffmatch function and overloaded the %in% operator
