@@ -7,15 +7,26 @@
 #' \tabular{ll}{
 #'    \code{\link{cut.ff}} \tab cut a \code{ff} vector. \cr
 #'    \code{\link{c.ff}} \tab concatenate \code{ff} vectors. \cr
-#'    \code{\link{unique.ff}} \tab unique for a \code{ff} vector. \cr
+#'    \code{\link{unique}} \tab unique for a \code{ff} vector and \code{ffdf}. \cr
+#'    \code{\link{duplicated}} \tab duplicated for a \code{ff} vector and \code{ffdf}. \cr
+#'    \code{\link{ffmatch}} \tab match for a \code{ff} vector and \code{ffdf}. \cr
+#'    \code{\%in\%} \tab \%in\% operator for a \code{ff} vector and \code{ffdf}. \cr
+#'    \code{\link{is.na.ff}} \tab is.na for a \code{ff} vector. \cr
+#'    \code{+, -, *, /, ^, \%\%, \%/\%} \tab operators for arithmetic on \code{ff} vector. \cr
+#'    \code{==, !=, <, <=, >=, >, &, |, !} \tab compare & logic operators for working with \code{ff} vectors. \cr
+#'    \code{abs, sign, sqrt, ceiling, floor, trunc, round, signif} \tab Math operators for working on \code{ff} vectors. \cr
+#'    \code{log, log10, log2, log1p, exp, expm1} \tab Math operators for working on \code{ff} vectors. \cr
+#'    \code{acos, acosh, asin, asinh, atan, atanh} \tab Math operators for working on \code{ff} vectors. \cr
+#'    \code{cos, cosh, sin, sinh, tan, tanh} \tab Math operators for working on \code{ff} vectors. \cr
+#'    \code{gamma, lgamma, digamma, trigamma} \tab Math operators for working on \code{ff} vectors. \cr
 #' }
 #' 
 #' @section Selections:
 #' \tabular{ll}{
 #'    \code{\link{subset.ffdf}} \tab subset a \code{ffdf}. \cr
-#'    \code{\link{transform.ffdf}} \tab create a new ffdf based on an existing ffdf \cr
-#'    \code{\link{with.ffdf}} \tab create a ff vector based on columns of an existing ffdf \cr
-#'    \code{\link{within.ffdf}} \tab create a ffdf data.frame based on columns of an existing ffdf \cr
+#'    \code{\link{transform.ffdf}} \tab create a new \code{ffdf} based on an existing \code{ffdf} \cr
+#'    \code{\link{with.ffdf}} \tab create a ff vector based on columns of an existing \code{ffdf} \cr
+#'    \code{\link{within.ffdf}} \tab create a \code{ffdf} data.frame based on columns of an existing \code{ffdf} \cr
 #'    \code{\link{ffwhich}} \tab create a \code{ff} integer vector based on a logical expression \cr
 #' }
 #' 
@@ -33,7 +44,7 @@
 #'    \code{\link{range.ff}} \tab range for \code{ff} vector. \cr
 #'    \code{\link{table.ff}} \tab table for \code{ff} vectors. \cr
 #'    \code{\link{tabulate.ff}} \tab tabulate for \code{ff} vectors. \cr
-#'    \code{\link{ffdfdply}} \tab Split, group and aggregate for \code{ff} vectors. \cr
+#'    \code{\link{ffdfdply}} \tab Split, group and aggregate for \code{ffdf} operations. \cr
 #' }
 #'
 #' @section Miscellaneous:
@@ -42,6 +53,8 @@
 #'    \code{\link{ffdfsave}} \tab Save a \code{ffdf} in a directory with its containing \code{ff} columns.\cr
 #'    \code{\link{ffappend}} \tab Append data to a \code{ff} vector.\cr
 #'    \code{\link{ffdfappend}} \tab Append data to a \code{ffdf}.\cr
+#'    \code{\link{merge.ffdf}} \tab Merge two \code{ffdf} objects. \cr
+#'    \code{\link{laf_to_ffdf}} \tab Import csv and fixed width files through package LaF. \cr
 #' }
 #'
 #' @example ../examples/pkg.R
