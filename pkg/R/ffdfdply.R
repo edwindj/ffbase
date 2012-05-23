@@ -4,7 +4,8 @@
 #' Splits the x ffdf according to split and applies FUN to the data, stores the result of the FUN in an ffdf.\cr
 #' Remark that this function does not actually split the data. In order to reduce the number of times data is put into RAM for situations with a lot
 #' of split levels, the function extracts groups of split elements which can be put into RAM according to BATCHBYTES. Please make sure your FUN covers the
-#' fact that several split elements can be in one chunk of data on which FUN is applied.
+#' fact that several split elements can be in one chunk of data on which FUN is applied.\cr
+#' Mark also that NA's in the split are not considered as a split on the the FUN will be applied.
 #'
 #' @example ../examples/ffdfplyr.R
 #' @param x an ffdf
@@ -29,13 +30,10 @@ ffdfdply <- function(
 	if(!is.factor.ff(split)){
 		stop("split needs to be an ff factor")
 	}
-	split.expr <- substitute(split)	
-	
+
 	## Detect how it is best to split the ffdf according to the split value -> more than 
-	#BATCHBYTES = getOption("ffbatchbytes")
-	#RECORDBYTES = sum(.rambytes[vmode(x)])
 	MAXSIZE = BATCHBYTES / RECORDBYTES
-	splitbytable <- table.ff(eval(split.expr), useNA="ifany")
+	splitbytable <- table.ff(split, useNA="no")
 	splitbytable <- splitbytable[order(splitbytable, decreasing=TRUE)]
 	if(max(splitbytable) > MAXSIZE){
 		warning("single split does not fit into BATCHBYTES")
@@ -50,15 +48,13 @@ ffdfdply <- function(
 		if(trace){
 			message(sprintf("%s, working on split %s/%s (%s)", Sys.time(), idx, nrsplits, paste(tmp, collapse=", ")))
 		}		
-		## Filter the ffdf based on the splitby group and apply the function
-		fltr <- NULL
-		for (i in chunk(x)){
-			expr <- parse(text=paste(sprintf("%s[%s]", deparse(split.expr), "i"), " %in% tmp"))
-			a <- which(eval(expr)) +  min(i) - 1L
-			if (length(a)) fltr <- ffappend(fltr, a)
-		}
+		## Filter the ffdf based on the splitby group and apply the function		
+		fltr <- split %in% ff(factor(tmp, levels = names(splitbytable)))
 		inram <- ffdfget_columnwise(x, fltr)
 		result <- FUN(inram, ...)	
+		if(!inherits(result, "data.frame")){
+			stop("FUN needs to return a data frame")
+		}
 		rownames(result) <- NULL
 		if(!is.null(allresults) & nrow(result) > 0){
 			rownames(result) <- (nrow(allresults)+1):(nrow(allresults)+nrow(result))
