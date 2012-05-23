@@ -30,7 +30,7 @@ m1 <- merge(books, authors, by.x = "name", by.y = "surname", all.x=FALSE, all.y=
 dim(m1)
 unique(paste(m1$name[], m1$nationality[]))
 unique(paste(m1$name[], m1$deceased[]))
-m2 <- merge(books[,], authors[,], by.x = "name", by.y = "surname", all.x=FALSE, all.y=FALSE, trace = TRUE, sort = FALSE)
+m2 <- merge(books[,], authors[,], by.x = "name", by.y = "surname", all.x=FALSE, all.y=FALSE, sort = FALSE)
 dim(m2)
 unique(paste(m2$name[], m2$nationality[]))
 unique(paste(m2$name[], m2$deceased[]))
