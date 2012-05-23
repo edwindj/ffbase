@@ -5,7 +5,7 @@
 #' Remark that this function does not actually split the data. In order to reduce the number of times data is put into RAM for situations with a lot
 #' of split levels, the function extracts groups of split elements which can be put into RAM according to BATCHBYTES. Please make sure your FUN covers the
 #' fact that several split elements can be in one chunk of data on which FUN is applied.\cr
-#' Mark also that NA's in the split are not considered as a split on the the FUN will be applied.
+#' Mark also that NA's in the split are not considered as a split on which the FUN will be applied.
 #'
 #' @example ../examples/ffdfplyr.R
 #' @param x an ffdf
