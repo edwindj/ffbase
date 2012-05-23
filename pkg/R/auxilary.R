@@ -80,3 +80,38 @@ ffbaseffdfindexget <- function(x, index, indexorder = NULL, ...){
 	}
 	as.ffdf(res)
 }
+
+ffdfget_columnwise <- function(x, index=NULL){
+	list_to_df <- function (list) {
+    rows <- unique(unlist(lapply(list, NROW)))
+    structure(list, class = "data.frame", row.names = seq_len(rows))
+	}
+	res <- list()
+	if(is.null(index)){
+		for(measure in names(x)){
+			open(x[[measure]])
+			res[[measure]] <- x[[measure]][]
+			close(x[[measure]])
+		}
+	}else if(is.ff(index)){
+		if(vmode(index) %in% c("boolean","logical")){
+			index <- ffwhich(index, index == TRUE)
+		}
+		os <- ffindexordersize(length=NROW(x), vmode="integer")
+		o <- ffindexorder(index, os$b)
+		for(measure in names(x)){
+			open(x[[measure]])
+			res[[measure]] <- ffindexget(x=x[[measure]], index=index, indexorder=o)[]
+			close(x[[measure]])
+		}
+	}else{
+		for(measure in names(x)){
+			open(x[[measure]])
+			res[[measure]] <- x[[measure]][index]
+			close(x[[measure]])
+		}
+	}
+	list_to_df(res)
+}
+
+

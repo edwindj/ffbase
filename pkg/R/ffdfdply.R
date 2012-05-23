@@ -43,8 +43,6 @@ ffdfdply <- function(
 	tmpsplit <- grouprunningcumsum(x=as.integer(splitbytable), max=MAXSIZE)
 	nrsplits <- max(tmpsplit)
 	
-	## make sure all columns of the ffdf are open otherwise we risk a crash with x[fltr, ][, ]
-	open(x)
 	## Loop over the split groups and apply the function
 	allresults <- NULL
 	for(idx in 1:nrsplits){
@@ -59,7 +57,7 @@ ffdfdply <- function(
 			a <- which(eval(expr)) +  min(i) - 1L
 			if (length(a)) fltr <- ffappend(fltr, a)
 		}
-		inram <- x[fltr, ][, ]
+		inram <- ffdfget_columnwise(x, fltr)
 		result <- FUN(inram, ...)	
 		rownames(result) <- NULL
 		if(!is.null(allresults) & nrow(result) > 0){
