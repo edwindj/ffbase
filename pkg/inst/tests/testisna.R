@@ -4,11 +4,11 @@ library(ff)
 context("isna")
 
 test_that("isna works",{
-	size <- 10000000
+	size <- 100
 	x <- rnorm(size)
 	x[sample(1:size, round(size/2))] <- NA
 	test.ram <- is.na(x)
-	test.ff <- is.na(ff(x))
+	test.ff <- is.na.ff(ff(x), by=2)
 	expect_equal( test.ram, test.ff[])
 	
 	x <- rnorm(size)

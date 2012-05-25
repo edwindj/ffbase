@@ -4,7 +4,7 @@
 #' Faster than \code{\link{with.ffdf}}, but in constrast \code{ffdfwith} can change the original data.
 #' Please note that you should write
 #' your expression as if it is a normal \code{data.frame}. The resulting return value
-#' however will be a \code{ff} object.
+#' however will be a \code{ffdf} object.
 #' @export
 #'
 #' @example ../examples/ffdfwith.R
