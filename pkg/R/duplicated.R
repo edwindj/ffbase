@@ -38,7 +38,7 @@ duplicated.ff <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALSE,
     i.x <- x[i.o]
     res[i.o] <- duplicated(i.x)
     res[i.o[1]] <- identical(i.x[1], i.last)
-    i.last <- i.x[length(i.x)]
+    i.last <- tail(i.x, 1)
   }
   res
 }
