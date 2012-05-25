@@ -25,7 +25,6 @@ Collate:
     'ffdfsave.R'
     'mean.R'
     'pkg.R'
-    'risplit.R'
     'subset.R'
     'Summary_ff.R'
     'table_ff.R'

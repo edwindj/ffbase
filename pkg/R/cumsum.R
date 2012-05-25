@@ -10,18 +10,13 @@
 #' @export cumsum.ff cumprod.ff cummax.ff cummin.ff
 #' @seealso \code{\link{cumsum}}, \code{\link{cumprod}}, \code{\link{cummax}}, \code{\link{cummin}}
 cumsum.ff <- function(x, ...){
-	result <- NULL
+  result <- clone(x)
+  
+  i.last <- 0
   for (i in chunk(x, ...)){
-  	firstidx <- i[1]
-    if(firstidx == 1){
-    	running <-  cumsum(x[i])
-    	result <- ffappend(result, running)
-    	lastelement <- running[length(running)]
-    }else{
-    	running <- cumsum(c(lastelement, x[i]))
-    	result <- ffappend(result, running[-1])
-    	lastelement <- running[length(running)]
-    }    
+    cs <- cumsum(c(i.last, x[i]))
+    i.last <- tail(cs,1)
+    result[i] <- cs[-1]
   }
   result
 }
@@ -29,18 +24,13 @@ cumsum.ff <- function(x, ...){
 #' @rdname cumsum.ff
 #' @method cumprod ff
 cumprod.ff <- function(x, ...){
-	result <- NULL
+  result <- clone(x)
+  
+  i.last <- 1
   for (i in chunk(x, ...)){
-  	firstidx <- i[1]
-    if(firstidx == 1){
-    	running <-  cumprod(x[i])
-    	result <- ffappend(result, running)
-    	lastelement <- running[length(running)]
-    }else{
-    	running <- cumprod(c(lastelement, x[i]))
-    	result <- ffappend(result, running[-1])
-    	lastelement <- running[length(running)]
-    }    
+    cs <- cumprod(c(i.last, x[i]))
+    i.last <- tail(cs,1)
+    result[i] <- cs[-1]
   }
   result
 }
@@ -48,18 +38,13 @@ cumprod.ff <- function(x, ...){
 #' @rdname cumsum.ff
 #' @method cummax ff
 cummax.ff <- function(x, ...){
-	result <- NULL
+  result <- clone(x)
+  
+  i.last <- -Inf
   for (i in chunk(x, ...)){
-  	firstidx <- i[1]
-    if(firstidx == 1){
-    	running <-  cummax(x[i])
-    	result <- ffappend(result, running)
-    	lastelement <- running[length(running)]
-    }else{
-    	running <- cummax(c(lastelement, x[i]))
-    	result <- ffappend(result, running[-1])
-    	lastelement <- running[length(running)]
-    }    
+    cs <- cummax(c(i.last, x[i]))
+    i.last <- tail(cs,1)
+    result[i] <- cs[-1]
   }
   result
 }
@@ -67,19 +52,13 @@ cummax.ff <- function(x, ...){
 #' @rdname cumsum.ff
 #' @method cummin ff
 cummin.ff <- function(x, ...){
-	result <- NULL
+  result <- clone(x)
+  
+  i.last <- Inf
   for (i in chunk(x, ...)){
-  	firstidx <- i[1]
-    if(firstidx == 1){
-    	running <-  cummin(x[i])
-    	result <- ffappend(result, running)
-    	lastelement <- running[length(running)]
-    }else{
-    	running <- cummin(c(lastelement, x[i]))
-    	result <- ffappend(result, running[-1])
-    	lastelement <- running[length(running)]
-    }    
+    cs <- cummin(c(i.last, x[i]))
+    i.last <- tail(cs,1)
+    result[i] <- cs[-1]
   }
   result
 }
-
