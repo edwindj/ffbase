@@ -3,7 +3,7 @@ library(ff)
 
 context("duplicated")
 
-test_that("duplicated works",{
+test_that("duplicated.ff works",{
   data(iris)
 	irisdouble <- rbind(iris, iris)
 	irisdouble <- irisdouble[sample(x=1:nrow(irisdouble), size=nrow(irisdouble), replace = FALSE), ]

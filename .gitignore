@@ -3,3 +3,5 @@
 .RData
 /output
 /pkg/man
+*\.dll
+*\.so
