@@ -56,13 +56,13 @@ ffappend <- function(x, y, adjustvmode=TRUE, ...){
 
 #' Append a dataframe or an \code{ffdf} to another \code{ffdf}
 #' 
-#' Appends a dataframe or an \code{ffdf} called dat an existing \code{ffdf} called \code{x}. 
+#' Appends a dataframe or an \code{ffdf} called \code{dat} to an existing \code{ffdf} called \code{x}. 
 #' Please note that the data of \code{x} will be coerced to the type of \code{y} if the corresponding column of \code{y} has a higher \code{vmode}.
 #' @seealso \code{\link{c.ff}}
 #' @param x \code{ffdf} object where data will be appended to. If \code{x==NULL} a new \code{ffdf} object will be created
 #' @param dat \code{ffdf} object or \code{data.frame} object
 #' @param recode should factors be recoded (default), or not (faster)
-#' @param adjustvmode logical, indicating to coerce the columns of x to a higher \code{vmode} to make sure y is appended without loss of information. 
+#' @param adjustvmode logical, indicating to coerce the columns of \code{x} to a higher \code{vmode} to make sure \code{y} is appended without loss of information. 
 #' @param ... Further arguments passed to \code{\link{as.ffdf}}, when \code{x==NULL}
 #' @return \code{ffdf} object with same physical storage as \code{x} unless the corresponding column of \code{y} has a higher \code{vmode} in which case the data will be cloned to the higher \code{vmode}
 #' @export
@@ -86,7 +86,7 @@ ffdfappend <- function(  x
   }
   
   if (is.null(x)){
-      return(as.ffdf(dat))
+      return(as.ffdf(dat, ...))
   }
      
    n <- nrow(dat)
