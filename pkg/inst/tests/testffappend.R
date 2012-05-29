@@ -41,3 +41,38 @@ test_that("Appending dataframe to ffdf works",{
 	fdat <- ffdfappend(fdat,dat)
 	expect_equal(nrow(fdat),2*nrow(dat))
 })
+
+
+test_that("Coercing an ff vector works",{
+   x <- 1:100
+   y <- rnorm(100)
+   fx <- ff(x)
+   fy <- ff(y)
+   
+   fz <- ffappend(fx, fy, by = 2)
+   expect_identical(fz[], c(x,y))
+   
+   x <- rep(NA, 100)
+   y <- rnorm(100)
+   fx <- ff(x)
+   fy <- ff(y)
+   
+   fz <- ffappend(fx, fy, by = 2)
+   expect_identical(fz[], c(x,y))
+   
+   x <- rep(TRUE, 100)
+   y <- rep(NA, 100)
+   fx <- ff(x, vmode = "boolean")
+   fy <- ff(y)
+   
+   fz <- ffappend(fx, fy, by = 2)
+   expect_identical(fz[], c(x,y))
+ })
+ 
+test_that("Coercing an ffdf works",{
+  dat <- data.frame(x=rnorm(5), y=as.integer(1:5), z=as.factor(c("a","b","c","d","e")))
+  x <- ffdf(x=ff(as.logical(rep(NA, 100))), y=ff(as.numeric(rnorm(100))), z=ff(as.factor(rep("Z", 100))))
+
+	fdat <- ffdfappend(x=x, dat=dat, by = 2)
+	expect_identical(rbind(x[,], dat),fdat[,])
+})
