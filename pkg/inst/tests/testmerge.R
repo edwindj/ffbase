@@ -19,7 +19,7 @@ test_that("merge.ffdf inner join works",{
               "An Introduction to R"),
     other.author = c(NA, "Ripley", NA, NA, NA, NA,
                      "Venables & Smith"))
-  books <- lapply(1:2000, FUN=function(x, books){
+  books <- lapply(1:500, FUN=function(x, books){
     books$price <- rnorm(nrow(books))
     books
   }, books=books)
@@ -57,7 +57,7 @@ test_that("merge.ffdf left outer join works",{
               "An Introduction to R"),
     other.author = c(NA, "Ripley", NA, NA, NA, NA,
                      "Venables & Smith"))
-  books <- lapply(1:2000, FUN=function(x, books){
+  books <- lapply(1:500, FUN=function(x, books){
     books$price <- rnorm(nrow(books))
     books
   }, books=books)
