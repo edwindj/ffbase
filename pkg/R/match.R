@@ -29,7 +29,11 @@ ffmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, trace
   if(trace) {
     message(sprintf("%s, x has %s chunks, table has %s chunks", Sys.time(), length(xchunk), length(tablechunk)))
   }
-  res <- ff(length=length(x), vmode="integer")
+  if(inherits(x, "ffdf")){
+   	res <- ff(nomatch, length=nrow(x), vmode="integer")
+  }else{
+   	res <- ff(nomatch, length=length(x), vmode="integer")
+  }   
   ## First work on looping over x, then over the table
   for (i in xchunk){    
     if(inherits(x, "ffdf")){
@@ -57,6 +61,8 @@ ffmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, trace
       if (!any(unmatched)) break
     }
     m[unmatched] <- nomatch
+    print(res)
+    print(m)
     res[i] <- m
   }	
   close(x)
