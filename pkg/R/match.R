@@ -61,8 +61,6 @@ ffmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, trace
       if (!any(unmatched)) break
     }
     m[unmatched] <- nomatch
-    print(res)
-    print(m)
     res[i] <- m
   }	
   close(x)

@@ -92,6 +92,9 @@ ffdfappend <- function(  x
    for (i in which(fc)){
      levels(x[[i]]) <- appendLevels(levels(x[[i]]), dat[[i]])
    }
+   if(!identical(names(x), names(dat))){ 
+   	warning("names not identical when appending 2 ffdf's")
+   }
    
    i <- hi(nff+1, nff+n)
    x[i,] <- dat
