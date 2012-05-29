@@ -1,12 +1,31 @@
-diff.ff <- function(x, ...){
-  #TODO generalize for lag and difference
-  chunks <- chunk(x, ...)
+#' Lagged Differences
+#' 
+#' Returned suitably lagged and iterated differences
+#' 
+#' @method diff ff
+#' @param x a \code{ff} vector containing values to be differenced 
+#' @param lag a n integer indicating which lag to use
+#' @param differences an integer indicating the order of the difference
+#' @param ... other parameters will be passed on to diff
+#' @export
+diff.ff <- function(x, lag=1L, differences = 1L, ...){
   
-  # hmm, next line may go wrong for small datatypes...
-  d <- ff(vmode=vmode(x), length=length(x)-1)
-  for (i in chunks){
-    j <- i
-    d[i] <- diff(x[i])
+  d <- NULL  
+  
+  i.last <- NULL
+  for (i in chunk(x, ...)){
+    i.x <- x[i]
+    d <- ffappend(d, diff(c(i.last, i.x), lag=lag))
+    i.last <- tail(i.x, lag)
   }
-  d
+  
+  if (differences > 1){
+    diff.ff(d, lag=lag, differences=differences-1 , ...)  
+  } else {
+    d
+  }
 }
+
+
+#x<- ff(1:10)
+#diff(x, 2)

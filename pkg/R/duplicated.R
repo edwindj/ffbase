@@ -24,40 +24,23 @@ duplicated.ff <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALSE,
   if (!identical(incomparables, FALSE)){
     .NotYetUsed("incomparables != FALSE")
   }     
-  finalres <- ff(vmode="logical", length=length(x))
-  ## Order the ffdf    
-  xorder <- fforder(x, decreasing = fromLast, na.last = TRUE)
-  xchunk <- chunk(x, ...)
-  ## Chunkwise checking if the data is duplicated
-  res <- NULL
-  lastel <- NULL
-  for (i in xchunk){
+  
+  res <- ff(vmode="logical", length= length(x))
+  
+  o <- fforder(x, decreasing = fromLast, na.last = TRUE)  
+  
+  i.last <- NULL
+  for (i in chunk(x, ...)){
     if (trace){
       message(sprintf("%s, working on x chunk %s:%s", Sys.time(), min(i), max(i)))
     }
-    iorder <- xorder[i]
-    xi <- x[iorder]
-    xidup <- duplicated(xi)
-    ## first one should also be different from the lastel
-    if(sum(duplicated(c(xi[1], lastel)))>0){
-      xidup[1] <- TRUE
-    }   
-    if(length(xidup) > 0){   
-      ## Add the result to an ff_vector
-      lastel <- xi[length(xi)]
-      res <- ffappend(x=res, y=xidup)        
-    }
+    i.o <- o[i]
+    i.x <- x[i.o]
+    res[i.o] <- duplicated(i.x)
+    res[i.o[1]] <- identical(i.x[1], i.last)
+    i.last <- i.x[length(i.x)]
   }
-  ## Put res back in the right order
-  xorderreversed <- fforder(xorder)
-  xorderreversedchunk <- chunk(xorderreversed, ...)
-  for (i in xorderreversedchunk){
-    if (trace){
-      message(sprintf("%s, working on xorderreversed chunk %s:%s", Sys.time(), min(i), max(i)))
-    }
-    finalres[i] <- res[i]
-  }
-  finalres
+  res
 }
 
 
@@ -67,42 +50,21 @@ duplicated.ffdf <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALS
   if (!identical(incomparables, FALSE)){
     .NotYetUsed("incomparables != FALSE")
   }     
-  finalres <- ff(vmode="logical", length=nrow(x))
-  ## Order the ffdf    
-  xorder <- ffdforder(x, decreasing = fromLast, na.last = TRUE)
-  xchunk <- chunk(x, ...)
-  ## Chunkwise checking if the data is duplicated
-  res <- NULL
-  lastrow <- NULL
-  for (i in xchunk){
+  
+  res <- ff(vmode="logical", length= nrow(x))
+  
+  o <- ffdforder(x, decreasing = fromLast, na.last = TRUE)  
+  
+  i.last <- NULL
+  for (i in chunk(x, ...)){
     if (trace){
       message(sprintf("%s, working on x chunk %s:%s", Sys.time(), min(i), max(i)))
     }
-    iorder <- xorder[i]
-    xi <- x[iorder, ]
-    xidup <- duplicated(xi)
-    ## first one should also be different from the lastrow
-    if(sum(duplicated(rbind(xi[1, , drop=FALSE], lastrow)))>0){
-      xidup[1] <- TRUE
-    }   
-    if(length(xidup) > 0){   
-      ## Add the result to an ff_vector
-      lastrow <- xi[nrow(xi), , drop=FALSE]
-      res <- ffappend(x=res, y=xidup)        
-    }
+    i.o <- o[i]
+    i.x <- x[i.o,]
+    res[i.o] <- duplicated(i.x)
+    res[i.o[1]] <- identical(i.x[1,], i.last)
+    i.last <- tail(i.x, 1)
   }
-  ## Put res back in the right order
-  xorderreversed <- fforder(xorder)
-  xorderreversedchunk <- chunk(xorderreversed, ...)
-  for (i in xorderreversedchunk){
-    if (trace){
-      message(sprintf("%s, working on xorderreversed chunk %s:%s", Sys.time(), min(i), max(i)))
-    }
-    finalres[i] <- res[i]
-  }
-  finalres
+  res
 }
-
-
-
-
