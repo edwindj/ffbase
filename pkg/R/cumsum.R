@@ -10,7 +10,7 @@
 #' @export cumsum.ff cumprod.ff cummax.ff cummin.ff
 #' @seealso \code{\link{cumsum}}, \code{\link{cumprod}}, \code{\link{cummax}}, \code{\link{cummin}}
 cumsum.ff <- function(x, ...){
-  result <- clone(x)
+  result <- clone(x, vmode = "double")
   
   i.last <- 0
   for (i in chunk(x, ...)){
@@ -24,7 +24,7 @@ cumsum.ff <- function(x, ...){
 #' @rdname cumsum.ff
 #' @method cumprod ff
 cumprod.ff <- function(x, ...){
-  result <- clone(x)
+  result <- clone(x, vmode = "double")
   
   i.last <- 1
   for (i in chunk(x, ...)){
@@ -38,7 +38,7 @@ cumprod.ff <- function(x, ...){
 #' @rdname cumsum.ff
 #' @method cummax ff
 cummax.ff <- function(x, ...){
-  result <- clone(x)
+  result <- clone(x, vmode = "double")
   
   i.last <- -Inf
   for (i in chunk(x, ...)){
@@ -52,7 +52,7 @@ cummax.ff <- function(x, ...){
 #' @rdname cumsum.ff
 #' @method cummin ff
 cummin.ff <- function(x, ...){
-  result <- clone(x)
+  result <- clone(x, vmode = "double")
   
   i.last <- Inf
   for (i in chunk(x, ...)){
