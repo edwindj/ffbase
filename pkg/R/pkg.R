@@ -9,7 +9,8 @@
 #'    \code{\link{c.ff}} \tab concatenate \code{ff} vectors. \cr
 #'    \code{\link{unique}} \tab unique for a \code{ff} vector and \code{ffdf}. \cr
 #'    \code{\link{duplicated}} \tab duplicated for a \code{ff} vector and \code{ffdf}. \cr
-#'    \code{\link{ffmatch}} \tab match for a \code{ff} vector and \code{ffdf}. \cr
+#'    \code{\link{ffmatch}} \tab match for a 2 \code{ff} vectors. \cr
+#'    \code{\link{ffdfmatch}} \tab match for 2 \code{ffdf} objects. \cr
 #'    \code{\%in\%} \tab \%in\% operator for a \code{ff} vector and \code{ffdf}. \cr
 #'    \code{\link{is.na.ff}} \tab is.na for a \code{ff} vector. \cr
 #'    \code{+, -, *, /, ^, \%\%, \%/\%} \tab operators for arithmetic on \code{ff} vector. \cr

@@ -2,13 +2,14 @@ version 0.5
 - Added Arithmetic (+, -, *, /, ^, %%, %/%) operators for ff vectors
 - Added Compare & Logic (==, !=, <, <=, >=, >, &, |, !) operators for ff vectors 
 - Added Math (abs, sign, sqrt, ceiling, floor, trunc, log, log10, log2, log1p, acos, acosh, asin, asinh, atan, atanh, exp, expm1, cos, cosh, sin, sinh, tan, tanh, gamma, lgamma, digamma, trigamma, round, signif) functions for ff vectors
-- Added ffmatch function and overloaded the %in% operator
+- Added ffmatch & ffdfmatch function and overloaded the %in% operator
 - Added ffwhich function
 - Added laf_to_ffdf
 - Added duplicated and unique for ff and ffdf
 - Added is.na for ff vectors
 - Changed merge.ffdf to work based on ffmatch in order to handle left outer joins correctly
 - Fixed a bug in ffwhich.ff_vector
+- ffappend and ffdfappend have an extra argument adjustvmode - defaulting to TRUE - which makes sure x is now coerced to a higher vmode if needed. This also affects the c.ff_vector operator.
 
 version 0.4-1
 - exported sum.ff, because RecordLinkage fails...

@@ -2,7 +2,7 @@
 #'
 #' Merge two ffdf by common columns, or do other versions of database join operations. \cr
 #' This method is similar as \code{merge} in the base package but only allows inner and left outer joins.\cr
-#' Mark that joining is done based on ffmatch, meaning that only the first element in \code{y} will be added to \code{x} and ffmatch works on
+#' Mark that joining is done based on ffmatch or ffdfmatch, meaning that only the first element in \code{y} will be added to \code{x} and ffdfmatch works on
 #' \code{link[base]{paste}}-ing together a key. So this might not be suited if your key contains columns of vmode double.\cr
 #'
 #' If a left outer join is performed and no matching record in x is found in y, columns with vmodes 'boolean', 'quad', 'nibble', 'ubyte', 'ushort' are
@@ -40,7 +40,7 @@ merge.ffdf <- function(x, y, by = intersect(names(x), names(y)), by.x = by, by.y
   if(length(by.x) == 1){
   	matchidx <- eval(ffmatch(x[[by.x]], y[[by.y]], trace = trace))
   }else{
-  	matchidx <- eval(ffmatch(x[by.x], y[by.y], trace = trace))
+  	matchidx <- eval(ffdfmatch(x[by.x], y[by.y], trace = trace))
   }  
   updatepositions <- ffwhich(matchidx, !is.na(matchidx))
   ## Define the type of join
