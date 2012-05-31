@@ -26,7 +26,12 @@ save.ffdf <- function(..., dir="./db", relativepath=TRUE){
    }
    
    save(list=names, file=".RData")
-
+   
+   rp <- file(".Rprofile", "wt")
+   writeLines(".First<-", rp)
+   writeLines(deparse(first), rp)
+   close(rp)
+   
    if (relativepath){
      for (n in names){
        x = get(n)
@@ -43,7 +48,7 @@ save.ffdf <- function(..., dir="./db", relativepath=TRUE){
    }
 }
 
-move.ffdf <- function(x, dir="./", name=as.character(substitute(x)), relativepath=FALSE){  
+move.ffdf <- function(x, dir=".", name=as.character(substitute(x)), relativepath=FALSE){  
   dir.create(dir, showWarnings=FALSE, recursive=TRUE)
   for (colname in names(x)){
     ffcol <- x[[colname]]
@@ -62,7 +67,38 @@ move.ffdf <- function(x, dir="./", name=as.character(substitute(x)), relativepat
   x
 }
 
+pack <- function(zipfile, ...){
+  td <- tempdir()
+  save.ffdf(..., dir=td)
+  
+  oldwd <- setwd(td)
+  on.exit(setwd(oldwd))
+  
+  d <- c(".Rprofile", ".RData", dir(td, recursive=FALSE))
+  zip(zipfile, d, )
+}
+
+first <- function(){
+  
+  if (!require(ff)){
+    stop("Please install package ff, otherwise the files cannot be loaded.")
+  }
+  
+  for (n in ls()){
+    x = get(n)
+    if (is.ffdf(x)){
+      for (i in physical(x)){
+        filename(i) <- filename(i)
+      }
+      close(x)
+    } else if (is.ff(x)){
+      filename(x) <- filename(x)
+      close(x)
+    }
+  }
+}
+
 # x <- as.ffdf(iris)
 # x1 <- move.ffdf(x, dir="./db3")
 # 
-# save.ffdf(x, dir="./db4")
+# save.ffdf(x, dir="./db5")
