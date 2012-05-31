@@ -44,7 +44,9 @@ ffappend <- function(x, y, adjustvmode=TRUE, ...){
       levels(x) <- appendLevels(levels(x), levels(y))  
    }
    ## Upgrade to a higher vmode if needed
-   x <- coerce_to_highest_vmode(x=x, y=y, onlytest=FALSE)
+   if(adjustvmode==TRUE){
+	   x <- coerce_to_highest_vmode(x=x, y=y, onlytest=FALSE)
+   }
    for (i in chunk(x, from=1, to=to, ...)){
      if (is.vector(y)){
 			 i <- as.which(i)
@@ -101,8 +103,10 @@ ffdfappend <- function(  x
    	warning("names not identical when appending through ffdfappend")
    }
    ## Upgrade to a higher vmode if needed
-   dat <- as.ffdf(dat)
-   x <- coerce_to_highest_vmode(x=x, y=dat, onlytest=FALSE)
+   if(adjustvmode==TRUE){
+	   dat <- as.ffdf(dat)
+  	 x <- coerce_to_highest_vmode(x=x, y=dat, onlytest=FALSE)
+   } 
    
    i <- hi(nff+1, nff+n)
    x[i,] <- dat
