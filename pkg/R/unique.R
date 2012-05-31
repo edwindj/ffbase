@@ -37,6 +37,7 @@ unique.ff <- function(x, incomparables = FALSE, fromLast = FALSE, trace=FALSE, .
         message(sprintf("%s, working on x chunk %s:%s", Sys.time(), min(i), max(i)))
       }
       iorder <- xorder[i]
+      iorder <- as.integer(iorder) # make sure it is not a Date
       xi <- x[iorder]
       xi <- unique(xi)
       ## exclude the first row if it was already in the unique ffdf as this is the last one from the previous unique
@@ -70,6 +71,7 @@ unique.ffdf <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALSE, .
       message(sprintf("%s, working on x chunk %s:%s", Sys.time(), min(i), max(i)))
     }
     iorder <- xorder[i]
+    iorder <- as.integer(iorder) # make sure it is not a Date
     xi <- x[iorder, ]
     xi <- unique(xi)
     rownames(xi) <- NULL
