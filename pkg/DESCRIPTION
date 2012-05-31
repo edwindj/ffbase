@@ -42,7 +42,6 @@ Collate:
     'ffdfwith.R'
     'cumsum.R'
     'merge.R'
-    'match.R'
     'duplicated.R'
     'isNA.R'
     'binned_sum.R'
@@ -50,3 +49,5 @@ Collate:
     'binned_tabulate.R'
     'tsum.R'
     'Ops.R'
+    'ffmatch.R'
+    'saveffbase.R'
