@@ -1,7 +1,7 @@
 #' Basic statistical functions for ff
 #' 
 #' Basic statistical functions for \code{\link{ff}} vectors and \code{\link{ffdf}} data.frames. 
-#' The aim of ffbase is to make working with ff vectors and ffdf data.frame a little bit easier.
+#' The aim of ffbase is to make working with ff vectors and ffdf data.frame a bit easier.
 #'
 #' @section Basic operations:
 #' \tabular{ll}{
@@ -51,10 +51,15 @@
 #' @section Miscellaneous:
 #' \tabular{ll}{
 #'    \code{\link{ffordered}} \tab Add a sorted index to a \code{ff} vector.\cr
-#'    \code{\link{ffdfsave}} \tab Save a \code{ffdf} in a directory with its containing \code{ff} columns.\cr
+#'    \code{\link{save.ffdf}} \tab Save a \code{ffdf} in a directory with its containing \code{ff} columns.\cr
+#'    \code{\link{load.ffdf}} \tab Loads a \code{ffdf} from a directory\cr
+#'    \code{\link{pack.ffdf}} \tab Packs ffdf data.frames into a zip or tar file\cr
+#'    \code{\link{unpack.ffdf}} \tab Unpacksdata.frames from a zip or tar file\cr
 #'    \code{\link{ffappend}} \tab Append data to a \code{ff} vector.\cr
 #'    \code{\link{ffdfappend}} \tab Append data to a \code{ffdf}.\cr
 #'    \code{\link{merge.ffdf}} \tab Merge two \code{ffdf} objects. \cr
+#'    \code{\link{ffmatch}} \tab match two ff vectors \cr
+#'    \code{\link{ffdfmatch}} \tab match two ffdf data.frames \cr
 #'    \code{\link{laf_to_ffdf}} \tab Import csv and fixed width files through package LaF. \cr
 #' }
 #'
