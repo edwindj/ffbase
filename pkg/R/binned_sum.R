@@ -10,7 +10,7 @@
 binned_sum <- function (x, bin, nbins=max(bin)){
    stopifnot(length(x)==length(bin))
    res <- .Call("binned_sum", as.numeric(x), as.integer(bin), as.integer(nbins), PACKAGE = "ffbase")
-   dimnames(res) <- list(bin=1:nbins, c("count", "sum"))
+   dimnames(res) <- list(bin=1:nbins, c("count", "sum", "NA"))
    res
 }
 
@@ -19,7 +19,7 @@ binned_sum <- function (x, bin, nbins=max(bin)){
 #' @param ... passed on to chunk
 #' @export
 binned_sum.ff <- function(x, bin, nbins=max(bin), ...){
-  res <- matrix(0, nrow=nbins, ncol=2, dimnames=list(bin=1:nbins, c("count", "sum")))
+  res <- matrix(0, nrow=nbins, ncol=3, dimnames=list(bin=1:nbins, c("count", "sum", "NA")))
   for (i in chunk(x, ...)){
     res <- res + .Call("binned_sum", as.numeric(x[i]), as.integer(bin[i]), as.integer(nbins), PACKAGE = "ffbase")
   }
