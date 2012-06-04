@@ -10,6 +10,8 @@ version 0.5
 - Changed merge.ffdf to work based on ffmatch in order to handle left outer joins correctly
 - Fixed a bug in ffwhich.ff_vector
 - ffappend and ffdfappend have an extra argument adjustvmode - defaulting to TRUE - which makes sure x is now coerced to a higher vmode if needed. This also affects the c.ff_vector operator.
+- improved compact.ff
+- Added save.ffdf, move.ffdf, load.ffdf, pack.ffdf and unpack.ffdf
 
 version 0.4-1
 - exported sum.ff, because RecordLinkage fails...

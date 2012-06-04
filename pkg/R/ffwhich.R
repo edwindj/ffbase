@@ -1,4 +1,5 @@
 #' Create an index from a filter statement
+#'
 #' \code{ffwhich} creates an \code{\link{ff}} integer index vector
 #' from a filter expression. The resulting vector can be used to index or subset
 #' a ffdf or ff vector.

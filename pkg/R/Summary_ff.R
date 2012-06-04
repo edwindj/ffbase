@@ -99,8 +99,7 @@ max.ff <- function(x, ..., na.rm=FALSE, range=NULL){
 }
 
 range.ff <- function(x, ..., na.rm=FALSE, range=NULL){
-   r <- checkRange(range, x)
-   
+  r <- checkRange(range, x)
 	range( ...    #for all other ff's?
       , sapply( chunk(x, from=min(r), to=max(r))
 	           , function(i){

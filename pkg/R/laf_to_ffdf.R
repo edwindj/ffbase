@@ -2,18 +2,19 @@
 #'
 #' Use \code{LaF} to import data into a \code{\link{ffdf}} data.frame
 #' @param laf laf object pointing to a csv or fwf file
+#' @param x optional, \code{\link{ffdf}} object where laf data should be appended to. 
 #' @param ... passed on to \code{next_block}
 #' @export
-laf_to_ffdf <- function(laf, ...){
+laf_to_ffdf <- function(laf, x=NULL, ...){
   if (!require(LaF)){
     stop("This function needs the package 'LaF', which can be installed from CRAN")
   }
-  data <- NULL
+  x <- NULL
   begin(laf)
   while(nrow(block <- next_block(laf, ...)))
     #TODO test if adding columns separately is faster/or that allocating the ff vectors first is faster
-    data <- ffdfappend(data, block)
-  data
+    x <- ffdfappend(x, block)
+  x
 }
 
 

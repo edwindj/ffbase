@@ -18,7 +18,7 @@ test_that("Matching based on ffmatch works for ffdf", {
   iris <- unique(iris)
 	ffiris <- as.ffdf(iris)
 	ffirissubset <- as.ffdf(iris[c(1:10, nrow(iris)), ])
-	test.ff <- ffmatch(ffiris, ffirissubset, by=2)
+	test.ff <- ffdfmatch(ffiris, ffirissubset, by=2)
 	test.ram <- match(apply(ffiris[,], MARGIN=1, FUN=function(x) paste(x, collapse="")), apply(ffirissubset[,], MARGIN=1, FUN=function(x) paste(x, collapse="")))
 	
 	expect_identical( test.ram

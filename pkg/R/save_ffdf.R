@@ -2,16 +2,16 @@
 #'
 #' \code{save.ffdf} saves all ffdf data.frames in the given \code{dir}. Each column
 #' is stored as with filename <ffdfname>$<colname>.ff. All variables given in "..." are stored in ".RData" in the same directory.
-#' The data can be loaded by starting a R session in the directory or by using \code{\link{load.ffdf}}.
+#' The data can be reloaded by starting a R session in the directory or by using \code{\link{load.ffdf}}.
 #' @example ../examples/save_ffdf.R
 #' @param ... \code{ffdf} data.frames, \code{ff} vectors, or other variables to be saved in the directory
-#' @param dir  path where .rdata file will be saved and all columns of supplied \code{ffdf}'s. It will be created if it doesn't exist.
+#' @param dir path where .rdata file will be saved and all columns of supplied \code{ffdf}'s. It will be created if it doesn't exist.
 #' @param clone should the data.frame be cloned?
 #' @param relativepath \code{logical} if \code{TRUE} the stored ff vectors will have relative paths, making moving the data to another storage a simple
 #' copy operation.
 #' @seealso \code{\link{load.ffdf}} 
 #' @export
-save.ffdf <- function(..., dir="./db", clone=FALSE, relativepath=TRUE){
+save.ffdf <- function(..., dir="./ffdb", clone=FALSE, relativepath=TRUE){
    names <- as.character(substitute(list(...)))[-1L]
    dir.create(dir, showWarnings=FALSE, recursive=TRUE)
    
@@ -73,7 +73,7 @@ move.ffdf <- function(x, dir=".", name=as.character(substitute(x)), relativepath
     # move file to right directory
     filename(ffcol) <- ffcolname
     
-    # set path to relative path, BEWARE if wd is changed to should be reset!
+    # set path to relative path, BEWARE if wd is changed this should be reset!
     if (isTRUE(relativepath)){
       physical(ffcol)$filename <- ffcolname
     }
@@ -154,7 +154,7 @@ pack.ffdf <- function(file, ...){
 #' if
 #' @example ../examples/save_ffdf.R
 #' @param file packaged file, zipped or tar.gz.
-#' @param dir  path where the data will be saved and all columns of supplied \code{ffdf}'s. It will be created if it doesn't exist.
+#' @param dir path where the data will be saved and all columns of supplied \code{ffdf}'s. It will be created if it doesn't exist.
 #' @param envir the environment where the stored variables should be loaded into.
 #' @seealso \code{\link{load.ffdf}} \code{\link{pack.ffdf}} 
 #' @export

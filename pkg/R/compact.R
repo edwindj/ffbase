@@ -6,30 +6,47 @@
 #' @method compact ffdf
 #' @export
 #' @param x \code{ff} or \code{ffdf} object
-#' @param use.na \code{logical} if TRUE the resulting ff vector can contain NA, otherwise not
+#' @param use.na \code{logical} if TRUE the resulting ff vector can contain NA, otherwise this is not checked
 #' @param ... other parameters
-#' @return compact ff vector
-#' @keywords internal
+#' @return compact cloned ff vector, or original if no compacting can be done
 compact <- function(x, use.na=TRUE, ...){
    UseMethod("compact")
 }
 
 compact.ff <- function(x, use.na=TRUE,...){
-   switch( vmode(x)
-         , integer = {
-              lev <- levels(x)
-              levels(x) <- NULL
-              r <- range(x, na.rm=TRUE)
-              
-              if (r[1] <= 0)
-                return(x)
-              as.ff(x, vmode="byte")
-            }
-        , x
-        )
+   vm <- which(.vmode == vmode(x))
+   if (vm > 9){
+     return(x)
+   }
+   
+   idx <- 1:vm
+   if (is.factor(x)){
+     r <- c(1, nlevels(x))
+   } else {
+     r <- range(x, na.rm=TRUE)
+   }
+   
+   m <- (r[1] >= .vmin) & (r[2] <= .vmax)
+   if (isTRUE(use.na)){
+     m <- m & is.na(.vNA)
+   }
+   
+   m <- which(m[idx])[1]
+   if (m < vm){
+     clone(x, vmode=.vmode[m])
+   } else {
+     x
+   }
 }
 
-compact.ffdf <- function(x, use.na, ...){
-   ret <- lapply(physical(x), compact, use.na)
-   do.call(ffdf, ret)
+compact.ffdf <- function(x, use.na=TRUE, ...){
+   ret <- lapply(physical(x), compact, use.na=use.na, ...)
+   res <- do.call(ffdf, ret)
+   close(x)
+   res
 }
+
+# # testing 1,2,3
+# irisf <- as.ffdf(iris)
+# irisc <- compact(irisf)
+# vmode(irisc)
