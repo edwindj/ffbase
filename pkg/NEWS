@@ -1,3 +1,6 @@
+version 0.6
+- Added bySum and bySumsq
+
 version 0.5
 - Added Arithmetic (+, -, *, /, ^, %%, %/%) operators for ff vectors
 - Added Compare & Logic (==, !=, <, <=, >=, >, &, |, !) operators for ff vectors 
