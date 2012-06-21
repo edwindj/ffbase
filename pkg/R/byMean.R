@@ -72,3 +72,9 @@ byMean <- function(x, by, na.rm=FALSE, weight=NULL, ...){
 # system.time({
 #   replicate(50, {binned_sum(x, bin, nbins=100L)})
 # })
+# 
+# require(aggregate)
+# system.time({
+#   replicate(50, {byMeans(x, bin, na.rm=TRUE, weight=weight)})
+# })
+# 
