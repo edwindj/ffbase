@@ -1,4 +1,14 @@
-bySum <- function(x, by, na.rm=FALSE, weight=NULL...){
+#' Fast conditional sum
+#' 
+#' \code{bySum} works like a very fast version of tapply with (weighted) \code{FUN=sum}.
+#' @param x \code{numeric} vector to be summed
+#' @param by (list of) \code{factor(s)} for which the sum will be calculated
+#' @param na.rm \code{logical} If \code{TRUE} \code{NA} values will be removed
+#' @param weight \code{numeric} with of same length as \code{x}
+#' @param ... not used
+#' @return \code{array} with dimensions of \code{by}
+#' @export
+bySum <- function(x, by, na.rm=FALSE, weight=NULL, ...){
   
   if (!is.list(by)){
     index <- list(by)

@@ -1,4 +1,14 @@
-byMean <- function(x, by, na.rm=FALSE, weight=NULL...){
+#' Fast conditional mean
+#' 
+#' \code{byMean} works like a very fast version of tapply with (weighted) \code{FUN=mean} or \code{FUN=weighted.mean}.
+#' @param x \code{numeric} vector to be averaged
+#' @param by (list of) \code{factor(s)} for which the mean will be calculated
+#' @param na.rm \code{logical} If \code{TRUE} \code{NA} values will be removed
+#' @param weight \code{numeric} with of same length as \code{x}
+#' @param ... not used
+#' @return \code{array} with dimensions of \code{by}
+#' @export
+byMean <- function(x, by, na.rm=FALSE, weight=NULL, ...){
   
   if (!is.list(by)){
     index <- list(by)

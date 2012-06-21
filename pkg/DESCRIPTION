@@ -51,3 +51,5 @@ Collate:
     'Ops.R'
     'ffmatch.R'
     'save_ffdf.R'
+    'byMean.R'
+    'bySum.R'
