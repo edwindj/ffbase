@@ -23,9 +23,9 @@ cut.ff <- function(x, breaks, ...){
 		if (dx == 0) 
 			dx <- abs(rx[1])
 		breaks <- seq.int( rx[1] - dx/1000
-                       , rx[2L] + dx/1000
-                       , length.out = nb
-                       )
+                     , rx[2L] + dx/1000
+                     , length.out = nb
+                     )
 	}
    ####
    
@@ -36,7 +36,7 @@ cut.ff <- function(x, breaks, ...){
      args$x <- x[i]
      f <- ffappend( f
                   , do.call(cut, args)
-               )
+                  )
    }
    f
 }

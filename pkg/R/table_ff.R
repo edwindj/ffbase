@@ -21,8 +21,7 @@ table.ff <- function( ...
    ###
 	args <- list(...)
 	tab <- NULL
-   
-   dat <- do.call(ffdf, args) # create a ffdf  for estimating good chunking size and checking if ... have equal length
+  dat <- do.call(ffdf, args) # create a ffdf  for estimating good chunking size and checking if ... have equal length
    
 	for (i in chunk(dat)){
 	   factors <- lapply(args, function(f){

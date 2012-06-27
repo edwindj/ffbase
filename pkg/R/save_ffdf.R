@@ -173,23 +173,10 @@ unpack.ffdf <- function(file, dir=NULL, envir=parent.frame()){
 }
 
 first <- function(){
-  
   if (!require(ffbase)){
     stop("Please install package ffbase, otherwise the files cannot be loaded.")
   }
-  
-  for (n in ls()){
-    x = get(n)
-    if (is.ffdf(x)){
-      for (i in physical(x)){
-        filename(i) <- filename(i)
-      }
-      close(x)
-    } else if (is.ff(x)){
-      filename(x) <- filename(x)
-      close(x)
-    }
-  }
+  env <- load.ffdf(".", parent.frame())
 }
 
 # x <- as.ffdf(iris)
