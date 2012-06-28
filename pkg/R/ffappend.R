@@ -48,7 +48,7 @@ ffappend <- function(x, y, adjustvmode=TRUE, ...){
 	   x <- coerce_to_highest_vmode(x=x, y=y, onlytest=FALSE)
    }
    for (i in chunk(x, from=1, to=to, ...)){
-     if (is.vector(y)){
+     if (is.atomic(y)){
 			 i <- as.which(i)
 	   }
 	   x[(i+len)] <- y[i]

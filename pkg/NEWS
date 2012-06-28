@@ -1,5 +1,6 @@
 version 0.6
 - Added bySum and bySumsq
+- Fixed a bug in ffappend for adding factors (this also fixes a bugs in cut.ff)
 
 version 0.5
 - Added Arithmetic (+, -, *, /, ^, %%, %/%) operators for ff vectors
