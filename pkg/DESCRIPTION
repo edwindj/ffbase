@@ -53,3 +53,4 @@ Collate:
     'save_ffdf.R'
     'byMean.R'
     'bySum.R'
+    'key.R'
