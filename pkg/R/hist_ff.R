@@ -7,6 +7,7 @@
 #' @param plot logical. If \code{TRUE} (default), a histogram is plotted, otherwise a list of breaks and counts is returned
 #' @param ... further arguments supplied to plot.
 #' @return histogram object
+#' @export
 hist.ff <- function(x, breaks=min(100, length(x)), plot=TRUE, ...){
   xname <- deparse(substitute(x))
   
