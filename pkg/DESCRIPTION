@@ -54,3 +54,4 @@ Collate:
     'byMean.R'
     'bySum.R'
     'key.R'
+    'ffifelse.R'

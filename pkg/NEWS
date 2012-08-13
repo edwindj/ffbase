@@ -2,6 +2,9 @@ version 0.6
 - Added bySum and bySumsq
 - Fixed a bug in ffappend for adding factors (this also fixes a bugs in cut.ff)
 - Added function key 
+- Added function ffifelse
+- Allowed table.ff also to work with integers and dates next to factors
+- Allowed ffdfdply also to work with integers and dates next to factors in the split
 
 version 0.5
 - Added Arithmetic (+, -, *, /, ^, %%, %/%) operators for ff vectors
