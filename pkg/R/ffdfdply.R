@@ -27,9 +27,11 @@ ffdfdply <- function(
 	RECORDBYTES = sum(.rambytes[vmode(x)]), 
 	trace=TRUE, ...){
 	
-	if(!is.factor.ff(split)){
-		stop("split needs to be an ff factor")
+	splitvmode <- vmode(split)	
+	if(splitvmode != "integer"){
+		stop("split needs to be an ff factor or an integer")
 	}
+	splitisfactor <- is.factor.ff(split)
 
 	## Detect how it is best to split the ffdf according to the split value -> more than 
 	MAXSIZE = BATCHBYTES / RECORDBYTES
@@ -45,11 +47,26 @@ ffdfdply <- function(
 	allresults <- NULL
 	for(idx in 1:nrsplits){
 		tmp <- names(splitbytable)[tmpsplit == idx]
+		if(!splitisfactor){
+			if(!is.null(ramclass(split)) && ramclass(split) == "Date"){
+				tmp <- as.Date(tmp)
+			}else{
+				tmp <- as.integer(tmp)
+			}			
+		}
 		if(trace){
 			message(sprintf("%s, working on split %s/%s (%s)", Sys.time(), idx, nrsplits, paste(tmp, collapse=", ")))
 		}		
 		## Filter the ffdf based on the splitby group and apply the function		
-		fltr <- split %in% ff(factor(tmp, levels = names(splitbytable)))
+		if(splitisfactor){
+			fltr <- split %in% ff(factor(tmp, levels = names(splitbytable)))
+		}else{
+			if(!is.null(ramclass(split)) && ramclass(split) == "Date"){
+				fltr <- split %in% ff(tmp, vmode = "integer", ramclass = "Date")
+			}else{
+				fltr <- split %in% ff(tmp, vmode = "integer")
+			}			
+		}		
 		inram <- ffdfget_columnwise(x, fltr)
 		result <- FUN(inram, ...)	
 		if(!inherits(result, "data.frame")){
