@@ -1,11 +1,13 @@
 #' table.ff uses the cross-classifying factors to build a contingency table of the 
-#' counts at each combination of factor levels.
+#' counts at each combination of factor levels.\cr
+#' If \code{...} does not contain factors, \code{unique.ff} will add a levels attribute to the non-factors.
 #'
 #' Details 
 #' @seealso \code{\link{table}}
 #' @export
+#' @method table ff
 #'
-#' @param ... \code{ff} factors
+#' @param ... \code{ff} factors or \code{ff} integers
 #' @param exclude see \code{\link{table}}
 #' @param useNA see \code{\link{table}}
 #' @param dnn see \code{\link{table}}
@@ -18,17 +20,26 @@ table.ff <- function( ...
                     , dnn = list.names(...)
                     , deparse.level = 1
                     ){
-   ###
+  ###
 	args <- list(...)
 	tab <- NULL
    
-   dat <- do.call(ffdf, args) # create a ffdf  for estimating good chunking size and checking if ... have equal length
+  dat <- do.call(ffdf, args) # create a ffdf  for estimating good chunking size and checking if ... have equal length
+
+  ### Cover non-factors like integers by adding a levels attribute
+  if(sum(!vmode(dat) %in% c("integer")) > 0){  	
+  	stop(sprintf("Only vmodes integer currently allowed - are you sure ... contains only factors or integers?"))
+  }
+  nonfactors <- sapply(colnames(dat), FUN=function(column, dat) !is.factor(dat[[column]]), dat=dat)
+  nonfactors <- names(nonfactors)[nonfactors == TRUE]
+  for(column in nonfactors){
+  	levels(dat[[column]]) <- unique(dat[[column]])[]
+  }
    
 	for (i in chunk(dat)){
 	   factors <- lapply(args, function(f){
 	      f[i]
 	   })
-	   
 	   factors$exclude <- exclude
 	   factors$useNA <- useNA
 	   factors$deparse.level <- deparse.level
