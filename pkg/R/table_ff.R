@@ -5,7 +5,6 @@
 #' Details 
 #' @seealso \code{\link{table}}
 #' @export
-#' @method table ff
 #'
 #' @param ... \code{ff} factors or \code{ff} integers
 #' @param exclude see \code{\link{table}}
