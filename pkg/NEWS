@@ -3,6 +3,9 @@ version 0.6
 - Fixed a bug in ffappend for adding factors (this also fixes a bugs in cut.ff)
 - Added function key 
 - Added function ffifelse
+- Added function ffrep.int, ffseq_len 
+- Added function expand.ffgrid
+- Added as.character.ff
 - Allowed table.ff also to work with integers and dates next to factors
 - Allowed ffdfdply also to work with integers and dates next to factors in the split
 

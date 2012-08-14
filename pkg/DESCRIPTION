@@ -55,3 +55,7 @@ Collate:
     'bySum.R'
     'key.R'
     'ffifelse.R'
+    'as.R'
+    'expand_ffgrid.R'
+    'ffrep.R'
+    'ffseq.R'
