@@ -59,3 +59,4 @@ Collate:
     'expand_ffgrid.R'
     'ffrep.R'
     'ffseq.R'
+    'masked_from_package_ff.R'

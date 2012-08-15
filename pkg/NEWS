@@ -8,6 +8,7 @@ version 0.6
 - Added as.character.ff
 - Allowed table.ff also to work with integers and dates next to factors
 - Allowed ffdfdply also to work with integers and dates next to factors in the split
+- Overloaded "[.ff" and "[<-.ff" generics from package ff to allow to extract and set elements based on a logical ff vector also instead of only ff integer vectors (e.g. ff(1:10)[ff(c(FALSE, TRUE, NA, TRUE))])
 
 version 0.5
 - Added Arithmetic (+, -, *, /, ^, %%, %/%) operators for ff vectors
