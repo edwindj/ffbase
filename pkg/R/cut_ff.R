@@ -16,7 +16,7 @@ cut.ff <- function(x, breaks, ...){
    
    #### borrowed code from cut.default
 	if (length(breaks) == 1) {
-		if (is.na(breaks) | breaks < 2) 
+		if (is.na(breaks) || breaks < 2) 
 			stop("invalid number of intervals")
 		nb <- as.integer(breaks + 1)
 		dx <- diff(rx <- range(x, na.rm = TRUE))
@@ -30,12 +30,15 @@ cut.ff <- function(x, breaks, ...){
    ####
    
    args <- list(...)
-   
+   args$by <- NULL
    args$breaks <- breaks
    for (i in chunk(x, ...)){
      args$x <- x[i]
+     res <- do.call(cut, args)
      f <- ffappend( f
                   , do.call(cut, args)
+                  , res
+                  , adjustvmode=FALSE
                   )
    }
    f

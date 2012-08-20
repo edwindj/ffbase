@@ -26,7 +26,7 @@ SEXP bySumsq ( SEXP x, SEXP mean, SEXP by, SEXP nbins, SEXP weight) {
              rres[b + 2*nb] += w[i];
            } else {
              rres[b] += w[i];
-             rres[b + nb] += val*val;
+             rres[b + nb] += w[i]*val*val;
            }
         }
      }
