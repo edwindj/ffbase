@@ -1,0 +1,43 @@
+\documentclass[nojss]{jss}
+%% need no \usepackage{Sweave}
+
+\author{Edwin de Jonge \And 
+        Jan Wijffels\\BNOSAC}
+\Plainauthor{Edwin de Jonge, Jan Wijffels}
+
+\title{TODO}
+
+\Keywords{ff, ffbase, large data, data manipulation, bigdata, \proglang{R}}
+\Plainkeywords{ff, ffbase, large data, data manipulation, bigdata, R}
+
+\Abstract{
+This introduction to the \proglang{R} package \pkg{ffbase} is under construction. \citep{ffbase:ff:2012}.
+}
+
+\Address{
+  Jan Wijffels\\
+  BNOSAC\\
+  Limnanderstraat 26\\
+  1070 Anderlecht, Belgium\\
+  E-mail: \email{jwijffels@bnosac.be}\\
+  URL: \url{http://www.bnosac.be}
+}
+
+\begin{document}
+\SweaveOpts{engine=R,eps=FALSE}
+%\VignetteIndexEntry{TODO}
+%\VignetteDepends{ffbase}
+%\VignetteKeywords{ff, ffbase, large data, data manipulation, bigdata, R}
+%\VignettePackage{ffbase}
+
+<<preliminaries, echo=FALSE, results=hide>>=
+library("ffbase")
+options(prompt = "R> ", continue = "+   ")
+@
+
+\section{Introduction} \label{sec:intro}
+TODO
+
+
+\bibliography{ffbase_showcase}
+\end{document}
