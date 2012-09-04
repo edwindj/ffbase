@@ -5,13 +5,13 @@
         Jan Wijffels\\BNOSAC}
 \Plainauthor{Edwin de Jonge, Jan Wijffels}
 
-\title{TODO}
+\title{ffbase manual}
 
 \Keywords{ff, ffbase, large data, data manipulation, bigdata, \proglang{R}}
 \Plainkeywords{ff, ffbase, large data, data manipulation, bigdata, R}
 
 \Abstract{
-This introduction to the \proglang{R} package \pkg{ffbase} is under construction. \citep{ffbase:ff:2012}.
+This introduction to the \proglang{R} package \pkg{ffbase} gives a short overview of the data handling functionalities which extend the \pkg{ff} package \citep{ffbase:ff:2012}. The package is developed in order to make your life easier when doing day-to-day data manipulations with large datasets. It contains functionality which closely mimics commonly used \proglang{R} data manipulation and basic statistical functions available in \proglang{R}'s \pkg{base} package and allows these to be used on large datasets which do not fit into RAM memory through package \pkg{ff}.
 }
 
 \Address{
@@ -36,8 +36,53 @@ options(prompt = "R> ", continue = "+   ")
 @
 
 \section{Introduction} \label{sec:intro}
-TODO
+\subsection{Package options}
+At the time of writing, a limited number of open source \proglang{R} packages allow to work with large datasets which do not fit into memory.
+There is
+\begin{enumerate}
+\item{Package \pkg{ff} \citep{ffbase:ff:2012} which supports fast on-disk objects seemlessly available in \proglang{R} and which integrates with package \pkg{bit} \citep{ffbase:bit:2012}}
+\item{Package \pkg{sqldf} \citep{ffbase:sqldf:2011} which allows to do SQL queries on a persistent or adhoc created in-memory sqlite database}
+\item{Package \pkg{bigmemory} \citep{ffbase:bigmemory:2011} which allows to create, store, access and manipulate massive matrices}
+\item{Package \pkg{mmap} \citep{ffbase:mmap:2011}, which provides a simple low-level interface to the related system calls which access Memory mapped files}
+\end{enumerate}
 
+Apart from the packages enumerated above, a number of approaches focus on distributed computing like the RHadoop suite \url{https://github.com/RevolutionAnalytics/RHadoop/wiki} of tools and next to that there is the standard approach where data is stored in a database (e.g. PostgreSQL, Oracle, MySQL, SQL Server, \ldots) and can be retrieved through various database related package (DBI, RODBC, \ldots) in chunks which can be hold in RAM.\\
 
+\subsection{Package comparisons}
+When comparing package \pkg{ff} package\citep{ffbase:ff:2012} to the other enumerated package, package \pkg{ff} is the preferred choice when you are doing data analysis with R on large datasets which do not fit into memory. As it has certain advantages over the others, namely: \\
+\begin{itemize}
+\item Compared to package \pkg{sqldf} it has the advantage of being more \proglang{R}-like, the data is readily available in R without having to create SQL statements and having to work by getting data in RAM chunkwise. For people familiar with SQL this is an advantage though.
+\item Package \pkg{bigmemory} only allows to work with matrices, this has a serious restriction as it allows only to work with data types of only 1 type e.g. only numeric data or only character data, which is rather incommon in business settings with large datasets. It is however a bit more focussed on purely statistical functionality e.g. it contains kmeans and bigglm for bigdata.
+\item Package \pkg{mmap} currently lacks a lot of high-level functionality to interact with the low-level system calls. E.g. easy extraction of data from flat files and relational databases into the mmap structures is cumbersome, there are no higher level calls like the apply set of family, sorting and chunking and something like a data frame is missing (although possible through the usage ot the C-struct type. Comparing to package \pkg{ff}, it does include a \code{character(n)} type, which is not available in package \pkg{ff} where characters are always coded as factors.
+\item One does not need to set up a distributed Hadoop system to get started with Rhadoop. So \pkg{ff} allows desktop computations as well as server computations which are limited to the available disk space. When interaction with Rhadoop, you get lists of data, while using R in day-to-day statistical settings also requires to uses data frames and matrices, so there is quite some data manipulation effort on that side still before you can something useful with your data.
+\end{itemize}
+
+More technical documentation of package \pkg{ff} can be found at \url{http://ff.r-forge.r-project.org/}.
+Nevertheless package \pkg{ff} still lacked some basic functionality in order to make it useful in day-to-day large data settings and less cumbersome to do basic data manipulations. Package \pkg{ffbase} contains these methods.
+
+\subsection{Functionality of ffbase extending the ff package}
+The following functions work all on either \code{ff} objects or objects of class \code{ffdf} from the \pkg{ff} package.
+\subsubsection{Basic operations}
+\code{c, unique, duplicated, ffmatch, ffdfmatch, \%in\%, is.na, all, any, cut, ffwhich, ffappend, ffdfappend}
+\subsubsection{Standard operators}
+\code{+, -, *, /, \^{}, \%\%, \%/\%, ==, !=, <, <=, >=, >, \&, |, !}
+\subsubsection{Math operators}
+\code{abs, sign, sqrt, ceiling, floor, trunc, round, signif, log, log10, log2, log1p, exp, expm1, acos, acosh, asin, asinh, atan, atanh, cos, cosh, sin, sinh, tan, tanh, gamma, lgamma, digamma, trigamma}
+\subsubsection{Selections and data manipulations}
+\code{subset, transform, with, within, ffwhich and selections based on logical vectors}
+\subsubsection{Summary statistics}
+\code{sum, min, max, range, quantile, hist}
+\subsubsection{Data transformations}
+\code{cumsum, cumprod, cummin, cummax, table, tabulate, merge, ffdfdply}
+
+\subsection{Extra functionality of ffbase}
+Next to that there are some extra goodies allowing faster grouping by - not restricted to the \pkg{ff} package alone 
+\subsubsection{Fast groupwise aggregations}
+\code{bySum, byMean, binned\_sum, binned\_sumsq, binned\_tabulate}
+
+\newpage
+\section{Examples} \label{sec:examples}
+
+\newpage
 \bibliography{ffbase_showcase}
 \end{document}
