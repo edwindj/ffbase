@@ -37,10 +37,20 @@ ffwhich.ff_vector <- function(x, expr, ...){
 #' @method ffwhich ffdf
 #' @export
 ffwhich.ffdf <- function(x, expr, ...){
-  #### chunkify expression
-  es <- deparse(substitute(expr))
-  e <- chunkexpr(names(x), es, prefix="x$")
+  try( { x$.filter <- as.ff(expr)
+         e <- expression(x$.filter[.i])
+       }
+      , silent=FALSE
+      )
+
+  if (is.null(x$.filter)){
+    #### chunkify expression
+    es <- deparse(substitute(expr))
+    e <- chunkexpr(names(x), es, prefix="x$")
+  }
   ####
+  
+  print(list(x=x, e=e))
   
   fltr <- NULL
   for (.i in chunk(x, ...)){
@@ -59,3 +69,6 @@ ffwhich.ffdf <- function(x, expr, ...){
 # dat <- ffdf(x1=x, y1=x)
 # idx <- ffwhich(dat, x1 < 5 & y1 > 2)
 # dat[idx,][,]
+# f <- dat$x1[] > 3
+# ffwhich(dat, f)
+# ffwhich(dat, x > 2)
