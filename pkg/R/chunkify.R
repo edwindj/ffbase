@@ -33,7 +33,7 @@ chunkify <- function(fun){
 #'@param prefix prefix for variables to be replaced.
 #'@keywords internal
 chunkexpr <- function(x, expr, i=".i", prefix=""){
-  es <- expr
+  es <- if (is.expression(expr)) lapply(expr, deparse) else deparse(expr)
   xs <- x
   for (var in xs){
     varre <- paste("\\b(",var,")\\b", sep="")
