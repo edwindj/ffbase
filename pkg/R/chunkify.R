@@ -26,9 +26,20 @@ chunkify <- function(fun){
    cfun
 }
 
-#' Chunk an expression to be used in a chunked for loop
-#'@param x \code{character} with variables to be chunked
+#' Chunk an expression 
+#' 
+#' chunkexpr replaces variables in an expression with a indexed version.
+#' It main use it to rewrite "normal" R expression into chunked versions
+#' that can be evaluated in a chunked-for-loop.
+#' @examples
+#'expr <- expression( x <- 1)
+#'chunkexpr(expr)
+#'# results in: expression(x[.i] <- 1)
+#'
+#'chunkexpr(expression(z <- x+y), c("y","z"), prefix="data$")
+#'# results in: expression(data$z[.i] <- x + data$y[.i])
 #'@param expr \code{expression} vector
+#'@param x \code{character} with variables to be chunked
 #'@param i name of index that will be used in the for loop, typically a \code{\link{ri}} or \code{hi}.
 #'@param prefix prefix for variables to be replaced.
 #'@keywords internal
