@@ -27,13 +27,13 @@ chunkify <- function(fun){
 }
 
 #' Chunk an expression to be used in a chunked for loop
-#'@param x \code{character} with vars
+#'@param x \code{character} with variables to be chunked
 #'@param expr \code{expression} vector
-#'@param i name of index
+#'@param i name of index that will be used in the for loop, typically a \code{\link{ri}} or \code{hi}.
 #'@param prefix prefix for variables to be replaced.
 #'@keywords internal
-chunkexpr <- function(x, expr, i=".i", prefix=""){
-  es <- if (is.expression(expr)) lapply(expr, deparse) else deparse(expr)
+chunkexpr <- function(expr, x = all.vars(expr), i=".i", prefix=""){
+  es <- lapply(as.expression(expr), deparse)
   xs <- x
   for (var in xs){
     varre <- paste("\\b(",var,")\\b", sep="")

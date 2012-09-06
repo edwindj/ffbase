@@ -16,7 +16,7 @@
 ffdfwith <- function(data, expr, ...){
    
    es <- as.expression(substitute(expr))
-   e <- chunkexpr(names(data), es, prefix=".x$")
+   e <- chunkexpr(es, names(data), prefix=".x$")
    .x <- data
    
    chunks <- chunk(.x, ...)

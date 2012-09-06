@@ -50,7 +50,7 @@ ffwhich.ffdf <- function(x, expr, ...){
 
   if (is.null(x$.filter)){
     #### chunkify expression
-    e <- chunkexpr(names(x), es, prefix="x$")
+    e <- chunkexpr(es, names(x), prefix="x$")
   }
   ####
   
