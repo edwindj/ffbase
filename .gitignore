@@ -1,7 +1,7 @@
 .Rproj.user
 .Rhistory
 .RData
-/output
+/output/ffbase.Rcheck
 /pkg/man
 *\.dll
 *\.so

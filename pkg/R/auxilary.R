@@ -31,6 +31,23 @@ grouprunningcumsum <- function(x, max){
 	result$x
 }
 
+grouprunningcumsumindex <- function(x, max, currentcumul=0){
+	l <- as.integer(length(x))
+	if(l == 0){
+		return(NULL)
+	}
+	x <- as.integer(x)	
+	max <- as.integer(max)
+	currentcumul <- as.integer(currentcumul)
+	result <- .C("grouprunningcumsumindex",
+			x = x, 
+			l = l, 
+			max = max,
+			currentcumul = currentcumul,
+			PACKAGE="ffbase")
+	list(overflowidx = which(result$x %in% c(1,2)), currentcumul = result$currentcumul)
+}
+
 as.ffdf.list <- function(x){
   if(sum(sapply(x, FUN=function(x) !inherits(x, "ff_vector"))) > 0){
     stop("the elements of x need to be ff_vectors")
