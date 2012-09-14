@@ -13,6 +13,7 @@ Depends:
     ff (>= 2.2-0)
 Suggests:
     testthat,
+    parallel,
     LaF
 Collate:
     'auxilary.R'
