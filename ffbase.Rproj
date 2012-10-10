@@ -11,7 +11,4 @@ Encoding: UTF-8
 
 RnwWeave: Sweave
 LaTeX: pdfLaTeX
-
-BuildType: Package
-PackagePath: pkg
-PackageRoxygenize: rd,collate,namespace
+RootDocument: 

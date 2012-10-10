@@ -33,10 +33,10 @@ chunkify <- function(fun){
 #' that can be evaluated in a chunked-for-loop.
 #' @examples
 #'expr <- expression( x <- 1)
-#'chunkexpr(expr)
+#'ffbase:::chunkexpr(expr)
 #'# results in: expression(x[.i] <- 1)
 #'
-#'chunkexpr(expression(z <- x+y), c("y","z"), prefix="data$")
+#'ffbase:::chunkexpr(expression(z <- x+y), c("y","z"), prefix="data$")
 #'# results in: expression(data$z[.i] <- x + data$y[.i])
 #'@param expr \code{expression} vector or language object
 #'@param x \code{character} with variables to be chunked
