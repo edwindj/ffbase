@@ -11,4 +11,7 @@ Encoding: UTF-8
 
 RnwWeave: Sweave
 LaTeX: pdfLaTeX
-RootDocument: 
+
+BuildType: Package
+PackagePath: pkg
+PackageInstallArgs: --no-multiarch

@@ -40,7 +40,7 @@ chunkify <- function(fun){
 #'# results in: expression(data$z[.i] <- x + data$y[.i])
 #'@param expr \code{expression} vector or language object
 #'@param x \code{character} with variables to be chunked
-#'@param i name of index that will be used in the for loop, typically a \code{\link{ri}} or \code{hi}.
+#'@param i name of index that will be used in the for loop, typically a \code{ri} or \code{hi}.
 #'@param prefix prefix for variables to be replaced.
 #'@keywords internal
 chunkexpr <- function(expr, x = all.vars(expr), i=".i", prefix=""){
