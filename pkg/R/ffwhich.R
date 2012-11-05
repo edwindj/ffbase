@@ -37,27 +37,28 @@ ffwhich.ff_vector <- function(x, expr, ...){
 #' @method ffwhich ffdf
 #' @export
 ffwhich.ffdf <- function(x, expr, ...){
+  ._x <- x
   es <- substitute(expr)  
   try( { if (is.expression(expr)){
            es <- expr
          } else {
-           x$.filter <- as.ff(expr)
-           e <- expression(x$.filter[.i])
+           ._x$.filter <- as.ff(expr)
+           e <- expression(._x$.filter[.i])
          }
        }
       , silent=TRUE
       )
 
-  if (is.null(x$.filter)){
+  if (is.null(._x$.filter)){
     #### chunkify expression
-    e <- chunkexpr(es, names(x), prefix="x$")
+    e <- chunkexpr(es, names(x), prefix="._x$")
   }
   ####
   
   #print(list(e=e, es=es))
   
   fltr <- NULL
-  for (.i in chunk(x, ...)){
+  for (.i in chunk(._x, ...)){
     a <- which(eval(e)) +  min(.i) - 1L
     if (length(a))
       fltr <- ffappend(fltr, a)
