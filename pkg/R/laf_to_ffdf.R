@@ -2,7 +2,8 @@
 #'
 #' Use \code{LaF} to import data into a \code{\link{ffdf}} data.frame
 #' @param laf laf object pointing to a csv or fwf file
-#' @param x optional, \code{\link{ffdf}} object where laf data should be appended to. 
+#' @param x optional, \code{\link{ffdf}} object where laf data should be appended to.
+#' @param nrows, number of rows per block, passed on to \code{next_block} 
 #' @param ... passed on to \code{next_block}
 #' @export
 laf_to_ffdf <- function(laf, x=NULL, nrows=1e5, ...){
