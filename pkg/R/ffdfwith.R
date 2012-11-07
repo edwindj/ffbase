@@ -16,10 +16,10 @@
 ffdfwith <- function(data, expr, ...){
    
    es <- as.expression(substitute(expr))
-   e <- chunkexpr(es, names(data), prefix=".x$")
-   .x <- data
+   e <- chunkexpr(es, names(data), prefix="._x$")
+   ._x <- data
    
-   chunks <- chunk(.x, ...)
+   chunks <- chunk(._x, ...)
    
    .i <- chunks[[1]]
    res <- eval(e)
