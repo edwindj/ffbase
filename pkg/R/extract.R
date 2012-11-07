@@ -1,6 +1,3 @@
-get.ff.default <- get(x="[.ff")
-set.ff.default <- get(x="[<-.ff")
-
 #' Reading and writing vectors extended to handle logical \code{ff} vectors as indexes
 #'
 #' Package \code{ff} does not allow to extract and set values of \code{ff} vectors based on logical \code{ff} vectors. For this reason
@@ -31,9 +28,9 @@ set.ff.default <- get(x="[<-.ff")
 			return(NULL)
 		}
 		finalizer(idx) <- "delete"
-		get.ff.default(x=x, i=idx, pack=pack)
+		ff::`[.ff`(x=x, i=idx, pack=pack)
 	}else{
-		get.ff.default(x=x, i=i, pack=pack)
+		ff::`[.ff`(x=x, i=i, pack=pack)
 	}	
 }
 
@@ -47,10 +44,8 @@ set.ff.default <- get(x="[<-.ff")
 			stop("no value for replacement")
 		}
 		finalizer(idx) <- "delete"
-		set.ff.default(x=x, i=idx, add=add, pack=pack, value=value)
+		ff::`[<-.ff`(x=x, i=idx, add=add, pack=pack, value=value)
 	}else{
-		set.ff.default(x=x, i=i, add=add, pack=pack, value=value)
+		ff::`[<-.ff`(x=x, i=i, add=add, pack=pack, value=value)
 	}	
 }
-
-
