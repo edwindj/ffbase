@@ -1,3 +1,9 @@
+version 0.7
+- Added bigglm.ffdf to allow to fit a bounded memory linear regression model using package biglm
+
+version 0.6-1
+- Fixed CRAN check issue
+
 version 0.6
 - Added bySum and bySumsq
 - Fixed a bug in ffappend for adding factors (this also fixes a bugs in cut.ff)
