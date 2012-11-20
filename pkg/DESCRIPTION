@@ -6,7 +6,7 @@ Type: Package
 LazyLoad: yes
 Author: Edwin de Jonge, Jan Wijffels
 Description: Basic (statistical) functionality for package ff
-Version: 0.7
+Version: 0.6-2
 URL: http://code.google.com/p/fffunctions/
 Date: 2011-11-1
 Depends:
@@ -62,5 +62,4 @@ Collate:
     'expand_ffgrid.R'
     'ffrep.R'
     'ffseq.R'
-    'extract.R'
     'bigglm.R'

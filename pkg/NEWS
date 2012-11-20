@@ -1,5 +1,6 @@
-version 0.7
+version 0.6-2
 - Added bigglm.ffdf to allow to fit a bounded memory linear regression model using package biglm
+- Removed the overloading of "[.ff" and "[<-.ff" which is causing R crashes due to .Call of C code in package ff directly
 
 version 0.6-1
 - Fixed CRAN check issue
