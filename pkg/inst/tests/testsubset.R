@@ -8,7 +8,7 @@ test_that("Subsetting ff vector works",{
    ss <- x < 5
    fx <- ff(x)
    fss <- ff(ss)
-   expect_identical(subset(x, ss), subset(fx,ss)[])   
+   expect_identical(subset(x, ss), subset(fx,fss)[])   
 })
 
 test_that("Subsetting ffdf works",{
