@@ -16,11 +16,23 @@ subset.ff <- function(x, subset, ...){
 	y
 }
 
-subset.ffdf <- function(x, subset, select, ...){
-  ss <- as.expression(substitute(subset))
-  try(ss <- subset, silent=TRUE)
-  idx <- ffwhich(x, ss)
-  x[idx,select]
+subset.ffdf <- function(x, subset, select, drop = FALSE, ...){
+  
+  if (missing(subset)){
+    idx = ffseq_len(nrow(x))
+  } else {  
+    ss <- as.expression(substitute(subset))
+    try(ss <- subset, silent=TRUE)
+    idx <- ffwhich(x, ss)
+  }
+  if (missing(select)){
+    select <- names(x)
+  } else {
+    nl <- as.list(seq_along(x))
+    names(nl) <- names(x)
+    select <- eval(substitute(select), nl, parent.frame())
+  }
+  x[idx, select, drop=drop]
 }
 
 
