@@ -11,6 +11,17 @@ test_that("Subsetting ff vector works",{
    expect_identical(subset(x, ss), subset(fx,fss)[])   
 })
 
+test_that("Subsetting ff vector with NA works correctly",{
+  x <- c(7,3,NA,2)
+  fx <- as.ff(x)
+  
+  ss <- subset(x, x < 5)
+  fss <- subset(fx, fx < 5)
+  
+  expect_identical(fss[], ss)   
+})
+
+
 test_that("Subsetting ffdf works",{
   x <- iris
   fx <- as.ffdf(iris)
