@@ -8,7 +8,7 @@
 #' @param x an \code{ffdf}
 #' @param ... other parameters passed on to chunk
 #' @return An integer ff vector of the same length as the number of rows in \code{x} with unique values for each unique row
-key <- function(x, ...){
+ikey <- function(x, ...){
 	o <- ffdforder(x, na.last = TRUE, decreasing = FALSE)
 	xo <- x[o, , drop=TRUE]
 	idx <- duplicated(xo)
