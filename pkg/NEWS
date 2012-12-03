@@ -1,3 +1,9 @@
+version 0.6-3
+- Put the bigglm example in a dontrun block
+- Allowed key to work also on an ffdf with only 1 column
+- ffappend now works directly with is.factor.ff instead of is.factor
+- changed function key to ikey: request of http://code.google.com/p/fffunctions/issues/detail?id=3
+
 version 0.6-2
 - Added bigglm.ffdf to allow to fit a bounded memory linear regression model using package biglm
 - Removed the overloading of "[.ff" and "[<-.ff" which is causing R crashes due to .Call of C code in package ff directly. Will be put back later on when the reason is cleared out

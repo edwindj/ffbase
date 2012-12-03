@@ -12,7 +12,17 @@
 #' @return An object of class bigglm. See the bigglm package for a description: \code{\link[biglm]{bigglm}}
 #' @export 
 #' @seealso \code{\link[biglm]{bigglm}}
-#' @example ../examples/bigglm.R
+#' @examples
+#' \dontrun{
+#' require(biglm)
+#' data(trees)
+#' x <- as.ffdf(trees)
+#' a <- bigglm(log(Volume)~log(Girth)+log(Height), data=x, chunksize=10, sandwich=TRUE)
+#' summary(a)
+#' 
+#' b <- bigglm(log(Volume)~log(Girth)+log(Height)+offset(2*log(Girth)+log(Height)), data=x, chunksize=10, sandwich=TRUE)
+#' summary(b)
+#' }
 bigglm.ffdf<-function(formula, data, family = gaussian(), ..., chunksize=5000){
   
   if (!require(biglm)){
