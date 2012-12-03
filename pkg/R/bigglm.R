@@ -12,17 +12,7 @@
 #' @return An object of class bigglm. See the bigglm package for a description: \code{\link[biglm]{bigglm}}
 #' @export 
 #' @seealso \code{\link[biglm]{bigglm}}
-#' @examples
-#' \dontrun{
-#' require(biglm)
-#' data(trees)
-#' x <- as.ffdf(trees)
-#' a <- bigglm(log(Volume)~log(Girth)+log(Height), data=x, chunksize=10, sandwich=TRUE)
-#' summary(a)
-#' 
-#' b <- bigglm(log(Volume)~log(Girth)+log(Height)+offset(2*log(Girth)+log(Height)), data=x, chunksize=10, sandwich=TRUE)
-#' summary(b)
-#' }
+#' @example ../examples/bigglm.R
 bigglm.ffdf<-function(formula, data, family = gaussian(), ..., chunksize=5000){
   if (!require(biglm)){
     stop("This function needs the package 'biglm', which can be installed from CRAN")
@@ -34,9 +24,9 @@ bigglm.ffdf<-function(formula, data, family = gaussian(), ..., chunksize=5000){
   vars<-unique(c(modelvars,dotvars))
 
   tablevars<-vars[vars %in% colnames(data)]
-  chunks <- bit::chunk(1, NROW(data), by = chunksize)
+  chunks <- bit::chunk(1, nrow(data), by = chunksize)
   got<-0
-  chunk<-function(reset=FALSE){
+  ffchunk<-function(reset=FALSE){
     if(reset){
       if(got>0){
         got<<-0
@@ -49,7 +39,7 @@ bigglm.ffdf<-function(formula, data, family = gaussian(), ..., chunksize=5000){
     got<<-got+1
     return(rval)
   }
-  rval<-bigglm(formula, data=chunk, family=family, ...)
+  rval<-bigglm(formula, data=ffchunk, family=family, ...)
   rval$call<-sys.call()
   #rval$call[[1]]<-as.name(.Generic)
   rval$call[[1]]<-as.name("bigglm")
