@@ -48,6 +48,8 @@ opsff_compare_logic <- function(e1, e2, ops) {
 }
 mathff_math <- function(e1, math) {
   i1 <- i2 <- 0L
+  opts <- options(warn=-1)
+  on.exit(options(opts))
   expr <- switch(math,                       
                  "abs" = expression(abs(e1[i1:i2])),
                  "sign" = expression(sign(e1[i1:i2])),
