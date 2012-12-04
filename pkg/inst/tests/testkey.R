@@ -1,12 +1,12 @@
 library(testthat)
 library(ff)
 
-context("key")
+context("ikey")
 
 oldffmaxbytes <- getOption("ffmaxbytes")
 options(ffmaxbytes = 20)
 
-test_that("key works",{
+test_that("ikey works",{
 	data(iris)
 	ffiris <- iris[dforder(iris[c("Petal.Width","Species")][,]),]
 	rownames(ffiris) <- NULL
@@ -14,7 +14,7 @@ test_that("key works",{
 	
 	test.ram <- ffiris[c("Petal.Width","Species")][,]
 	test.ram <- cumsum(!duplicated(test.ram))
-	test.ff <- key(ffiris[c("Petal.Width","Species")])
+	test.ff <- ikey(ffiris[c("Petal.Width","Species")])
 	expect_equal( test.ram
 	            , test.ff[]
 				      )
