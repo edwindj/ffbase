@@ -1,8 +1,8 @@
 version 0.6-3
-- Put the bigglm example in a dontrun block
-- Allowed key to work also on an ffdf with only 1 column
+- Made sure bigglm.ffdf also works in R version 2.14.2 (reported by Uwe Ligges)
 - ffappend now works directly with is.factor.ff instead of is.factor
 - BREAKING CHANGE: changed function key to ikey: request of http://code.google.com/p/fffunctions/issues/detail?id=3
+- Allowed ikey to work also on an ffdf with only 1 column
 
 version 0.6-2
 - Added bigglm.ffdf to allow to fit a bounded memory linear regression model using package biglm
