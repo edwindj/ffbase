@@ -1,3 +1,6 @@
+version 0.6-1
+- fixed a warning for overloading extract functions
+
 version 0.6
 - Added bySum and bySumsq
 - Fixed a bug in ffappend for adding factors (this also fixes a bugs in cut.ff)
