@@ -8,19 +8,33 @@
 #' @param ... not used
 #' @return a new ff vector containing the subset, data is physically copied
 subset.ff <- function(x, subset, ...){
-	#y <- ff(length=sum(subset), vmode=vmode(x))
-	y <- clone(x)
-	length(y) <- sum(subset, na.rm=TRUE)
-   #TODO fix this for very large subsets...
-	y[] <- x[subset]
-	y
-}
-
-subset.ffdf <- function(x, subset, select, ...){
+  if (missing(subset)){
+    return(clone(x))
+  }
   ss <- as.expression(substitute(subset))
   try(ss <- subset, silent=TRUE)
-  idx <- ffwhich(x, ss)
-  x[idx,select]
+  .ffdf <- ffdf(x=x)
+  idx <- ffwhich(.ffdf, ss)
+	x[idx]
+}
+
+subset.ffdf <- function(x, subset, select, drop = FALSE, ...){
+  
+  if (missing(subset)){
+    idx = ffseq_len(nrow(x))
+  } else {  
+    ss <- as.expression(substitute(subset))
+    try(ss <- subset, silent=TRUE)
+    idx <- ffwhich(x, ss)
+  }
+  if (missing(select)){
+    select <- names(x)
+  } else {
+    nl <- as.list(seq_along(x))
+    names(nl) <- names(x)
+    select <- eval(substitute(select), nl, parent.frame())
+  }
+  x[idx, select, drop=drop]
 }
 
 

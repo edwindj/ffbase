@@ -8,8 +8,35 @@ test_that("Subsetting ff vector works",{
    ss <- x < 5
    fx <- ff(x)
    fss <- ff(ss)
-   expect_identical(subset(x, ss), subset(fx,ss)[])   
+   expect_identical(subset(x, ss), subset(fx,fss)[])   
 })
 
+test_that("Subsetting ff vector with NA works correctly",{
+  x <- c(7,3,NA,2)
+  fx <- as.ff(x)
+  
+  ss <- subset(x, x < 5)
+  fss <- subset(fx, fx < 5)
+  
+  expect_identical(fss[], ss)   
+})
+
+
 test_that("Subsetting ffdf works",{
+  x <- iris
+  fx <- as.ffdf(iris)
+  
+  sx <- subset(x)
+  sfx <- subset(fx)
+  
+  expect_equivalent(sfx[,], sx)
+  
+  sx <- subset(x, select=Species)
+  sfx <- subset(fx, select=Species)
+  expect_equivalent(sfx[,,drop=FALSE], sx)
+  
+  sx <- subset(x, subset=Species=="setosa", select=Species)
+  sfx <- subset(fx, subset=Species=="setosa", select=Species)
+  expect_equivalent(sfx[,,drop=FALSE], sx)
+  
 })

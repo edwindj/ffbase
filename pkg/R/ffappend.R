@@ -38,9 +38,8 @@ ffappend <- function(x, y, adjustvmode=TRUE, ...){
    to <- length(y)
    if (!to) return(x)
    
-   length(x) <- len + to
-   
-   if (is.factor(x)){
+   length(x) <- len + to 
+   if (is.factor.ff(x)){
       levels(x) <- appendLevels(levels(x), levels(y))  
    }
    ## Upgrade to a higher vmode if needed
@@ -76,7 +75,7 @@ ffdfappend <- function(  x
                        ){
   
   fc <- if (is.ffdf(dat)){ 
-    sapply(physical(dat), function(i) is.factor(i) || is.character(i))
+    sapply(physical(dat), function(i) is.factor.ff(i) || is.character(i))
   } else {
     sapply(dat, function(i) is.factor(i) || is.character(i))    
   }

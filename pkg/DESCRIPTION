@@ -6,15 +6,18 @@ Type: Package
 LazyLoad: yes
 Author: Edwin de Jonge, Jan Wijffels
 Description: Basic (statistical) functionality for package ff
-Version: 0.6-1
+Version: 0.6-3
 URL: http://code.google.com/p/fffunctions/
 Date: 2011-11-1
 Depends:
-    ff (>= 2.2-0)
+    ff (>= 2.2-0),
+    bit,
+    R (>= 2.12.0)
 Suggests:
     testthat,
     parallel,
-    LaF
+    LaF,
+    biglm
 Collate:
     'auxilary.R'
     'chunkify.R'
@@ -54,10 +57,10 @@ Collate:
     'save_ffdf.R'
     'bySum.R'
     'byMean.R'
-    'key.R'
     'ffifelse.R'
     'as.R'
     'expand_ffgrid.R'
     'ffrep.R'
     'ffseq.R'
-    'extract.R'
+    'bigglm.R'
+    'ikey.R'
