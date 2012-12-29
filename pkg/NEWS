@@ -1,3 +1,6 @@
+version 0.7
+- Fixed bug, thanks to 该走了
+
 version 0.6-3
 - Made sure bigglm.ffdf also works in R version 2.14.2 (reported by Uwe Ligges)
 - ffappend now works directly with is.factor.ff instead of is.factor
