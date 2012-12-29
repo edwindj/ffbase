@@ -28,7 +28,7 @@ ffwhich.ff_vector <- function(x, expr, ...){
   
   fltr <- NULL
   for (.i in chunk(.x, ...)){
-    idx  <- which(eval(e)) +  min(.i) - 1L
+    idx  <- which(eval(e, list(.i=.i, .x=.x), parent.frame())) +  min(.i) - 1L
     fltr <- ffappend(fltr, idx, ...)
   }
   fltr
@@ -59,7 +59,7 @@ ffwhich.ffdf <- function(x, expr, ...){
   
   fltr <- NULL
   for (.i in chunk(._x, ...)){
-    a <- which(eval(e)) +  min(.i) - 1L
+    a <- which(eval(e, list(._x=._x, .i = .i)), enclos=parent.frame()) +  min(.i) - 1L
     if (length(a))
       fltr <- ffappend(fltr, a)
   }
