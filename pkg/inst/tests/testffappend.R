@@ -31,6 +31,11 @@ test_that("Concatenating ff vector works",{
    expect_identical(z[], c(x[],y[]))
    z <- c(x, y, x)
    expect_equal(length(z), length(x)+length(y)+length(x))
+
+   a <- ff(factor(LETTERS[1:5]))
+   b <- ff(factor(LETTERS[5:7]))
+   expect_identical(c(as.character(a[]), as.character(b[])), as.character(ffappend(a, b)[]))
+
 })
 
 test_that("Appending dataframe to ffdf works",{
