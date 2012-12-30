@@ -14,13 +14,13 @@ compact <- function(x, use.na=TRUE, ...){
 }
 
 compact.ff <- function(x, use.na=TRUE,...){
-   vm <- which(.vmode == vmode(x))
+   vm <- which(.vmode == vmode(x))[1]
    if (vm > 9){
      return(x)
    }
    
-   idx <- 1:vm
-   if (is.factor(x)){
+   idx <- seq_len(vm)
+   if (is.factor.ff(x)){
      r <- c(1, nlevels(x))
    } else {
      r <- range(x, na.rm=TRUE)
