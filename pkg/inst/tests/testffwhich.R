@@ -26,3 +26,12 @@ test_that("ffwhich on data.frame works",{
   expect_equivalent(c(7,8), fidx[])   
 })
 
+test_that("ffwhich evaluates variables correctly",{
+  f <- function(x) {
+    a <- 1
+    b <- 3
+    ffwhich(x, x > a & x < b)
+  }
+  x <- ff(1:10)
+  expect_that(f(x)[], equals(2))
+})
