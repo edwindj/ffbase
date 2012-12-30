@@ -1,5 +1,5 @@
 version 0.7
-- Fixed bug, thanks to 该走了
+- Fixed bug in ffwhich: variables in expression could not be evaluated, thanks to 该走了
 
 version 0.6-3
 - Made sure bigglm.ffdf also works in R version 2.14.2 (reported by Uwe Ligges)
