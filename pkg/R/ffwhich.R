@@ -59,7 +59,7 @@ ffwhich.ffdf <- function(x, expr, ...){
   
   fltr <- NULL
   for (.i in chunk(._x, ...)){
-    a <- which(eval(e, list(._x=._x, .i = .i)), enclos=parent.frame()) +  min(.i) - 1L
+    a <- which(eval(e, list(._x=._x, .i = .i), enclos=parent.frame())) +  min(.i) - 1L
     if (length(a))
       fltr <- ffappend(fltr, a)
   }
