@@ -19,16 +19,18 @@ ffwhich.ff_vector <- function(x, expr, ...){
   #chunkify expression
   es <- deparse(substitute(expr))
   xs <- deparse(substitute(x))
-  .x <- x
   
   varre <- paste("\\b(",xs,")\\b", sep="")
   es <- gsub(varre, ".x[.i]", es)
   e <- parse(text=es)
   ###
   
+  nl <- list(.x=x)
+  
   fltr <- NULL
-  for (.i in chunk(.x, ...)){
-    idx  <- which(eval(e, list(.i=.i, .x=.x), parent.frame())) +  min(.i) - 1L
+  for (.i in chunk(x, ...)){
+    nl$.i = .i
+    idx  <- which(eval(e, nl, parent.frame())) +  min(.i) - 1L
     fltr <- ffappend(fltr, idx, ...)
   }
   fltr
@@ -37,29 +39,29 @@ ffwhich.ff_vector <- function(x, expr, ...){
 #' @method ffwhich ffdf
 #' @export
 ffwhich.ffdf <- function(x, expr, ...){
-  ._x <- x
+  nl <- list(._x = x)
   es <- substitute(expr)  
   try( { if (is.expression(expr)){
            es <- expr
          } else {
-           ._x$.filter <- as.ff(expr)
-           e <- expression(._x$.filter[.i])
+           nl$.filter <- as.ff(expr)
+           e <- expression(.filter[.i])
          }
        }
       , silent=TRUE
       )
 
-  if (is.null(._x$.filter)){
+  if (is.null(nl$.filter)){
     #### chunkify expression
     e <- chunkexpr(es, names(x), prefix="._x$")
   }
   ####
   
   #print(list(e=e, es=es))
-  
   fltr <- NULL
-  for (.i in chunk(._x, ...)){
-    a <- which(eval(e, list(._x=._x, .i = .i), enclos=parent.frame())) +  min(.i) - 1L
+  for (.i in chunk(x, ...)){
+    nl$.i <- .i
+    a <- which(eval(e, nl, parent.frame())) +  min(.i) - 1L
     if (length(a))
       fltr <- ffappend(fltr, a)
   }

@@ -16,13 +16,17 @@
 ffdfwith <- function(data, expr, ...){
    
    es <- as.expression(substitute(expr))
+   
+   # prefix all names of the data.frame in the expression with ._x$ 
    e <- chunkexpr(es, names(data), prefix="._x$")
-   ._x <- data
    
-   chunks <- chunk(._x, ...)
+   chunks <- chunk(data, ...)
    
-   .i <- chunks[[1]]
-   res <- eval(e)
+   nl <- list( .i = chunks[[1]]
+             , ._x = data
+             )
+   
+   res <- eval(e, nl, parent.frame())
    
    fc <- FALSE
    if (is.character(res) || is.factor(res)){
@@ -37,7 +41,8 @@ ffdfwith <- function(data, expr, ...){
       res <- as.ff(res)
       length(res) <- nrow(data)
       for (.i in chunks[-1]){
-        r <- eval(e)
+        nl$.i <- .i
+        r <- eval(e, nl, parent.frame())
         if (fc){
              r <- as.factor(r)
              levels(res) <- appendLevels(res, levels(r))
@@ -48,7 +53,8 @@ ffdfwith <- function(data, expr, ...){
       res <- as.ffdf(res)
       nrow(res) <- nrow(data)
       for (.i in chunks[-1]){
-        r <- eval(e)
+        nl$.i <- .i
+        r <- eval(e, nl, parent.frame())
         if (any(fc)){
            r[fc] <- lapply(which(fc), function(x) {
                 r[[x]] <- as.factor(r[[x]])
