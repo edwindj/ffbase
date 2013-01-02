@@ -1,6 +1,6 @@
 #' Sequence Generation of \code{ff} vectors.
 #'
-#' Similar as \code{seq_len} in the base package generates an \code{ff} vector.
+#' Similar as \code{seq_len} in the base package, generating an \code{ff} vector.
 #'
 #' @export
 #' @example ../examples/ffseq.R
@@ -25,7 +25,7 @@ ffseq_len <- function(length.out){
 
 #' Sequence Generation of \code{ff} vectors.
 #'
-#' Similar as \code{seq} in the base package generates an \code{ff} vector.
+#' Similar as \code{seq} in the base package, generating an \code{ff} vector.
 #'
 #' @export
 #' @example ../examples/ffseq.R
@@ -37,7 +37,7 @@ ffseq_len <- function(length.out){
 #' @param ... arguments passed to or from methods
 #' @return An ff vector with the generated sequence, similar as what \code{seq} generates but as an ff vector. \cr
 #' Mark: in case this would generate a sequence of length 0, will return integer().
-#' @seealso \code{\link[base]{seq_len}}
+#' @seealso \code{\link[base]{seq}}
 ffseq <- function(from = 1, to = 1, by = ((to - from)/(length.out - 1)), 
                   length.out = NULL, along.with = NULL, ...){
   if ((One <- nargs() == 1L) && !missing(from)) {
