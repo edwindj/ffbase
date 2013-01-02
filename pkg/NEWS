@@ -1,3 +1,6 @@
+version 0.7-1
+- Added function ffseq
+
 version 0.7
 - Fixed bug in ffwhich: variables in expression could not be evaluated, thanks to 该走了
 
