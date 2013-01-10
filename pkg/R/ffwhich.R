@@ -15,7 +15,7 @@ ffwhich <- function(x, expr, ...){
 
 #' @method ffwhich ff_vector
 #' @export
-ffwhich.ff_vector <- function(x, expr, ...){
+ffwhich.ff_vector <- function(x, expr, ..., envir=parent.frame()){
   #chunkify expression
   es <- deparse(substitute(expr))
   xs <- deparse(substitute(x))
@@ -30,7 +30,7 @@ ffwhich.ff_vector <- function(x, expr, ...){
   fltr <- NULL
   for (.i in chunk(x, ...)){
     nl$.i = .i
-    idx  <- which(eval(e, nl, parent.frame())) +  min(.i) - 1L
+    idx  <- which(eval(e, nl, envir)) +  min(.i) - 1L
     fltr <- ffappend(fltr, idx, ...)
   }
   fltr
@@ -38,7 +38,7 @@ ffwhich.ff_vector <- function(x, expr, ...){
 
 #' @method ffwhich ffdf
 #' @export
-ffwhich.ffdf <- function(x, expr, ...){
+ffwhich.ffdf <- function(x, expr, ..., envir=parent.frame()){
   nl <- list(._x = x)
   es <- substitute(expr)  
   try( { if (is.expression(expr)){
@@ -61,7 +61,7 @@ ffwhich.ffdf <- function(x, expr, ...){
   fltr <- NULL
   for (.i in chunk(x, ...)){
     nl$.i <- .i
-    a <- which(eval(e, nl, parent.frame())) +  min(.i) - 1L
+    a <- which(eval(e, nl, envir)) +  min(.i) - 1L
     if (length(a))
       fltr <- ffappend(fltr, a)
   }

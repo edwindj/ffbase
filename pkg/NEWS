@@ -1,3 +1,6 @@
+version 0.7-1
+- Fixed bug in subset/ffwhich: variables in function body could not be evaluated, thanks to 该走了
+
 version 0.7
 - Fixed bug in ffwhich: variables in expression could not be evaluated, thanks to 该走了
 

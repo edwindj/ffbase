@@ -3,10 +3,11 @@ library(ff)
 
 context("ikey")
 
-oldffmaxbytes <- getOption("ffmaxbytes")
-options(ffmaxbytes = 20)
-
 test_that("ikey works",{
+  
+  opts <- options(ffmaxbytes=20)
+  on.exit(options(opts))
+  
 	data(iris)
 	ffiris <- iris[dforder(iris[c("Petal.Width","Species")][,]),]
 	rownames(ffiris) <- NULL
@@ -19,6 +20,3 @@ test_that("ikey works",{
 	            , test.ff[]
 				      )
 })
-
-options(ffmaxbytes = oldffmaxbytes)
-

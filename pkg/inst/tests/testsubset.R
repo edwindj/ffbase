@@ -38,5 +38,14 @@ test_that("Subsetting ffdf works",{
   sx <- subset(x, subset=Species=="setosa", select=Species)
   sfx <- subset(fx, subset=Species=="setosa", select=Species)
   expect_equivalent(sfx[,,drop=FALSE], sx)
-  
+})
+
+test_that("Subsetting ffdf within a function works",{
+  test <- function(x) {    
+    a <- 1
+    b <- 3
+    subset(x, value > a & value < b)
+  }
+  m <- as.ffdf(data.frame(name = letters[1:10], value = 1:10))
+  test(m)
 })
