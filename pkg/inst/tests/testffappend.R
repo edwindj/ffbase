@@ -47,6 +47,14 @@ test_that("Appending dataframe to ffdf works",{
 	expect_equal(nrow(fdat),2*nrow(dat))
 })
 
+test_that("Appending ffdf to ffdf works",{
+   dat <- as.ffdf(data.frame(x=1:3, y=3:1, z=as.factor(c("a","b","c"))))
+   fdat <- NULL
+   fdat <-ffdfappend(fdat, dat)
+   expect_identical(dat[,],fdat[,])
+   fdat <- ffdfappend(fdat,dat)
+   expect_equal(nrow(fdat),2*nrow(dat))
+})
 
 test_that("Coercing an ff vector works",{
    x <- 1:100
