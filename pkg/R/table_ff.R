@@ -22,6 +22,7 @@ table.ff <- function( ...
   ###
   args <- list(...)
   tab <- NULL
+  useNA <- match.arg(useNA)
   
   dat <- do.call(ffdf, args) # create a ffdf  for estimating good chunking size and checking if ... have equal length
   
