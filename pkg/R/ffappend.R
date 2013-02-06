@@ -87,7 +87,8 @@ ffdfappend <- function(  x
   }
   
   if (is.null(x)){
-      return(as.ffdf(dat, ...))
+      if (is.ffdf(dat)) { return(dat)
+      } else return(as.ffdf(dat, ...))
   }
      
    n <- nrow(dat)
