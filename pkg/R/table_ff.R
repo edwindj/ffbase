@@ -25,21 +25,21 @@ table.ff <- function( ...
   useNA <- match.arg(useNA)
   
   dat <- do.call(ffdf, args) # create a ffdf  for estimating good chunking size and checking if ... have equal length
-  
+  colnames(dat) <- names(args)
   ### Cover non-factors like integers by adding a levels attribute
   if(sum(!vmode(dat) %in% c("integer")) > 0){  	
     stop(sprintf("Only vmodes integer currently allowed - are you sure ... contains only factors or integers?"))
   }
-  nonfactors <- sapply(colnames(dat), FUN=function(column, dat) !is.factor(dat[[column]]), dat=dat)
+  nonfactors <- sapply(colnames(dat), FUN=function(column, dat) !is.factor.ff(dat[[column]]), dat=dat)
   nonfactors <- names(nonfactors)[nonfactors == TRUE]
-  for(column in nonfactors){
-    levels(dat[[column]]) <- unique(dat[[column]])[]
+  if(length(nonfactors) > 0){
+    for(column in nonfactors){
+      dat[[column]] <- as.character.ff(dat[[column]])
+    } 
   }
   
   for (i in chunk(dat)){
-    factors <- lapply(args, function(f){
-      f[i]
-    })
+    factors <- as.list(dat[i,, drop=FALSE])
     factors$exclude <- exclude
     factors$useNA <- useNA
     factors$deparse.level <- deparse.level
