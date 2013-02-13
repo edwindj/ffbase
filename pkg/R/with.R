@@ -29,7 +29,7 @@ with.ffdf <- function(data, expr, ...){
      fc <- sapply(res, function(x) is.factor(x) || is.character(x))
      res[fc] <- lapply(res[fc], as.factor)
    }
-   if (is.vector(res) || is.factor(res)){
+   if (is.vector(res) || is.factor(res) || inherits(res, "Date") || inherits(res, "POSIXct")){
       res <- as.ff(res)
       length(res) <- nrow(data)
       for (i in chunks[-1]){
