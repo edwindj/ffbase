@@ -1,34 +1,40 @@
-rle.ff <- function(x, ...){
-  rles <- lapply(chunk(x, ...), function(i){
-    do.call(cbind, rle(x[i]))
-  })
-  
-  prev_i <- 1
-  for (i in seq_along(rles)[-1]){
-    r <- rles[[i]]
-    r_prev <- rles[[prev_i]]
-    N <- nrow(r_prev)
-    
-    if (r[1,2] == r_prev[N, 2]){
-      r_prev[N, 1] <- r_prev[N, 1] + r[1,1]
-      r <- r[-1,]
+#' Compute the lengths and values of runs of equal values in a vector
+#'
+#' Similar \code{\link{rle}} in the base package but for \code{\link{ff}} 
+#' vectors.
+#'
+#' @param x an \code{\link{ff}} vector
+#' @param ... further arguments are passed on the \code{\link{chunk}}
+#'
+#' @return An object of class \code{rle} which is a list with components
+#' \describe{
+#'   \item{lengths}{an integer vector containing the length of each run.}
+#'   \item{values}{a vector of the same length as `lenghts' with the 
+#'      corresponding values.}
+#' }
+#'
+#' 
+#' @seealso \code{\link{rle}} for an implemtation the runs on ordinary vectors.
+#' 
+#' @export
+rle_ff <- function(x, ...) {
+
+    #chunks <- chunk(x, ...)
+    chunks <- chunk(x)
+    rles   <- vector(length(chunks), mode="list")
+    for (i in seq_along(chunks)) {
+        rles[[i]] <- do.call(cbind, rle(x[chunks[[i]]]))
+        # check for overlap with previous chunk
+        if (i > 1 && rles[[i]][1,2] == rles[[i-1]][nrow(rles[[i-1]]),2]) {
+            rles[[i-1]][nrow(rles[[i-1]]),1] <- rles[[i-1]][nrow(rles[[i-1]]),1] +
+                rles[[i]][1,1]
+            rles[[i]] <- rles[[i]][-1,]
+        }
     }
-    rles2 <-
-  }
-  
-  #TODO remove duplicate rows
-  rles <- do.call(rbind, rles)
-  values <- rles[,2]
-  lengths <- rles[,1]
-  print(which(diff(values) == 0))
-  structure( list(lengths=lengths, values=values)
-           , class="rle"
-           )
+
+    rles    <- do.call(rbind, rles)
+    values  <- rles[,2]
+    lengths <- rles[,1]
+    structure( list(lengths=lengths, values=values) , class="rle")
 }
 
-require(ff)
-x <- sample(3, 100, replace=TRUE)
-fx <- ff(x)
-rle.ff(fx, by=100)
-rle.ff(fx, by=10) -> l
-l
