@@ -4,7 +4,7 @@ License: GPL-3
 Title: Basic statistical functions for package ff
 Type: Package
 LazyLoad: yes
-Author: Edwin de Jonge, Jan Wijffels
+Author: Edwin de Jonge, Jan Wijffels, Jan van der Laan
 Description: Basic (statistical) functionality for package ff
 Version: 0.7-1
 URL: http://code.google.com/p/fffunctions/
