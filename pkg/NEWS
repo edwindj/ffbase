@@ -1,5 +1,6 @@
 version 0.7-1
 - Fixed bug in subset/ffwhich: variables in function body could not be evaluated, thanks to 该走了
+- Fixed bug in cut.ff, thanks to Gordon An
 - Added function ffseq
 
 version 0.7
