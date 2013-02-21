@@ -36,7 +36,6 @@ cut.ff <- function(x, breaks, ...){
      args$x <- x[i]
      res <- do.call(cut, args)
      f <- ffappend( f
-                  , do.call(cut, args)
                   , res
                   , adjustvmode=FALSE
                   )
