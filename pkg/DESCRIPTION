@@ -7,7 +7,7 @@ LazyLoad: yes
 Author: Edwin de Jonge, Jan Wijffels, Jan van der Laan
 Description: Basic (statistical) functionality for package ff
 Version: 0.7-1
-URL: http://code.google.com/p/fffunctions/
+URL: http://github.com/edwindj/ffbase
 Date: 2011-11-1
 Depends:
     ff (>= 2.2-0),

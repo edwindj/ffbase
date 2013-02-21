@@ -9,8 +9,14 @@ but lacks at the moment some standard statistical methods.
 The intention of `ffbase` is to provide the basic statistical functions for ff objects, 
 so programming with ff will be easier.
 
-To install ffbase:
+To install ffbase from CRAN:
 
 ```
 install.packages("ffbase")
+```
+
+To install the latest version from github
+```
+library(devtools)
+install_github("ffbase", "edwindj", subdir="pkg")
 ```
