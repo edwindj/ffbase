@@ -65,3 +65,4 @@ Collate:
     'bigglm.R'
     'ikey.R'
     'rle_ff.R'
+    'ffrandom.R'
