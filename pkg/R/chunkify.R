@@ -12,17 +12,15 @@ chunkify <- function (fun){
     i <- chunks[[1]]
     res <- fun(x[i], ...)
     if(inherits(res, "character")){
-      res <- as.factor(res)
+      res <- as.ff(as.factor(res))
       ret <- ffappend(x=NULL, y=res)
       for (i in chunks[-1]) {
-        res <- fun(x[i], ...)
-        if(inherits(res, "character")){
-          res <- as.factor(res)
-        }
+        res <- as.ff(as.factor(fun(x[i], ...)))
         ret <- ffappend(x=ret, y=res)
       }
+      ret
     }else{
-      ret <- res
+      ret <- as.ff(res)
       length(ret) <- length(x)
       for (i in chunks[-1]) {
         ret[i] <- fun(x[i], ...)
