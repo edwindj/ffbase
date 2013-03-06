@@ -66,3 +66,4 @@ Collate:
     'ikey.R'
     'rle_ff.R'
     'ffrandom.R'
+    'date_formatting.R'

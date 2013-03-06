@@ -6,24 +6,32 @@
 #' @param fun function to be 'chunkified', the function must accept a vector and 
 #'    return a vector of the same \code{length}
 #' @return 'chunkified' function that accepts a \code{ff} vector as its first argument.
-chunkify <- function(fun){
-   cfun <- function( x
-                   , ...
-                   , inplace=FALSE
-				       ){
-                   
-     chunks <- chunk(x, ...)
-     
-     i <- chunks[[1]]
-     ret <- as.ff(fun(x[i], ...))
-     length(ret) <- length(x)
-     
-     for (i in chunks[-1]){
-	     ret[i] <- fun(x[i], ...)
-	  }
-	  ret
-   }
-   cfun
+chunkify <- function (fun){
+  cfun <- function(x, ..., inplace = FALSE) {
+    chunks <- chunk(x, ...)
+    i <- chunks[[1]]
+    res <- fun(x[i], ...)
+    if(inherits(res, "character")){
+      res <- as.factor(res)
+      ret <- ffappend(x=NULL, y=res)
+      for (i in chunks[-1]) {
+        res <- fun(x[i], ...)
+        if(inherits(res, "character")){
+          res <- as.factor(res)
+        }
+        ret <- ffappend(x=ret, y=res)
+      }
+    }else{
+      ret <- res
+      length(ret) <- length(x)
+      for (i in chunks[-1]) {
+        ret[i] <- fun(x[i], ...)
+      }
+      ret
+    }
+    
+  }
+  cfun
 }
 
 #' Chunk an expression 

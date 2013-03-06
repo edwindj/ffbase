@@ -1,7 +1,11 @@
 version 0.7-1
 - Fixed bug in subset/ffwhich: variables in function body could not be evaluated, thanks to 该走了
 - Fixed bug in cut.ff, thanks to Gordon An
+- Added rle for ff vectors
 - Added function ffseq
+- Added S3 methods for ff vectors for generics as.Date, format.
+- Allowed chunkify to work with functions returning character vectors also
+- Fixed issue when using with.ffdf which returns Date or POSIXct, fixes for table.ff when not all levels where known in 1 chunk
 
 version 0.7
 - Fixed bug in ffwhich: variables in expression could not be evaluated, thanks to 该走了
