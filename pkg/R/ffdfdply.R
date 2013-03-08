@@ -26,8 +26,10 @@ ffdfdply <- function(
 	BATCHBYTES = getOption("ffbatchbytes"), 
 	RECORDBYTES = sum(.rambytes[vmode(x)]), 
 	trace=TRUE, ...){
+  
+  force(split)
 	
-	splitvmode <- vmode(split)	
+  splitvmode <- vmode(split)	
 	if(splitvmode != "integer"){
 		stop("split needs to be an ff factor or an integer")
 	}
@@ -55,7 +57,7 @@ ffdfdply <- function(
 			}			
 		}
 		if(trace){
-			message(sprintf("%s, working on split %s/%s (%s)", Sys.time(), idx, nrsplits, paste(tmp, collapse=", ")))
+			message(sprintf("%s, working on split %s/%s", Sys.time(), idx, nrsplits))
 		}		
 		## Filter the ffdf based on the splitby group and apply the function		
 		if(splitisfactor){
@@ -67,6 +69,10 @@ ffdfdply <- function(
 				fltr <- split %in% ff(tmp, vmode = "integer")
 			}			
 		}		
+    if(trace){
+      message(sprintf("%s, extracting data in RAM of %s split elements, totalling, %s GB, while max specified data specified using BATCHBYTES is %s GB", Sys.time(), length(tmp), 
+                      round(RECORDBYTES * sum(fltr) / 2^30, 5), round(BATCHBYTES / 2^30, 5)))
+    }
 		inram <- ffdfget_columnwise(x, fltr)
 		result <- FUN(inram, ...)	
 		if(!inherits(result, "data.frame")){
