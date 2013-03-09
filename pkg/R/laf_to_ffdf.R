@@ -4,15 +4,20 @@
 #' @param laf laf object pointing to a csv or fwf file
 #' @param x optional, \code{\link{ffdf}} object where laf data should be appended to.
 #' @param nrows, number of rows per block, passed on to \code{next_block} 
+#' @param transFUN NULL or a function that is called on each data.frame chunk which is read in using \code{next_block}. 
+#' This can be used for filtering and data transformations.
 #' @param ... passed on to \code{next_block}
 #' @export
-laf_to_ffdf <- function(laf, x=NULL, nrows=1e5, ...){
+laf_to_ffdf <- function(laf, x=NULL, nrows=1e5, transFUN=NULL, ...){
   if (!require(LaF)){
     stop("This function needs the package 'LaF', which can be installed from CRAN")
   }
   begin(laf)
   while(nrow(block <- next_block(laf, nrows=nrows, ...)))
     #TODO test if adding columns separately is faster/or that allocating the ff vectors first is faster
+    if(!is.null(transFUN)){
+      block <- transFUN(block)
+    }
     x <- ffdfappend(x, block)
   x
 }
