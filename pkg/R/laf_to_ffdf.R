@@ -13,12 +13,15 @@ laf_to_ffdf <- function(laf, x=NULL, nrows=1e5, transFUN=NULL, ...){
     stop("This function needs the package 'LaF', which can be installed from CRAN")
   }
   begin(laf)
-  while(nrow(block <- next_block(laf, nrows=nrows, ...)))
+  while(nrow(block <- next_block(laf, nrows=nrows, ...))){
     #TODO test if adding columns separately is faster/or that allocating the ff vectors first is faster
     if(!is.null(transFUN)){
       block <- transFUN(block)
     }
-    x <- ffdfappend(x, block)
+    if(nrow(block) > 0){
+      x <- ffdfappend(x, block)  
+    }
+  }
   x
 }
 
