@@ -12,9 +12,9 @@
 #'   \item{values}{a vector of the same length as `lenghts' with the 
 #'      corresponding values.}
 #' }
+#' @note The resulting rle object is a memory object and must fit into memory.
 #'
-#' 
-#' @seealso \code{\link{rle}} for an implemtation the runs on ordinary vectors.
+#' @seealso \code{\link{rle}} for an implementation that runs on ordinary vectors.
 #' 
 #' @export
 rle_ff <- function(x, ...) {

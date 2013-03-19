@@ -1,0 +1,72 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage{amsfonts, amsmath, hanging, hyperref, natbib, parskip, times}
+\usepackage[pdftex]{graphicx}
+\hypersetup{
+  colorlinks,
+  linkcolor=blue,
+  urlcolor=blue
+}
+
+\let\section=\subsubsection
+\newcommand{\pkg}[1]{{\normalfont\fontseries{b}\selectfont #1}} 
+\let\proglang=\textit
+\let\code=\texttt 
+\renewcommand{\title}[1]{\begin{center}{\bf \LARGE #1}\end{center}}
+\newcommand{\affiliations}{\footnotesize}
+\newcommand{\keywords}{\paragraph{Keywords:}}
+
+\setlength{\topmargin}{-15mm}
+\setlength{\oddsidemargin}{-2mm}
+\setlength{\textwidth}{165mm}
+\setlength{\textheight}{250mm}
+
+\begin{document}
+\pagestyle{empty}
+
+\title{\pkg{ffbase}: statistical functions for large datasets}
+
+\begin{center}
+  {\bf Edwin de Jonge$^{1}$, Jan Wijffels$^{2}$}
+\end{center}
+
+\begin{affiliations}
+1. Statistics Netherlands,  \href{mailto:e.dejonge@cbs.nl}{e.dejonge@cbs.nl} \\[-2pt]
+2. Affiliation of Jan Wijffels \\[-2pt]
+\end{affiliations}
+
+\keywords Large datasets
+
+\vskip 0.8cm
+
+Statistical datasets used to be small, but nowadays \proglang{R}
+\proglang{R} is an excellent environment for statistical analysis.
+
+
+
+% Some suggestions: if you mention a programming language like
+% \proglang{R}, typeset the language name with the {\tt \textbackslash
+%   proglang\{\}} command.  If you mention an \proglang{R} function \code{foo},
+% typeset the function name with the with the {\tt\textbackslash code\{\}}
+% command.  If you mention an \proglang{R} package \pkg{fooPkg}, typeset
+% the package name with the {\tt\textbackslash pkg\{\}} command.
+% Abstracts should not exceed one page.  The page should not be numbered. 
+% 
+
+%% references: 
+\nocite{ref1,ref2,ref3}
+\bibliographystyle{chicago}
+\bibliography{biblioExample}
+
+%% references can alternatively be entered by hand
+%\subsubsection*{References}
+
+%\begin{hangparas}{.25in}{1}
+%AuthorA (2007). Title of a web resource, \url{http://url/of/resource/}.
+
+%AuthorC (2008a). Article example in proceedings. In \textit{useR! 2008, The R
+%User Conference, (Dortmund, Germany)}, pp. 31--37.
+
+%AuthorC (2008b). Title of an article. \textit{Journal name 6}, 13--17.
+%\end{hangparas}
+
+\end{document}
