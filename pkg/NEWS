@@ -1,4 +1,5 @@
 version 0.7-1
+- Fixed bug in ffdfappend appending two ffdf's with a factor, thanks to Milan Bouchet-Valat
 - Fixed bug in subset/ffwhich: variables in function body could not be evaluated, thanks to 该走了
 - Fixed bug in cut.ff, thanks to Gordon An
 - Added rle for ff vectors

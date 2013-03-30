@@ -75,12 +75,12 @@ ffdfappend <- function(  x
                        ){
   
   fc <- if (is.ffdf(dat)){ 
-    sapply(physical(dat), function(i) is.factor.ff(i) || is.character(i))
+    sapply(physical(dat), function(i) is.factor.ff(i))
   } else {
     sapply(dat, function(i) is.factor(i) || is.character(i))    
   }
   
-  if (any(fc)){
+  if (any(fc) && !is.ffdf(dat)){
     dat[fc] <- lapply( which(fc), function(i) {
         as.factor(dat[[i]])
     })

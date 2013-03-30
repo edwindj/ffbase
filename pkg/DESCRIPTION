@@ -67,3 +67,4 @@ Collate:
     'rle_ff.R'
     'ffrandom.R'
     'date_formatting.R'
+    'rbind_ffdf.R'

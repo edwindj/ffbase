@@ -89,3 +89,10 @@ test_that("Coercing an ffdf works",{
 	fdat <- ffdfappend(x=x, dat=dat, by = 2)
 	expect_identical(rbind(x[,], dat),fdat[,])
 })
+
+test_that("Appending two ffdfs works",{
+  a <- data.frame(a=1:10, b=factor(rep(c("A", "B"), 5)))
+  b <- as.ffdf(a)
+  c <- as.ffdf(a)
+  expect_equivalent(ffdfappend(b, c)[,], rbind(a,a))
+})
