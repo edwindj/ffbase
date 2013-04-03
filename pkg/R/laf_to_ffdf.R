@@ -8,10 +8,11 @@
 #' This can be used for filtering and data transformations.
 #' @param ... passed on to \code{next_block}
 #' @export
-laf_to_ffdf <- function(laf, x=NULL, nrows=1e5, transFUN=NULL, ...){
+laf_to_ffdf <- function(laf, x=NULL, nrows=1e5, transFUN=NULL, VERBOSE=TRUE, ...){
   if (!require(LaF)){
     stop("This function needs the package 'LaF', which can be installed from CRAN")
   }
+  N <- 0
   begin(laf)
   while(nrow(block <- next_block(laf, nrows=nrows, ...))){
     #TODO test if adding columns separately is faster/or that allocating the ff vectors first is faster
@@ -19,6 +20,8 @@ laf_to_ffdf <- function(laf, x=NULL, nrows=1e5, transFUN=NULL, ...){
       block <- transFUN(block)
     }
     if(nrow(block) > 0){
+      N <- N + nrow(block)
+      cat("\rRows added: ", N)
       x <- ffdfappend(x, block)  
     }
   }
