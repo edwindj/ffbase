@@ -21,7 +21,7 @@ laf_to_ffdf <- function(laf, x=NULL, nrows=1e5, transFUN=NULL, VERBOSE=TRUE, ...
     }
     if(nrow(block) > 0){
       N <- N + nrow(block)
-      cat("\rRows added: ", N)
+      Log$info("\rRows added: ", N)
       x <- ffdfappend(x, block)  
     }
   }

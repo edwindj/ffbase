@@ -16,6 +16,7 @@ ffseq_len <- function(length.out){
 	bysize <- floor(BATCHBYTES / .rambytes["integer"])
 	x <- ff(NA, length=length.out, vmode = "integer")
 	for (i in chunk(1, length.out, by=bysize)){
+    Log$chunk(i)
 		idx <- as.integer(hi(from=min(i), to=max(i), by = 1L, maxindex = max(i)))
     x[idx] <- idx
   }

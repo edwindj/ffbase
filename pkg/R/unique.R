@@ -36,6 +36,7 @@ unique.ff <- function(x, incomparables = FALSE, fromLast = FALSE, trace=FALSE, .
       if (trace){
         message(sprintf("%s, working on x chunk %s:%s", Sys.time(), min(i), max(i)))
       }
+      Log$chunk(i)
       iorder <- xorder[i]
       iorder <- as.integer(iorder) # make sure it is not a Date
       xi <- x[iorder]

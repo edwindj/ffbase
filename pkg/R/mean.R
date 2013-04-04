@@ -24,10 +24,12 @@ mean.ff <- function(x, trim=0, ..., range=NULL){
    
    res <- sapply( chunk(x, from=min(r), to=max(r))
                 , function(i){
+                     Log$chunk(i)
                      c( mean=mean(x[i], ...)
                       , w = sum(i)/max(i)
                       )
                   }
 				    )
    weighted.mean(res['mean',], res['w',])
+   Log$info("\r\n")
 }

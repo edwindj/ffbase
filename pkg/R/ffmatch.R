@@ -32,6 +32,7 @@ ffmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, trace
   res <- ff(nomatch, length=length(x), vmode="integer") 
   ## First work on looping over x, then over the table
   for (i in xchunk){    
+    Log$chunk(i)
    	xi <- x[i] 
     unmatched <- TRUE
     

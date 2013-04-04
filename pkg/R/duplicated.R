@@ -34,6 +34,7 @@ duplicated.ff <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALSE,
     if (trace){
       message(sprintf("%s, working on x chunk %s:%s", Sys.time(), min(i), max(i)))
     }
+    Log$chunk(i)
     i.o <- o[i]
     i.x <- x[i.o]
     res[i.o] <- duplicated(i.x)

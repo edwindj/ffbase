@@ -21,7 +21,8 @@ droplevels.ff <- function(x, ..., inplace=FALSE){
    levs <- levels(x)
    used <- logical(length(levs))
    for (i in chunk(x)){
-      used <- used | (levs %in% x[i])
+     Log$chunk(i)
+     used <- used | (levs %in% x[i])
    }
    recodeLevels(x, levs[used])
 }

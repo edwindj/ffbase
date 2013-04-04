@@ -14,6 +14,7 @@ cumsum.ff <- function(x, ...){
   
   i.last <- 0
   for (i in chunk(x, ...)){
+    Log$chunk(i)
     cs <- cumsum(c(i.last, x[i]))
     i.last <- tail(cs,1)
     result[i] <- cs[-1]

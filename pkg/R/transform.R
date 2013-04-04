@@ -25,6 +25,7 @@ transform.ffdf <- function(`_data`, ...){
     nrow(res) <- nrow(`_data`)
     
     for (i in chunks[-1]){
+      Log$chunk(i)
        cdat <- `_data`[i,,drop=FALSE]
        e <- eval(expr, cdat, parent)
        

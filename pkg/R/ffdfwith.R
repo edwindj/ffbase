@@ -41,6 +41,7 @@ ffdfwith <- function(data, expr, ...){
       res <- as.ff(res)
       length(res) <- nrow(data)
       for (.i in chunks[-1]){
+        Log$chunk(.i)
         nl$.i <- .i
         r <- eval(e, nl, parent.frame())
         if (fc){
@@ -53,6 +54,7 @@ ffdfwith <- function(data, expr, ...){
       res <- as.ffdf(res)
       nrow(res) <- nrow(data)
       for (.i in chunks[-1]){
+        Log$chunk(.i)
         nl$.i <- .i
         r <- eval(e, nl, parent.frame())
         if (any(fc)){

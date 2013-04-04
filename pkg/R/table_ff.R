@@ -27,7 +27,7 @@ table.ff <- function( ...
   dat <- do.call(ffdf, args) # create a ffdf  for estimating good chunking size and checking if ... have equal length
   colnames(dat) <- names(args)
   ### Cover non-factors like integers by adding a levels attribute
-  if(sum(!vmode(dat) %in% c("integer")) > 0){  	
+  if(sum(!vmode(dat) %in% c("byte", "short", "integer")) > 0){  	
     stop(sprintf("Only vmodes integer currently allowed - are you sure ... contains only factors or integers?"))
   }
   nonfactors <- sapply(colnames(dat), FUN=function(column, dat) !is.factor.ff(dat[[column]]), dat=dat)
@@ -39,6 +39,7 @@ table.ff <- function( ...
   }
   
   for (i in chunk(dat)){
+    Log$chunk(i)
     factors <- as.list(dat[i,, drop=FALSE])
     factors$exclude <- exclude
     factors$useNA <- useNA
