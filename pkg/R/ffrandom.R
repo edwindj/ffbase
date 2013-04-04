@@ -28,6 +28,7 @@
 ffrandom <- function(n, rfun = runif, ..., vmode = NULL) {
     r <- ff(rfun(1), length=n, vmode=vmode)
     for (i in chunk(r)) {
+        Log$chunk(i)
         ni <- diff(range(i))+1
         r[i] <- rfun(ni, ...)
     }

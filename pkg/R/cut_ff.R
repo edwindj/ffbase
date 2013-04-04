@@ -33,6 +33,7 @@ cut.ff <- function(x, breaks, ...){
    args$by <- NULL
    args$breaks <- breaks
    for (i in chunk(x, ...)){
+     Log$chunk(i)
      args$x <- x[i]
      res <- do.call(cut, args)
      f <- ffappend( f

@@ -14,6 +14,7 @@ diff.ff <- function(x, lag=1L, differences = 1L, ...){
   
   i.last <- NULL
   for (i in chunk(x, ...)){
+    Log$chunk(i)
     i.x <- x[i]
     d <- ffappend(d, diff(c(i.last, i.x), lag=lag))
     i.last <- tail(i.x, lag)

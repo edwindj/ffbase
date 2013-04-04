@@ -58,6 +58,7 @@ duplicated.ffdf <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALS
   
   i.last <- NULL
   for (i in chunk(x, ...)){
+    Log$chunk(i)
     if (trace){
       message(sprintf("%s, working on x chunk %s:%s", Sys.time(), min(i), max(i)))
     }

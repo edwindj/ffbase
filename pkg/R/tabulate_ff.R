@@ -27,7 +27,8 @@ tabulate.ff <- function( bin
    if (FFRETURN == FALSE){
 	   tab <- integer(nbins)
 	   for (i in chunk(bin)){
-		  tab <- tab + tabulate(bin[i], nbins)
+	     Log$chunk(i)
+	     tab <- tab + tabulate(bin[i], nbins)
 	   }
 	   return(tab)
    }
@@ -40,6 +41,7 @@ tabulate.ff <- function( bin
 		  }
 		  
    for (i in chunk(bin)){
+      Log$chunk(i)
       tab[na.omit(bin[i]), add=TRUE] <- 1
    }   
    length(tab) <- nbins

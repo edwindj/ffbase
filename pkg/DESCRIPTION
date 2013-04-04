@@ -68,3 +68,4 @@ Collate:
     'ffrandom.R'
     'date_formatting.R'
     'rbind_ffdf.R'
+    'logging.R'

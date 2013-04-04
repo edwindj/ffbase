@@ -33,6 +33,7 @@ with.ffdf <- function(data, expr, ...){
       res <- as.ff(res)
       length(res) <- nrow(data)
       for (i in chunks[-1]){
+        Log$chunk(i)
         r <- eval(e, data[i,,drop=FALSE], enclos=parent.frame())
         if (fc){ 
              r <- as.factor(r)
@@ -44,6 +45,7 @@ with.ffdf <- function(data, expr, ...){
       res <- as.ffdf(res)
       nrow(res) <- nrow(data)
       for (i in chunks[-1]){
+        Log$chunk(i)
         r <- eval(e, data[i,,drop=FALSE], enclos=parent.frame())
         if (any(fc)){
            r[fc] <- lapply(which(fc), function(x) {

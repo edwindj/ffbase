@@ -37,7 +37,7 @@ bigglm.ffdf<-function(formula, data, family = gaussian(), ..., chunksize=5000){
     
     if (got > length(chunks)) 
       return(NULL)
-    
+    Log$chunk(got)
     data[chunks[[got]], tablevars, drop=FALSE]
   }
   rval<-bigglm(formula, data=ffchunk, family=family, ...)

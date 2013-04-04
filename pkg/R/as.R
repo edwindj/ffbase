@@ -14,7 +14,8 @@ as.character.ff <- function(x, ...){
 	levs <- unique(x)[]
 	levs <- levs[!is.na(levs)]
 	res <- ff(vmode="integer", length = length(x), levels=as.character(levs))
-	for (i in chunk(x, ...)){		
+	for (i in chunk(x, ...)){
+    Log$chunk(i)
 		res[i] <- as.character(x[i])		
 	}
 	res		

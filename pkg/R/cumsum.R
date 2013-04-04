@@ -29,6 +29,7 @@ cumprod.ff <- function(x, ...){
   
   i.last <- 1
   for (i in chunk(x, ...)){
+    Log$chunk(i)
     cs <- cumprod(c(i.last, x[i]))
     i.last <- tail(cs,1)
     result[i] <- cs[-1]
@@ -57,6 +58,7 @@ cummin.ff <- function(x, ...){
   
   i.last <- Inf
   for (i in chunk(x, ...)){
+    Log$chunk(i)
     cs <- cummin(c(i.last, x[i]))
     i.last <- tail(cs,1)
     result[i] <- cs[-1]

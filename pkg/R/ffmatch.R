@@ -42,6 +42,7 @@ ffmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, trace
     
     m <- rep(NA_integer_, sum(i))
     for (j in tablechunk){
+      Log$chunk(j)
       if(trace) {
         message(sprintf("%s, working on table chunk %s:%s", Sys.time(), min(j), max(j)))      
       }
@@ -74,7 +75,8 @@ ffdfmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, tra
   }
   res <- ff(nomatch, length=nrow(x), vmode="integer") 
   ## First work on looping over x, then over the table
-  for (i in xchunk){    
+  for (i in xchunk){
+    Log$chunk(i)
     xi <- x[i, ]   
     unmatched <- TRUE
     

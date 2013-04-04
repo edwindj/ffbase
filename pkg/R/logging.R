@@ -1,27 +1,25 @@
-#' logger functions 
-#' 
-#'
-
 emptyLogger <- function(...) invisible()
 
 Log <- new.env()
-Log$info <- cat
+Log$info <- if (interactive()) cat else emptyLogger
 
-#' processing chunk i
-#' @param i ri index
 Log$chunk <- function(i){
   if (is.na(i[3])){
-    Log$info("\rProcessing chunk:",i)    
+    Log$info("\r<Processing chunk:",i,">")    
   } else {
-    Log$info("\rProcessing :",round(100*(i[2])/i[3]), "%", sep="")
-  }
+    if (i[1]==1) Log$info("\n")
+    Log$info("\r<Processing :",round(100*(i[2])/i[3]), "%>" , sep="")
+    if (i[2] == i[3]){
+      Log$info("\n")
+    }
+  } 
 }
 
 #' sets the logging of ffbase
 #' @param level logging level: info/debug
 #' @param logger function to be called for logging statements, by default this is \code{cat}
 #' @export
-set_ffbase_logging <- function(level = c("info"), logger=cat){
+set_ffbase_logging <- function(level = c("info"), logger=if (interactive()) cat){
   if (!is.function(logger)){
     logger <- emptyLogger
   }

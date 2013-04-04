@@ -31,6 +31,7 @@ binned_tabulate.ff <- function(x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
          else c("na", 1:nlevels)
   res <- matrix(0, nrow=nbins, ncol=length(lev), dimnames=list(bin=1:nbins, level=lev))
   for (i in chunk(x, ...)){
+    Log$chunk(i)
     res <- res + .Call("binned_tabulate", x[i], as.integer(bin[i]), as.integer(nbins), as.integer(nlevels), PACKAGE = "ffbase")
   }
   res

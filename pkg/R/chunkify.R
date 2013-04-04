@@ -15,6 +15,7 @@ chunkify <- function (fun){
       res <- as.ff(as.factor(res))
       ret <- ffappend(x=NULL, y=res)
       for (i in chunks[-1]) {
+        Log$chunk(i)
         res <- as.ff(as.factor(fun(x[i], ...)))
         ret <- ffappend(x=ret, y=res)
       }
@@ -23,6 +24,7 @@ chunkify <- function (fun){
       ret <- as.ff(res)
       length(ret) <- length(x)
       for (i in chunks[-1]) {
+        Log$chunk(i)
         ret[i] <- fun(x[i], ...)
       }
       ret
