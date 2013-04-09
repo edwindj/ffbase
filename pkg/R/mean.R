@@ -30,6 +30,5 @@ mean.ff <- function(x, trim=0, ..., range=NULL){
                       )
                   }
 				    )
-   weighted.mean(res['mean',], res['w',])
-   Log$info("\r\n")
+    weighted.mean(res['mean',], res['w',])
 }
