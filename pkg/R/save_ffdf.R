@@ -15,6 +15,9 @@ save.ffdf <- function(..., dir="./ffdb", clone=FALSE, relativepath=TRUE){
    names <- as.character(substitute(list(...)))[-1L]
    dir.create(dir, showWarnings=FALSE, recursive=TRUE)
    
+   # TODO store individual object as *.rds files instead of .Rdata: this make it easier to add different
+   # ffdf data.frames to an existing directory.
+   
    oldwd <- setwd(dir)
    on.exit(setwd(oldwd))
    
