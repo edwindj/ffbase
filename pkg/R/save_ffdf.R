@@ -17,10 +17,17 @@ save.ffdf <- function(..., dir="./ffdb", clone=FALSE, relativepath=TRUE){
    
    # TODO store individual object as *.rds files instead of .Rdata: this make it easier to add different
    # ffdf data.frames to an existing directory.
+   # However, it makes moving/deleting ffdf's more obscure.
    
    oldwd <- setwd(dir)
    on.exit(setwd(oldwd))
    
+   # TODO make this fail safe: when one of the 'n' is non-existing
+   existing <- sapply(names, exists, where=1)
+   names <- names[existing]
+   if (any(!existing)){
+     warning(names[!existing], " were not saved, because not found")
+   }
    for (n in names){
      x = get(n, pos=1)
      if (is.ffdf(x)) {
