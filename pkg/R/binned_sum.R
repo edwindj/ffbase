@@ -5,9 +5,17 @@
 #' @param x \code{numeric} vector with the data to be summed
 #' @param bin \code{integer} vector with the bin number for each data point
 #' @param nbins \code{integer} maximum bin number 
+#' @param ... used by binned_sum.ff
 #' @return \code{numeric} matrix where each row is a bin
 #' @export
-binned_sum <- function (x, bin, nbins=max(bin)){
+binned_sum <- function (x, bin, nbins=max(bin), ...){
+  UseMethod("binned_sum")
+}
+
+#' @rdname binned_sum
+#' @method binned_sum default
+#' @S3method binned_sum default
+binned_sum.default <- function (x, bin, nbins=max(bin), ...){
    stopifnot(length(x)==length(bin))
    res <- .Call("binned_sum", as.numeric(x), as.integer(bin), as.integer(nbins), PACKAGE = "ffbase")
    dimnames(res) <- list(bin=1:nbins, c("count", "sum", "NA"))
@@ -15,8 +23,8 @@ binned_sum <- function (x, bin, nbins=max(bin)){
 }
 
 #' @rdname binned_sum
-#' @usage \method{binned_sum}{ff} (x, bin, nbins = max(bin), ...)
-#' @param ... passed on to chunk
+#' @method binned_sum default
+#' @S3method binned_sum ff
 #' @export
 binned_sum.ff <- function(x, bin, nbins=max(bin), ...){
   res <- matrix(0, nrow=nbins, ncol=3, dimnames=list(bin=1:nbins, c("count", "sum", "NA")))

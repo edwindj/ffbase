@@ -10,9 +10,18 @@
 #' @param mean \code{numeric} vector with an optional mean to be subtracted from the data to be summed and squared
 #' @param bin \code{integer} vector with the bin number for each observation
 #' @param nbins \code{integer} maximum bin number 
+#' @param ... will be passed on to the implementation. 
 #' @return \code{numeric} matrix where each row is a bin
 #' @export
-binned_sumsq <- function (x, mean=rep(0, nbins), bin, nbins=max(bin)){
+binned_sumsq <- function (x, mean=rep(0, nbins), bin, nbins=max(bin), ...){
+  UseMethod("binned_sumsq")
+}
+
+#' @return \code{numeric} matrix where each row is a bin
+#' @rdname binned_sumsq
+#' @method binned_sumsq default
+#' @S3method binned_sumsq default
+binned_sumsq.default <- function (x, mean=rep(0, nbins), bin, nbins=max(bin), ...){
    stopifnot(length(x)==length(bin))
    stopifnot(length(x)==length(mean))
    res <- .Call("binned_sumsq", as.numeric(x), as.numeric(mean), as.integer(bin), as.integer(nbins), PACKAGE = "ffbase")
@@ -20,11 +29,12 @@ binned_sumsq <- function (x, mean=rep(0, nbins), bin, nbins=max(bin)){
    res
 }
 
+#' @return \code{numeric} matrix where each row is a bin
 #' @rdname binned_sumsq
-#' @usage \method{binned_sumsq}{ff} (x, bin, nbins=max(bin), ...)
-#' @param ... passed on to chunk
+#' @method binned_sumsq ff
+#' @S3method binned_sumsq ff
 #' @export
-binned_sumsq.ff <- function(x, bin, nbins=max(bin), ...){
+binned_sumsq.ff <- function(x, mean=rep(0, nbins), bin, nbins=max(bin), ...){
   res <- matrix(0, nrow=nbins, ncol=2, dimnames=list(bin=1:nbins, c("count", "sumsq")))
   for (i in chunk(x, ...)){
     Log$chunk(i)

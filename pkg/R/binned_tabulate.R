@@ -10,9 +10,17 @@
 #' @param bin \code{integer} vector with the bin number for each data point
 #' @param nbins \code{integer} maximum bin number 
 #' @param nlevels \code{integer} number of levels used in x
+#' @param ... used by binned_tabulate.ff
 #' @return \code{numeric} matrix where each row is a bin and each column a level
 #' @export
-binned_tabulate <- function (x, bin, nbins=max(bin), nlevels=nlevels(x)){
+binned_tabulate <- function (x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
+  UseMethod("binned_tabulate")
+}
+
+#' @rdname binned_tabulate
+#' @method binned_tabulate default
+#' @S3method binned_tabulate default
+binned_tabulate.default <- function (x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
    stopifnot(length(x)==length(bin))
    
    res <- .Call("binned_tabulate", x, as.integer(bin), as.integer(nbins), as.integer(nlevels), PACKAGE = "ffbase")
@@ -23,8 +31,8 @@ binned_tabulate <- function (x, bin, nbins=max(bin), nlevels=nlevels(x)){
 }
 
 #' @rdname binned_tabulate
-#' @usage \method{binned_tabulate}{ff} (x, bin, nbins=max(bin), nlevels=nlevels(x), ...)
-#' @param ... passed on to chunk
+#' @method binned_tabulate ff
+#' @S3method binned_tabulate ff
 #' @export
 binned_tabulate.ff <- function(x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
   lev <- if (nlevels(x)) c("na", levels(x))
