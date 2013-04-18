@@ -28,9 +28,9 @@ as.ff_matrix <- function(x, ...){
 }
 as.ff_matrix.ffdf <- function(x, ...){
   result <- ff(NA, dim = dim(x), vmode = names(maxffmode(vmode(test)))[1])
-  colnames(result) <- colnames(x)
-  rownames(result) <- rownames(x)
+  dimnames(result) <- dimnames(x)
   for(ichunk in chunk(x)){
+    Log$chunk(i)
     result[ichunk, ] <- as.matrix(x[ichunk, ])
   }
   result
