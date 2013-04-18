@@ -27,11 +27,11 @@ as.ff_matrix <- function(x, ...){
   UseMethod("as.ff_matrix")
 }
 as.ff_matrix.ffdf <- function(x, ...){
-  result <- ff(NA, dim = dim(x), vmode = names(maxffmode(vmode(test)))[1])
+  result <- ff(NA, dim = dim(x), vmode = names(maxffmode(vmode(x)))[1])
   dimnames(result) <- dimnames(x)
-  for(ichunk in chunk(x)){
+  for(i in chunk(x)){
     Log$chunk(i)
-    result[ichunk, ] <- as.matrix(x[ichunk, ])
+    result[i, ] <- as.matrix(x[i, ])
   }
   result
 }
