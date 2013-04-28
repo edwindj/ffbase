@@ -10,7 +10,7 @@ Log$chunk <- function(i){
     if (i[1]==1) Log$info("\n")
     Log$info("\r< Processing :",round(100*(i[2])/i[3]), "% >" , sep="")
     if (i[2] == i[3]){
-      Log$info("\n")
+      Log$info("\r")
     }
   } 
 }

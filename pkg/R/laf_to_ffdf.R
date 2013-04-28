@@ -14,6 +14,7 @@ laf_to_ffdf <- function(laf, x=NULL, nrows=1e5, transFUN=NULL, ...){
   }
   N <- 0
   begin(laf)
+  Log$info("\n Adding laf to ffdf...")
   while(nrow(block <- next_block(laf, nrows=nrows, ...))){
     #TODO test if adding columns separately is faster/or that allocating the ff vectors first is faster
     if(!is.null(transFUN)){
@@ -24,6 +25,7 @@ laf_to_ffdf <- function(laf, x=NULL, nrows=1e5, transFUN=NULL, ...){
       Log$info("\rRows added: ", N)
       x <- ffdfappend(x, block)  
     }
+    Log$info("\r")
   }
   x
 }
