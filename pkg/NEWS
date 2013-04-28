@@ -1,5 +1,5 @@
 version 0.9
-- made binned_ function faster
+- made binned_ functions faster by reusing the same vector
 
 version 0.8
 - made binned_sum, binned_sumsq and binned_tabulate generic functions (thanks to Gordon An)
