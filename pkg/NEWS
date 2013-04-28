@@ -1,6 +1,9 @@
-version 0.7-1
-- made binned_sum, binned_sumsq and binned_tabulate generic functions
-- add rbind for ffdf's 
+version 0.9
+- made binned_ function faster
+
+version 0.8
+- made binned_sum, binned_sumsq and binned_tabulate generic functions (thanks to Gordon An)
+- added rbind for ffdf's 
 - Fixed bug in ffdfappend appending two ffdf's with a factor, thanks to Milan Bouchet-Valat
 - Fixed bug in subset/ffwhich: variables in function body could not be evaluated, thanks to 该走了
 - Fixed bug in cut.ff, thanks to Gordon An

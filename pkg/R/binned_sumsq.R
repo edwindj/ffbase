@@ -24,8 +24,15 @@ binned_sumsq <- function (x, mean=rep(0, nbins), bin, nbins=max(bin), ...){
 binned_sumsq.default <- function (x, mean=rep(0, nbins), bin, nbins=max(bin), ...){
    stopifnot(length(x)==length(bin))
    stopifnot(length(x)==length(mean))
-   res <- .Call("binned_sumsq", as.numeric(x), as.numeric(mean), as.integer(bin), as.integer(nbins), PACKAGE = "ffbase")
-   dimnames(res) <- list(bin=1:nbins, c("count", "sumsq"))
+   if (is.factor(bin)){
+     bins <- levels(bin)
+     nbins <- lenght(bins)
+   } else {
+     bins <- seq_len(nbins)
+   }
+   
+   res <- matrix(0, nrow=nbins, ncol=3, dimnames=list(bin=bins, c("count", "sumsq", "<NA>")))
+   .Call("binned_sumsq", as.numeric(x), as.numeric(mean), as.integer(bin), as.integer(nbins), res, PACKAGE = "ffbase")
    res
 }
 
@@ -33,12 +40,13 @@ binned_sumsq.default <- function (x, mean=rep(0, nbins), bin, nbins=max(bin), ..
 #' @rdname binned_sumsq
 #' @method binned_sumsq ff
 #' @S3method binned_sumsq ff
-#' @export
+#' @export binned_sumsq.ff
 binned_sumsq.ff <- function(x, mean=rep(0, nbins), bin, nbins=max(bin), ...){
   res <- matrix(0, nrow=nbins, ncol=2, dimnames=list(bin=1:nbins, c("count", "sumsq")))
   for (i in chunk(x, ...)){
     Log$chunk(i)
-    res <- res + .Call("binned_sumsq", as.numeric(x[i]), as.numeric(mean), as.integer(bin[i]), as.integer(nbins), PACKAGE = "ffbase")
+    res <- matrix(0, nrow=nbins, ncol=3, dimnames=list(bin=1:nbins, c("count", "sumsq", "<NA>")))
+    .Call("binned_sumsq", as.numeric(x[i]), as.numeric(mean), as.integer(bin[i]), as.integer(nbins), res, PACKAGE = "ffbase")
   }
   res
 }

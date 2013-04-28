@@ -2,20 +2,13 @@
 #include <Rdefines.h>
 #include <R_ext/Error.h>
 
-SEXP binned_sum ( SEXP x, SEXP bin, SEXP nbins ) {
+SEXP binned_sum ( SEXP x, SEXP bin, SEXP nbins, SEXP res) {
 
      double *rx = REAL(x);
      int *ibin = INTEGER(bin);
-     int nb = *INTEGER(nbins);
-     int nx = length(x);
-    
-     SEXP res;
-     PROTECT(res=allocMatrix(REALSXP, nb, 3));
+     const int nb = *INTEGER(nbins);
+     const int nx = length(x);
      double *rres = REAL(res);
-    
-	   for (int i = 0; i < 3*nb; i++){
-         rres[i] = 0;
-     }
                   
      for (int i = 0; i < nx; i++){
         int b = ibin[i] - 1;
@@ -29,6 +22,5 @@ SEXP binned_sum ( SEXP x, SEXP bin, SEXP nbins ) {
            }
         }
      }
-     UNPROTECT(1);
      return res;
 }

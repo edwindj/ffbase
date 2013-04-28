@@ -17,20 +17,21 @@ binned_sum <- function (x, bin, nbins=max(bin), ...){
 #' @S3method binned_sum default
 binned_sum.default <- function (x, bin, nbins=max(bin), ...){
    stopifnot(length(x)==length(bin))
-   res <- .Call("binned_sum", as.numeric(x), as.integer(bin), as.integer(nbins), PACKAGE = "ffbase")
-   dimnames(res) <- list(bin=1:nbins, c("count", "sum", "NA"))
+   
+   res <- matrix(0, ncol=3, nrow=nbins, dimnames=list(bin=1:nbins, c("count", "sum", "NA")))
+   .Call("binned_sum", as.numeric(x), as.integer(bin), as.integer(nbins), res, PACKAGE = "ffbase")
    res
 }
 
 #' @rdname binned_sum
 #' @method binned_sum default
 #' @S3method binned_sum ff
-#' @export
+#' @export binned_sum.ff
 binned_sum.ff <- function(x, bin, nbins=max(bin), ...){
   res <- matrix(0, nrow=nbins, ncol=3, dimnames=list(bin=1:nbins, c("count", "sum", "NA")))
   for (i in chunk(x, ...)){
     Log$chunk(i)
-    res <- res + .Call("binned_sum", as.numeric(x[i]), as.integer(bin[i]), as.integer(nbins), PACKAGE = "ffbase")
+    .Call("binned_sum", as.numeric(x[i]), as.integer(bin[i]), as.integer(nbins), res, PACKAGE = "ffbase")
   }
   res
 }
