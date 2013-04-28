@@ -22,10 +22,15 @@ binned_tabulate <- function (x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
 #' @S3method binned_tabulate default
 binned_tabulate.default <- function (x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
    stopifnot(length(x)==length(bin))
-   
+   if (is.factor(bin)){
+     bins <- levels(bin)
+     nbins <- length(bins)
+   } else {
+     bins <- seq_len(nbins)
+   }
    lev <- if (nlevels(x)) c("na", levels(x))
           else c("na", 1:nlevels)
-   res <- matrix(0L, nrow=nbins, ncol=length(lev), dimnames=list(bin=1:nbins, level=lev))
+   res <- matrix(0L, nrow=nbins, ncol=length(lev), dimnames=list(bin=bins, level=lev))
    .Call("binned_tabulate", x, as.integer(bin), as.integer(nbins), as.integer(nlevels), res, PACKAGE = "ffbase")
    res
 }
@@ -35,9 +40,15 @@ binned_tabulate.default <- function (x, bin, nbins=max(bin), nlevels=nlevels(x),
 #' @S3method binned_tabulate ff
 #' @export binned_tabulate.ff
 binned_tabulate.ff <- function(x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
+  if (is.factor.ff(bin)){
+    bins <- levels(bin)
+    nbins <- length(bins)
+  } else {
+    bins <- seq_len(nbins)
+  }
   lev <- if (nlevels(x)) c("na", levels(x))
          else c("na", 1:nlevels)
-  res <- matrix(0L, nrow=nbins, ncol=length(lev), dimnames=list(bin=1:nbins, level=lev))
+  res <- matrix(0L, nrow=nbins, ncol=length(lev), dimnames=list(bin=bins, level=lev))
   for (i in chunk(x, ...)){
     Log$chunk(i)
     .Call("binned_tabulate", x[i], as.integer(bin[i]), as.integer(nbins), as.integer(nlevels), res, PACKAGE = "ffbase")

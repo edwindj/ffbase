@@ -17,8 +17,13 @@ binned_sum <- function (x, bin, nbins=max(bin), ...){
 #' @S3method binned_sum default
 binned_sum.default <- function (x, bin, nbins=max(bin), ...){
    stopifnot(length(x)==length(bin))
-   
-   res <- matrix(0, ncol=3, nrow=nbins, dimnames=list(bin=1:nbins, c("count", "sum", "NA")))
+   if (is.factor(bin)){
+     bins <- levels(bin)
+     nbins <- length(bins)
+   } else {
+     bins <- seq_len(nbins)
+   }
+   res <- matrix(0, ncol=3, nrow=nbins, dimnames=list(bin=bins, c("count", "sum", "NA")))
    .Call("binned_sum", as.numeric(x), as.integer(bin), as.integer(nbins), res, PACKAGE = "ffbase")
    res
 }
@@ -28,7 +33,14 @@ binned_sum.default <- function (x, bin, nbins=max(bin), ...){
 #' @S3method binned_sum ff
 #' @export binned_sum.ff
 binned_sum.ff <- function(x, bin, nbins=max(bin), ...){
-  res <- matrix(0, nrow=nbins, ncol=3, dimnames=list(bin=1:nbins, c("count", "sum", "NA")))
+  stopifnot(length(x)==length(bin))
+  if (is.factor.ff(bin)){
+    bins <- levels(bin)
+    nbins <- length(bins)
+  } else {
+    bins <- seq_len(nbins)
+  }
+  res <- matrix(0, nrow=nbins, ncol=3, dimnames=list(bin=bins, c("count", "sum", "NA")))
   for (i in chunk(x, ...)){
     Log$chunk(i)
     .Call("binned_sum", as.numeric(x[i]), as.integer(bin[i]), as.integer(nbins), res, PACKAGE = "ffbase")
@@ -42,7 +54,7 @@ binned_sum.ff <- function(x, bin, nbins=max(bin), ...){
 # x[1] <- NA
 # 
 # binned_sum(1:10, 1:10, nbins=10)
-# binned_sum(c(1000,NA), 1:2, nbins=2L)
+# binned_sum(c(1000,NA), factor(c("M","V")), nbins=2L)
 # system.time({
 #   replicate(50, {tapply(x, bin, function(i){c(sum=sum(i, na.rm=TRUE), na=sum(is.na(i)))})})
 # })
