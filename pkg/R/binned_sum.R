@@ -30,9 +30,20 @@ binned_sum.default <- function (x, bin, nbins=max(bin), ...){
 
 #' @rdname binned_sum
 #' @method binned_sum default
+#' @param INDEX ff index vector, if supplied this vector will be used
 #' @S3method binned_sum ff
 #' @export binned_sum.ff
-binned_sum.ff <- function(x, bin, nbins=max(bin), ...){
+binned_sum.ff <- function(x, bin, nbins=max(bin), INDEX=NULL, ...){
+  if (!is.null(INDEX)){
+    bins <- seq_len(nbins)
+    res <- matrix(0, nrow=nbins, ncol=3, dimnames=list(bin=bins, c("count", "sum", "NA")))
+    for (i in chunk(INDEX, ...)){
+      Log$chunk(i)
+      bin <- seq.int(i[1], i[2]) / ((length(INDEX)+1)/nbins) + 1
+      .Call("binned_sum", as.numeric(x[INDEX[i]]), as.integer(bin), as.integer(nbins), res, PACKAGE = "ffbase")
+    }
+    return(res)
+  }
   stopifnot(length(x)==length(bin))
   if (is.factor.ff(bin)){
     bins <- levels(bin)
@@ -62,3 +73,8 @@ binned_sum.ff <- function(x, bin, nbins=max(bin), ...){
 # system.time({
 #   replicate(50, {binned_sum(x, bin, nbins=100L)})
 # })
+
+# x <- ff(1:100)
+# b <- ff(as.factor(rep(c("M","V"), 50)))
+# o <- ff(20:1)
+# binned_sum.ff(x, b, nbins=5, INDEX=o)

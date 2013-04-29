@@ -17,8 +17,7 @@ Suggests:
     testthat,
     parallel,
     LaF,
-    biglm,
-    bigmemory
+    biglm
 Collate:
     'auxilary.R'
     'chunkify.R'

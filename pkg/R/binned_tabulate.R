@@ -39,7 +39,18 @@ binned_tabulate.default <- function (x, bin, nbins=max(bin), nlevels=nlevels(x),
 #' @method binned_tabulate ff
 #' @S3method binned_tabulate ff
 #' @export binned_tabulate.ff
-binned_tabulate.ff <- function(x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
+binned_tabulate.ff <- function(x, bin, nbins=max(bin), nlevels=nlevels(x), INDEX=NULL, ...){
+  if (!is.null(INDEX)){
+    bins <- seq_len(nbins)
+    res <- matrix(0L, nrow=nbins, ncol=3, dimnames=list(bin=bins, c("count", "sum", "NA")))
+    for (i in chunk(INDEX, ...)){
+      Log$chunk(i)
+      bin <- seq.int(i[1], i[2]) / ((length(INDEX)+1)/nbins) + 1
+      .Call("binned_tabulate", x[INDEX[i]], as.integer(bin), as.integer(nbins), as.integer(nlevels), res, PACKAGE = "ffbase")
+    }
+    return(res)
+  }
+  
   if (is.factor.ff(bin)){
     bins <- levels(bin)
     nbins <- length(bins)
@@ -72,3 +83,10 @@ binned_tabulate.ff <- function(x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
 #              )
 #            )
 # 
+# size <- 1e5
+# x <- ff(sample(c(1:4,NA), size=size, replace=TRUE), vmode="integer")
+# bin <- ff(sample(1:100, size=size, replace=TRUE))
+# nbins <- max(bin, na.rm=TRUE)
+# nlevels <- max(x, na.rm=TRUE)
+# o <- ff(as.integer(200:1))
+# binned_tabulate.ff(x, bin, nbins, nlevels, INDEX=o)
