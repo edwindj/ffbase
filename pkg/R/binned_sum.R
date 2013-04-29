@@ -30,10 +30,10 @@ binned_sum.default <- function (x, bin, nbins=max(bin), ...){
 
 #' @rdname binned_sum
 #' @method binned_sum default
-#' @param INDEX ff index vector, if supplied this vector will be used
 #' @S3method binned_sum ff
 #' @export binned_sum.ff
-binned_sum.ff <- function(x, bin, nbins=max(bin), INDEX=NULL, ...){
+binned_sum.ff <- function(x, bin, nbins=max(bin), ...){
+  INDEX <- list(...)$INDEX
   if (!is.null(INDEX)){
     bins <- seq_len(nbins)
     res <- matrix(0, nrow=nbins, ncol=3, dimnames=list(bin=bins, c("count", "sum", "NA")))
@@ -44,6 +44,7 @@ binned_sum.ff <- function(x, bin, nbins=max(bin), INDEX=NULL, ...){
     }
     return(res)
   }
+  
   stopifnot(length(x)==length(bin))
   if (is.factor.ff(bin)){
     bins <- levels(bin)

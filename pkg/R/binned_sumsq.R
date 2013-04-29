@@ -1,4 +1,4 @@
-#' Fast summing in different bins
+#' Fast squared summing in different bins
 #' 
 #' \code{binned_sum} implements fast squared summing for given bins by calling c-code,
 #' which can be used to calculate variance and standard deviation
@@ -40,14 +40,15 @@ binned_sumsq.default <- function (x, mean=rep(0, nbins), bin, nbins=max(bin), ..
 #' @method binned_sumsq ff
 #' @S3method binned_sumsq ff
 #' @export binned_sumsq.ff
-binned_sumsq.ff <- function(x, mean=rep(0, nbins), bin, nbins=max(bin), INDEX=NULL, ...){
+binned_sumsq.ff <- function(x, mean=rep(0, nbins), bin, nbins=max(bin), ...){
+  INDEX <- list(...)$INDEX
   if (!is.null(INDEX)){
     bins <- seq_len(nbins)
-    res <- matrix(0, nrow=nbins, ncol=3, dimnames=list(bin=bins, c("count", "sum", "NA")))
+    res <- matrix(0, nrow=nbins, ncol=3, dimnames=list(bin=bins, c("count", "sumsq", "<NA>")))
     for (i in chunk(INDEX, ...)){
       Log$chunk(i)
       bin <- seq.int(i[1], i[2]) / ((length(INDEX)+1)/nbins) + 1
-      .Call("binned_sumsq", as.numeric(x[INDEX[i]]), , as.numeric(mean), as.integer(bin), as.integer(nbins), res, PACKAGE = "ffbase")
+      .Call("binned_sumsq", as.numeric(x[INDEX[i]]), as.numeric(mean), as.integer(bin), as.integer(nbins), res, PACKAGE = "ffbase")
     }
     return(res)
   }

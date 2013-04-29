@@ -39,7 +39,8 @@ binned_tabulate.default <- function (x, bin, nbins=max(bin), nlevels=nlevels(x),
 #' @method binned_tabulate ff
 #' @S3method binned_tabulate ff
 #' @export binned_tabulate.ff
-binned_tabulate.ff <- function(x, bin, nbins=max(bin), nlevels=nlevels(x), INDEX=NULL, ...){
+binned_tabulate.ff <- function(x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
+  INDEX <- list(...)$INDEX
   if (!is.null(INDEX)){
     bins <- seq_len(nbins)
     res <- matrix(0L, nrow=nbins, ncol=3, dimnames=list(bin=bins, c("count", "sum", "NA")))
