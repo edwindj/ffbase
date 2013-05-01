@@ -74,8 +74,8 @@ binned_sum.ff <- function(x, bin, nbins=max(bin), ...){
 # system.time({
 #   replicate(50, {binned_sum(x, bin, nbins=100L)})
 # })
-
-# x <- ff(1:100)
-# b <- ff(as.factor(rep(c("M","V"), 50)))
+# 
+# x <- ff(1:1e5)
+# b <- ff(as.factor(rep(c("M","V"), 1e5/2)))
 # o <- ff(20:1)
-# binned_sum.ff(x, b, nbins=5, INDEX=o)
+# binned_sum.ff(x, b, nbins=5, INDEX=o, by=1e2)

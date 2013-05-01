@@ -6,10 +6,10 @@ SEXP binned_tabulate ( SEXP x, SEXP bin, SEXP nbins, SEXP nlevels, SEXP res) {
 
      int *ix = INTEGER(x);
      int *ibin = INTEGER(bin);
-     const int nb = *INTEGER(nbins);
-     const int nl = *INTEGER(nlevels);
+     int nb = *INTEGER(nbins);
+     int nl = *INTEGER(nlevels);
      
-     const int nx = length(x);
+     int nx = length(x);
     
      int *rres = INTEGER(res);
      
@@ -25,3 +25,4 @@ SEXP binned_tabulate ( SEXP x, SEXP bin, SEXP nbins, SEXP nlevels, SEXP res) {
      }
      return res;
 }
+ 
