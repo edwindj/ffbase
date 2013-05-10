@@ -69,3 +69,4 @@ Collate:
     'date_formatting.R'
     'rbind_ffdf.R'
     'logging.R'
+    'rev_ff.R'
