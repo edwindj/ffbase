@@ -53,6 +53,7 @@ chunkify <- function (fun){
 #'@keywords internal
 chunkexpr <- function(expr, x = all.vars(expr), i=".i", prefix=""){
   es <- lapply(as.expression(expr), deparse)
+  es <- lapply(es, paste0, collapse="")
   xs <- x
   for (var in xs){
     varre <- paste("\\b(",var,")\\b", sep="")

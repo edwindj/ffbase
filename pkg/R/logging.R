@@ -5,12 +5,12 @@ Log$info <- if (interactive()) cat else emptyLogger
 
 Log$chunk <- function(i){
   if (is.na(i[3])){
-    Log$info("\r<Processing chunk:",i,">")    
+    Log$info("\r< Processing chunk:",i," >")    
   } else {
     if (i[1]==1) Log$info("\n")
-    Log$info("\r<Processing :",round(100*(i[2])/i[3]), "%>" , sep="")
+    Log$info("\r< Processing :",round(100*(i[2])/i[3]), "% >" , sep="")
     if (i[2] == i[3]){
-      Log$info("\n")
+      Log$info("\r")
     }
   } 
 }

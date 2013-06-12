@@ -47,7 +47,7 @@ ffappend <- function(x, y, adjustvmode=TRUE, ...){
 	   x <- coerce_to_highest_vmode(x=x, y=y, onlytest=FALSE)
    }
    for (i in chunk(x, from=1, to=to, ...)){
-     Log$chunk(i)
+     #Log$chunk(i)
      if (is.atomic(y)){
 			 i <- as.which(i)
 	   }
