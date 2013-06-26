@@ -5,3 +5,6 @@ pdf: $(PDF)
 
 %.pdf: %.md
 	pandoc -t beamer -V theme:Malmoe $< -o $@
+
+clean:
+	rm -f $(PDF)
