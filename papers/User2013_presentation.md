@@ -1,4 +1,4 @@
-% ffbase
+% ffbase, statistical functions for large datasets
 % Jan Wijffels and Edwin de Jonge
 % UseR2013 July 10 2013
 
@@ -12,7 +12,17 @@ Data files tend to become bigger and bigger.
 - Speedy access to large files
 - Up to $10^9$
 
-# ffbase
+# ff
+
+`ff` is nice, but:
+
+- you have to rewrite most code into ff code
+- example....
+
+- mainly efficient storage of numeric types
+- no statistical functions
+
+# Enter: ffbase
 
 
 `ffbase` tries to add 
