@@ -2,7 +2,7 @@ version 0.9
 - fixed an error in chunkexpr: long expressions were cut off, Thanks to gaizoule
 - made binned_ functions faster by reusing the same vector.
 - binned_sum (and the rest) also accept a factor variable
-- binned_sum.ff (and the rest) also accept in INDEX vector 
+- binned_sum.ff (and the rest) also accept an INDEX vector 
 - added rev.ff for reversing an ff vector
 
 version 0.8
