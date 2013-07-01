@@ -14,8 +14,12 @@ dim(iris)
 dim(irisdouble)
 dim(uiris)
 dim(test)
-!apply(uiris, MARGIN=1, FUN=function(x) paste(x, collapse=",")) %in% apply(test, MARGIN=1, FUN=function(x) paste(x, collapse=","))
-!apply(test, MARGIN=1, FUN=function(x) paste(x, collapse=",")) %in% apply(uiris, MARGIN=1, FUN=function(x) paste(x, collapse=",")) 
+
+!apply(uiris, MARGIN=1, FUN=function(x) paste(x, collapse=",")) %in% 
+  apply(test, MARGIN=1, FUN=function(x) paste(x, collapse=","))
+
+!apply(test, MARGIN=1, FUN=function(x) paste(x, collapse=",")) %in% 
+  apply(uiris, MARGIN=1, FUN=function(x) paste(x, collapse=",")) 
 
 
 

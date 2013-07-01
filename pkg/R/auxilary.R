@@ -8,13 +8,16 @@ checkRange <- function(range, x){
     range
 }
 
-#' Groups the input integer vector into several groups if the running cumulative sum increases a certain maximum number
+#' Groups the input integer vector into several groups if the running cumulative
+#' sum increases a certain maximum number
 #'
-#' Groups the input integer vector into several groups if the running cumulative sum increases a certain maximum number
+#' Groups the input integer vector into several groups if the running cumulative
+#' sum increases a certain maximum number
 #'
 #' @useDynLib ffbase
 #' @param x an integer vector
-#' @param max the maximum running cumulative size before an extra grouping is done
+#' @param max the maximum running cumulative size before an extra grouping is 
+#' done
 #' @return An integer vector of the same length of x, indicating groups
 grouprunningcumsum <- function(x, max){
 	l <- as.integer(length(x))
@@ -79,7 +82,8 @@ coerce_to_allowNA <- function(x){
     }
     to[match(x, from)]
   }
-  coerceto <- sapply(names(.vimplemented)[.vimplemented==TRUE], FUN=function(x) names(maxffmode(x, vmode(as.ff(NA)))))  
+  coerceto <- sapply( names(.vimplemented)[.vimplemented==TRUE]
+                    , FUN=function(x) names(maxffmode(x, vmode(as.ff(NA)))))  
   coerceto <- recoder(x, from = names(coerceto), to = coerceto)
   names(coerceto) <- names(x)
   list(x = x, coerceto = coerceto)

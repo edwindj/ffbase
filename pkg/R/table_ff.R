@@ -1,6 +1,7 @@
-#' table.ff uses the cross-classifying factors to build a contingency table of the 
-#' counts at each combination of factor levels.\cr
-#' If \code{...} does not contain factors, \code{unique.ff} will add a levels attribute to the non-factors.
+#' table.ff uses the cross-classifying factors to build a contingency table of 
+#' the counts at each combination of factor levels.\cr
+#' If \code{...} does not contain factors, \code{unique.ff} will add a levels 
+#' attribute to the non-factors.
 #'
 #' Details 
 #' @seealso \code{\link{table}}
@@ -24,7 +25,8 @@ table.ff <- function( ...
   tab <- NULL
   useNA <- match.arg(useNA)
   
-  dat <- do.call(ffdf, args) # create a ffdf  for estimating good chunking size and checking if ... have equal length
+  dat <- do.call(ffdf, args) # create a ffdf  for estimating good chunking size 
+                             #and checking if ... have equal length
   colnames(dat) <- names(args)
   ### Cover non-factors like integers by adding a levels attribute
   if(sum(!vmode(dat) %in% c("byte", "short", "integer")) > 0){  	

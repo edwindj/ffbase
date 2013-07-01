@@ -4,7 +4,6 @@
 
 # Large data
 
-
 Data files tend to become bigger and bigger.
 
 # ff
@@ -38,6 +37,7 @@ f <- function(y){
 }
 f(x)
 print(x[1])
+
 ```
 
 # Idiosyncratic R
@@ -53,8 +53,6 @@ print(x[1])
 # Under the hood
 
 # chunked processing
-
-
 
 
 

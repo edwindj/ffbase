@@ -1,5 +1,5 @@
-#' The function \code{droplevels} is used to drop unused levels from a \code{ff} factor or
-#' , more commonly, from factors in a \code{ffdf}
+#' The function \code{droplevels} is used to drop unused levels from a \code{ff}
+#'  factor or , more commonly, from factors in a \code{ffdf}
 #' 
 #' @seealso \code{\link{droplevels}} \code{\link{droplevels.ffdf}}
 #' @export
@@ -28,7 +28,8 @@ droplevels.ff <- function(x, ..., inplace=FALSE){
 }
 
 
-#' The function \code{droplevels} is used to drop unused levels from factors in a \code{\link{ffdf}}
+#' The function \code{droplevels} is used to drop unused levels from factors 
+#' in a \code{\link{ffdf}}
 #' 
 #' @seealso \code{\link{droplevels}} \code{\link{droplevels.ff}}
 #' @export
@@ -42,7 +43,7 @@ droplevels.ff <- function(x, ..., inplace=FALSE){
 droplevels.ffdf <- function(x, except=NULL, ..., inplace=FALSE){
    ffs <- physical(x)
    ix <- sapply(ffs, is.factor.ff)
-   if (!is.null(except)) 
+   if (!is.null(except))
         ix[except] <- FALSE
 	
    ffs[ix] <- lapply(ffs[ix], droplevels.ff, ..., inplace)
