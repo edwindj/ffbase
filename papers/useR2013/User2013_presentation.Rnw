@@ -1,0 +1,436 @@
+\documentclass[10pt]{beamer}
+\usepackage{beamerthemesplit}
+\usetheme{Malmoe}
+
+\usepackage[T1]{fontenc}
+\usepackage{alltt}
+\usepackage{hyperref}
+\usepackage{xspace}
+\usepackage{hyphenat}
+
+\newcommand{\Rcode}[1]{\texorpdfstring{\nohyphens{\texttt{#1}}}{#1}}
+\newcommand{\Robject}[1]{\texorpdfstring{\nohyphens{\texttt{#1}}}{#1}}
+\newcommand{\Rcommand}[1]{\texorpdfstring{\nohyphens{\texttt{#1}}}{#1}}
+\newcommand{\Rfunction}[1]{\texorpdfstring{\nohyphens{\texttt{#1}}}{#1}}
+\newcommand{\Rfunarg}[1]{\texorpdfstring{\nohyphens{\textit{#1}}}{#1}}
+\newcommand{\Rpackage}[1]{\texorpdfstring{\nohyphens{\textit{#1}}}{#1}}
+\newcommand{\Rmethod}[1]{\texorpdfstring{\nohyphens{\textit{#1}}}{#1}}
+\newcommand{\Rclass}[1]{\texorpdfstring{\nohyphens{\textit{#1}}}{#1}}
+\newcommand{\mFun}[1]{\marginpar{\scriptsize \Rfunction{#1}}}
+\newcommand{\eg}{e.\,g.\xspace}
+\newcommand{\ie}{i.\,e.\xspace}
+\newcommand{\mum}[1]{\ensuremath{#1\;}\textmu m\xspace}
+\newcommand{\rcm}[1]{\ensuremath{#1\;\mathrm{cm^{-1}}}\xspace}
+\newcommand{\R}{\texorpdfstring{\texttt{R}}{R}\xspace}
+\newcommand{\code}[1]{\texorpdfstring{\nohyphens{\texttt{#1}}}{#1}}
+
+\definecolor{bnosacgreen}{rgb}{0.609375,0.8046875,0}
+\usecolortheme[named=bnosacgreen]{structure}
+
+<<echo=FALSE,results='hide', message=FALSE>>=
+#options(scipen=3)
+library(ff)
+library(ffbase)
+@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Title
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{ffbase:\\ statistical functions for large datasets}
+\author{Jan Wijffels \& Edwin de Jonge: \\ jwijffels@bnosac.be \& edwindjonge@gmail.com}
+\date{July 10 2013, useR! 2013}
+\institute{
+\href{
+  http://www.bnosac.be/}{BNOSAC - Belgium Network of Open Source Analytical Consultants: www.bnosac.be}\\
+ \& \href{http://www.cbs.nl/}{Centraal Bureau voor Statistiek: www.cbs.nl}}
+\subtitle{
+  \includegraphics[height=0.85cm]{./media/bnosaclogo.jpg}
+  \hspace{5 mm}
+  \includegraphics[height=1.5cm]{./media/user2013_logo.jpg}
+  \hspace{5 mm}
+  \includegraphics[height=1cm]{./media/cbs_logo.png}
+}
+\logo{
+  \includegraphics[height=0.5cm]{./media/bnosaclogo.jpg} 
+  \hspace{2 mm} 
+  \includegraphics[height=0.5cm]{./media/cbs_logo.jpg}
+}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Titelpage
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Overview
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+  \frametitle{Overview}
+  \tableofcontents
+\end{frame}
+
+%%
+%% Intro
+%%
+\section{Introduction}
+%% Who are we
+\subsection{Who are we}
+\begin{frame}
+  \frametitle{About Jan)}
+  \includegraphics[width=1.75cm]{./media/jan.jpeg}
+  Founder of \url{www.bnosac.be} 
+  and very recent father of Midas (2013-06-19) 
+  \includegraphics[width=1.75cm]{./media/midas_20130619.png}
+  and therefore not present at useR! 2013.\\  
+  \begin{itemize}
+  \item Providing consultancy services in open source analytical engineering 
+  \item Poor man's BI: Python/PostgreSQL/Pentaho/R/Hadoop/Sencha/ExtJS\dots\\
+  \includegraphics[width=1.75cm]{./media/logo-sencha.jpg}
+  \includegraphics[width=1cm]{./media/postgresqllogo.png}
+  \includegraphics[width=1.5cm]{./media/pentahologo.png}
+  \includegraphics[width=0.7cm]{./media/pythonlogo.png}
+  \includegraphics[width=1.2cm]{./media/Rlogo.png}
+  \includegraphics[width=1.7cm]{./media/hadoop.png}
+  \dots
+  \item Expertise in predictive data mining, biostatistics, geostats, python programming, GUI building, artificial intelligence, process automation, analytical web development
+  \item R implementations \& R application maintenance
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{About Edwin}
+  Working at Statistics Netherlands, that produces all dutch official statistics.
+  Co-author of several R packages:
+  \begin{itemize}
+  \item  \code{editrules}
+  \item \code{tabplot}
+  \item \code{whisker}
+  \item \code{ffbase}
+  \end{itemize}
+\end{frame}
+
+%% Why ffbase
+\subsection{Large data}
+
+\begin{frame}[fragile]
+  \frametitle{Large data}
+  \begin{itemize}
+    \item Statistical data is becoming larger.
+    \item If \code{nrow(data) $< 10^6$} everything works fine in \R{}
+    \item For larger \code{data.frame}'s you run quickly into memory problems
+<<warning=FALSE>>=
+#create an integer of length = 1 billion 
+integer(1e9)
+@
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item If it fits in memory plain \R{} is just fine!
+    \item If it doesn't fit on your hard disk, you'll need some big data stuff (Hadoop, \code{rmr}, \code{RHadoop})
+    \item For data sizes range of $10^6$ - $10^9$ several options provided by
+  external packages.
+    \item Popular one is \code{ff}\footnote{Daniel Adler, Christian Gl\"aser, Oleg Nenadic, Jens Oehlschl\"agel, Walter Zucchini}
+  \end{itemize}
+\end{frame}
+
+% \begin{frame}[fragile]
+%   \frametitle{Alternatives}
+%  bigmemory, mmap, filehash, pdbBASE
+<<echo=FALSE, message=FALSE, tidy.opts=list(width.cutoff=200)>>=
+# library(ffbase)
+# library(data.table)
+# library(lattice)
+# tmp <- ffload(file.path(getwd(), "data", "rstudiologs"), rootpath = tempdir())
+# rstudiologs[1:2, ]
+# packages <- c("ff","ffbase","bigmemory","mmap","filehash","pbdBASE","colbycol")
+# idx <- rstudiologs$package %in% ff(factor(packages))
+# idx <- ffwhich(idx, idx == TRUE)
+# mypackages <- rstudiologs[idx, ]
+# mypackages <- as.data.frame(mypackages)
+# info <- c("r_version","r_arch","r_os","package","version","country")
+# mypackages[info] <- apply(mypackages[info], MARGIN=2, as.character)
+# mypackages <- as.data.table(mypackages)
+# mypackages$aantal <- 1
+# mondayofweek <- function(x){
+#     weekday <- as.integer(format(x, "%w"))
+#     as.Date(ifelse(weekday == 0, x-6, x-(weekday-1)), origin=Sys.Date()-as.integer(Sys.Date()))
+#   }
+# mypackages$date <- mondayofweek(mypackages$date)
+# byday <- mypackages[, 
+#                     list(aantal = sum(aantal), 
+#                          ips = length(unique(ip_id))), 
+#                     by = list(package, date)]
+# byday <- subset(byday, date != max(as.character(byday$date)))
+# write.csv(byday, "data/byday.csv", row.names=FALSE)
+byday <- read.csv("data/byday.csv", colClasses=c("factor","Date","integer","integer"))
+@
+%\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Popularity based on RStudio download log files}
+  
+<<echo=FALSE, fig.width=6, fig.height=3.85>>=
+library(ggplot2)
+byday <- transform(byday, package=reorder(package, byday$ips))
+qplot( data=byday, y=ips, x=date, color=reorder(package, -ips, mean), geom="line", size=I(1)
+     ) + labs(x="", y="# unique ip", title="Rstudio logs 2013, downloads/week", color="") + theme_bw()
+@
+\end{frame}
+
+\begin{frame}
+  \begin{block}{\code{ff} package provides:}
+  \begin{itemize} 
+    \item numerical, integer, boolean and factor variables of type \code{ff} stored on disk (via memory mapping)
+    \item a sort of data.frame of type \code{ffdf}
+    \item efficient indexing, retrieval and sorting of \code{ff} vectors and \code{ffdf}.
+    \item efficient chunk-wise retrieval of data.
+    \item \code{ff}-based matrix storage.
+    \item vectors up-to length of $2 \cdot 10^9$.
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{What's the catch?}
+  \code{ff} is nice, but:
+  \begin{itemize}
+    \item Handling \code{ff} vectors often results in non-standard \R{} code
+    \item It offers no statistical functions on \code{ff} and \code{ffdf} objects
+      \begin{itemize}
+      \item No \code{mean}, \code{max}, \code{min}, \code{sd}, etc. on \code{ff} vectors
+      \end{itemize}
+    \item Requires that you process the data chunkwise.
+    \item Has no support for \code{character} vectors.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+ Typical chunkwise code for \code{ff}
+<<>>=
+library(ff)
+x <- ff(0, length=1e8)
+
+# calculating the max value of x
+m <- -Inf
+for (i in chunk(x)){
+  m <- max(x[i], m, na.rm=T)
+}
+@
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Value vs reference}
+Note that out-of-memory objects have issues with value vs reference semantics.
+<<>>=
+x <- ff(0, length=1e7)
+y <- x
+y[1] <- 100
+print(x[1])
+@
+This is not what a normal \R{} vector would do! Trade-of between copying large object and side-effects.
+\end{frame}
+
+%% Enter ffbase
+\section{Enter ffbase}
+\subsection{Goal}
+\begin{frame}[fragile]
+  \frametitle{\code{ffbase}\footnote{de Jonge/Wijffels/van der Laan} attempts to}
+  \Large
+  \begin{itemize}
+    \item add basic statistical functions to ff
+    \item make code as standard R as possible
+    \item make working with \code{ff} more pleasant.
+    \item connect \code{ff} with \code{big*} methods.
+  \end{itemize}
+\end{frame}
+
+\subsection{Basic statistical functions}
+\begin{frame}[fragile]
+  \frametitle{Basic operations}
+  Most methods works via S3 dispatch (but not all...)
+  \begin{itemize}
+  \item \code{mean},\code{min},\code{max},\code{range}, \code{sum}, \code{all}, \code{cumsum}, \code{cumprod}, \code{quantile}, \code{tabulate.ff}, \code{table.ff},
+  \item \code{cut}, \code{c}, \code{unique}, \code{duplicated}, \code{Math.Ops} 
+  \end{itemize}
+<<>>=
+x <- 1:10
+x_ff <- ff(x)
+mean(x)
+mean(x_ff)
+@
+\end{frame}
+
+\subsection{Normal R code}
+\begin{frame}[fragile]
+  \frametitle{Idiosyncratic R}
+  \begin{itemize}
+    \item Use S3 dispatch (works only for generic methods...)
+    \item \code{ffbase} adds \code{subset}\footnote{This creates a copy of all selected data}, \code{with}, \code{within} and \code{transform} to \code{ff} 
+    \item Makes code interchangeable with normal R code:
+<<tidy=FALSE>>=
+iris_ff <- as.ffdf(iris)
+iris_ff <- transform( iris_ff
+                    , Sepal.Ratio = Sepal.Width/Sepal.Length
+                    )
+str(iris_ff[,])
+@
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Under the hood}
+  \code{ffbase} rewrites the expression into chunked expression
+<<eval=FALSE, tidy=FALSE>>=
+transform( iris_ff
+         , Sepal.Ratio = Sepal.Width/Sepal.Length
+         )
+@
+
+into\footnote{greatly simplified}
+
+<<eval=FALSE, tidy=FALSE>>=
+iris_ff2 <- iris_ff
+for (.i in chunk(iris_ff2)){
+  iris_ff2[.i,] <- transform( iris_ff2[.i,]
+                          , Sepal.Ratio=Sepal.Width/Sepal.Length
+                          ) 
+}
+return(iris_ff2)
+@
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{filtering: \code{ffwhich}}
+  Often we need an index for a subselection, but even this may be to big for memory.
+  \begin{itemize}
+    \item \code{ffwhich(dat, expression)} returns a \code{ff} index vector
+    \item result can be used to index \code{ffdf} data.frame.
+  \end{itemize}
+<<eval=FALSE>>=
+idx <- ffwhich(iris_ff, Sepal.Width > 2)
+iris_ff[idx,]
+@
+\end{frame}
+
+
+%%
+%% Get your data in ff
+%%
+\subsection{Getting data into ff}
+
+\begin{frame}[fragile]
+  \frametitle{Importing data}
+  \begin{itemize}
+    \item Package \code{ff}: \code{read.table.ffdf}, \code{read.csv.ffdf} etcetera
+    \item Package \code{ETLutils}: \Rfunction{read.dbi.ffdf}, \Rfunction{read.odbc.ffdf}, \Rfunction{read.jdbc.ffdf}
+SQL Databases (SQLite / PostgreSQL / Oracle / MySQL / SQL Server (read.odbc.ffdf)  / Hive (read.jdbc.ffdf) / \ldots)\\
+\begin{center}
+\includegraphics[width=3.5cm]{./media/sql_connections.png}
+\end{center}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\code{ffbase}}
+  \code{ffbase} adds 
+  \begin{itemize}
+    \item \code{laf\_to\_ffdf} using \code{LaF} for importing large csv and fwf files
+    \item \code{ffappend} for appending vectors to an existing \code{ff} object
+<<eval=FALSE>>=
+x <- ffappend(x, 1:10)
+@    
+    \item \code{ffdfappend} for appending \code{data.frame}'s to an existing \code{ffdf}
+<<eval=FALSE>>=
+dat <- ffdfappend(dat, iris)
+#Note the pattern of assigning the result of the function applied to an ff object to itself 
+@
+\end{itemize}
+\end{frame}
+
+\subsection{ff storage}
+\begin{frame}[fragile]
+  \frametitle{ff storage}
+  \large
+  \begin{itemize}
+  \item When data is in \code{ff} format processing is fast!
+  \item Time bottle neck can be loading the data into \code{ff}
+  \item Keeping data in \code{ff} format can save time
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \code{ff} stores all \code{ff} vectors on disk, however filenames are not user-friendly.
+<<>>=
+basename(filename(iris_ff$Sepal.Length))
+@ 
+  Furthermore each \code{ff} vector stores the absolute path.
+  \begin{itemize}
+     \item Makes moving data around more difficult
+     \item \code{ff} provides: \code{ffsave} and \code{ffload}, which archives and unarchives ff vectors and ffdf data.frames into a zip file.\\
+     Note that this still can be time-consuming.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \code{ffbase} has:
+  \begin{itemize}
+     \item \code{save.ffdf} and \code{load.ffdf} that store and load \code{ffdf} data.frames into a directory with sensible \R{} names.
+<<>>=
+save.ffdf(iris_ff)
+basename(filename(iris_ff$Sepal.Length))
+@
+     \item \code{pack.ffdf} and \code{unpack.ffdf} that do the same but zip/unzip the result.
+  \end{itemize}
+\end{frame}
+
+%%
+%% Statistical modelling on your ff datasets
+%%
+\subsection{Using big statistical methods on ff datasets}
+  \begin{frame}[fragile]
+    \frametitle{Several methods for \code{ff}}
+    \code{ffbase} allows statistical models directly on ff data.\footnote{These work on large data but you can also sample from your ffdf to build your stat model and predict chunkwise.}
+   \begin{itemize}
+     \item Classification + Regression with \Rfunction{bigglm.ffdf} (\Rpackage{biglm} + 
+     \Rpackage{ffbase} packages)
+    \item Least angle regression with \Rfunction{biglars.fit} (\Rpackage{biglars} + 
+    \Rpackage{ffbase} packages)
+    \item Randomforest classification with \Rfunction{bigrfc} (\Rpackage{bigrf} + 
+    \Rpackage{ffbase} packages)
+    \item Clustering with clustering features of package \Rpackage{stream}
+%     \item Collaborative filtering (recommendation engines) based on alternating least squares
+   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Example of bigglm}
+  Using biglm (with bigglm.ffdf from ffbase)
+<<echo=FALSE, message=FALSE>>=
+require(biglm)
+i <- sample(nrow(iris), size=1e6, replace=TRUE)
+iris_ff <- as.ffdf(iris)
+# expand data set to 1e6 rows
+iris_ff <- iris_ff[ff(i),]
+@
+<<message=FALSE>>=
+class(iris_ff)
+nrow(iris_ff) # that is 1e7!
+mymodel <- bigglm(Sepal.Length ~ Petal.Length, data = iris_ff)
+coef(mymodel)
+@ 
+\end{frame}
+
+\begin{frame}
+   \Large Thank you! \\Questions?
+\end{frame}
+\end{document}
