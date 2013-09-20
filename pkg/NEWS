@@ -1,3 +1,7 @@
+version 0.10
+- Made several method generics
+- Improved error message in merge.ffdf when one of the columns was missing (Thanks to Milan Bouchet-Valat)
+
 version 0.9
 - fixed an error in chunkexpr: long expressions were cut off, Thanks to gaizoule
 - made binned_ functions faster by reusing the same vector.
