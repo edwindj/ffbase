@@ -36,7 +36,13 @@ merge.ffdf <- function(x, y, by = intersect(names(x), names(y)), by.x = by, by.y
   if((all.x == TRUE & all.y == TRUE) | (all.y == TRUE & all.x == TRUE)){
   	stop("merge.ffdf only allows inner joins")
   }
-  ## First find the first match where the left hand side ffdf is in the right hand side ffdf
+  if (!all(by.x %in% names(x))){
+    stop("'",by.x[!by.x %in% names(x)], "' is missing from x")
+  }
+	if (!all(by.y %in% names(y))){
+	  stop("'", by.y[!by.y %in% names(y)], "' is missing from y")
+	}
+	## First find the first match where the left hand side ffdf is in the right hand side ffdf
   if(length(by.x) == 1){
   	matchidx <- eval(ffmatch(x[[by.x]], y[[by.y]], trace = trace))
   }else{

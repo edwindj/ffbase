@@ -72,3 +72,9 @@ as.ff_matrix.ffdf <- function(x, ...){
 #   }
 #   return(y)
 # }
+
+#' Trivial implementation, but very handy
+#' @S3method as.ffdf ffdf
+as.ffdf.ffdf <- function(x, ...){
+  x
+}

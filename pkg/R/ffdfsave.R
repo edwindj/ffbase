@@ -10,7 +10,8 @@
 #' @param dat \code{ffdf} data.frame, to be saved
 #' @param filename path where .rdata file will be save and <filename>_ff directory will be created
 ffdfsave <- function(dat, filename){
-  
+   .Deprecated("Use save.ffdf")
+   
    datname <- deparse(substitute(dat))
    
    # create a sub directory with "<filename>_ff"
