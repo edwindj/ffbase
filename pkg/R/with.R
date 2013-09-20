@@ -43,6 +43,7 @@ with.ffdf <- function(data, expr, ...){
       }
    } else if (is.data.frame(res)){
       res <- as.ffdf(res)
+      rownames(res) <- NULL
       nrow(res) <- nrow(data)
       for (i in chunks[-1]){
         Log$chunk(i)
@@ -92,7 +93,9 @@ within.ffdf <- function(data, expr, ...){
     cdat[names(l)] <- l
 
     res <- as.ffdf(cdat)
+    rownames(res) <- NULL
     nrow(res) <- nrow(data)
+    rownames(res) <- rownames(data)
     for (i in chunks[-1]){
        cdat <- data[i,,drop=FALSE]
        e <- evalq(environment(), cdat, parent)

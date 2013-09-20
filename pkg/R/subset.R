@@ -19,7 +19,8 @@ subset.ff <- function(x, subset, ...){
 }
 
 subset.ffdf <- function(x, subset, select, drop = FALSE, ...){
-  
+  # remove rownames otherwise we have errors...
+  rownames(x) <- NULL
   if (missing(subset)){
     idx = ffseq_len(nrow(x))
   } else {  
