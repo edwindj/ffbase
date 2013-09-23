@@ -5,8 +5,15 @@
 #'
 #' Details 
 #' @seealso \code{\link{table}}
-#' Override table functionality
-#' @export
+#'
+#' @param ... \code{ff} factors or \code{ff} integers
+#' @param exclude see \code{\link{table}}
+#' @param useNA see \code{\link{table}}
+#' @param dnn see \code{\link{table}}
+#' @param deparse.level see \code{\link{table}}
+#'
+#' @return \code{table} object
+#' @exportMethod table
 table <- function( ...
                  , exclude = if (useNA == "no") c(NA, NaN)
                  , useNA = c("no","ifany", "always")
@@ -16,7 +23,7 @@ table <- function( ...
   UseMethod("table")
 }
 
-#' @S3method table default
+#' @method table default
 table.default <- base::table
 
 #' table.ff uses the cross-classifying factors to build a contingency table of 
@@ -26,7 +33,7 @@ table.default <- base::table
 #'
 #' Details 
 #' @seealso \code{\link{table}}
-#' @S3method table ff
+#' @method table ff
 #' @export
 #'
 #' @param ... \code{ff} factors or \code{ff} integers

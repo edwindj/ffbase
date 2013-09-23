@@ -9,10 +9,24 @@ attribute to the non-factors.}
     useNA = c("no", "ifany", "always"),
     dnn = list.names(...), deparse.level = 1)
 }
+\arguments{
+  \item{...}{\code{ff} factors or \code{ff} integers}
+
+  \item{exclude}{see \code{\link{table}}}
+
+  \item{useNA}{see \code{\link{table}}}
+
+  \item{dnn}{see \code{\link{table}}}
+
+  \item{deparse.level}{see \code{\link{table}}}
+}
+\value{
+  \code{table} object
+}
 \description{
   Details
 }
 \seealso{
-  \code{\link{table}} Override table functionality
+  \code{\link{table}}
 }
 

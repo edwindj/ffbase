@@ -78,9 +78,9 @@ as.ff_matrix.ffdf <- function(x, ...){
 #' Trivial implementation, but very handy
 #'
 #' Coerce a ffdf object to an ffdf object.
-#' @S3method as.ffdf ffdf
+#' @method as.ffdf ffdf
 #' @param x ffdf object
-#' @export
+#' @param ... not used.
 #' @import ff
 as.ffdf.ffdf <- function(x, ...){
   x
