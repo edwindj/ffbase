@@ -5,8 +5,7 @@ the counts at each combination of factor levels.\cr
 If \code{...} does not contain factors, \code{unique.ff} will add a levels
 attribute to the non-factors.}
 \usage{
-  \method{table}{ff} (...,
-    exclude = if (useNA == "no") c(NA, NaN),
+  table.ff(..., exclude = if (useNA == "no") c(NA, NaN),
     useNA = c("no", "ifany", "always"),
     dnn = list.names(...), deparse.level = 1)
 }

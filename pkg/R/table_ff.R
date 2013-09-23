@@ -13,6 +13,7 @@ table <- function( ...
                  , dnn = list.names(...)
                  , deparse.level = 1
 ){
+  UseMethod("table")
 }
 
 #' @S3method table default
@@ -25,7 +26,7 @@ table.default <- base::table
 #'
 #' Details 
 #' @seealso \code{\link{table}}
-#' @method table ff
+#' @S3method table ff
 #' @export
 #'
 #' @param ... \code{ff} factors or \code{ff} integers
