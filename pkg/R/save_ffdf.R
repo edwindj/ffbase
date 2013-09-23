@@ -23,7 +23,7 @@ save.ffdf <- function(..., dir="./ffdb", clone=FALSE, relativepath=TRUE){
    on.exit(setwd(oldwd))
    
    # TODO make this fail safe: when one of the 'n' is non-existing
-   existing <- sapply(names, exists, where=1)
+   existing <- sapply(names, exists, envir=parent.frame())
    names <- names[existing]
    if (any(!existing)){
      warning(names[!existing], " were not saved, because not found")
