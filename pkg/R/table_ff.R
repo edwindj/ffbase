@@ -1,3 +1,10 @@
+#' table.ff uses the cross-classifying factors to build a contingency table of 
+#' the counts at each combination of factor levels.\cr
+#' If \code{...} does not contain factors, \code{unique.ff} will add a levels 
+#' attribute to the non-factors.
+#'
+#' Details 
+#' @seealso \code{\link{table}}
 #' Override table functionality
 #' @export
 table <- function( ...
@@ -8,7 +15,7 @@ table <- function( ...
 ){
 }
 
-#' @export
+#' @S3method table default
 table.default <- base::table
 
 #' table.ff uses the cross-classifying factors to build a contingency table of 

@@ -21,9 +21,11 @@ as.character.ff <- function(x, ...){
 	res		
 }
 
+
 as.ff_matrix <- function(x, ...){
   UseMethod("as.ff_matrix")
 }
+
 as.ff_matrix.ffdf <- function(x, ...){
   result <- ff(NA, dim = dim(x), vmode = names(maxffmode(vmode(x)))[1])
   dimnames(result) <- dimnames(x)
@@ -74,7 +76,12 @@ as.ff_matrix.ffdf <- function(x, ...){
 # }
 
 #' Trivial implementation, but very handy
+#'
+#' Coerce a ffdf object to an ffdf object.
 #' @S3method as.ffdf ffdf
+#' @param x ffdf object
+#' @export
+#' @import ff
 as.ffdf.ffdf <- function(x, ...){
   x
 }

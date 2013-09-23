@@ -4,7 +4,10 @@
 \usage{
   as.ffdf.ffdf(x, ...)
 }
+\arguments{
+  \item{x}{ffdf object}
+}
 \description{
-  Trivial implementation, but very handy
+  Coerce a ffdf object to an ffdf object.
 }
 
