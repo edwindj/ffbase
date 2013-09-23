@@ -1,0 +1,33 @@
+\name{binned_sum}
+\alias{binned_sum}
+\alias{binned_sum.default}
+\alias{binned_sum.ff}
+\title{Fast summing in different bins}
+\usage{
+  binned_sum(x, bin, nbins = max(bin), ...)
+
+  \method{binned_sum}{default} (x, bin, nbins = max(bin),
+    ...)
+
+  \method{binned_sum}{default} (x, bin, nbins = max(bin),
+    ...)
+}
+\arguments{
+  \item{x}{\code{numeric} vector with the data to be
+  summed}
+
+  \item{bin}{\code{integer} vector with the bin number for
+  each data point}
+
+  \item{nbins}{\code{integer} maximum bin number}
+
+  \item{...}{used by binned_sum.ff}
+}
+\value{
+  \code{numeric} matrix where each row is a bin
+}
+\description{
+  \code{binned_sum} implements fast summing for given bins
+  by calling c-code.
+}
+

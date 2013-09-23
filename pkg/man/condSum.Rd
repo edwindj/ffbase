@@ -1,0 +1,25 @@
+\name{condSum}
+\alias{condSum}
+\title{Fast conditional sum}
+\usage{
+  condSum(x, index, na.rm = FALSE, ...)
+}
+\arguments{
+  \item{x}{\code{numeric} vector to be summed}
+
+  \item{index}{(list of) \code{factor(s)} for which the sum
+  will be calculated}
+
+  \item{na.rm}{\code{logical} If \code{TRUE} \code{NA}
+  values will be removed}
+
+  \item{...}{not used}
+}
+\value{
+  \code{array} with dimensions of \code{index}
+}
+\description{
+  \code{condSum} works like a very fast version of tapply
+  with \code{FUN=sum}.
+}
+

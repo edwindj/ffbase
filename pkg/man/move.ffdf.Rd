@@ -1,0 +1,56 @@
+\name{move.ffdf}
+\alias{move.ffdf}
+\title{Moves all the columns of ffdf data.frames into a directory}
+\usage{
+  move.ffdf(x, dir = ".",
+    name = as.character(substitute(x)),
+    relativepath = FALSE)
+}
+\arguments{
+  \item{x}{\code{ffdf} data.frame to be moved}
+
+  \item{dir}{path were all of supplied \code{ffdf}'s, will
+  be saved. It will be created if it doesn't exist.}
+
+  \item{name}{name to be used as data.frame name}
+
+  \item{relativepath}{If \code{TRUE} the \code{ffdf} will
+  contain relativepaths. Use with care...}
+}
+\description{
+  \code{move.ffdf} saves all columns into the given
+  \code{dir}. Each column is stored as with filename
+  <ffdfname>$<colname>.ff. If you want to store the data
+  for an other session please use \code{\link{save.ffdf}}
+  or \code{\link{pack.ffdf}}
+}
+\examples{
+iris.ffdf <- as.ffdf(iris)
+
+td <- tempfile()
+
+# save the ffdf into the supplied directory
+save.ffdf(iris.ffdf, dir=td)
+
+# what in the directory?
+dir(td)
+
+#remove the ffdf from memory
+rm("iris.ffdf")
+
+# and reload the stored ffdf
+load.ffdf(dir=td)
+
+tf <- paste(tempfile(), ".zip", sep="")
+packed <- pack.ffdf(file=tf, iris.ffdf)
+
+#remove the ffdf from memory
+rm("iris.ffdf")
+
+# restore the ffdf from the packed ffdf
+unpack.ffdf(tf)
+}
+\seealso{
+  \code{\link{load.ffdf}} \code{\link{save.ffdf}}
+}
+

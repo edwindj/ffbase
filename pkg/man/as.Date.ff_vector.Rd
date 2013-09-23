@@ -1,0 +1,22 @@
+\name{as.Date.ff_vector}
+\alias{as.Date.ff_vector}
+\title{Date Conversion Functions for \code{ff} vector}
+\usage{
+  \method{as.Date}{ff_vector} (x, ..., inplace = FALSE)
+}
+\arguments{
+  \item{x}{an object of class \code{ff_vector}}
+
+  \item{...}{other parameters passed on to
+  \code{\link{as.Date}}}
+
+  \item{inplace}{passed on to \code{\link{chunkify}}}
+}
+\value{
+  An \code{ff_vector} of length(x) containing the result of
+  as.Date applied to the elements in chunks
+}
+\description{
+  Date Conversion Functions for \code{ff} vector.
+}
+

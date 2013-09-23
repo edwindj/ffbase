@@ -1,0 +1,51 @@
+\name{load.ffdf}
+\alias{load.ffdf}
+\title{Loads ffdf data.frames from a directory}
+\usage{
+  load.ffdf(dir, envir = parent.frame())
+}
+\arguments{
+  \item{dir}{path from where the data should be loaded}
+
+  \item{envir}{environment where the stored variables will
+  be loaded into.}
+}
+\description{
+  \code{load.ffdf} loads ffdf data.frames from the given
+  \code{dir}, that were stored using
+  \code{\link{save.ffdf}}. Each column is stored as with
+  filename <ffdfname>$<colname>.ff. All variables are
+  stored in .RData in the same directory. The data can be
+  loaded by starting a R session in the directory or by
+  using \code{\link{load.ffdf}}.
+}
+\examples{
+iris.ffdf <- as.ffdf(iris)
+
+td <- tempfile()
+
+# save the ffdf into the supplied directory
+save.ffdf(iris.ffdf, dir=td)
+
+# what in the directory?
+dir(td)
+
+#remove the ffdf from memory
+rm("iris.ffdf")
+
+# and reload the stored ffdf
+load.ffdf(dir=td)
+
+tf <- paste(tempfile(), ".zip", sep="")
+packed <- pack.ffdf(file=tf, iris.ffdf)
+
+#remove the ffdf from memory
+rm("iris.ffdf")
+
+# restore the ffdf from the packed ffdf
+unpack.ffdf(tf)
+}
+\seealso{
+  \code{\link{load.ffdf}}
+}
+

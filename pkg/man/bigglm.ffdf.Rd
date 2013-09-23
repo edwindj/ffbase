@@ -1,0 +1,47 @@
+\name{bigglm.ffdf}
+\alias{bigglm.ffdf}
+\title{Bounded memory linear regression}
+\usage{
+  bigglm.ffdf(formula, data, family = gaussian(), ...,
+    chunksize = 5000)
+}
+\arguments{
+  \item{formula}{a model formula}
+
+  \item{data}{an object of class ffdf}
+
+  \item{family}{A glm family object}
+
+  \item{...}{other parameters passed on to bigglm. See the
+  bigglm package: \code{\link[biglm]{bigglm}}}
+
+  \item{chunksize}{Size of chunks for processing the ffdf}
+}
+\value{
+  An object of class bigglm. See the bigglm package for a
+  description: \code{\link[biglm]{bigglm}}
+}
+\description{
+  bigglm.ffdf creates a generalized linear model object
+  that uses only p^2 memory for p variables. It uses the
+  biglm package and is a simple wrapper to allow to work
+  with an ffdf as input data. Make sure that package is
+  loaded.
+}
+\examples{
+require(biglm)
+data(trees)
+x <- as.ffdf(trees)
+a <- bigglm(log(Volume)~log(Girth)+log(Height), 
+            data=x, chunksize=10, sandwich=TRUE)
+summary(a)
+
+b <- bigglm(log(Volume)~log(Girth)+log(Height)+offset(2*log(Girth)+log(Height)),
+            data=x, chunksize=10, sandwich=TRUE)
+summary(b)
+
+}
+\seealso{
+  \code{\link[biglm]{bigglm}}
+}
+

@@ -2,7 +2,6 @@
 .Rhistory
 .RData
 /output/ffbase.Rcheck
-/pkg/man
 *\.dll
 *\.so
 *\.[oa]

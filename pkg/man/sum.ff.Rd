@@ -1,0 +1,25 @@
+\name{sum.ff}
+\alias{sum.ff}
+\title{Sum of \code{ff} vector Elements}
+\usage{
+  \method{sum}{ff} (x, ..., na.rm = FALSE, range = NULL)
+}
+\arguments{
+  \item{x}{a \code{ff} object}
+
+  \item{...}{optional other (\code{ff}) objects}
+
+  \item{na.rm}{should \code{NA} be removed?}
+
+  \item{range}{a \code{ri} or an \code{integer} vector of
+  \code{length==2} giving a range restriction for chunked
+  processing}
+}
+\value{
+  sum of elements
+}
+\description{
+  \code{sum} returns the sum of all the values present in
+  its arguments.
+}
+

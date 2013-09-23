@@ -1,0 +1,45 @@
+\name{addfforder}
+\alias{addfforder}
+\alias{ffordered}
+\alias{ffsorted}
+\title{Add the order of a ff vector of the \code{\link{ff}} vector \code{x}}
+\usage{
+  addfforder(x, addsorted = FALSE, ...)
+
+  ffordered(x)
+
+  ffsorted(x)
+}
+\arguments{
+  \item{x}{\code{ff} vector to be indexed}
+
+  \item{addsorted}{should the sorted values also be stored
+  in \code{ffsorted}?}
+
+  \item{...}{parameters that will be passed on to
+  \code{\link{fforder}}.}
+}
+\value{
+  The updated vector \code{x}
+}
+\description{
+  Add a ff vector that contains the order of the
+  \code{\link{ff}} vector \code{x} as an attribute. The
+  order can be retrieved using \code{ffordered}. Note that
+  you have to assign the result to the original vector
+  \code{x}.
+}
+\examples{
+x <- ff(rnorm(10))
+
+# adds an index to x (note the assignment)
+x <- addfforder(x)
+
+# retrieve ffindex
+o <- ffordered(x)
+
+o
+# use it to sort the original vector
+x[o]
+}
+
