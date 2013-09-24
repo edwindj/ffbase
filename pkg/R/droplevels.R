@@ -42,10 +42,11 @@ droplevels.ff <- function(x, ..., inplace=FALSE){
 #' @return \code{ffdf} object where levels of factors are dropped
 droplevels.ffdf <- function(x, except=NULL, ..., inplace=FALSE){
    ffs <- physical(x)
+   names(ffs) <- names(x)
    ix <- sapply(ffs, is.factor.ff)
    if (!is.null(except))
         ix[except] <- FALSE
 	
-   ffs[ix] <- lapply(ffs[ix], droplevels.ff, ..., inplace)
+   ffs[ix] <- sapply(ffs[ix], droplevels.ff, ..., inplace, simplify=FALSE)
    do.call("ffdf", ffs)
 }

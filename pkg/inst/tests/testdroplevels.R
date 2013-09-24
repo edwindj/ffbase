@@ -19,3 +19,11 @@ test_that("droplevels.ffdf works",{
 	expect_identical(droplevels(dat), (droplevels(fdat))[,]) 
 	expect_identical(droplevels(dat,except="x"), (droplevels(fdat, except="x"))[,]) 
 })
+
+test_that("droplevels.ffdf keeps names",{
+  x <- data.frame(a = 1:10, b = 1:10, c = factor(LETTERS[1:10], levels=LETTERS))
+  x <- as.ffdf(x)
+  
+  names(x) <- c("x","y","z")
+  expect_identical(names(droplevels(x)), c("x","y","z"))
+})
