@@ -26,7 +26,7 @@ mean.ff <- function(x, trim=0, ..., range=NULL){
                 , function(i){
                      Log$chunk(i)
                      c( mean=mean(x[i], ...)
-                      , w = sum(i)/max(i)
+                      , w = sum(i)/max(r)
                       )
                   }
 				    )
