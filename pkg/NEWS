@@ -3,6 +3,7 @@ version 0.10
 - Improved error message in merge.ffdf when one of the columns was missing (Thanks to Milan Bouchet-Valat)
 - Removed rowname creation by within (Thanks to Milan Bouchet-Valat).
 - Removed bug in save.ffdf (Thanks to d.morrison, issue #6)
+- Removed bug in load.ffdf which caused open file handlers. (Thanks to Milan Bouchet-Valat, issue #7)
 
 version 0.9
 - fixed an error in chunkexpr: long expressions were cut off, Thanks to gaizoule

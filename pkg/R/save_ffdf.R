@@ -115,11 +115,11 @@ load.ffdf <- function(dir, envir=parent.frame()){
     x = get(n, envir=env)
     if (is.ffdf(x)){
       for (i in physical(x)){
-        filename(i) <- filename(i)
+        i$filename <- file.path(getwd(), i$filename)
       }
       close(x)
     } else if (is.ff(x)){
-      filename(x) <- filename(x)
+      x$filename <- file.path(getwd(), x$filename)
       close(x)
     }
     assign(n, x, envir=envir)
