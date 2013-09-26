@@ -13,7 +13,8 @@
   columns of supplied \code{ffdf}'s. It will be created if
   it doesn't exist.}
 
-  \item{clone}{should the data.frame be cloned?}
+  \item{clone}{should the data.frame be copied, creating a
+  snapshot of the supplied ffdf or ff objects?}
 
   \item{relativepath}{\code{logical} if \code{TRUE} the
   stored ff vectors will have relative paths, making moving
@@ -26,6 +27,15 @@
   stored in ".RData" in the same directory. The data can be
   reloaded by starting a R session in the directory or by
   using \code{\link{load.ffdf}}.
+}
+\details{
+  Using \code{save.ffdf} automagically sets the
+  \code{\link{finalizer}}s of the \code{ff} vectors to
+  \code{"close"}. This means that the data will be
+  preserved on disk when the object is removed or the R
+  sessions is closed. Data can be deleted either using
+  \code{\link{delete}} or by removing the directory where
+  the object were saved (\code{dir}).
 }
 \examples{
 iris.ffdf <- as.ffdf(iris)

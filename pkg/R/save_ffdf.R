@@ -3,10 +3,16 @@
 #' \code{save.ffdf} saves all ffdf data.frames in the given \code{dir}. Each column
 #' is stored as with filename <ffdfname>$<colname>.ff. All variables given in "..." are stored in ".RData" in the same directory.
 #' The data can be reloaded by starting a R session in the directory or by using \code{\link{load.ffdf}}.
+#' 
+#' Using \code{save.ffdf} automagically sets the \code{\link{finalizer}}s of the \code{ff}
+#' vectors to \code{"close"}. This means that the data will be preserved on disk when the 
+#' object is removed or the R sessions is closed. Data can be deleted either using
+#' \code{\link{delete}} or by removing the directory where the object were saved 
+#' (\code{dir}).
 #' @example ../examples/save_ffdf.R
 #' @param ... \code{ffdf} data.frames, \code{ff} vectors, or other variables to be saved in the directory
 #' @param dir path where .rdata file will be saved and all columns of supplied \code{ffdf}'s. It will be created if it doesn't exist.
-#' @param clone should the data.frame be cloned?
+#' @param clone should the data.frame be copied, creating a snapshot of the supplied ffdf or ff objects?
 #' @param relativepath \code{logical} if \code{TRUE} the stored ff vectors will have relative paths, making moving the data to another storage a simple
 #' copy operation.
 #' @seealso \code{\link{load.ffdf}} 
