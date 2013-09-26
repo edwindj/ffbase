@@ -29,7 +29,7 @@ save.ffdf <- function(..., dir="./ffdb", clone=FALSE, relativepath=TRUE){
      warning(names[!existing], " were not saved, because not found")
    }
    for (n in names){
-     x = get(n, pos= parent.frame())
+     x = get(n, pos = parent.frame())
      if (is.ffdf(x)) {
        if (isTRUE(clone)){
          x <- clone(x)
@@ -47,7 +47,7 @@ save.ffdf <- function(..., dir="./ffdb", clone=FALSE, relativepath=TRUE){
    
    if (relativepath && !clone){
      for (n in names){
-       x = get(n, env = parent.frame())
+       x = get(n, pos = parent.frame())
        if (is.ffdf(x)){
          for (i in physical(x)){
            filename(i) <- filename(i)
