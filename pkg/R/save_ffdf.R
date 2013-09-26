@@ -9,13 +9,14 @@
 #' object is removed or the R sessions is closed. Data can be deleted either using
 #' \code{\link{delete}} or by removing the directory where the object were saved 
 #' (\code{dir}).
-#' \note{When saving in the temporary directory, \code{ff} assumes that the 
+#' \note{When saving in the temporary directory pointed at by getOption("fftempdir"), \code{ff} assumes that the
 #' resulting files are to be deleted. Be sure to change the finalizers of the 
 #' ff vectors when saving in the temporary directory.}
 #' @example ../examples/save_ffdf.R
 #' @param ... \code{ffdf} data.frames, \code{ff} vectors, or other variables to be saved in the directory
-#' @param dir path where .rdata file will be saved and all columns of supplied \code{ffdf}'s. It will be created if it doesn't exist.
-#' @param clone should the data.frame be copied, creating a snapshot of the supplied ffdf or ff objects?
+#' @param dir path where .RData file will be saved and all columns of supplied \code{ffdf}'s. It will be created if it doesn't exist.
+#' @param clone should the ff vectors be \code{\link{clone}}'d, creating a snapshot of the supplied ffdf or ff objects?
+#' This should only be necessary if you still need the ff vectors in their current storage location.
 #' @param relativepath \code{logical} if \code{TRUE} the stored ff vectors will have relative paths, making moving the data to another storage a simple
 #' copy operation.
 #' @seealso \code{\link{load.ffdf}} 
