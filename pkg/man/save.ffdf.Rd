@@ -9,12 +9,15 @@
   \item{...}{\code{ffdf} data.frames, \code{ff} vectors, or
   other variables to be saved in the directory}
 
-  \item{dir}{path where .rdata file will be saved and all
+  \item{dir}{path where .RData file will be saved and all
   columns of supplied \code{ffdf}'s. It will be created if
   it doesn't exist.}
 
-  \item{clone}{should the data.frame be copied, creating a
-  snapshot of the supplied ffdf or ff objects?}
+  \item{clone}{should the ff vectors be
+  \code{\link{clone}}'d, creating a snapshot of the
+  supplied ffdf or ff objects? This should only be
+  necessary if you still need the ff vectors in their
+  current storage location.}
 
   \item{relativepath}{\code{logical} if \code{TRUE} the
   stored ff vectors will have relative paths, making moving
@@ -36,12 +39,6 @@
   sessions is closed. Data can be deleted either using
   \code{\link{delete}} or by removing the directory where
   the object were saved (\code{dir}).
-}
-\note{
-  When saving in the temporary directory, \code{ff} assumes
-  that the resulting files are to be deleted. Be sure to
-  change the finalizers of the ff vectors when saving in
-  the temporary directory.
 }
 \examples{
 iris.ffdf <- as.ffdf(iris)
