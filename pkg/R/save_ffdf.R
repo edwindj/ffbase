@@ -9,9 +9,10 @@
 #' object is removed or the R sessions is closed. Data can be deleted either using
 #' \code{\link{delete}} or by removing the directory where the object were saved 
 #' (\code{dir}).
-#' \note{When saving in the temporary directory, \code{ff} assumes that the 
+#' 
+#' @note When saving in the temporary directory, \code{ff} assumes that the 
 #' resulting files are to be deleted. Be sure to change the finalizers of the 
-#' ff vectors when saving in the temporary directory.}
+#' ff vectors when saving in the temporary directory.
 #' @example ../examples/save_ffdf.R
 #' @param ... \code{ffdf} data.frames, \code{ff} vectors, or other variables to be saved in the directory
 #' @param dir path where .rdata file will be saved and all columns of supplied \code{ffdf}'s. It will be created if it doesn't exist.
