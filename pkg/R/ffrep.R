@@ -21,7 +21,7 @@ ffrep.int <- function(x, times){
 		idxlocations <- integer(0)
 		i.last <- 0
 	 	for (i in chunk(rambytes)){
- 			overflows <- ffbase:::grouprunningcumsumindex(x=rambytes[i], max=BATCHBYTES, currentcumul=i.last)
+ 			overflows <- grouprunningcumsumindex(x=rambytes[i], max=BATCHBYTES, currentcumul=i.last)
  			idxlocations <- append(idxlocations, overflows$overflowidx + min(i))
  			i.last <- overflows$currentcumul
  		}	

@@ -21,13 +21,5 @@
   expression into chunked versions that can be evaluated in
   a chunked-for-loop.
 }
-\examples{
-expr <- expression( x <- 1)
-ffbase:::chunkexpr(expr)
-# results in: expression(x[.i] <- 1)
-
-ffbase:::chunkexpr(expression(z <- x+y), c("y","z"), prefix="data$")
-# results in: expression(data$z[.i] <- x + data$y[.i])
-}
 \keyword{internal}
 
