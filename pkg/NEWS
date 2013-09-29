@@ -4,6 +4,8 @@ version 0.10
 - Removed rowname creation by within (Thanks to Milan Bouchet-Valat).
 - Removed bug in save.ffdf (Thanks to d.morrison, issue #6)
 - Removed bug in droplevels (issue #3)
+- Removed bug in load.ffdf which caused open file handlers. (Thanks to Milan Bouchet-Valat, issue #7)
+- Removed bug in mean (issue #2)
 
 version 0.9
 - fixed an error in chunkexpr: long expressions were cut off, Thanks to gaizoule

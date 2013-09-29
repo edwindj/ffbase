@@ -38,3 +38,10 @@ rle_ff <- function(x, ...) {
     structure( list(lengths=lengths, values=values) , class="rle")
 }
 
+
+# TODO export this stuff
+rle <- function(x, ...){
+  UseMethod('rle')
+}
+rle.default <- base::rle
+rle.ff <- rle_ff
