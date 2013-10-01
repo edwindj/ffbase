@@ -85,3 +85,15 @@ as.ff_matrix.ffdf <- function(x, ...){
 as.ffdf.ffdf <- function(x, ...){
   x
 }
+
+#' As ram for an ffdf to explicitely get your ffdf as a data frame
+#'
+#' Coerce a ffdf object to an data.frame object.
+#' @method as.ram ffdf
+#' @param x an object of class ffdf
+#' @param ... not used.
+#' @return a data.frame in RAM
+#' @import ff
+as.ram.ffdf <- function(x, ...){
+  x[, , drop=FALSE]
+}
