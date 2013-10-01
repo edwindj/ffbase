@@ -86,14 +86,15 @@ as.ffdf.ffdf <- function(x, ...){
   x
 }
 
-#' As ram for an ffdf to explicitely get your ffdf as a data frame
+#' As ram for an ffdf to get your ffdf as a data frame in RAM
 #'
-#' Coerce a ffdf object to an data.frame object.
+#' Load your ffdf object in RAM into a data.frame.
 #' @method as.ram ffdf
 #' @param x an object of class ffdf
 #' @param ... not used.
 #' @return a data.frame in RAM
 #' @import ff
+#' @export
 as.ram.ffdf <- function(x, ...){
   x[, , drop=FALSE]
 }

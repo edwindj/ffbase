@@ -1,6 +1,6 @@
 \name{as.ram.ffdf}
 \alias{as.ram.ffdf}
-\title{As ram for an ffdf to explicitely get your ffdf as a data frame}
+\title{As ram for an ffdf to get your ffdf as a data frame in RAM}
 \usage{
   \method{as.ram}{ffdf} (x, ...)
 }
@@ -13,6 +13,6 @@
   a data.frame in RAM
 }
 \description{
-  Coerce a ffdf object to an data.frame object.
+  Load your ffdf object in RAM into a data.frame.
 }
 
