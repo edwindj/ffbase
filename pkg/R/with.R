@@ -81,6 +81,8 @@ with.ffdf <- function(data, expr, ...){
         }
         res[i,] <- r
       }
+   } else {
+     stop("'with.ffdf' only returns `ff` object of equal length of `nrow(data)`")          
    }
    res
 }
