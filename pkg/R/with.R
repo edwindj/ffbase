@@ -4,6 +4,14 @@
 #' (see \code{\link{with}}). Please note that you should write
 #' your expression as if it is a normal \code{data.frame}. The resulting return value
 #' however will be a \code{ff} object.
+#' 
+#' @note `with.ffdf` assumes that the returned object
+#' \begin{itemize}
+#' \item is of equal length as `nrow(data)` 
+#' \item must be converted to a `ff` object
+#' \end{itemize}
+#' In case this is not true, the result won't be correct.
+#' 
 #' @seealso \code{\link{ffdfwith}}
 #' @method with ffdf 
 #' @export
@@ -22,6 +30,9 @@ with.ffdf <- function(data, expr, ...){
    cdat <- data[chunks[[1]],,drop=FALSE]
    res <- eval(e, cdat, enclos=parent.frame())
    fc <- FALSE
+   if (!is.atomic(res) && !is.data.frame(res)){
+     stop("'with.ffdf' only returns `ff` object of equal length of `nrow(data)`")
+   }
    if (is.character(res) || is.factor(res)){
      res <- as.factor(res)
      fc <- TRUE
