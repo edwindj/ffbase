@@ -26,10 +26,15 @@ with.ffdf <- function(data, expr, ...){
    
    cdat <- data[chunks[[1]],,drop=FALSE]
    res <- eval(e, cdat, enclos=parent.frame())
-   fc <- FALSE
-   if (!is.atomic(res) && !is.data.frame(res)){
-     stop("'with.ffdf' only returns `ff` object of equal length of `nrow(data)`")
+   if (NROW(res)!= nrow(cdat)){
+     stop("'with.ffdf' only returns `ff` object of equal length of `nrow(data)`")          
    }
+   fc <- FALSE
+   
+#    if (!is.atomic(res) && !is.data.frame(res)){
+#      stop("'with.ffdf' only returns `ff` object of equal length of `nrow(data)`")
+#    }
+   
    if (is.character(res) || is.factor(res)){
      res <- as.factor(res)
      fc <- TRUE
@@ -42,7 +47,13 @@ with.ffdf <- function(data, expr, ...){
       length(res) <- nrow(data)
       for (i in chunks[-1]){
         Log$chunk(i)
-        r <- eval(e, data[i,,drop=FALSE], enclos=parent.frame())
+        d_i <- data[i,,drop=FALSE]
+        r <- eval(e, d_i, enclos=parent.frame())
+        
+        if (length(r)!= nrow(d_i)){
+          stop("'with.ffdf' only returns `ff` object of equal length of `nrow(data)`")          
+        }
+        
         if (fc){ 
              r <- as.factor(r)
              levels(res) <- appendLevels(res, levels(r))
@@ -55,7 +66,12 @@ with.ffdf <- function(data, expr, ...){
       nrow(res) <- nrow(data)
       for (i in chunks[-1]){
         Log$chunk(i)
-        r <- eval(e, data[i,,drop=FALSE], enclos=parent.frame())
+        d_i <- data[i,,drop=FALSE]
+        r <- eval(e, d_i, enclos=parent.frame())
+        
+        if (nrow(r)!= nrow(d_i)){
+          stop("'with.ffdf' only returns `ff` object of equal length of `nrow(data)`")          
+        }
         if (any(fc)){
            r[fc] <- lapply(which(fc), function(x) {
                 r[[x]] <- as.factor(r[[x]])
