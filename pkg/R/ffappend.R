@@ -97,6 +97,9 @@ ffdfappend <- function(  x
    nrow(x) <- nff + n
   
    for (i in which(fc)){
+     if(!is.factor.ff(x[[i]])){
+       x[[i]] <- as.character(x[[i]])
+     }
      levels(x[[i]]) <- appendLevels(levels(x[[i]]), dat[[i]])
    }
    if(!identical(names(x), names(dat))){ 
