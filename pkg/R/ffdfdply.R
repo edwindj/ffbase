@@ -18,7 +18,7 @@
 #' @return 
 #' an ffdf
 #' @export
-#' @seealso \code{\link{grouprunningcumsum}, \link{table.ff}}
+#' @seealso \code{\link{grouprunningcumsum}, \link{table}}
 ffdfdply <- function(
 	x, 
 	split, 

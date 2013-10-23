@@ -1,19 +1,24 @@
+#' Cross Tabulation and Table Creation
+#' 
+#' Upgrades table to a generic function and implements a method 
+#' for ff vectors which works for ff factors.
+#' For other arguments passed on to table, uses \code{\link[base]{table}}\cr
+#'
 #' table.ff uses the cross-classifying factors to build a contingency table of 
 #' the counts at each combination of factor levels.\cr
 #' If \code{...} does not contain factors, \code{unique.ff} will add a levels 
 #' attribute to the non-factors.
-#'
-#' Details 
-#' @seealso \code{\link{table}}
+#' 
+#' @seealso \code{\link[base]{table}}
 #'
 #' @param ... \code{ff} factors or \code{ff} integers
-#' @param exclude see \code{\link{table}}
-#' @param useNA see \code{\link{table}}
-#' @param dnn see \code{\link{table}}
-#' @param deparse.level see \code{\link{table}}
+#' @param exclude see \code{\link[base]{table}}
+#' @param useNA see \code{\link[base]{table}}
+#' @param dnn see \code{\link[base]{table}}
+#' @param deparse.level see \code{\link[base]{table}}
 #'
-#' @return \code{table} object
-#' @exportMethod table
+#' @return \code{\link[base]{table}} object
+#' @export table
 table <- function( ...
                  , exclude = if (useNA == "no") c(NA, NaN)
                  , useNA = c("no","ifany", "always")
@@ -23,26 +28,10 @@ table <- function( ...
   UseMethod("table")
 }
 
-#' @method table default
+#' @S3method table default 
 table.default <- base::table
 
-#' table.ff uses the cross-classifying factors to build a contingency table of 
-#' the counts at each combination of factor levels.\cr
-#' If \code{...} does not contain factors, \code{unique.ff} will add a levels 
-#' attribute to the non-factors.
-#'
-#' Details 
-#' @seealso \code{\link{table}}
-#' @method table ff
-#' @export
-#'
-#' @param ... \code{ff} factors or \code{ff} integers
-#' @param exclude see \code{\link{table}}
-#' @param useNA see \code{\link{table}}
-#' @param dnn see \code{\link{table}}
-#' @param deparse.level see \code{\link{table}}
-#'
-#' @return \code{table} object
+#' @S3method table ff
 table.ff <- function( ...
                      , exclude = if (useNA == "no") c(NA, NaN)
                      , useNA = c("no","ifany", "always")
