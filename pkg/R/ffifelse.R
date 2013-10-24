@@ -21,13 +21,13 @@ ffifelse <- function(test, yes, no){
 	}
 	dat <- ffdf(fftest = test, ffyes = yes, ffno = no)
 	if(is.factor.ff(dat$ffyes) && is.factor.ff(dat$ffno)){
-		result <- with(dat, ifelse(fftest, as.character(ffyes), as.character(ffno)))
+		result <- ffdfwith(dat, ifelse(fftest, as.character(ffyes), as.character(ffno)))
 	}else if(is.factor.ff(dat$ffyes) && !is.factor.ff(dat$ffno)){
-		result <- with(dat, ifelse(fftest, as.character(ffyes), ffno))	
+		result <- ffdfwith(dat, ifelse(fftest, as.character(ffyes), ffno))	
 	}else if(!is.factor.ff(dat$ffyes) && is.factor.ff(dat$ffno)){
-		result <- with(dat, ifelse(fftest, ffyes, as.character(ffno)))
+		result <- ffdfwith(dat, ifelse(fftest, ffyes, as.character(ffno)))
 	}else{
-		result <- with(dat, ifelse(fftest, ffyes, ffno))	
+		result <- ffdfwith(dat, ifelse(fftest, ffyes, ffno))	
 	}
 	result	
 }
