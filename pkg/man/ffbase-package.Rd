@@ -62,9 +62,9 @@
   vector. \cr \code{\link{cumsum.ff}} \tab cumsum for
   \code{ff} vector. \cr \code{\link{cumprod.ff}} \tab
   cumprod for \code{ff} vector. \cr \code{\link{range.ff}}
-  \tab range for \code{ff} vector. \cr
-  \code{\link{table.ff}} \tab table for \code{ff} vectors.
-  \cr \code{\link{tabulate.ff}} \tab tabulate for \code{ff}
+  \tab range for \code{ff} vector. \cr \code{\link{table}}
+  \tab table for \code{ff} vectors. \cr
+  \code{\link{tabulate.ff}} \tab tabulate for \code{ff}
   vectors. \cr \code{\link{ffdfdply}} \tab Split, group and
   aggregate for \code{ffdf} operations. \cr }
 }

@@ -1,9 +1,6 @@
 \name{table}
 \alias{table}
-\title{table.ff uses the cross-classifying factors to build a contingency table of
-the counts at each combination of factor levels.\cr
-If \code{...} does not contain factors, \code{unique.ff} will add a levels
-attribute to the non-factors.}
+\title{Cross Tabulation and Table Creation}
 \usage{
   table(..., exclude = if (useNA == "no") c(NA, NaN),
     useNA = c("no", "ifany", "always"),
@@ -12,21 +9,31 @@ attribute to the non-factors.}
 \arguments{
   \item{...}{\code{ff} factors or \code{ff} integers}
 
-  \item{exclude}{see \code{\link{table}}}
+  \item{exclude}{see \code{\link[base]{table}}}
 
-  \item{useNA}{see \code{\link{table}}}
+  \item{useNA}{see \code{\link[base]{table}}}
 
-  \item{dnn}{see \code{\link{table}}}
+  \item{dnn}{see \code{\link[base]{table}}}
 
-  \item{deparse.level}{see \code{\link{table}}}
+  \item{deparse.level}{see \code{\link[base]{table}}}
 }
 \value{
-  \code{table} object
+  \code{\link[base]{table}} object
 }
 \description{
-  Details
+  Upgrades table to a generic function and implements a
+  method for ff vectors which works for ff factors. For
+  other arguments passed on to table, uses
+  \code{\link[base]{table}}\cr
+}
+\details{
+  table.ff uses the cross-classifying factors to build a
+  contingency table of the counts at each combination of
+  factor levels.\cr If \code{...} does not contain factors,
+  \code{unique.ff} will add a levels attribute to the
+  non-factors.
 }
 \seealso{
-  \code{\link{table}}
+  \code{\link[base]{table}}
 }
 

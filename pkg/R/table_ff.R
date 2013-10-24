@@ -32,6 +32,7 @@ table <- function( ...
 table.default <- base::table
 
 #' @S3method table ff
+#' @export
 table.ff <- function( ...
                      , exclude = if (useNA == "no") c(NA, NaN)
                      , useNA = c("no","ifany", "always")
