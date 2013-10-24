@@ -1,3 +1,5 @@
+library(methods)
+library(utils)
 library(roxygen2)
 options(error=traceback)
 unlink( 'pkg/man', TRUE)

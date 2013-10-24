@@ -25,7 +25,7 @@ subset.ffdf <- function(x, subset, select, drop = FALSE, ...){
     idx = ffseq_len(nrow(x))
   } else {  
     ss <- as.expression(substitute(subset))
-    try(ss <- subset, silent=TRUE)
+    #try(ss <- subset, silent=TRUE)
     idx <- ffwhich.ffdf(x, ss, envir=parent.frame())
   }
   if (missing(select)){

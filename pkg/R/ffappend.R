@@ -91,19 +91,26 @@ ffdfappend <- function(  x
       if (is.ffdf(dat)) { return(dat)
       } else return(as.ffdf(dat, ...))
   }
-     
    n <- nrow(dat)
    nff <- nrow(x)
    
    nrow(x) <- nff + n
   
    for (i in which(fc)){
+     if(!is.factor.ff(x[[i]])){
+       x[[i]] <- as.character.ff(x[[i]])
+       warning(sprintf("column %s of x is not a factor, column %s of dat is a factor, are you sure you want to ffdfappend",
+                       colnames(x)[i], colnames(dat)[i]))
+     }
      levels(x[[i]]) <- appendLevels(levels(x[[i]]), dat[[i]])
    }
    if(!identical(names(x), names(dat))){ 
-   	warning("names not identical when appending through ffdfappend")
+   	warning("column names are not identical")
    }
-   ## Upgrade to a higher vmode if needed
+   if (ncol(x) != ncol(dat)){
+      stop("Number of columns does not match")
+   }
+  ## Upgrade to a higher vmode if needed
    if(adjustvmode==TRUE){
 	   if(!is.ffdf(dat)){
 	   	dat <- as.ffdf(dat)
