@@ -21,25 +21,21 @@
 }
 \description{
   Evaluate an R expression in an environment constructed
-  from a ffdf data frame. (see \code{\link{with}}). Please
-  note that you should write your expression as if it is a
-  normal \code{data.frame}. The resulting return value
-  however will be a \code{ff} object.
+  from a ffdf data frame. (see \code{\link{with}}).
 }
 \note{
-  `with.ffdf` assumes that the returned object is of equal
-  length as `nrow(data)` and must be converted to a `ff`
-  object In case this is not true, the result won't be
-  correct.
+  \code{with.ffdf} may not be the most efficient way for
+  computing the desired result since it does not
+  \code{\link{chunk}} the \code{\link{ffdf}} object. Use in
+  that case \code{\link{ffdfwith}},
+  \code{\link{within.ffdf}}.
 }
 \examples{
 dat <- data.frame(x=1:10, y=10:1)
-
 ffdat <- as.ffdf(dat)
-
 with(ffdat, {x+y})
 }
 \seealso{
-  \code{\link{ffdfwith}}
+  \code{\link{ffdfwith}}, \code{\link{within.ffdf}}
 }
 

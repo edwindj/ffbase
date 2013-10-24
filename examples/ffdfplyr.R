@@ -17,7 +17,7 @@ dim(result)
 dim(iris)
 result[1:10,]
 
-ffiris$integerkey <- with(ffiris, as.integer(Sepal.Length))
+ffiris$integerkey <- ffdfwith(ffiris, as.integer(Sepal.Length))
 result <- ffdfdply( x = ffiris, split = ffiris$integerkey
                   , FUN = function(x) youraggregatorFUN(x), BATCHBYTES = 5000
                   , trace=TRUE
