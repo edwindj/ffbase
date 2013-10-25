@@ -45,7 +45,7 @@ table.ff <- function( ...
   useNA <- match.arg(useNA)
   
   dat <- do.call(ffdf, args) # create a ffdf  for estimating good chunking size 
-                             #and checking if ... have equal length
+                             # and checking if ... have equal length
   colnames(dat) <- names(args)
   ### Cover non-factors like integers by adding a levels attribute
   if(sum(!vmode(dat) %in% c("byte", "short", "integer")) > 0){  	
@@ -61,9 +61,10 @@ table.ff <- function( ...
   
   for (i in chunk(dat)){
     Log$chunk(i)
-    factors <- unname(as.list(dat[i,, drop=FALSE]))
+    factors <- as.list(dat[i,, drop=FALSE])
     factors$exclude <- exclude
     factors$useNA <- useNA
+    factors$dnn <- dnn
     factors$deparse.level <- deparse.level
     
     ttab <- do.call(table,factors)
