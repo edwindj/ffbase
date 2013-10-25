@@ -2,7 +2,8 @@
 #' 
 #' Evaluate an R expression in an environment constructed from a ffdata data frame.
 #' Faster than \code{\link{with.ffdf}}, but in constrast \code{ffdfwith} can change the original data.
-#' Please note that you should write
+#' Please note that \code{ffdfwith} assumes that the result must be of the same length
+#' as \code{nrow(data)}. You should write
 #' your expression as if it is a normal \code{data.frame}. The resulting return value
 #' however will be a \code{ffdf} object.
 #' @export

@@ -31,6 +31,18 @@ test_that("table.ff works for two factors",{
    expect_equal(t, ft)
 })  
 
+test_that("table.ff has same names as table.default",{
+  iris_ffdf <- as.ffdf(iris)
+  
+  expected <- table(iris$Species)
+  object <- table(iris_ffdf$Species)
+  expect_equal(object, expected)
+  expect_equal(dimnames(object), dimnames(expected))
+  
+  expect_equal(  with(iris_ffdf, table(Species))
+               , with(iris, table(Species)))
+})
+
 # test_that("table.ff works for a large factor",{
 #    x <- ff(length=1e7, vmode="integer")
 #    for (i in chunk(x)){
