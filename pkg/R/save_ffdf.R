@@ -115,7 +115,7 @@ move.ffdf <- function(x, dir=".", name=as.character(substitute(x)), relativepath
 #' @export
 load.ffdf <- function(dir, envir=parent.frame()){
   if (!isTRUE(file.exists(dir))){
-    stop("Directory '", dir ,"'' does not exist.")
+    stop("directory '", dir ,"' does not exist")
   }
   oldwd <- setwd(dir)
   on.exit(setwd(oldwd))
