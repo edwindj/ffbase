@@ -8,6 +8,7 @@ version 0.10
 - Removed bug in mean (issue #2)
 - Fix for issue #10: with() can give wrong results (Thanks to Milan Bouchet-Valat)
 - Fix for issue #16: load.ffdf(), when loading a non-existent directory a more clear error is generated. (Thanks to Milan Bouchet-Valat)
+- Fix for issue #14: table.ffdf() prints same result as table.ffdf()
 
 version 0.9
 - fixed an error in chunkexpr: long expressions were cut off, Thanks to gaizoule

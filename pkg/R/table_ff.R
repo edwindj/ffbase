@@ -61,7 +61,7 @@ table.ff <- function( ...
   
   for (i in chunk(dat)){
     Log$chunk(i)
-    factors <- as.list(dat[i,, drop=FALSE])
+    factors <- unname(as.list(dat[i,, drop=FALSE]))
     factors$exclude <- exclude
     factors$useNA <- useNA
     factors$deparse.level <- deparse.level

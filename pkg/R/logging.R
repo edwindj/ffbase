@@ -20,8 +20,14 @@ Log$chunk <- function(i){
 #' @param logger function to be called for logging statements, by default this is \code{cat}
 #' @export
 set_ffbase_logging <- function(level = c("info"), logger=if (interactive()) cat){
-  if (!is.function(logger)){
+  
+  if (isTRUE(logger)){
+    logger <- cat
+  } else if (!is.function(logger)){
+    message("switching logging of. Logging can be restored using
+            'set_ffbase_logging(logger=TRUE)'")
     logger <- emptyLogger
   }
+  
   assign(level, logger, Log)
 }
