@@ -6,7 +6,9 @@ version 0.10
 - Removed bug in droplevels (issue #3)
 - Removed bug in load.ffdf which caused open file handlers. (Thanks to Milan Bouchet-Valat, issue #7)
 - Removed bug in mean (issue #2)
-- Fix for issue #10: with() can give wrong results
+- Fix for issue #10: with() can give wrong results (Thanks to Milan Bouchet-Valat)
+- Fix for issue #16: load.ffdf(), when loading a non-existent directory a more clear error is generated. (Thanks to Milan Bouchet-Valat)
+- Fix for issue #14: table.ffdf() prints same result as table.ffdf()
 
 version 0.9
 - fixed an error in chunkexpr: long expressions were cut off, Thanks to gaizoule
