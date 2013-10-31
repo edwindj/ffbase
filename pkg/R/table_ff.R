@@ -16,7 +16,7 @@
 #' @param useNA see \code{\link[base]{table}}
 #' @param dnn see \code{\link[base]{table}}
 #' @param deparse.level see \code{\link[base]{table}}
-#'
+#' @usage table(..., exclude = if (useNA == "no") c(NA, NaN), useNA = c("no", "ifany", "always"), dnn = list.names(...), deparse.level = 1)
 #' @return \code{\link[base]{table}} object
 #' @export table
 table <- function( ...
@@ -33,6 +33,9 @@ table.default <- base::table
 
 #' @S3method table ff
 #' @export
+#' @usage table(..., exclude = if (useNA == "no") c(NA, NaN), useNA = c("no", "ifany", "always"), dnn = list.names(...), deparse.level = 1)
+#' @rdname table
+#' @aliases table
 table.ff <- function( ...
                      , exclude = if (useNA == "no") c(NA, NaN)
                      , useNA = c("no","ifany", "always")
