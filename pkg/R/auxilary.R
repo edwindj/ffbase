@@ -115,9 +115,9 @@ ffbaseffdfindexget <- function(x, index, indexorder = NULL, ...){
 	o <- ffindexorder(index, os$b)
 	res <- list()
 	for(measure in names(x)){
-		open(x[[measure]])
+		wasopen <- is.open(x[[measure]])
 		res[[measure]] <- ffindexget(x=x[[measure]], index=index, indexorder=o)
-		close(x[[measure]])
+		if(!wasopen) close(x[[measure]])
 	}
 	as.ffdf(res)
 }
@@ -130,9 +130,9 @@ ffdfget_columnwise <- function(x, index=NULL){
 	res <- list()
 	if(is.null(index)){
 		for(measure in names(x)){
-			open(x[[measure]])
+		  wasopen <- is.open(x[[measure]])
 			res[[measure]] <- x[[measure]][]
-			close(x[[measure]])
+		  if(!wasopen) close(x[[measure]])
 		}
 	}else if(is.ff(index)){
 		if(vmode(index) %in% c("boolean","logical")){
@@ -141,15 +141,15 @@ ffdfget_columnwise <- function(x, index=NULL){
 		os <- ffindexordersize(length=NROW(x), vmode="integer")
 		o <- ffindexorder(index, os$b)
 		for(measure in names(x)){
-			open(x[[measure]])
+		  wasopen <- is.open(x[[measure]])
 			res[[measure]] <- ffindexget(x=x[[measure]], index=index, indexorder=o)[]
-			close(x[[measure]])
+		  if(!wasopen) close(x[[measure]])
 		}
 	}else{
 		for(measure in names(x)){
-			open(x[[measure]])
+		  wasopen <- is.open(x[[measure]])
 			res[[measure]] <- x[[measure]][index]
-			close(x[[measure]])
+		  if(!wasopen) close(x[[measure]])
 		}
 	}
 	list_to_df(res)

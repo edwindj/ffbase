@@ -20,8 +20,6 @@
 ffmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, trace=FALSE, ...){
 	stopifnot(inherits(x, "ff_vector") & inherits(table, "ff_vector"))
 	
-	open(x)
-  open(table)
   nomatch <- as.integer(nomatch)
   xchunk <- chunk(x, ...)
   tablechunk <- chunk(table, ...)
@@ -53,8 +51,6 @@ ffmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, trace
     m[unmatched] <- nomatch
     res[i] <- m
   }	
-  close(x)
-  close(table)
   res
 }
 
@@ -64,8 +60,6 @@ ffmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, trace
 ffdfmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, trace=FALSE, ...){
 	stopifnot(inherits(x, "ffdf") & inherits(table, "ffdf"))
 	
-	open(x)
-  open(table)
   nomatch <- as.integer(nomatch)
   xchunk <- chunk(x, ...)
   tablechunk <- chunk(table, ...)
@@ -96,8 +90,6 @@ ffdfmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, tra
     m[unmatched] <- nomatch
     res[i] <- m
   }	
-  close(x)
-  close(table)
   res
 }
 
