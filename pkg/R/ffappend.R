@@ -99,8 +99,7 @@ ffdfappend <- function(  x
    for (i in which(fc)){
      if(!is.factor.ff(x[[i]])){
        x[[i]] <- as.character.ff(x[[i]])
-       warning(sprintf("column %s of x is not a factor, column %s of dat is a factor, are you sure you want to ffdfappend",
-                       colnames(x)[i], colnames(dat)[i]))
+       #warning(sprintf("column %s of x is not a factor, column %s of dat is a factor, are you sure you want to ffdfappend", colnames(x)[i], colnames(dat)[i]))
      }
      levels(x[[i]]) <- appendLevels(levels(x[[i]]), dat[[i]])
    }
