@@ -10,7 +10,7 @@ Version: 0.10.1
 URL: http://github.com/edwindj/ffbase
 Date: 2011-11-1
 Depends:
-    ff (>= 2.2-0),
+    ff (>= 2.2-11),
     bit,
     R (>= 2.12.0)
 Suggests:
@@ -70,3 +70,4 @@ Collate:
     'rbind_ffdf.R'
     'logging.R'
     'rev_ff.R'
+    'extract.R'
