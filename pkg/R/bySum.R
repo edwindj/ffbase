@@ -28,7 +28,7 @@ bySum <- function(x, by, na.rm=FALSE, weight=NULL, ...){
     bin <- arrayIndex2vectorIndex(ai, tdim)
   }
   if (missing(weight) || is.null(weight)){
-    bs <- .Call("binned_sum", as.numeric(x), as.integer(bin), as.integer(nbins), PACKAGE = "ffbase")
+    bs <- binned_sum(x, bin=bin, nbins=nbins)
   } else {
     stopifnot(length(weight) == length(x))
     bs <- .Call("bySum", as.numeric(x), as.integer(bin), as.integer(nbins), as.numeric(weight), PACKAGE = "ffbase")    
