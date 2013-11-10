@@ -63,9 +63,11 @@ merge.ffdf <- function(x, y, by = intersect(names(x), names(y)), by.x = by, by.y
   		jointype <- "inner"
   	}
   }
-  measures <- colnames(y)[!colnames(y) %in% by.y]
-  newnamesmeasures <- ifelse(measures %in% colnames(x), paste(measures, suffixes[2], sep=""), measures)
-  if(length(measures) == 0){
+  xvars <- colnames(x)
+  newxvars <- ifelse(!xvars %in% by.x & xvars %in% colnames(y), paste(xvars, suffixes[1], sep=""), xvars)
+  yvars <- colnames(y)[!colnames(y) %in% by.y]
+  newyvars <- ifelse(yvars %in% colnames(x), paste(yvars, suffixes[2], sep=""), yvars)
+  if(length(yvars) == 0){
   	stop("merge.ffdf requires at least 1 column in y not in by.y")
   }
   ## JOIN  
@@ -75,12 +77,12 @@ merge.ffdf <- function(x, y, by = intersect(names(x), names(y)), by.x = by, by.y
   	if(trace) {
     	message(sprintf("%s, found match indexes, now starting to add y to x", Sys.time()))
   	}	
-  	res <- ffbaseffdfindexget(y[measures], index=matchidx[updatepositions], ...)
-  	colnames(res) <- newnamesmeasures
+  	res <- ffbaseffdfindexget(y[yvars], index=matchidx[updatepositions], ...)
   	## cbind it to the existing x ffdf if there is a match
   	x <- ffbaseffdfindexget(x, index=updatepositions, ...)
-  	for(i in 1:length(measures)){
-  		x[[newnamesmeasures[i]]] <- res[[measures[i]]]
+  	colnames(x) <- newxvars
+  	for(i in 1:length(yvars)){
+  		x[[newyvars[i]]] <- res[[yvars[i]]]
   	}	  	 
   }else if(jointype == "left"){
   	##
@@ -88,23 +90,23 @@ merge.ffdf <- function(x, y, by = intersect(names(x), names(y)), by.x = by, by.y
   	if(trace){
     	message(sprintf("%s, found match indexes, now starting to add y to x and coercing if needed", Sys.time()))
   	}  	
-  	tocoerce <- coerce_to_allowNA(vmode(y[measures]))  	
+  	tocoerce <- coerce_to_allowNA(vmode(y[yvars]))  	
   	## First set everything to NA  	
-  	for(i in 1:length(measures)){
-  		x[[newnamesmeasures[i]]] <- clone(y[[measures[i]]], initdata=NA, length = nrow(x), vmode = tocoerce$coerceto[[measures[i]]])
+  	for(i in 1:length(yvars)){
+  		x[[newyvars[i]]] <- clone(y[[yvars[i]]], initdata=NA, length = nrow(x), vmode = tocoerce$coerceto[[yvars[i]]])
   	} 
   	## Next coerce the right hand side if needed to allow NA values
-  	tocoerce.measures <- measures[tocoerce$x != tocoerce$coerceto]
-  	if(length(tocoerce.measures) > 0){
-  		warning(paste("coercing column ", paste(tocoerce.measures, collapse=", "), " to a higher vmode to allow NA's"), sep="")
-  		for(measure in tocoerce.measures){
+  	tocoerce.yvars <- yvars[tocoerce$x != tocoerce$coerceto]
+  	if(length(tocoerce.yvars) > 0){
+  		warning(paste("coercing column ", paste(tocoerce.yvars, collapse=", "), " to a higher vmode to allow NA's"), sep="")
+  		for(measure in tocoerce.yvars){
  				y[[measure]] <- clone(y[[measure]], vmode = tocoerce$coerceto[[measure]])
   		}
   	} 		
   	## Next update the existing x ffdf with the joined value if there is a match  	
   	if(length(updatepositions) > 0){
 	  	matchidx.nonmissing <- matchidx[updatepositions]
-  		x[updatepositions, newnamesmeasures] <- ffbaseffdfindexget(y[measures], index=matchidx.nonmissing)
+  		x[updatepositions, newyvars] <- ffbaseffdfindexget(y[yvars], index=matchidx.nonmissing)
   	}  	
   }    
 	x
