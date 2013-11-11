@@ -20,7 +20,12 @@ bigglm.ffdf<-function(formula, data, family = gaussian(), ..., chunksize=5000){
     stop("This function needs the package 'biglm', which can be installed from CRAN")
   }
   
-  terms<-terms(formula)
+  if (!is.null(data)) {
+    terms <- terms(formula, data = data)
+  } else {
+    terms <- terms(formula)
+  }
+  
   modelvars<-all.vars(formula)  
   dots<-as.list(substitute(list(...)))[-1]
   dotvars<-unlist(lapply(dots,all.vars))

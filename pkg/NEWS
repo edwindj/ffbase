@@ -10,6 +10,7 @@ version 0.10
 - Fix for issue #16: load.ffdf(), when loading a non-existent directory a more clear error is generated. (Thanks to Milan Bouchet-Valat)
 - Fix for issue #14: table.ffdf() prints same result as table.ffdf()
 - Fix for issue #18: bySum was not working correctly. (Thanks to @stevechc)
+- Fix for issue #21: formula interface for bigglm was not working correctly (Thanks to Chris Louden @louden)
 
 version 0.9
 - fixed an error in chunkexpr: long expressions were cut off, Thanks to gaizoule
