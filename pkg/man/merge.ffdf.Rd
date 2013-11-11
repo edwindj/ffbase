@@ -53,14 +53,16 @@
 }
 \description{
   Merge two ffdf by common columns, or do other versions of
-  database join operations. \cr This method is similar as
-  \code{merge} in the base package but only allows inner
-  and left outer joins.\cr Mark that joining is done based
-  on ffmatch or ffdfmatch, meaning that only the first
-  element in \code{y} will be added to \code{x} and
-  ffdfmatch works on \code{link[base]{paste}}-ing together
-  a key. So this might not be suited if your key contains
-  columns of vmode double.\cr
+  database join operations. This method is similar to
+  \code{\link[base]{merge}} in the \code{base} package but
+  only allows inner and left outer joins. Note that joining
+  is done based on \code{\link{ffmatch}} or
+  \code{\link{ffdfmatch}}: only the first element in
+  \code{y} will be added to \code{x}; and since
+  \code{\link{ffdfmatch}} works by
+  \code{\link[base]{paste}}-ing together a key, this might
+  not be suited if your key contains columns of vmode
+  double.
 }
 \details{
   If a left outer join is performed and no matching record
