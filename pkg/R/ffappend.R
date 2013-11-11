@@ -80,7 +80,11 @@ ffdfappend <- function(  x
   } else {
     sapply(dat, function(i) is.factor(i) || is.character(i))    
   }
-  
+
+  if (!is.null(x)){
+    fc <- fc | sapply(physical(x), is.factor.ff)
+  }
+
   if (any(fc) && !is.ffdf(dat)){
     dat[fc] <- lapply( which(fc), function(i) {
         as.factor(dat[[i]])
@@ -101,6 +105,10 @@ ffdfappend <- function(  x
        x[[i]] <- as.character.ff(x[[i]])
        #warning(sprintf("column %s of x is not a factor, column %s of dat is a factor, are you sure you want to ffdfappend", colnames(x)[i], colnames(dat)[i]))
      }
+     else if(!is.factor(dat[[i]])){
+            dat[[i]] <- as.character(dat[[i]])
+     }
+
      levels(x[[i]]) <- appendLevels(levels(x[[i]]), dat[[i]])
    }
    if(!identical(names(x), names(dat))){ 

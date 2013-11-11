@@ -130,6 +130,11 @@ within.ffdf <- function(data, expr, ...){
        l <- l[!sapply(l, is.null)]
        cdat[names(l)] <- l
        cdat[del] <- list()
+
+       for(f in names(cdat)[sapply(cdat, is.factor)]) {
+           levels(res[f]) <- appendLevels(levels(res[f]), levels(cdat[f]))
+       }
+
        res[i,] <- cdat
     }
     res
