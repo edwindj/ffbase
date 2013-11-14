@@ -11,8 +11,8 @@
 ikey <- function(x, ...){
 	o <- ffdforder(x, na.last = TRUE, decreasing = FALSE)
 	xo <- x[o, , drop=TRUE]
-	idx <- duplicated(xo)
-	idx <- ffwhich(idx, idx == FALSE)
+	idx <- duplicated(xo, ...)
+	idx <- ffwhich(idx, idx == FALSE, ...)
 	res <- ff(0, vmode="integer", length = nrow(x))
 	res[idx] <- ff(1, vmode="integer", length = length(idx))
 	res <- cumsum(res)
