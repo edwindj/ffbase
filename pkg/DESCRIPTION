@@ -8,7 +8,7 @@ Author: Edwin de Jonge, Jan Wijffels, Jan van der Laan
 Description: Basic (statistical) functionality for package ff
 Version: 0.10.1
 URL: http://github.com/edwindj/ffbase
-Date: 2011-11-1
+Date: 2013-11-1
 Depends:
     ff (>= 2.2-11),
     bit,
