@@ -102,6 +102,7 @@ coerce_to_highest_vmode <- function(x, y, onlytest=TRUE){
   			column <- names(x)[i]
   			x[[column]] <- clone(x[[column]], vmode = needtocoerce$coerceto[i])
   		}
+      x <- x[names(x)]
   	}else{
   		x <- clone(x, vmode = needtocoerce$coerceto)
   	}
