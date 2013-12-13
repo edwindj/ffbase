@@ -13,12 +13,12 @@ so programming with ff will be easier.
 
 To install ffbase from CRAN:
 
-```
+```S
 install.packages("ffbase")
 ```
 
 To install the latest version from github
 ```
 library(devtools)
-install_github("ffbase", "edwindj", subdir="pkg")
+install_github("edwindj/ffbase", subdir="pkg")
 ```
