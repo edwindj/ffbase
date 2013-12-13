@@ -13,7 +13,7 @@ books <- data.frame(
               "An Introduction to R"),
     other.author = c(NA, "Ripley", NA, NA, NA, NA,
                      "Venables & Smith"))
-books <- lapply(1:2000, FUN=function(x, books){
+books <- lapply(1:100, FUN=function(x, books){
 	books$price <- rnorm(nrow(books))
 	books
 }, books=books)
