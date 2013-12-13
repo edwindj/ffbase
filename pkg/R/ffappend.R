@@ -76,13 +76,13 @@ ffdfappend <- function(  x
                        ){
   
   fc <- if (is.ffdf(dat)){ 
-    sapply(physical(dat), function(i) is.factor.ff(i))
+    sapply(physical(dat)[names(dat)], function(i) is.factor.ff(i))
   } else {
     sapply(dat, function(i) is.factor(i) || is.character(i))    
   }
 
   if (!is.null(x)){
-    fc <- fc | sapply(physical(x), is.factor.ff)
+    fc <- fc | sapply(physical(x)[names(x)], is.factor.ff)
   }
 
   if (any(fc) && !is.ffdf(dat)){
