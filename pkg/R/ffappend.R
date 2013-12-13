@@ -128,5 +128,6 @@ ffdfappend <- function(  x
    i <- hi(nff+1, nff+n)
    x[i,] <- dat
    
-   x
+   # this makes sure that names(x) == physical(x), ff bug!!!
+   x[names(x)]
 }

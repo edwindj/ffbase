@@ -1,3 +1,6 @@
+version 0.11
+- Fix for issue #19 (thanks to @jwijffels and @gaizoule)
+
 version 0.10
 - Made several method generics
 - Improved error message in merge.ffdf when one of the columns was missing (Thanks to Milan Bouchet-Valat)
