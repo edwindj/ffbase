@@ -8,3 +8,5 @@ comb <- expand.ffgrid(x, y, z)
 dim(comb)
 comb[1:100, ]
 
+expand.ffgrid(list(a = ff(1:10), b = ff(1:10)))
+
