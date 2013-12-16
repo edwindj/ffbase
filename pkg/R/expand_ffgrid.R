@@ -5,7 +5,7 @@
 #'
 #' @export
 #' @example ../examples/expand_ffgrid.R
-#' @param ... \code{ff} vectors, \code{ff} factors containing these.
+#' @param ... \code{ff} vectors, \code{ff} factors or a list containing these.
 #' @param KEEP.OUT.ATTRS currently ignored
 #' @param stringsAsFactors logical specifying if character vectors are converted to factors. Irrelevant for \code{ff} as character vectors are factors in 
 #' package ff.
@@ -14,6 +14,12 @@
 #' @seealso \code{\link[base]{expand.grid}}
 expand.ffgrid <- function (..., KEEP.OUT.ATTRS = TRUE, stringsAsFactors = TRUE) {
     nargs <- length(args <- list(...))
+    if(nargs == 1){
+      if(inherits(args[[1]], "list")){
+        args <- args[[1]]
+        nargs <- length(args)
+      }
+    }
     #if (!nargs) 
     #    return(as.data.frame(list()))
     #if (nargs == 1L && is.list(a1 <- args[[1L]])) 
