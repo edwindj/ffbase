@@ -19,73 +19,100 @@
 #' an ffdf
 #' @export
 #' @seealso \code{\link{grouprunningcumsum}, \link{table}}
-ffdfdply <- function(
-	x, 
-	split, 
-	FUN, 
-	BATCHBYTES = getOption("ffbatchbytes"), 
-	RECORDBYTES = sum(.rambytes[vmode(x)]), 
-	trace=TRUE, ...){
+ffdfdply <- function (x, split, FUN, BATCHBYTES = getOption("ffbatchbytes"), 
+                      RECORDBYTES = sum(.rambytes[vmode(x)]), trace = TRUE, ...) {
   
+  fastmatchavailable <- require(fastmatch, quietly = FALSE, warn.conflicts = FALSE)
+  if(!fastmatchavailable){
+    warning("Consider installing package fastmatch, which will speed up building split locations")
+  }
+  
+  MAXSIZE = BATCHBYTES/RECORDBYTES  
   force(split)
-	
-  splitvmode <- vmode(split)	
-	if(splitvmode != "integer"){
-		stop("split needs to be an ff factor or an integer")
-	}
-	splitisfactor <- is.factor.ff(split)
-
-	## Detect how it is best to split the ffdf according to the split value -> more than 
-	MAXSIZE = BATCHBYTES / RECORDBYTES
-	splitbytable <- table.ff(split, useNA="no")
-	splitbytable <- splitbytable[order(splitbytable, decreasing=TRUE)]
-	if(max(splitbytable) > MAXSIZE){
-		warning("single split does not fit into BATCHBYTES")
-	}
-	tmpsplit <- grouprunningcumsum(x=as.integer(splitbytable), max=MAXSIZE)
-	nrsplits <- max(tmpsplit)
-	
-	## Loop over the split groups and apply the function
-	allresults <- NULL
-	for(idx in 1:nrsplits){
-		tmp <- names(splitbytable)[tmpsplit == idx]
-		if(!splitisfactor){
-			if(!is.null(ramclass(split)) && ramclass(split) == "Date"){
-				tmp <- as.Date(tmp)
-			}else{
-				tmp <- as.integer(tmp)
-			}			
-		}
-		if(trace){
-			message(sprintf("%s, working on split %s/%s", Sys.time(), idx, nrsplits))
-		}		
-		## Filter the ffdf based on the splitby group and apply the function		
-		if(splitisfactor){
-			fltr <- split %in% ff(factor(tmp, levels = names(splitbytable)))
-		}else{
-			if(!is.null(ramclass(split)) && ramclass(split) == "Date"){
-				fltr <- split %in% ff(tmp, vmode = "integer", ramclass = "Date")
-			}else{
-				fltr <- split %in% ff(tmp, vmode = "integer")
-			}			
-		}		
-    if(trace){
-      message(sprintf("%s, extracting data in RAM of %s split elements, totalling, %s GB, while max specified data specified using BATCHBYTES is %s GB", Sys.time(), length(tmp), 
-                      round(RECORDBYTES * sum(fltr) / 2^30, 5), round(BATCHBYTES / 2^30, 5)))
+  ##
+  ## Detect optimal split size -> 2 runs over the split data
+  ##
+  if(trace) message(sprintf("%s, calculating split sizes", Sys.time()))
+  if(!is.factor.ff(split)) {
+    warning("split needs to be an ff factor, converting using as.character.ff to an ff factor")
+    splitby <- as.character.ff(split)
+  }else{
+    splitby <- split
+  }
+  tmp <- splitby
+  levels(tmp) <- NULL
+  missings <- is.na(tmp)
+  if(sum(missings) > 0){
+    splitby <- splitby[!missings]
+  }
+  splitgroups <- list()
+  splitgroups$tab <- binned_tabulate.ff(x = ff(factor("data", levels="data"), length = length(splitby)), bin = splitby, nbins = max(tmp), nlevels = 1)
+  splitgroups$tab <- as.table(splitgroups$tab[,'data'])
+  splitgroups$tab <- splitgroups$tab[order(splitgroups$tab, decreasing = TRUE)]
+  if (max(splitgroups$tab) > MAXSIZE) {
+    warning("single split does not fit into BATCHBYTES")
+  }
+  splitgroups$tab.groups <- as.integer(grouprunningcumsum(x = as.integer(splitgroups$tab), max = MAXSIZE))
+  
+  ##
+  ## Identify split locations -> 1 run over the split data
+  ##
+  if(trace) message(sprintf("%s, building up split locations", Sys.time()))
+  splitpositions <- list()
+  splitpositions$rowidxgroups <- ffdf(pos = ffseq_len(as.integer(length(split))), split = split)
+  if(fastmatchavailable){
+    splitpositions$rowidxgroups$group <- ffdfwith(splitpositions$rowidxgroups, splitgroups$tab.groups[fmatch(as.character(split), names(splitgroups$tab))])
+  }else{
+    splitpositions$rowidxgroups$group <- ffdfwith(splitpositions$rowidxgroups, splitgroups$tab.groups[match(as.character(split), names(splitgroups$tab))])
+  }  
+  splitpositions$rowidxgroups <- splitpositions$rowidxgroups[c("pos","group")]  
+  splitpositions$nrsplits <- max(splitgroups$tab.groups)
+  
+  splitpositions$grouprowidx <- list()  
+  splitpositions$runninggrouppos <- list()
+  for(idx in 1:splitpositions$nrsplits){
+    splitpositions$grouprowidx[[as.character(idx)]] <- ff(as.integer(NA), length = sum(splitgroups$tab[splitgroups$tab.groups == idx]), vmode = "integer")
+    splitpositions$runninggrouppos[[as.character(idx)]] <- 0
+    close(splitpositions$grouprowidx[[as.character(idx)]])
+  }  
+  for(idx in chunk(splitpositions$rowidxgroups)){
+    tmp <- splitpositions$rowidxgroups[idx, ]
+    tmp <- split(tmp$pos, tmp$group)
+    for(group in names(tmp)){      
+      loc <- ri(from=splitpositions$runninggrouppos[[group]]+1, to = splitpositions$runninggrouppos[[group]] + length(tmp[[group]]))      
+      open(splitpositions$grouprowidx[[group]])
+      splitpositions$grouprowidx[[group]][loc] <- tmp[[group]]
+      splitpositions$runninggrouppos[[group]] <- splitpositions$runninggrouppos[[group]] + length(tmp[[group]])
+      close(splitpositions$grouprowidx[[group]])
     }
-		inram <- ffdfget_columnwise(x, fltr)
-		result <- FUN(inram, ...)	
-		if(!inherits(result, "data.frame")){
-			stop("FUN needs to return a data frame")
-		}
-		rownames(result) <- NULL
-		if(!is.null(allresults) & nrow(result) > 0){
-			rownames(result) <- (nrow(allresults)+1):(nrow(allresults)+nrow(result))
-		}		
-		## Push the result to an ffdf
-		if(nrow(result) > 0){
-			allresults <- ffdfappend(x=allresults, dat=result, recode=FALSE)	
-		}				
-	}
-	allresults
+  }
+  
+  ##
+  ## Apply the function on each group of split elements
+  ##
+  allresults <- NULL
+  for (idx in 1:splitpositions$nrsplits) {
+    fltr <- splitpositions$grouprowidx[[idx]]
+    open(fltr)
+    if(trace) {
+      message(sprintf("%s, working on split %s/%s, extracting data in RAM of %s split elements, totalling, %s GB, while max specified data specified using BATCHBYTES is %s GB", 
+                      Sys.time(), idx, splitpositions$nrsplits, length(splitgroups$tab[splitgroups$tab.groups == idx]), round(RECORDBYTES * length(fltr)/2^30, 5), round(BATCHBYTES/2^30, 5)))
+    }
+    inram <- ffdfget_columnwise(x, fltr)
+    close(fltr)
+    if(trace) message(sprintf("%s, ... applying FUN to selected data", Sys.time()))
+    result <- FUN(inram, ...)
+    if (!inherits(result, "data.frame")) {
+      stop("FUN needs to return a data frame")
+    }
+    if(trace) message(sprintf("%s, ... appending result to the output ffdf", Sys.time()))
+    rownames(result) <- NULL
+    if (!is.null(allresults) & nrow(result) > 0) {
+      rownames(result) <- (nrow(allresults) + 1):(nrow(allresults) + nrow(result))
+    }
+    if (nrow(result) > 0) {
+      allresults <- ffdfappend(x = allresults, dat = result, recode = FALSE)
+    }
+  }
+  allresults
 }
