@@ -29,6 +29,10 @@ ffdfdply <- function (x, split, FUN, BATCHBYTES = getOption("ffbatchbytes"),
   
   MAXSIZE = BATCHBYTES/RECORDBYTES  
   force(split)
+  
+  if(nrow(x) != length(split)){
+    stop("split needs to be the same length as the number of rows in x")
+  }
   ##
   ## Detect optimal split size -> 2 runs over the split data
   ##
