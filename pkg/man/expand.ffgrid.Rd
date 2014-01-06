@@ -6,7 +6,7 @@
     stringsAsFactors = TRUE)
 }
 \arguments{
-  \item{...}{\code{ff} vectors, \code{ff} factors
+  \item{...}{\code{ff} vectors, \code{ff} factors or a list
   containing these.}
 
   \item{KEEP.OUT.ATTRS}{currently ignored}
@@ -37,6 +37,8 @@ z <- ff(seq.Date(Sys.Date(), Sys.Date()+10, by = "day"))
 comb <- expand.ffgrid(x, y, z)
 dim(comb)
 comb[1:100, ]
+
+expand.ffgrid(list(a = ff(1:10), b = ff(1:10)))
 
 }
 \seealso{
