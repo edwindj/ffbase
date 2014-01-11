@@ -38,7 +38,9 @@ duplicated.ff <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALSE,
     i.o <- o[i]
     i.x <- x[i.o]
     res[i.o] <- duplicated(i.x)
-    res[i.o[1]] <- identical(i.x[1], i.last)
+    if(min(i) > 1){
+      res[i.o[1]] <- duplicated(c(i.last, head(i.x, 1)))[2]
+    }
     i.last <- tail(i.x, 1)
   }
   res
@@ -63,9 +65,11 @@ duplicated.ffdf <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALS
       message(sprintf("%s, working on x chunk %s:%s", Sys.time(), min(i), max(i)))
     }
     i.o <- o[i]
-    i.x <- x[i.o,]
+    i.x <- x[i.o, , drop=FALSE]
     res[i.o] <- duplicated(i.x)
-    res[i.o[1]] <- identical(i.x[1,], i.last)
+    if(min(i) > 1){
+      res[i.o[1]] <- duplicated(rbind(i.last, head(i.x, 1)))[2]
+    }
     i.last <- tail(i.x, 1)
   }
   res

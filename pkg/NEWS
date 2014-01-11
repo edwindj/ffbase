@@ -2,6 +2,7 @@ version 0.11
 - Fix for issue #19 (thanks to @jwijffels and @gaizoule)
 - allow expand.ffgrid to also work with lists of ff objects (issue #23)
 - speeding up of ffdfdply and fix for issue #27 when supplying wrong split in ffdfdply
+- Fix for issue #29
 
 version 0.10
 - Made several method generics
