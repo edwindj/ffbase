@@ -3,7 +3,7 @@
 \title{Save ffdf data.frames in a directory}
 \usage{
   save.ffdf(..., dir = "./ffdb", clone = FALSE,
-    relativepath = TRUE)
+    relativepath = TRUE, overwrite = FALSE)
 }
 \arguments{
   \item{...}{\code{ffdf} data.frames, \code{ff} vectors, or
@@ -22,6 +22,10 @@
   \item{relativepath}{\code{logical} if \code{TRUE} the
   stored ff vectors will have relative paths, making moving
   the data to another storage a simple copy operation.}
+
+  \item{overwrite}{\code{logical} If \code{TRUE}
+  \code{save.ffdf} will overwrite an previous stored
+  \code{ffdf}, \code{.Rdata} file.}
 }
 \description{
   \code{save.ffdf} saves all ffdf data.frames in the given
@@ -29,7 +33,10 @@
   <ffdfname>$<colname>.ff. All variables given in "..." are
   stored in ".RData" in the same directory. The data can be
   reloaded by starting a R session in the directory or by
-  using \code{\link{load.ffdf}}.
+  using \code{\link{load.ffdf}}. Note that calling
+  \code{save.ffdf} multiple times for the same directory
+  will only store the ffdf's that were given in the last
+  call.
 }
 \details{
   Using \code{save.ffdf} automagically sets the

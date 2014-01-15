@@ -3,6 +3,8 @@
 #' \code{save.ffdf} saves all ffdf data.frames in the given \code{dir}. Each column
 #' is stored as with filename <ffdfname>$<colname>.ff. All variables given in "..." are stored in ".RData" in the same directory.
 #' The data can be reloaded by starting a R session in the directory or by using \code{\link{load.ffdf}}.
+#' Note that calling \code{save.ffdf} multiple times for the same directory 
+#' will only store the ffdf's that were given in the last call. 
 #' 
 #' Using \code{save.ffdf} automagically sets the \code{\link{finalizer}}s of the \code{ff}
 #' vectors to \code{"close"}. This means that the data will be preserved on disk when the 
@@ -20,9 +22,11 @@
 #' This should only be necessary if you still need the ff vectors in their current storage location.
 #' @param relativepath \code{logical} if \code{TRUE} the stored ff vectors will have relative paths, making moving the data to another storage a simple
 #' copy operation.
+#' @param overwrite \code{logical} If \code{TRUE} \code{save.ffdf} will overwrite 
+#' an previous stored \code{ffdf}, \code{.Rdata} file.
 #' @seealso \code{\link{load.ffdf}} 
 #' @export
-save.ffdf <- function(..., dir="./ffdb", clone=FALSE, relativepath=TRUE){
+save.ffdf <- function(..., dir="./ffdb", clone=FALSE, relativepath=TRUE, overwrite=FALSE){
    names <- as.character(substitute(list(...)))[-1L]
    dir.create(dir, showWarnings=FALSE, recursive=TRUE)
    
@@ -32,6 +36,10 @@ save.ffdf <- function(..., dir="./ffdb", clone=FALSE, relativepath=TRUE){
    
    oldwd <- setwd(dir)
    on.exit(setwd(oldwd))
+   if (!isTRUE(overwrite) && file.exists(".Rdata")){
+     stop("Directory '",dir,"' contains existing '.Rdata' file. 
+          To force saving use 'overwrite=TRUE'")
+   }
    
    # TODO make this fail safe: when one of the 'n' is non-existing
    existing <- sapply(names, exists, envir=parent.frame())
