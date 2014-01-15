@@ -18,15 +18,11 @@
 #' @return 
 #' an ffdf
 #' @export
+#' @importFrom fastmatch fmatch
 #' @seealso \code{\link{grouprunningcumsum}, \link{table}}
 ffdfdply <- function (x, split, FUN, BATCHBYTES = getOption("ffbatchbytes"), 
                       RECORDBYTES = sum(.rambytes[vmode(x)]), trace = TRUE, ...) {
-  
-  fastmatchavailable <- require(fastmatch, quietly = FALSE, warn.conflicts = FALSE)
-  if(!fastmatchavailable){
-    warning("Consider installing package fastmatch, which will speed up building split locations")
-  }
-  
+    
   MAXSIZE = BATCHBYTES/RECORDBYTES  
   force(split)
   
@@ -64,11 +60,7 @@ ffdfdply <- function (x, split, FUN, BATCHBYTES = getOption("ffbatchbytes"),
   if(trace) message(sprintf("%s, building up split locations", Sys.time()))
   splitpositions <- list()
   splitpositions$rowidxgroups <- ffdf(pos = ffseq_len(as.integer(length(split))), split = split)
-  if(fastmatchavailable){
-    splitpositions$rowidxgroups$group <- ffdfwith(splitpositions$rowidxgroups, splitgroups$tab.groups[fmatch(as.character(split), names(splitgroups$tab))])
-  }else{
-    splitpositions$rowidxgroups$group <- ffdfwith(splitpositions$rowidxgroups, splitgroups$tab.groups[match(as.character(split), names(splitgroups$tab))])
-  }  
+  splitpositions$rowidxgroups$group <- ffdfwith(splitpositions$rowidxgroups, splitgroups$tab.groups[fmatch(as.character(split), names(splitgroups$tab))])
   splitpositions$rowidxgroups <- splitpositions$rowidxgroups[c("pos","group")]  
   splitpositions$nrsplits <- max(splitgroups$tab.groups)
   

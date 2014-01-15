@@ -13,12 +13,12 @@ Depends:
     ff (>= 2.2-11),
     bit,
     R (>= 2.12.0)
+Imports: fastmatch
 Suggests:
     testthat,
     parallel,
     LaF,
-    biglm,
-    fastmatch
+    biglm
 Collate:
     'auxilary.R'
     'chunkify.R'

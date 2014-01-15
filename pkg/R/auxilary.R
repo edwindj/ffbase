@@ -80,7 +80,7 @@ coerce_to_allowNA <- function(x){
       from <- append(x = from, values = missing.levels)
       to <- append(x = to, values = missing.levels)
     }
-    to[match(x, from)]
+    to[fmatch(x, from)]
   }
   coerceto <- sapply( names(.vimplemented)[.vimplemented==TRUE]
                     , FUN=function(x) names(maxffmode(x, vmode(as.ff(NA)))))  

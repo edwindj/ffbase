@@ -5,6 +5,7 @@ version 0.11
 - Fix for issue #29
 - Added check in save.ffdf: if .Rdata is available, by default save.ffdf will give an error. 
 (Thanks to @dnlbrky). Fix for Issue: #30. NOTE this changes default behavior!
+- Changed internal match function into fmatch for speeding up things. issue #28
 
 version 0.10
 - Made several method generics
