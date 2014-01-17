@@ -2,7 +2,7 @@
 \alias{format.ff_vector}
 \title{Date Conversion Functions for \code{ff} vector}
 \usage{
-  \method{format}{ff_vector} (x, ..., inplace = FALSE)
+\method{format}{ff_vector}(x, ..., inplace = FALSE)
 }
 \arguments{
   \item{x}{an object of class \code{ff_vector}}
@@ -13,10 +13,10 @@
   \item{inplace}{passed on to \code{\link{chunkify}}}
 }
 \value{
-  An \code{ff_vector} of length(x) containing the result of
-  format applied to the elements in chunks
+An \code{ff_vector} of length(x) containing the result of
+format applied to the elements in chunks
 }
 \description{
-  Date Conversion Functions for \code{ff} vector.
+Date Conversion Functions for \code{ff} vector.
 }
 

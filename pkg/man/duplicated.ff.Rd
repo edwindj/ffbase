@@ -3,11 +3,11 @@
 \alias{duplicated.ffdf}
 \title{Duplicated for ff and ffdf objects}
 \usage{
-  \method{duplicated}{ff} (x, incomparables = FALSE,
-    fromLast = FALSE, trace = FALSE, ...)
+\method{duplicated}{ff}(x, incomparables = FALSE, fromLast = FALSE,
+  trace = FALSE, ...)
 
-  \method{duplicated}{ffdf} (x, incomparables = FALSE,
-    fromLast = FALSE, trace = FALSE, ...)
+\method{duplicated}{ffdf}(x, incomparables = FALSE, fromLast = FALSE,
+  trace = FALSE, ...)
 }
 \arguments{
   \item{x}{\code{ff} object or \code{ffdf} object}
@@ -28,19 +28,19 @@
   \item{...}{other parameters passed on to chunk}
 }
 \value{
-  A logical ff vector of length \code{nrow(x)} or
-  \code{length(x)} indicating if each row or element is
-  duplicated.
+A logical ff vector of length \code{nrow(x)} or
+\code{length(x)} indicating if each row or element is
+duplicated.
 }
 \description{
-  Duplicated for ff and ffdf objects similar as in
-  \code{\link[base]{duplicated}}.\cr Remark that this
-  duplicated function is slightly different from the
-  duplicated method in the base package as it first orders
-  the ffdf or ff_vector object and then applies duplicated.
-  This means you need to order the ffdf or ff_vector in
-  case you want to have the exact same result as the result
-  of the base package. See the example.
+Duplicated for ff and ffdf objects similar as in
+\code{\link[base]{duplicated}}.\cr Remark that this
+duplicated function is slightly different from the
+duplicated method in the base package as it first orders
+the ffdf or ff_vector object and then applies duplicated.
+This means you need to order the ffdf or ff_vector in case
+you want to have the exact same result as the result of the
+base package. See the example.
 }
 \examples{
 ## duplicated.ffdf - mark that you need to order according to the records you 
@@ -70,7 +70,7 @@ table(duplicated(irisdouble[, measures]), duplicated(ffiris[measures], by=10)[])
 table(duplicated(ffiris$Sepal.Width, by=10)[], duplicated(ffiris$Sepal.Width[]))
 }
 \seealso{
-  \code{\link[base]{duplicated}, \link[ff]{ffdforder},
-  \link[ff]{fforder}}
+\code{\link[base]{duplicated}, \link[ff]{ffdforder},
+\link[ff]{fforder}}
 }
 

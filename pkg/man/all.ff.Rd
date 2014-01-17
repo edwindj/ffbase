@@ -2,7 +2,7 @@
 \alias{all.ff}
 \title{Summary methods for ff objects}
 \usage{
-  \method{all}{ff} (x, ..., na.rm = FALSE, range = NULL)
+\method{all}{ff}(x, ..., na.rm = FALSE, range = NULL)
 }
 \arguments{
   \item{x}{a \code{ff} object}
@@ -16,9 +16,9 @@
   processing}
 }
 \value{
-  \code{TRUE}, \code{FALSE} or \code{NA}
+\code{TRUE}, \code{FALSE} or \code{NA}
 }
 \description{
-  Summary methods for ff objects
+Summary methods for ff objects
 }
 

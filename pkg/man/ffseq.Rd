@@ -2,9 +2,8 @@
 \alias{ffseq}
 \title{Sequence Generation of \code{ff} vectors.}
 \usage{
-  ffseq(from = 1, to = 1,
-    by = ((to - from)/(length.out - 1)), length.out = NULL,
-    along.with = NULL, ...)
+ffseq(from = 1, to = 1, by = ((to - from)/(length.out - 1)),
+  length.out = NULL, along.with = NULL, ...)
 }
 \arguments{
   \item{from}{the starting value of the sequence}
@@ -22,14 +21,14 @@
   \item{...}{arguments passed to or from methods}
 }
 \value{
-  An ff vector with the generated sequence, similar as what
-  \code{seq} generates but as an ff vector. \cr Mark: in
-  case this would generate a sequence of length 0, will
-  return integer().
+An ff vector with the generated sequence, similar as what
+\code{seq} generates but as an ff vector. \cr Mark: in case
+this would generate a sequence of length 0, will return
+integer().
 }
 \description{
-  Similar as \code{seq} in the base package, generating an
-  \code{ff} vector.
+Similar as \code{seq} in the base package, generating an
+\code{ff} vector.
 }
 \examples{
 ## ffseq_len
@@ -50,6 +49,6 @@ ffseq(length.out=1000000)
 
 }
 \seealso{
-  \code{\link[base]{seq}}
+\code{\link[base]{seq}}
 }
 

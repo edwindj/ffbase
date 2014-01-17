@@ -4,14 +4,13 @@
 \alias{binned_tabulate.ff}
 \title{Fast tabulating in different bins}
 \usage{
-  binned_tabulate(x, bin, nbins = max(bin),
-    nlevels = nlevels(x), ...)
+binned_tabulate(x, bin, nbins = max(bin), nlevels = nlevels(x), ...)
 
-  \method{binned_tabulate}{default} (x, bin,
-    nbins = max(bin), nlevels = nlevels(x), ...)
+\method{binned_tabulate}{default}(x, bin, nbins = max(bin),
+  nlevels = nlevels(x), ...)
 
-  \method{binned_tabulate}{ff} (x, bin, nbins = max(bin),
-    nlevels = nlevels(x), ...)
+\method{binned_tabulate}{ff}(x, bin, nbins = max(bin), nlevels = nlevels(x),
+  ...)
 }
 \arguments{
   \item{x}{\code{factor} or \code{integer} vector with the
@@ -27,16 +26,16 @@
   \item{...}{used by binned_tabulate.ff}
 }
 \value{
-  \code{numeric} matrix where each row is a bin and each
-  column a level
+\code{numeric} matrix where each row is a bin and each
+column a level
 }
 \description{
-  \code{binned_sum} implements fast tabulating for given
-  bins by calling c-code. It also returns the number of
-  NA's per bin. Please note that incorrect use of this
-  function may crash your R-session. the values of
-  \code{bins} must be between \code{1} and \code{nbins} and
-  may not contain \code{NA}. The values of \code{x} must be
-  between \code{1} and \code{nlevels}.
+\code{binned_sum} implements fast tabulating for given bins
+by calling c-code. It also returns the number of NA's per
+bin. Please note that incorrect use of this function may
+crash your R-session. the values of \code{bins} must be
+between \code{1} and \code{nbins} and may not contain
+\code{NA}. The values of \code{x} must be between \code{1}
+and \code{nlevels}.
 }
 

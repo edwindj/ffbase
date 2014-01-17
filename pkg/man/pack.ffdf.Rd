@@ -2,7 +2,7 @@
 \alias{pack.ffdf}
 \title{Packs ffdf data.frames into a compressed file}
 \usage{
-  pack.ffdf(file, ...)
+pack.ffdf(file, ...)
 }
 \arguments{
   \item{file}{packaged file, zipped or tar.gz.}
@@ -10,11 +10,11 @@
   \item{...}{ff objects to be packed}
 }
 \description{
-  \code{pack.ffdf} stores ffdf data.frames into the given
-  \code{file} for easy archiving and movement of data. The
-  file can be restored using \code{\link{unpack.ffdf}}. If
-  \code{file} ends with ".zip", the package will be zipped
-  otherwise it will be tar.gz-ed.
+\code{pack.ffdf} stores ffdf data.frames into the given
+\code{file} for easy archiving and movement of data. The
+file can be restored using \code{\link{unpack.ffdf}}. If
+\code{file} ends with ".zip", the package will be zipped
+otherwise it will be tar.gz-ed.
 }
 \examples{
 iris.ffdf <- as.ffdf(iris)
@@ -43,6 +43,6 @@ rm("iris.ffdf")
 unpack.ffdf(tf)
 }
 \seealso{
-  \code{\link{save.ffdf}} \code{\link{unpack.ffdf}}
+\code{\link{save.ffdf}} \code{\link{unpack.ffdf}}
 }
 

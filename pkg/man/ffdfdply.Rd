@@ -2,10 +2,8 @@
 \alias{ffdfdply}
 \title{Performs a split-apply-combine on an ffdf}
 \usage{
-  ffdfdply(x, split, FUN,
-    BATCHBYTES = getOption("ffbatchbytes"),
-    RECORDBYTES = sum(.rambytes[vmode(x)]), trace = TRUE,
-    ...)
+ffdfdply(x, split, FUN, BATCHBYTES = getOption("ffbatchbytes"),
+  RECORDBYTES = sum(.rambytes[vmode(x)]), trace = TRUE, ...)
 }
 \arguments{
   \item{x}{an ffdf}
@@ -27,21 +25,21 @@
   \item{...}{other parameters passed on to FUN}
 }
 \value{
-  an ffdf
+an ffdf
 }
 \description{
-  Performs a split-apply-combine on an ffdf. Splits the x
-  ffdf according to split and applies FUN to the data,
-  stores the result of the FUN in an ffdf.\cr Remark that
-  this function does not actually split the data. In order
-  to reduce the number of times data is put into RAM for
-  situations with a lot of split levels, the function
-  extracts groups of split elements which can be put into
-  RAM according to BATCHBYTES. Please make sure your FUN
-  covers the fact that several split elements can be in one
-  chunk of data on which FUN is applied.\cr Mark also that
-  NA's in the split are not considered as a split on which
-  the FUN will be applied.
+Performs a split-apply-combine on an ffdf. Splits the x
+ffdf according to split and applies FUN to the data, stores
+the result of the FUN in an ffdf.\cr Remark that this
+function does not actually split the data. In order to
+reduce the number of times data is put into RAM for
+situations with a lot of split levels, the function
+extracts groups of split elements which can be put into RAM
+according to BATCHBYTES. Please make sure your FUN covers
+the fact that several split elements can be in one chunk of
+data on which FUN is applied.\cr Mark also that NA's in the
+split are not considered as a split on which the FUN will
+be applied.
 }
 \examples{
 data(iris)
@@ -77,6 +75,6 @@ result <- ffdfdply( x = ffiris, split = ffiris$datekey
                   )
 }
 \seealso{
-  \code{\link{grouprunningcumsum}, \link{table}}
+\code{\link{grouprunningcumsum}, \link{table}}
 }
 

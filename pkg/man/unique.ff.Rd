@@ -3,11 +3,11 @@
 \alias{unique.ffdf}
 \title{Unique values for ff and ffdf objects}
 \usage{
-  \method{unique}{ff} (x, incomparables = FALSE,
-    fromLast = FALSE, trace = FALSE, ...)
+\method{unique}{ff}(x, incomparables = FALSE, fromLast = FALSE,
+  trace = FALSE, ...)
 
-  \method{unique}{ffdf} (x, incomparables = FALSE,
-    fromLast = FALSE, trace = FALSE, ...)
+\method{unique}{ffdf}(x, incomparables = FALSE, fromLast = FALSE,
+  trace = FALSE, ...)
 }
 \arguments{
   \item{x}{\code{ff} object or \code{ffdf} object}
@@ -28,11 +28,11 @@
   \item{...}{other parameters passed on to chunk}
 }
 \value{
-  An ffdf with unique values in \code{x} or an ff vector
-  with unique values in \code{x} if x is a ff vector.
+An ffdf with unique values in \code{x} or an ff vector with
+unique values in \code{x} if x is a ff vector.
 }
 \description{
-  Unique values for ff and ffdf objects
+Unique values for ff and ffdf objects
 }
 \examples{
 data(iris)
@@ -62,6 +62,6 @@ dim(test)
 
 }
 \seealso{
-  \code{\link[base]{unique}}
+\code{\link[base]{unique}}
 }
 

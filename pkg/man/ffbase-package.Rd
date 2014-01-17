@@ -4,10 +4,10 @@
 \alias{ffbase-package}
 \title{Basic statistical functions for ff}
 \description{
-  Basic statistical functions for \code{\link{ff}} vectors
-  and \code{\link{ffdf}} data.frames. The aim of ffbase is
-  to make working with ff vectors and ffdf data.frame a bit
-  easier.
+Basic statistical functions for \code{\link{ff}} vectors
+and \code{\link{ffdf}} data.frames. The aim of ffbase is to
+make working with ff vectors and ffdf data.frame a bit
+easier.
 }
 \section{Basic operations}{
   \tabular{ll}{ \code{\link{cut.ff}} \tab cut a \code{ff}

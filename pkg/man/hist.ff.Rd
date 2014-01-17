@@ -2,8 +2,7 @@
 \alias{hist.ff}
 \title{hist for ff vectors}
 \usage{
-  \method{hist}{ff} (x, breaks = min(100, length(x)),
-    plot = TRUE, ...)
+\method{hist}{ff}(x, breaks = min(100, length(x)), plot = TRUE, ...)
 }
 \arguments{
   \item{x}{\code{ff} vector of values for which the
@@ -19,10 +18,10 @@
   \item{...}{further arguments supplied to plot.}
 }
 \value{
-  histogram object
+histogram object
 }
 \description{
-  Currently this is a simple version of \code{\link{hist}}
-  functionality.
+Currently this is a simple version of \code{\link{hist}}
+functionality.
 }
 

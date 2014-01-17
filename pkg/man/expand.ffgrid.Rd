@@ -2,8 +2,7 @@
 \alias{expand.ffgrid}
 \title{Create a \code{ffdf} from All Combinations of Factors}
 \usage{
-  expand.ffgrid(..., KEEP.OUT.ATTRS = TRUE,
-    stringsAsFactors = TRUE)
+expand.ffgrid(..., KEEP.OUT.ATTRS = TRUE, stringsAsFactors = TRUE)
 }
 \arguments{
   \item{...}{\code{ff} vectors, \code{ff} factors or a list
@@ -17,15 +16,15 @@
   ff.}
 }
 \value{
-  A \code{ffdf} containing one row for each combination of
-  the supplied factors. The first factors vary fastest. The
-  columns are labelled by the factors if these are supplied
-  as named arguments or named components of a list.
+A \code{ffdf} containing one row for each combination of
+the supplied factors. The first factors vary fastest. The
+columns are labelled by the factors if these are supplied
+as named arguments or named components of a list.
 }
 \description{
-  Similar as \code{expand.grid} in the base package
-  generates an \code{ffdf}. Code is almost copy-pasted from
-  \code{\link[base]{expand.grid}}.
+Similar as \code{expand.grid} in the base package generates
+an \code{ffdf}. Code is almost copy-pasted from
+\code{\link[base]{expand.grid}}.
 }
 \examples{
 comb <- expand.ffgrid(ff(1:1000), ff(factor(LETTERS)))
@@ -42,6 +41,6 @@ expand.ffgrid(list(a = ff(1:10), b = ff(1:10)))
 
 }
 \seealso{
-  \code{\link[base]{expand.grid}}
+\code{\link[base]{expand.grid}}
 }
 

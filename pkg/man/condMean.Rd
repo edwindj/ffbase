@@ -2,7 +2,7 @@
 \alias{condMean}
 \title{Fast conditional mean}
 \usage{
-  condMean(x, index, na.rm = FALSE, ...)
+condMean(x, index, na.rm = FALSE, ...)
 }
 \arguments{
   \item{x}{\code{numeric} vector to be averaged}
@@ -16,10 +16,10 @@
   \item{...}{not used}
 }
 \value{
-  \code{array} with dimensions of \code{index}
+\code{array} with dimensions of \code{index}
 }
 \description{
-  \code{condMean} works like a very fast version of tapply
-  with \code{FUN=mean}.
+\code{condMean} works like a very fast version of tapply
+with \code{FUN=mean}.
 }
 

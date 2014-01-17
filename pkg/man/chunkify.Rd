@@ -2,7 +2,7 @@
 \alias{chunkify}
 \title{Chunkify an element-wise function}
 \usage{
-  chunkify(fun)
+chunkify(fun)
 }
 \arguments{
   \item{fun}{function to be 'chunkified', the function must
@@ -10,12 +10,12 @@
   \code{length}}
 }
 \value{
-  'chunkified' function that accepts a \code{ff} vector as
-  its first argument.
+'chunkified' function that accepts a \code{ff} vector as
+its first argument.
 }
 \description{
-  Chunkify creates a new function that operates on a ff
-  vector. It creates chunks from the ff vector and calls
-  the orginal function \code{fun} on each chunk.
+Chunkify creates a new function that operates on a ff
+vector. It creates chunks from the ff vector and calls the
+orginal function \code{fun} on each chunk.
 }
 

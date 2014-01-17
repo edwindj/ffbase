@@ -2,7 +2,7 @@
 \alias{ffwhich}
 \title{Create an index from a filter statement}
 \usage{
-  ffwhich(x, expr, ...)
+ffwhich(x, expr, ...)
 }
 \arguments{
   \item{x}{\code{ff} or \code{ffdf} object}
@@ -12,9 +12,9 @@
   \item{...}{not used}
 }
 \description{
-  \code{ffwhich} creates an \code{\link{ff}} integer index
-  vector from a filter expression. The resulting vector can
-  be used to index or subset a ffdf or ff vector.
+\code{ffwhich} creates an \code{\link{ff}} integer index
+vector from a filter expression. The resulting vector can
+be used to index or subset a ffdf or ff vector.
 }
 \examples{
 # create a ff vector
@@ -32,6 +32,6 @@ idx <- ffwhich(dat, x1 < 5 & y1 > 2)
 dat[idx,][,]
 }
 \seealso{
-  ffindexget ffindexset
+ffindexget ffindexset
 }
 

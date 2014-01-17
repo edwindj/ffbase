@@ -3,9 +3,9 @@
 \alias{[<-.ff}
 \title{Reading and writing vectors extended to handle logical \code{ff} vectors as indexes}
 \usage{
-  \method{[}{ff} (x, i, pack = FALSE)
+\method{[}{ff} (x, i, pack = FALSE)
 
-  \method{[}{ff} (x, i, add = FALSE, pack = FALSE) <- value
+\method{[}{ff} (x, i, add = FALSE, pack = FALSE) <- value
 }
 \arguments{
   \item{x}{an \code{ff} object}
@@ -24,28 +24,27 @@
   recycled}
 }
 \value{
-  See \code{\link[ff]{Extract.ff}}. Mark that if a logical
-  \code{ff} vector is used for \code{i}, and if only
-  \code{FALSE} or \code{NA} values are present, NULL is
-  returned in case of the extractor function \code{[.ff}
-  while for the setter function \code{[<-.ff}, if the
-  length value is zero, this is not allowed.
+See \code{\link[ff]{Extract.ff}}. Mark that if a logical
+\code{ff} vector is used for \code{i}, and if only
+\code{FALSE} or \code{NA} values are present, NULL is
+returned in case of the extractor function \code{[.ff}
+while for the setter function \code{[<-.ff}, if the length
+value is zero, this is not allowed.
 }
 \description{
-  Package \code{ff} does not allow to extract and set
-  values of \code{ff} vectors based on logical \code{ff}
-  vectors. For this reason the extractor functions
-  \code{[.ff} and \code{[<-.ff} defined in package ff are
-  overloaded.\cr If you supply a logical \code{ff} vector
-  as an index to another \code{ff} vector, the overloaded
-  function will convert it to an integer \code{ff}. index
-  before using the \code{[.ff} and \code{[<-.ff} function
-  from the ff package. \cr This allows to do
-  \code{ff(1:10)[ff(c(FALSE, TRUE, NA, TRUE))]}\cr\cr Mark
-  that all other functionality from the extractor functions
-  \code{[.ff} and \code{[<-.ff} in package ff are retained.
-  This is an extension to handle logical \code{ff} vectors
-  as indexes.
+Package \code{ff} does not allow to extract and set values
+of \code{ff} vectors based on logical \code{ff} vectors.
+For this reason the extractor functions \code{[.ff} and
+\code{[<-.ff} defined in package ff are overloaded.\cr If
+you supply a logical \code{ff} vector as an index to
+another \code{ff} vector, the overloaded function will
+convert it to an integer \code{ff}. index before using the
+\code{[.ff} and \code{[<-.ff} function from the ff package.
+\cr This allows to do \code{ff(1:10)[ff(c(FALSE, TRUE, NA,
+TRUE))]}\cr\cr Mark that all other functionality from the
+extractor functions \code{[.ff} and \code{[<-.ff} in
+package ff are retained. This is an extension to handle
+logical \code{ff} vectors as indexes.
 }
 \examples{
 x <- ff(1:10)
@@ -76,6 +75,6 @@ x
 
 }
 \seealso{
-  \code{\link[ff]{Extract.ff}}
+\code{\link[ff]{Extract.ff}}
 }
 

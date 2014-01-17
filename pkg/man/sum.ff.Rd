@@ -2,7 +2,7 @@
 \alias{sum.ff}
 \title{Sum of \code{ff} vector Elements}
 \usage{
-  \method{sum}{ff} (x, ..., na.rm = FALSE, range = NULL)
+\method{sum}{ff}(x, ..., na.rm = FALSE, range = NULL)
 }
 \arguments{
   \item{x}{a \code{ff} object}
@@ -16,10 +16,10 @@
   processing}
 }
 \value{
-  sum of elements
+sum of elements
 }
 \description{
-  \code{sum} returns the sum of all the values present in
-  its arguments.
+\code{sum} returns the sum of all the values present in its
+arguments.
 }
 

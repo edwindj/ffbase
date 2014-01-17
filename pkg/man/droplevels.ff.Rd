@@ -3,7 +3,7 @@
 \title{The function \code{droplevels} is used to drop unused levels from a \code{ff}
  factor or , more commonly, from factors in a \code{ffdf}}
 \usage{
-  \method{droplevels}{ff} (x, ..., inplace = FALSE)
+\method{droplevels}{ff}(x, ..., inplace = FALSE)
 }
 \arguments{
   \item{x}{\code{ff} object}
@@ -15,14 +15,14 @@
   vector will be created}
 }
 \value{
-  \code{ff} object where levels of factors are dropped
+\code{ff} object where levels of factors are dropped
 }
 \description{
-  The function \code{droplevels} is used to drop unused
-  levels from a \code{ff} factor or , more commonly, from
-  factors in a \code{ffdf}
+The function \code{droplevels} is used to drop unused
+levels from a \code{ff} factor or , more commonly, from
+factors in a \code{ffdf}
 }
 \seealso{
-  \code{\link{droplevels}} \code{\link{droplevels.ffdf}}
+\code{\link{droplevels}} \code{\link{droplevels.ffdf}}
 }
 

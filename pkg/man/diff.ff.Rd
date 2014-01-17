@@ -2,7 +2,7 @@
 \alias{diff.ff}
 \title{Lagged Differences}
 \usage{
-  \method{diff}{ff} (x, lag = 1L, differences = 1L, ...)
+\method{diff}{ff}(x, lag = 1L, differences = 1L, ...)
 }
 \arguments{
   \item{x}{a \code{ff} vector containing values to be
@@ -16,6 +16,6 @@
   \item{...}{other parameters will be passed on to diff}
 }
 \description{
-  Returned suitably lagged and iterated differences
+Returned suitably lagged and iterated differences
 }
 

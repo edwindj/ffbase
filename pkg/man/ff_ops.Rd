@@ -11,23 +11,23 @@
 \alias{|.ff_vector}
 \title{Ops for ff vectors}
 \usage{
-  \method{>}{ff_vector} (x, y)
+\method{>}{ff_vector} (x, y)
 
-  \method{<}{ff_vector} (x, y)
+\method{<}{ff_vector} (x, y)
 
-  \method{==}{ff_vector} (x, y)
+\method{==}{ff_vector} (x, y)
 
-  \method{!=}{ff_vector} (x, y)
+\method{!=}{ff_vector} (x, y)
 
-  \method{<=}{ff_vector} (x, y)
+\method{<=}{ff_vector} (x, y)
 
-  \method{>=}{ff_vector} (x, y)
+\method{>=}{ff_vector} (x, y)
 
-  \method{&}{ff_vector} (x, y)
+\method{&}{ff_vector} (x, y)
 
-  \method{|}{ff_vector} (x, y)
+\method{|}{ff_vector} (x, y)
 
-  \method{!}{ff_vector} (x)
+\method{!}{ff_vector} (x)
 }
 \arguments{
   \item{x}{either a numeric \code{ff_vector} or a vector of
@@ -39,18 +39,17 @@
   \code{ff_vector}}
 }
 \value{
-  an \code{ff_vector}. For the definition of the operators
-  see the base package of R.
+an \code{ff_vector}. For the definition of the operators
+see the base package of R.
 }
 \description{
-  These operators implement \code{ff_vector} specific
-  operators and handle the following operators from the Ops
-  family: \cr \itemize{ \item{Compare: }{\code{"==", "!=",
-  "<", "<=", ">=", ">"}} \item{Logic: }{\code{"&", "|",
-  "!"}} } The operators require either \code{x} or \code{y}
-  to be an \code{ff_vector} or both. In case either
-  \code{x} or \code{y} is not an \code{ff_vector}, the
-  other object needs to be of length 1. Recycling is not
-  implemented.
+These operators implement \code{ff_vector} specific
+operators and handle the following operators from the Ops
+family: \cr \itemize{ \item{Compare: }{\code{"==", "!=",
+"<", "<=", ">=", ">"}} \item{Logic: }{\code{"&", "|", "!"}}
+} The operators require either \code{x} or \code{y} to be
+an \code{ff_vector} or both. In case either \code{x} or
+\code{y} is not an \code{ff_vector}, the other object needs
+to be of length 1. Recycling is not implemented.
 }
 

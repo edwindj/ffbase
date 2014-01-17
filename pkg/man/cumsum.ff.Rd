@@ -5,13 +5,13 @@
 \alias{cumsum.ff}
 \title{Cumulative Sums, Products, and Extremes}
 \usage{
-  \method{cumsum}{ff} (x, ...)
+\method{cumsum}{ff}(x, ...)
 
-  \method{cumprod}{ff} (x, ...)
+\method{cumprod}{ff}(x, ...)
 
-  \method{cummax}{ff} (x, ...)
+\method{cummax}{ff}(x, ...)
 
-  \method{cummin}{ff} (x, ...)
+\method{cummin}{ff}(x, ...)
 }
 \arguments{
   \item{x}{\code{ff} numeric vector or an object that can
@@ -20,15 +20,14 @@
   \item{...}{other parameters passed on to chunk}
 }
 \value{
-  An \code{ff} vector of the same length and type as x
-  (after coercion), except that cumprod returns a numeric
-  vector for integer input.\cr An NA value in x causes the
-  corresponding and following elements of the return value
-  to be NA, as does integer overflow in cumsum (with a
-  warning).
+An \code{ff} vector of the same length and type as x (after
+coercion), except that cumprod returns a numeric vector for
+integer input.\cr An NA value in x causes the corresponding
+and following elements of the return value to be NA, as
+does integer overflow in cumsum (with a warning).
 }
 \description{
-  Cumulative Sums, Products, and Extremes
+Cumulative Sums, Products, and Extremes
 }
 \examples{
 x <- 1:10000
@@ -53,7 +52,7 @@ cumprod(ff(x))
 
 }
 \seealso{
-  \code{\link{cumsum}}, \code{\link{cumprod}},
-  \code{\link{cummax}}, \code{\link{cummin}}
+\code{\link{cumsum}}, \code{\link{cumprod}},
+\code{\link{cummax}}, \code{\link{cummin}}
 }
 

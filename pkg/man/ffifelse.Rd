@@ -2,7 +2,7 @@
 \alias{ffifelse}
 \title{Conditional Element Selection for \code{ff} vectors.}
 \usage{
-  ffifelse(test, yes, no)
+ffifelse(test, yes, no)
 }
 \arguments{
   \item{test}{logical or boolean \code{ff} vector}
@@ -16,11 +16,11 @@
   recycled.}
 }
 \value{
-  An ff vector of the same length as \code{test}.
+An ff vector of the same length as \code{test}.
 }
 \description{
-  Similar as \code{ifelse} in the base package but only
-  works with yes and no as \code{ff} vectors.
+Similar as \code{ifelse} in the base package but only works
+with yes and no as \code{ff} vectors.
 }
 \examples{
 data(iris)
@@ -34,6 +34,6 @@ ffifelse( ffiris$Sepal.Length < 5, Sys.Date(), ff(seq.Date( Sys.Date()+1
 
 }
 \seealso{
-  \code{\link[base]{ifelse}}
+\code{\link[base]{ifelse}}
 }
 

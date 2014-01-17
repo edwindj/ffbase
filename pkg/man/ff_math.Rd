@@ -32,65 +32,65 @@
 \alias{trunc.ff_vector}
 \title{Math for ff vectors}
 \usage{
-  \method{abs}{ff_vector} (x)
+\method{abs}{ff_vector} (x)
 
-  \method{sign}{ff_vector} (x)
+\method{sign}{ff_vector} (x)
 
-  \method{sqrt}{ff_vector} (x)
+\method{sqrt}{ff_vector} (x)
 
-  \method{ceiling}{ff_vector} (x)
+\method{ceiling}{ff_vector} (x)
 
-  \method{floor}{ff_vector} (x)
+\method{floor}{ff_vector} (x)
 
-  \method{trunc}{ff_vector} (x, ...)
+\method{trunc}{ff_vector} (x, ...)
 
-  \method{log10}{ff_vector} (x)
+\method{log10}{ff_vector} (x)
 
-  \method{log2}{ff_vector} (x)
+\method{log2}{ff_vector} (x)
 
-  \method{log1p}{ff_vector} (x)
+\method{log1p}{ff_vector} (x)
 
-  \method{acos}{ff_vector} (x)
+\method{acos}{ff_vector} (x)
 
-  \method{acosh}{ff_vector} (x)
+\method{acosh}{ff_vector} (x)
 
-  \method{asin}{ff_vector} (x)
+\method{asin}{ff_vector} (x)
 
-  \method{asinh}{ff_vector} (x)
+\method{asinh}{ff_vector} (x)
 
-  \method{atan}{ff_vector} (x)
+\method{atan}{ff_vector} (x)
 
-  \method{atanh}{ff_vector} (x)
+\method{atanh}{ff_vector} (x)
 
-  \method{exp}{ff_vector} (x)
+\method{exp}{ff_vector} (x)
 
-  \method{expm1}{ff_vector} (x)
+\method{expm1}{ff_vector} (x)
 
-  \method{cos}{ff_vector} (x)
+\method{cos}{ff_vector} (x)
 
-  \method{cosh}{ff_vector} (x)
+\method{cosh}{ff_vector} (x)
 
-  \method{sin}{ff_vector} (x)
+\method{sin}{ff_vector} (x)
 
-  \method{sinh}{ff_vector} (x)
+\method{sinh}{ff_vector} (x)
 
-  \method{tan}{ff_vector} (x)
+\method{tan}{ff_vector} (x)
 
-  \method{tanh}{ff_vector} (x)
+\method{tanh}{ff_vector} (x)
 
-  \method{gamma}{ff_vector} (x)
+\method{gamma}{ff_vector} (x)
 
-  \method{lgamma}{ff_vector} (x)
+\method{lgamma}{ff_vector} (x)
 
-  \method{digamma}{ff_vector} (x)
+\method{digamma}{ff_vector} (x)
 
-  \method{trigamma}{ff_vector} (x)
+\method{trigamma}{ff_vector} (x)
 
-  \method{log}{ff_vector} (x, base)
+\method{log}{ff_vector} (x, base)
 
-  \method{round}{ff_vector} (x, digits)
+\method{round}{ff_vector} (x, digits)
 
-  \method{signif}{ff_vector} (x, digits)
+\method{signif}{ff_vector} (x, digits)
 }
 \arguments{
   \item{x}{a numeric \code{ff_vector}}
@@ -102,19 +102,18 @@
   \item{...}{for \code{trunc}, currently not used}
 }
 \value{
-  an \code{ff_vector}. For the definition of the operators
-  see the base package of R.
+an \code{ff_vector}. For the definition of the operators
+see the base package of R.
 }
 \description{
-  These mathematical functions implement \code{ff_vector}
-  specific math and handle the following functions from the
-  Math family: \cr \itemize{ \item{Math: }{\code{"abs",
-  "sign", "sqrt", "ceiling", "floor", "trunc", "log",
-  "log10", "log2", "log1p", "acos", "acosh", "asin",
-  "asinh", "atan", "atanh", "exp", "expm1", "cos", "cosh",
-  "sin", "sinh", "tan", "tanh", "gamma", "lgamma",
-  "digamma", "trigamma"}} \item{Math2: }{\code{"round",
-  "signif"}} } The operators require \code{x} to be an
-  \code{ff_vector}.
+These mathematical functions implement \code{ff_vector}
+specific math and handle the following functions from the
+Math family: \cr \itemize{ \item{Math: }{\code{"abs",
+"sign", "sqrt", "ceiling", "floor", "trunc", "log",
+"log10", "log2", "log1p", "acos", "acosh", "asin", "asinh",
+"atan", "atanh", "exp", "expm1", "cos", "cosh", "sin",
+"sinh", "tan", "tanh", "gamma", "lgamma", "digamma",
+"trigamma"}} \item{Math2: }{\code{"round", "signif"}} } The
+operators require \code{x} to be an \code{ff_vector}.
 }
 

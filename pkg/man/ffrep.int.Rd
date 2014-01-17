@@ -2,7 +2,7 @@
 \alias{ffrep.int}
 \title{Replicate Elements of \code{ff} vectors.}
 \usage{
-  ffrep.int(x, times)
+ffrep.int(x, times)
 }
 \arguments{
   \item{x}{an integer \code{ff} vector}
@@ -14,11 +14,11 @@
   NA values are an error.}
 }
 \value{
-  An ff vector of integers where x is recycled
+An ff vector of integers where x is recycled
 }
 \description{
-  Similar as \code{rep.int} in the base package but for
-  \code{ff} vectors.
+Similar as \code{rep.int} in the base package but for
+\code{ff} vectors.
 }
 \examples{
 ffrep.int(ff(1:1000), times=20)
@@ -39,6 +39,6 @@ ffrep.int(x, times=ff(1:26))
 
 }
 \seealso{
-  \code{\link[base]{rep.int}}
+\code{\link[base]{rep.int}}
 }
 

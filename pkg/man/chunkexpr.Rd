@@ -2,8 +2,7 @@
 \alias{chunkexpr}
 \title{Chunk an expression}
 \usage{
-  chunkexpr(expr, x = all.vars(expr), i = ".i",
-    prefix = "")
+chunkexpr(expr, x = all.vars(expr), i = ".i", prefix = "")
 }
 \arguments{
   \item{expr}{\code{expression} vector or language object}
@@ -16,10 +15,10 @@
   \item{prefix}{prefix for variables to be replaced.}
 }
 \description{
-  chunkexpr replaces variables in an expression with a
-  indexed version. It main use it to rewrite "normal" R
-  expression into chunked versions that can be evaluated in
-  a chunked-for-loop.
+chunkexpr replaces variables in an expression with a
+indexed version. It main use it to rewrite "normal" R
+expression into chunked versions that can be evaluated in a
+chunked-for-loop.
 }
 \keyword{internal}
 

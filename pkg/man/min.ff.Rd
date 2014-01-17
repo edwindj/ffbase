@@ -1,13 +1,10 @@
 \name{min.ff}
-\alias{max}
 \alias{max.ff}
-\alias{min}
 \alias{min.ff}
-\alias{range}
 \alias{range.ff}
 \title{Minimum, maximum and range of ff vector}
 \usage{
-  \method{min}{ff} (x, ..., na.rm = FALSE, range = NULL)
+\method{min}{ff}(x, ..., na.rm = FALSE, range = NULL)
 }
 \arguments{
   \item{x}{a \code{ff} object}
@@ -21,11 +18,11 @@
   processing}
 }
 \value{
-  minimun, maximum or range values
+minimun, maximum or range values
 }
 \description{
-  default behaviour of \code{\link{min}},\code{\link{max}}
-  and \code{\link{range}}
+default behaviour of \code{\link{min}},\code{\link{max}}
+and \code{\link{range}}
 }
 \examples{
 x <- ff(1:100)

@@ -2,7 +2,7 @@
 \alias{cut.ff}
 \title{Convert Numeric ff vector to factor ff}
 \usage{
-  \method{cut}{ff} (x, breaks, ...)
+\method{cut}{ff}(x, breaks, ...)
 }
 \arguments{
   \item{x}{a (numeric) ff object that will be cut into
@@ -14,20 +14,20 @@
   \code{\link{cut.default}}}
 }
 \value{
-  ff a new \code{\link{ff}} object with the newly created
-  factor
+ff a new \code{\link{ff}} object with the newly created
+factor
 }
 \description{
-  cut divides the range of x into intervals and codes the
-  values in x according to which interval they fall. The
-  leftmost interval corresponds to level one, the next
-  leftmost to level two and so on.
+cut divides the range of x into intervals and codes the
+values in x according to which interval they fall. The
+leftmost interval corresponds to level one, the next
+leftmost to level two and so on.
 }
 \details{
-  The \code{cut} method for ff with the behaviour of
-  \code{link{cut}}
+The \code{cut} method for ff with the behaviour of
+\code{link{cut}}
 }
 \seealso{
-  cut
+cut
 }
 

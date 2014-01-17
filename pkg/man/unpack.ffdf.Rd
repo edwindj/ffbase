@@ -2,7 +2,7 @@
 \alias{unpack.ffdf}
 \title{Unpacks previously stored ffdf data.frame into a directory}
 \usage{
-  unpack.ffdf(file, dir = NULL, envir = parent.frame())
+unpack.ffdf(file, dir = NULL, envir = parent.frame())
 }
 \arguments{
   \item{file}{packaged file, zipped or tar.gz.}
@@ -15,11 +15,10 @@
   should be loaded into.}
 }
 \description{
-  \code{unpack.ffdf} restores ffdf data.frames into the
-  given \code{dir}, that were stored using
-  \code{\link{pack.ffdf}}. If \code{dir} is \code{NULL}
-  (the default) the data.frames will restored in a
-  temporary directory. if
+\code{unpack.ffdf} restores ffdf data.frames into the given
+\code{dir}, that were stored using \code{\link{pack.ffdf}}.
+If \code{dir} is \code{NULL} (the default) the data.frames
+will restored in a temporary directory. if
 }
 \examples{
 iris.ffdf <- as.ffdf(iris)
@@ -48,6 +47,6 @@ rm("iris.ffdf")
 unpack.ffdf(tf)
 }
 \seealso{
-  \code{\link{load.ffdf}} \code{\link{pack.ffdf}}
+\code{\link{load.ffdf}} \code{\link{pack.ffdf}}
 }
 

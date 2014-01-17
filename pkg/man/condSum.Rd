@@ -2,7 +2,7 @@
 \alias{condSum}
 \title{Fast conditional sum}
 \usage{
-  condSum(x, index, na.rm = FALSE, ...)
+condSum(x, index, na.rm = FALSE, ...)
 }
 \arguments{
   \item{x}{\code{numeric} vector to be summed}
@@ -16,10 +16,10 @@
   \item{...}{not used}
 }
 \value{
-  \code{array} with dimensions of \code{index}
+\code{array} with dimensions of \code{index}
 }
 \description{
-  \code{condSum} works like a very fast version of tapply
-  with \code{FUN=sum}.
+\code{condSum} works like a very fast version of tapply
+with \code{FUN=sum}.
 }
 

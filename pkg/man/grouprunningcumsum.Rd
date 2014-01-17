@@ -3,7 +3,7 @@
 \title{Groups the input integer vector into several groups if the running cumulative
 sum increases a certain maximum number}
 \usage{
-  grouprunningcumsum(x, max)
+grouprunningcumsum(x, max)
 }
 \arguments{
   \item{x}{an integer vector}
@@ -12,12 +12,11 @@ sum increases a certain maximum number}
   extra grouping is done}
 }
 \value{
-  An integer vector of the same length of x, indicating
-  groups
+An integer vector of the same length of x, indicating
+groups
 }
 \description{
-  Groups the input integer vector into several groups if
-  the running cumulative sum increases a certain maximum
-  number
+Groups the input integer vector into several groups if the
+running cumulative sum increases a certain maximum number
 }
 

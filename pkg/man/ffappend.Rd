@@ -2,7 +2,7 @@
 \alias{ffappend}
 \title{Append a ff vector to another ff vector}
 \usage{
-  ffappend(x, y, adjustvmode = TRUE, ...)
+ffappend(x, y, adjustvmode = TRUE, ...)
 }
 \arguments{
   \item{x}{\code{ff} object where data will be appended to.
@@ -18,17 +18,17 @@
   \code{chunk} interally}
 }
 \value{
-  \code{ff} object with same physical storage as \code{x}
-  unless \code{y} has a higher \code{vmode} in which case
-  the data will be cloned to the higher \code{vmode}
+\code{ff} object with same physical storage as \code{x}
+unless \code{y} has a higher \code{vmode} in which case the
+data will be cloned to the higher \code{vmode}
 }
 \description{
-  Appends (\code{ff}) vector \code{y} to \code{ff} vector
-  \code{x}. Please note that the data of \code{x} will be
-  coerced to the type of \code{y} if \code{y} has a higher
-  \code{vmode}.
+Appends (\code{ff}) vector \code{y} to \code{ff} vector
+\code{x}. Please note that the data of \code{x} will be
+coerced to the type of \code{y} if \code{y} has a higher
+\code{vmode}.
 }
 \seealso{
-  \code{\link{c.ff}}
+\code{\link{c.ff}}
 }
 

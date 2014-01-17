@@ -2,8 +2,7 @@
 \alias{bigglm.ffdf}
 \title{Bounded memory linear regression}
 \usage{
-  bigglm.ffdf(formula, data, family = gaussian(), ...,
-    chunksize = 5000)
+bigglm.ffdf(formula, data, family = gaussian(), ..., chunksize = 5000)
 }
 \arguments{
   \item{formula}{a model formula}
@@ -18,15 +17,14 @@
   \item{chunksize}{Size of chunks for processing the ffdf}
 }
 \value{
-  An object of class bigglm. See the bigglm package for a
-  description: \code{\link[biglm]{bigglm}}
+An object of class bigglm. See the bigglm package for a
+description: \code{\link[biglm]{bigglm}}
 }
 \description{
-  bigglm.ffdf creates a generalized linear model object
-  that uses only p^2 memory for p variables. It uses the
-  biglm package and is a simple wrapper to allow to work
-  with an ffdf as input data. Make sure that package is
-  loaded.
+bigglm.ffdf creates a generalized linear model object that
+uses only p^2 memory for p variables. It uses the biglm
+package and is a simple wrapper to allow to work with an
+ffdf as input data. Make sure that package is loaded.
 }
 \examples{
 require(biglm)
@@ -42,6 +40,6 @@ summary(b)
 
 }
 \seealso{
-  \code{\link[biglm]{bigglm}}
+\code{\link[biglm]{bigglm}}
 }
 

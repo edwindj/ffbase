@@ -4,13 +4,13 @@
 \alias{ffmatch}
 \title{Value Matching for ff objects}
 \usage{
-  ffmatch(x, table, nomatch = NA_integer_,
-    incomparables = NULL, trace = FALSE, ...)
+ffmatch(x, table, nomatch = NA_integer_, incomparables = NULL,
+  trace = FALSE, ...)
 
-  ffdfmatch(x, table, nomatch = NA_integer_,
-    incomparables = NULL, trace = FALSE, ...)
+ffdfmatch(x, table, nomatch = NA_integer_, incomparables = NULL,
+  trace = FALSE, ...)
 
-  x \%in\% table
+x \%in\% table
 }
 \arguments{
   \item{x}{a \code{ff} object for \code{ffmatch} or an
@@ -34,23 +34,23 @@
   \item{...}{other parameters passed on to chunk}
 }
 \value{
-  An ff vector of the same length as \code{x}. An integer
-  vector giving the position in table of the first match if
-  there is a match, otherwise \code{nomatch}.
+An ff vector of the same length as \code{x}. An integer
+vector giving the position in table of the first match if
+there is a match, otherwise \code{nomatch}.
 }
 \description{
-  \code{ffmatch} returns an ff vector of the positions of
-  (first) matches of its first argument in its second.
-  Similar as \code{\link[base]{match}}. \cr \cr
-  \code{ffdfmatch} allows to match ffdf objects by
-  \code{\link[base]{paste}}-ing together the columns of the
-  ffdf and matching on the pasted column and returns an ff
-  vector of the positions of (first) matches of its first
-  argument in its second.\cr \cr \code{\%in\%} returns a
-  logical ff vector indicating if there is a match or not
-  for its left operand. ffdf objects are also allowed in
-  the left and right operand of the \code{\%in\%} operator.
-  See the examples.
+\code{ffmatch} returns an ff vector of the positions of
+(first) matches of its first argument in its second.
+Similar as \code{\link[base]{match}}. \cr \cr
+\code{ffdfmatch} allows to match ffdf objects by
+\code{\link[base]{paste}}-ing together the columns of the
+ffdf and matching on the pasted column and returns an ff
+vector of the positions of (first) matches of its first
+argument in its second.\cr \cr \code{\%in\%} returns a
+logical ff vector indicating if there is a match or not for
+its left operand. ffdf objects are also allowed in the left
+and right operand of the \code{\%in\%} operator. See the
+examples.
 }
 \examples{
 ## Basic example of match.ff
@@ -79,6 +79,6 @@ ffiris \%in\% ffirissubset
 
 }
 \seealso{
-  \code{\link[base]{match}, \link[base]{paste}}
+\code{\link[base]{match}, \link[base]{paste}}
 }
 

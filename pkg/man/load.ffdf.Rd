@@ -2,7 +2,7 @@
 \alias{load.ffdf}
 \title{Loads ffdf data.frames from a directory}
 \usage{
-  load.ffdf(dir, envir = parent.frame())
+load.ffdf(dir, envir = parent.frame())
 }
 \arguments{
   \item{dir}{path from where the data should be loaded}
@@ -11,13 +11,13 @@
   be loaded into.}
 }
 \description{
-  \code{load.ffdf} loads ffdf data.frames from the given
-  \code{dir}, that were stored using
-  \code{\link{save.ffdf}}. Each column is stored as with
-  filename <ffdfname>$<colname>.ff. All variables are
-  stored in .RData in the same directory. The data can be
-  loaded by starting a R session in the directory or by
-  using \code{\link{load.ffdf}}.
+\code{load.ffdf} loads ffdf data.frames from the given
+\code{dir}, that were stored using \code{\link{save.ffdf}}.
+Each column is stored as with filename
+<ffdfname>$<colname>.ff. All variables are stored in .RData
+in the same directory. The data can be loaded by starting a
+R session in the directory or by using
+\code{\link{load.ffdf}}.
 }
 \examples{
 iris.ffdf <- as.ffdf(iris)
@@ -46,6 +46,6 @@ rm("iris.ffdf")
 unpack.ffdf(tf)
 }
 \seealso{
-  \code{\link{load.ffdf}}
+\code{\link{load.ffdf}}
 }
 

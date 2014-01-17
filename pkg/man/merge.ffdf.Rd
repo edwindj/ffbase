@@ -2,11 +2,9 @@
 \alias{merge.ffdf}
 \title{Merge two ffdf by common columns, or do other versions of database join operations.}
 \usage{
-  \method{merge}{ffdf} (x, y,
-    by = intersect(names(x), names(y)), by.x = by,
-    by.y = by, all = FALSE, all.x = all, all.y = all,
-    sort = FALSE, suffixes = c(".x", ".y"),
-    incomparables = NULL, trace = FALSE, ...)
+\method{merge}{ffdf}(x, y, by = intersect(names(x), names(y)), by.x = by,
+  by.y = by, all = FALSE, all.x = all, all.y = all, sort = FALSE,
+  suffixes = c(".x", ".y"), incomparables = NULL, trace = FALSE, ...)
 }
 \arguments{
   \item{x}{an ffdf}
@@ -49,27 +47,26 @@
   \code{\link[ff]{ffdfindexget}}}
 }
 \value{
-  an ffdf
+an ffdf
 }
 \description{
-  Merge two ffdf by common columns, or do other versions of
-  database join operations. This method is similar to
-  \code{\link[base]{merge}} in the \code{base} package but
-  only allows inner and left outer joins. Note that joining
-  is done based on \code{\link{ffmatch}} or
-  \code{\link{ffdfmatch}}: only the first element in
-  \code{y} will be added to \code{x}; and since
-  \code{\link{ffdfmatch}} works by
-  \code{\link[base]{paste}}-ing together a key, this might
-  not be suited if your key contains columns of vmode
-  double.
+Merge two ffdf by common columns, or do other versions of
+database join operations. This method is similar to
+\code{\link[base]{merge}} in the \code{base} package but
+only allows inner and left outer joins. Note that joining
+is done based on \code{\link{ffmatch}} or
+\code{\link{ffdfmatch}}: only the first element in \code{y}
+will be added to \code{x}; and since
+\code{\link{ffdfmatch}} works by
+\code{\link[base]{paste}}-ing together a key, this might
+not be suited if your key contains columns of vmode double.
 }
 \details{
-  If a left outer join is performed and no matching record
-  in x is found in y, columns with vmodes 'boolean',
-  'quad', 'nibble', 'ubyte', 'ushort' are coerced
-  respectively to vmode 'logical', 'byte', 'byte', 'short',
-  'integer' to allow NA values.
+If a left outer join is performed and no matching record in
+x is found in y, columns with vmodes 'boolean', 'quad',
+'nibble', 'ubyte', 'ushort' are coerced respectively to
+vmode 'logical', 'byte', 'byte', 'short', 'integer' to
+allow NA values.
 }
 \examples{
 authors <- data.frame(
@@ -129,6 +126,6 @@ table(m1$test[], exclude=c())
 options(ffbatchbytes = oldffbatchbytes)
 }
 \seealso{
-  \code{\link{merge}}
+\code{\link{merge}}
 }
 

@@ -2,7 +2,7 @@
 \alias{bySum}
 \title{Fast conditional sum}
 \usage{
-  bySum(x, by, na.rm = FALSE, weight = NULL, ...)
+bySum(x, by, na.rm = FALSE, weight = NULL, ...)
 }
 \arguments{
   \item{x}{\code{numeric} vector to be summed}
@@ -19,10 +19,10 @@
   \item{...}{not used}
 }
 \value{
-  \code{array} with dimensions of \code{by}
+\code{array} with dimensions of \code{by}
 }
 \description{
-  \code{bySum} works like a very fast version of tapply
-  with (weighted) \code{FUN=sum}.
+\code{bySum} works like a very fast version of tapply with
+(weighted) \code{FUN=sum}.
 }
 

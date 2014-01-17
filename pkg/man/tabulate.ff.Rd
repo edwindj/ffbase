@@ -2,7 +2,7 @@
 \alias{tabulate.ff}
 \title{Tabulation for ff vectors}
 \usage{
-  tabulate.ff(bin, nbins = max(bin, 1, na.rm = TRUE))
+tabulate.ff(bin, nbins = max(bin, 1, na.rm = TRUE))
 }
 \arguments{
   \item{bin}{factor to be binned.}
@@ -10,15 +10,15 @@
   \item{nbins}{number of bins}
 }
 \value{
-  integer vector or if \code{FFRETURN} is \code{TRUE} a
-  \code{ff} vector
+integer vector or if \code{FFRETURN} is \code{TRUE} a
+\code{ff} vector
 }
 \description{
-  \code{tabulate.ff} takes the integer-valued ff vector bin
-  and counts the number of times each integer occurs in it.
+\code{tabulate.ff} takes the integer-valued ff vector bin
+and counts the number of times each integer occurs in it.
 }
 \details{
-  Behaviour of \code{\link{tabulate}}
+Behaviour of \code{\link{tabulate}}
 }
 \examples{
 

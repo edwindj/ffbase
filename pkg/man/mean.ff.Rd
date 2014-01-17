@@ -2,7 +2,7 @@
 \alias{mean.ff}
 \title{Mean of ff vector}
 \usage{
-  \method{mean}{ff} (x, trim = 0, ..., range = NULL)
+\method{mean}{ff}(x, trim = 0, ..., range = NULL)
 }
 \arguments{
   \item{x}{a ff vector}
@@ -16,10 +16,10 @@
   processing}
 }
 \value{
-  mean value
+mean value
 }
 \description{
-  Mean of ff vector
+Mean of ff vector
 }
 \examples{
 # create a vector of length 10 million

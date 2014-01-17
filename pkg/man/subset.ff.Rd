@@ -3,7 +3,7 @@
 \alias{subset.ffdf}
 \title{Subsetting a ff vector or ffdfdata frame}
 \usage{
-  \method{subset}{ff} (x, subset, ...)
+\method{subset}{ff}(x, subset, ...)
 }
 \arguments{
   \item{x}{\code{ff} vector or \code{ffdf} data.frame to be
@@ -15,10 +15,10 @@
   \item{...}{not used}
 }
 \value{
-  a new ff vector containing the subset, data is physically
-  copied
+a new ff vector containing the subset, data is physically
+copied
 }
 \description{
-  Subsetting a ff vector or ffdfdata frame
+Subsetting a ff vector or ffdfdata frame
 }
 

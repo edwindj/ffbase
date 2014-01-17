@@ -2,7 +2,7 @@
 \alias{byMean}
 \title{Fast conditional mean}
 \usage{
-  byMean(x, by, na.rm = FALSE, weight = NULL, ...)
+byMean(x, by, na.rm = FALSE, weight = NULL, ...)
 }
 \arguments{
   \item{x}{\code{numeric} vector to be averaged}
@@ -19,11 +19,10 @@
   \item{...}{not used}
 }
 \value{
-  \code{array} with dimensions of \code{by}
+\code{array} with dimensions of \code{by}
 }
 \description{
-  \code{byMean} works like a very fast version of tapply
-  with (weighted) \code{FUN=mean} or
-  \code{FUN=weighted.mean}.
+\code{byMean} works like a very fast version of tapply with
+(weighted) \code{FUN=mean} or \code{FUN=weighted.mean}.
 }
 

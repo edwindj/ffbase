@@ -3,8 +3,7 @@
 \title{The function \code{droplevels} is used to drop unused levels from factors
 in a \code{\link{ffdf}}}
 \usage{
-  \method{droplevels}{ffdf} (x, except = NULL, ...,
-    inplace = FALSE)
+\method{droplevels}{ffdf}(x, except = NULL, ..., inplace = FALSE)
 }
 \arguments{
   \item{x}{\code{ffdf} object}
@@ -20,13 +19,13 @@ in a \code{\link{ffdf}}}
   vectors will be created}
 }
 \value{
-  \code{ffdf} object where levels of factors are dropped
+\code{ffdf} object where levels of factors are dropped
 }
 \description{
-  The function \code{droplevels} is used to drop unused
-  levels from factors in a \code{\link{ffdf}}
+The function \code{droplevels} is used to drop unused
+levels from factors in a \code{\link{ffdf}}
 }
 \seealso{
-  \code{\link{droplevels}} \code{\link{droplevels.ff}}
+\code{\link{droplevels}} \code{\link{droplevels.ff}}
 }
 

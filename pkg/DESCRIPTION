@@ -13,62 +13,10 @@ Depends:
     ff (>= 2.2-11),
     bit,
     R (>= 2.12.0)
-Imports: fastmatch
+Imports:
+    fastmatch
 Suggests:
     testthat,
     parallel,
     LaF,
     biglm
-Collate:
-    'auxilary.R'
-    'chunkify.R'
-    'compact.R'
-    'cut_ff.R'
-    'diff_ff.R'
-    'droplevels.R'
-    'ffappend.R'
-    'ffdfsave.R'
-    'mean.R'
-    'pkg.R'
-    'subset.R'
-    'Summary_ff.R'
-    'table_ff.R'
-    'tabulate_ff.R'
-    'transform.R'
-    'unique.R'
-    'with.R'
-    'ffwhich.R'
-    'zzz.R'
-    'hist_ff.R'
-    'ffdfdply.R'
-    'quantile_ff.R'
-    'ffordered.R'
-    'laf_to_ffdf.R'
-    'ffdfwith.R'
-    'cumsum.R'
-    'merge.R'
-    'duplicated.R'
-    'isNA.R'
-    'binned_sum.R'
-    'binned_sumsq.R'
-    'binned_tabulate.R'
-    'tsum.R'
-    'Ops.R'
-    'ffmatch.R'
-    'save_ffdf.R'
-    'bySum.R'
-    'byMean.R'
-    'ffifelse.R'
-    'as.R'
-    'expand_ffgrid.R'
-    'ffrep.R'
-    'ffseq.R'
-    'bigglm.R'
-    'ikey.R'
-    'rle_ff.R'
-    'ffrandom.R'
-    'date_formatting.R'
-    'rbind_ffdf.R'
-    'logging.R'
-    'rev_ff.R'
-    'extract.R'

@@ -4,7 +4,7 @@
 \alias{compact.ffdf}
 \title{Compact a ff vector or ffdf data frame}
 \usage{
-  \method{compact}{ff} (x, use.na = TRUE, ...)
+\method{compact}{ff}(x, use.na = TRUE, ...)
 }
 \arguments{
   \item{x}{\code{ff} or \code{ffdf} object}
@@ -15,11 +15,11 @@
   \item{...}{other parameters}
 }
 \value{
-  compact cloned ff vector, or original if no compacting
-  can be done
+compact cloned ff vector, or original if no compacting can
+be done
 }
 \description{
-  Compact takes a ff vector and tries to use the smallest
-  binary data type for this vector.
+Compact takes a ff vector and tries to use the smallest
+binary data type for this vector.
 }
 

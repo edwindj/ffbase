@@ -4,11 +4,11 @@
 \alias{ffsorted}
 \title{Add the order of a ff vector of the \code{\link{ff}} vector \code{x}}
 \usage{
-  addfforder(x, addsorted = FALSE, ...)
+addfforder(x, addsorted = FALSE, ...)
 
-  ffordered(x)
+ffordered(x)
 
-  ffsorted(x)
+ffsorted(x)
 }
 \arguments{
   \item{x}{\code{ff} vector to be indexed}
@@ -20,14 +20,13 @@
   \code{\link{fforder}}.}
 }
 \value{
-  The updated vector \code{x}
+The updated vector \code{x}
 }
 \description{
-  Add a ff vector that contains the order of the
-  \code{\link{ff}} vector \code{x} as an attribute. The
-  order can be retrieved using \code{ffordered}. Note that
-  you have to assign the result to the original vector
-  \code{x}.
+Add a ff vector that contains the order of the
+\code{\link{ff}} vector \code{x} as an attribute. The order
+can be retrieved using \code{ffordered}. Note that you have
+to assign the result to the original vector \code{x}.
 }
 \examples{
 x <- ff(rnorm(10))

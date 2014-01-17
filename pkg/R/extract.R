@@ -21,7 +21,7 @@
 #' values are present, NULL is returned in case of the extractor function \code{[.ff} while for the setter function \code{[<-.ff}, if the length value
 #' is zero, this is not allowed.
 #' @seealso \code{\link[ff]{Extract.ff}}
-"[.ff" <- function(x, i, pack = FALSE){
+`[.ff` <- function(x, i, pack = FALSE){
   if(!missing(i) && is.ff(i) && length(i) > 0 && is.logical(i[1])){
     idx <- ffwhich(i, i==TRUE)    
     if(length(idx) == 0){
@@ -38,7 +38,7 @@
 #' @rdname ffextract
 #' @usage \method{[}{ff} (x, i, add = FALSE, pack = FALSE) <- value
 #' @export
-"[<-.ff" <- function(x, i, add = FALSE, pack = FALSE, value){
+`[<-.ff` <- function(x, i, add = FALSE, pack = FALSE, value){
   if(!missing(i) && is.ff(i) && length(i) > 0 && is.logical(i[1])){
     idx <- ffwhich(i, i==TRUE)    
     if(length(idx) == 0){

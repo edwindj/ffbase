@@ -2,7 +2,7 @@
 \alias{transform.ffdf}
 \title{Transform a ffdf data.frame}
 \usage{
-  \method{transform}{ffdf}(`_data`, \dots)
+\method{transform}{ffdf}(`_data`, \dots)
 }
 \arguments{
   \item{_data}{\code{\link{ffdf}} data object to be
@@ -12,14 +12,14 @@
   \code{ffdf} data.frame}
 }
 \value{
-  a modified clone of \code{`_data`}.
+a modified clone of \code{`_data`}.
 }
 \description{
-  Same functionality as \code{\link{transform}}, but on a
-  \code{ffdf} object. Please note that you should write
-  your expression as if it is a normal \code{data.frame}.
-  The resulting data.frame however will be a \code{ffdf}
-  data.frame.
+Same functionality as \code{\link{transform}}, but on a
+\code{ffdf} object. Please note that you should write your
+expression as if it is a normal \code{data.frame}. The
+resulting data.frame however will be a \code{ffdf}
+data.frame.
 }
 \examples{
 

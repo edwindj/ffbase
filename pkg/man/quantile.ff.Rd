@@ -2,8 +2,8 @@
 \alias{quantile.ff}
 \title{quantiles}
 \usage{
-  \method{quantile}{ff} (x, probs = seq(0, 1, 0.25),
-    na.rm = FALSE, names = TRUE, ...)
+\method{quantile}{ff}(x, probs = seq(0, 1, 0.25), na.rm = FALSE,
+  names = TRUE, ...)
 }
 \arguments{
   \item{x}{\code{ff} vector}
@@ -20,14 +20,13 @@
   \item{...}{currently not used}
 }
 \description{
-  The function quantile produces quantiles corresponding to
-  the given probabilities. The smallest observation
-  corresponds to a probability of 0 and the largest to a
-  probability of 1. Current implementation doesn't use the
-  \code{type} parameter of \code{\link{quantile}}. For
-  large \code{ff} vectors the difference between the types
-  is (very) small. If \code{x} has been
-  \code{\link{ffordered}}, quantile is fast, otherwise it
-  is $n log(n)$.
+The function quantile produces quantiles corresponding to
+the given probabilities. The smallest observation
+corresponds to a probability of 0 and the largest to a
+probability of 1. Current implementation doesn't use the
+\code{type} parameter of \code{\link{quantile}}. For large
+\code{ff} vectors the difference between the types is
+(very) small. If \code{x} has been \code{\link{ffordered}},
+quantile is fast, otherwise it is $n log(n)$.
 }
 

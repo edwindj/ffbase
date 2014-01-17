@@ -2,7 +2,7 @@
 \alias{within.ffdf}
 \title{Evaluate an expression in a ffdf data environment}
 \usage{
-  \method{within}{ffdf} (data, expr, ...)
+\method{within}{ffdf}(data, expr, ...)
 }
 \arguments{
   \item{data}{\code{\link{ffdf}} data object used as an
@@ -14,13 +14,13 @@
   \code{\link{chunk}}.}
 }
 \value{
-  a modified clone of \code{data}.
+a modified clone of \code{data}.
 }
 \description{
-  Same functionality as \code{\link{within}}. Please note
-  that you should write your expression as if it is a
-  normal \code{data.frame}. The resulting data.frame
-  however will be a new \code{ffdf} data.frame.
+Same functionality as \code{\link{within}}. Please note
+that you should write your expression as if it is a normal
+\code{data.frame}. The resulting data.frame however will be
+a new \code{ffdf} data.frame.
 }
 \examples{
 

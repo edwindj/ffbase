@@ -2,9 +2,8 @@
 \alias{move.ffdf}
 \title{Moves all the columns of ffdf data.frames into a directory}
 \usage{
-  move.ffdf(x, dir = ".",
-    name = as.character(substitute(x)),
-    relativepath = FALSE)
+move.ffdf(x, dir = ".", name = as.character(substitute(x)),
+  relativepath = FALSE)
 }
 \arguments{
   \item{x}{\code{ffdf} data.frame to be moved}
@@ -18,11 +17,11 @@
   contain relativepaths. Use with care...}
 }
 \description{
-  \code{move.ffdf} saves all columns into the given
-  \code{dir}. Each column is stored as with filename
-  <ffdfname>$<colname>.ff. If you want to store the data
-  for an other session please use \code{\link{save.ffdf}}
-  or \code{\link{pack.ffdf}}
+\code{move.ffdf} saves all columns into the given
+\code{dir}. Each column is stored as with filename
+<ffdfname>$<colname>.ff. If you want to store the data for
+an other session please use \code{\link{save.ffdf}} or
+\code{\link{pack.ffdf}}
 }
 \examples{
 iris.ffdf <- as.ffdf(iris)
@@ -51,6 +50,6 @@ rm("iris.ffdf")
 unpack.ffdf(tf)
 }
 \seealso{
-  \code{\link{load.ffdf}} \code{\link{save.ffdf}}
+\code{\link{load.ffdf}} \code{\link{save.ffdf}}
 }
 
