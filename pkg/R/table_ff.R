@@ -34,7 +34,8 @@ table.default <- base::table
 
 #' @S3method table ff
 #' @export
-#' @usage table(..., exclude = if (useNA == "no") c(NA, NaN), useNA = c("no", "ifany", "always"), dnn = list.names(...), deparse.level = 1)
+#' @usage table(..., exclude = if (useNA == "no") c(NA, NaN), 
+#' useNA = c("no", "ifany", "always"), dnn = list.names(...), deparse.level = 1)
 #' @rdname table
 #' @aliases table
 table.ff <- function( ...

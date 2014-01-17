@@ -15,4 +15,5 @@ LaTeX: pdfLaTeX
 BuildType: Package
 PackagePath: pkg
 PackageInstallArgs: --no-multiarch --with-keep.source
+PackageCheckArgs: --as-cran
 PackageRoxygenize: rd,namespace
