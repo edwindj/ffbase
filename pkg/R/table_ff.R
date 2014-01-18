@@ -19,7 +19,7 @@
 #' @usage table(..., exclude = if (useNA == "no") c(NA, NaN), 
 #' useNA = c("no", "ifany", "always"), dnn = list.names(...), deparse.level = 1)
 #' @return \code{\link[base]{table}} object
-#' @export table
+#' @export table.ff
 table <- function( ...
                  , exclude = if (useNA == "no") c(NA, NaN)
                  , useNA = c("no","ifany", "always")
