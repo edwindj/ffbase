@@ -1,0 +1,73 @@
+\name{manip_ffdf}
+\alias{arrange.ffdf}
+\alias{arrange.tbl_ffdf}
+\alias{do.ffdf}
+\alias{do.tbl_ffdf}
+\alias{filter.ffdf}
+\alias{filter.tbl_ffdf}
+\alias{manip_ffdf}
+\alias{mutate.ffdf}
+\alias{mutate.tbl_ffdf}
+\alias{select.ffdf}
+\alias{select.tbl_ffdf}
+\alias{summarise.ffdf}
+\alias{summarise.tbl_ffdf}
+\title{Data manipulation for ffdf.}
+\usage{
+filter.ffdf(.data, ..., env = parent.frame())
+
+filter.tbl_ffdf(.data, ..., env = parent.frame())
+
+summarise.ffdf(.data, ...)
+
+summarise.tbl_ffdf(.data, ...)
+
+mutate.ffdf(.data, ..., inplace = FALSE)
+
+mutate.tbl_ffdf(.data, ...)
+
+arrange.ffdf(.data, ...)
+
+arrange.tbl_ffdf(.data, ...)
+
+select.ffdf(.data, ...)
+
+select.tbl_ffdf(.data, ...)
+
+do.ffdf(.data, .f, ...)
+
+do.tbl_ffdf(.data, .f, ...)
+}
+\arguments{
+  \item{.data}{a ffdf}
+
+  \item{...}{variables interpreted in the context of
+  \code{.data}}
+
+  \item{inplace}{if \code{FALSE} (the default) the data
+  frame will be copied prior to modification to avoid
+  changes propagating via reference.}
+}
+\description{
+Data manipulation for ffdf.
+}
+\examples{
+if (require("ffbase") && require("hflights")) {
+# If you start with a ffdf, you end up with a ffdf
+hflights <- as.ffdf(hflights)
+filter(hflights, Month == 1, DayofMonth == 1, Dest == "DFW")
+head(select(hflights, Year:DayOfWeek))
+summarise(hflights, delay = mean(ArrDelay, na.rm = TRUE), n = length(ArrDelay))
+head(mutate(hflights, gained = ArrDelay - DepDelay))
+head(arrange(hflights, Dest, desc(ArrDelay)))
+
+# If you start with a tbl, you end up with a tbl
+hflights2 <- as.tbl(hflights)
+filter(hflights2, Month == 1, DayofMonth == 1, Dest == "DFW")
+head(select(hflights2, Year:DayOfWeek))
+summarise(hflights2, delay = mean(ArrDelay, na.rm = TRUE), n = length(ArrDelay))
+head(mutate(hflights2, gained = ArrDelay - DepDelay))
+head(arrange(hflights2, Dest, desc(ArrDelay)))
+}
+}
+
