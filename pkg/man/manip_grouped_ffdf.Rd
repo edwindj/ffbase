@@ -18,7 +18,7 @@
 \method{select}{grouped_ffdf}(.data, ...)
 }
 \arguments{
-  \item{.data}{a data table}
+  \item{.data}{}
 
   \item{...}{variables interpreted in the context of
   \code{.data}}

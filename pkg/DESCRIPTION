@@ -19,4 +19,4 @@ Suggests:
     testthat,
     parallel,
     LaF,
-    biglm
+    biglm, dplyr

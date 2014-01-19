@@ -45,14 +45,14 @@ as.ffdf.tbl_ffdf <- function(x, keep.rownames = NULL) {
   x
 }
 
-#' @S3method as.data.frame tbl_ffdf
+#' @export
 as.data.frame.tbl_ffdf <- function(x, row.names = NULL, optional = FALSE, ...) {
   if (!is.null(row.names)) warning("row.names argument ignored", call. = FALSE)
   if (!identical(optional, FALSE)) warning("optional argument ignored", call. = FALSE)
   as.data.frame(x$obj, ...)
 }
 
-#' @S3method print tbl_ffdf
+#' @export
 print.tbl_ffdf <- function(x, ...) {
   cat("Source:     ffdf ", dim_desc(x), "\n", sep = "")
   cat("\n")
@@ -60,14 +60,14 @@ print.tbl_ffdf <- function(x, ...) {
   trunc_mat(x)
 }
 
-#' @S3method dimnames tbl_ffdf
-dimnames.tbl_ffdf <- function(x) dimnames(x$obj)
+#' @export
+dimnames.tbl_ffdf <- function(x) dimnames(x)
 
-#' @S3method dim tbl_ffdf
+#' @export
 dim.tbl_ffdf <- function(x) dim(x$obj)
 
-#' @S3method head tbl_ffdf
+#' @export
 head.tbl_ffdf <- function(x, n=6L, ...) x$obj[seq_len(n), ] # NOTE no negative n supported!
 
-#' @S3method tail tbl_ffdf
+#' @export
 tail.tbl_ffdf <- function(x, n=6L, ...) tail(x$obj, n=n, ...)

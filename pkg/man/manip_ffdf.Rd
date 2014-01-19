@@ -14,29 +14,29 @@
 \alias{summarise.tbl_ffdf}
 \title{Data manipulation for ffdf.}
 \usage{
-filter.ffdf(.data, ..., env = parent.frame())
+\method{filter}{ffdf}(.data, ..., env = parent.frame())
 
-filter.tbl_ffdf(.data, ..., env = parent.frame())
+\method{filter}{tbl_ffdf}(.data, ..., env = parent.frame())
 
-summarise.ffdf(.data, ...)
+\method{summarise}{ffdf}(.data, ...)
 
-summarise.tbl_ffdf(.data, ...)
+\method{summarise}{tbl_ffdf}(.data, ...)
 
-mutate.ffdf(.data, ..., inplace = FALSE)
+\method{mutate}{ffdf}(.data, ..., inplace = FALSE)
 
-mutate.tbl_ffdf(.data, ...)
+\method{mutate}{tbl_ffdf}(.data, ...)
 
-arrange.ffdf(.data, ...)
+\method{arrange}{ffdf}(.data, ...)
 
-arrange.tbl_ffdf(.data, ...)
+\method{arrange}{tbl_ffdf}(.data, ...)
 
-select.ffdf(.data, ...)
+\method{select}{ffdf}(.data, ...)
 
-select.tbl_ffdf(.data, ...)
+\method{select}{tbl_ffdf}(.data, ...)
 
-do.ffdf(.data, .f, ...)
+\method{do}{ffdf}(.data, .f, ...)
 
-do.tbl_ffdf(.data, .f, ...)
+\method{do}{tbl_ffdf}(.data, .f, ...)
 }
 \arguments{
   \item{.data}{a ffdf}
