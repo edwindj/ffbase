@@ -20,6 +20,7 @@ install:
   - R -e '.libPaths(); sessionInfo()'
   - Rscript -e 'install.packages("ff", dep=TRUE, repos = "http://cran.r-project.org")'
   - Rscript -e 'install.packages("testthat", dep=TRUE, repos = "http://cran.r-project.org")'
+  - Rscript -e 'install.packages("dplyr", dep=TRUE, repos = "http://cran.r-project.org")'
   - Rscript -e 'install.packages("LaF", repos = "http://cran.r-project.org")'
   - Rscript -e 'install.packages("fastmatch", repos = "http://cran.r-project.org")'
 

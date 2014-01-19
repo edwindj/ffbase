@@ -33,6 +33,7 @@ tbl_vars.ffdf <- function(x) names(x)
 
 # Standard data frame methods --------------------------------------------------
 
+
 #' Coerce data table to source.
 #'
 #' @export
@@ -49,7 +50,7 @@ as.ffdf.tbl_ffdf <- function(x, keep.rownames = NULL) {
 as.data.frame.tbl_ffdf <- function(x, row.names = NULL, optional = FALSE, ...) {
   if (!is.null(row.names)) warning("row.names argument ignored", call. = FALSE)
   if (!identical(optional, FALSE)) warning("optional argument ignored", call. = FALSE)
-  as.data.frame(x$obj, ...)
+  as.data.frame.ffdf(x, ...)
 }
 
 #' @export
@@ -61,13 +62,13 @@ print.tbl_ffdf <- function(x, ...) {
 }
 
 #' @export
-dimnames.tbl_ffdf <- function(x) dimnames(x)
+dimnames.tbl_ffdf <- function(x) dimnames.ffdf(x)
 
 #' @export
-dim.tbl_ffdf <- function(x) dim(x$obj)
+dim.tbl_ffdf <- function(x) dim.ffdf(x)
 
 #' @export
-head.tbl_ffdf <- function(x, n=6L, ...) x$obj[seq_len(n), ] # NOTE no negative n supported!
+head.tbl_ffdf <- function(x, n=6L, ...) x[seq_len(n), ] # NOTE no negative n supported!
 
 #' @export
-tail.tbl_ffdf <- function(x, n=6L, ...) tail(x$obj, n=n, ...)
+tail.tbl_ffdf <- function(x, n=6L, ...) tail(x, n=n, ...)
