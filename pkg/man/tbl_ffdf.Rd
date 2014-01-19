@@ -13,6 +13,8 @@ A ffdf source wraps a local ffdf.
 \examples{
 if (require("ffbase")) {
 ds <- tbl_ffdf(mtcars)
+as.ffdf(ds)
+as.tbl(mtcars)
 ds
 }
 }
