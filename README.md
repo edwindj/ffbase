@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/edwindj/ffbase.png?branch=master)](https://travis-ci.org/edwindj/ffbase)
-
+[![Build Status](https://travis-ci.org/edwindj/ffbase.png?branch=dplyr)](https://travis-ci.org/edwindj/ffbase)
 ffbase
 ======
 
