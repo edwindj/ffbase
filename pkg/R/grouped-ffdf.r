@@ -26,7 +26,7 @@ is.grouped_ffdf <- function(x) inherits(x, "grouped_ffdf")
 #' @S3method print grouped_ffdf
 print.grouped_ffdf <- function(x, ...) {
   cat("Source: local ffdf ", dim_desc(x), "\n", sep = "")
-  cat("Groups: ", dplyr:::commas(deparse_all(x$vars)), "\n", sep = "")
+  #cat("Groups: ", dplyr:::commas(deparse_all(x$vars)), "\n", sep = "")
   cat("\n")
   trunc_mat(x)
 }

@@ -5,24 +5,15 @@
 #' @param inplace if \code{FALSE} (the default) the data frame will be copied
 #'   prior to modification to avoid changes propagating via reference.
 #' @examples
-#' if (require("ffbase")) {
-#' data("baseball", package = "plyr")
-#' baseball_ffdf <- as.ffdf(baseball)
-#' players <- group_by(baseball_ffdf, id)
+#' if (require("dplyr")) {
+#' iris_ffdf <- as.ffdf(iris)
+#' species <- group_by(iris_ffdf, Species)
 #
-#' filter(players, g == max(g))
-#' summarise(players, g = mean(g))
-#' mutate(players, cyear = year - min(year) + 1)
-#' arrange(players, id, desc(year))
-#' select(players, id:team)
-#'
-#' # All manip functions preserve grouping structure, except for summarise
-#' # (for hopefully obvious reasons)
-#' by_year <- mutate(players, cyear = year - min(year) + 1)
-#' summarise(by_year, years = max(cyear))
-#'
-#' # You can also manually ungroup:
-#' arrange(ungroup(by_year), id, year)
+#' filter(species, Petal.Width = max(Petal.Width))
+#' summarise(players, Petal.Width = mean(Petal.Width))
+#' mutate(species, cSepal.Width = Sepal.Width - min(Sepal.Width))
+#' arrange(species, Species, desc(Sepal.Width))
+#' 
 #' }
 #' @name manip_grouped_ffdf
 NULL
