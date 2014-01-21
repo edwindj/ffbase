@@ -17,7 +17,10 @@ tbl_ffdf <- function(data) {
   }
   if (is.grouped_ffdf(data)) return(ungroup(data))
   
-  if (!is.ffdf(data)) data <- as.ffdf(data)
+  if (!is.ffdf(data)){
+    #TODO convert character vector into factors?
+    data <- as.ffdf(data)
+  }
   
   structure(data, class = c("tbl_ffdf", "tbl", class(data)))
 }
