@@ -31,6 +31,9 @@ and_expr <- function(exprs) {
 filter.ffdf <- function(.data, ..., env=parent.frame()) {
   expr <- and_expr(dots(...))
   idx <- ffwhich(.data, as.expression(expr), envir=env)
+
+  rownames(.data) <- NULL
+  # this selection only works on ffdf without rownames...
   .data[idx, ]
 }
 
@@ -92,6 +95,7 @@ arrange.ffdf <- function(.data, ...) {
   vars <- dots(...)
   vars <- sapply(vars, function(v){substitute(.data$v, list(v=v))})
   idx <- eval(substitute(do.call("fforder", vars)))
+  row.names(.data) <- NULL
   .data[idx,]
 }
 
@@ -107,7 +111,7 @@ arrange.tbl_ffdf <- function(.data, ...) {
 #' @export select.ffdf
 select.ffdf <- function(.data, ...) {
   input <- var_eval(dots(...), .data, parent.frame())
-  .data[input]
+  select_eval(input, .data)
 }
 
 #' @rdname manip_ffdf
@@ -127,7 +131,5 @@ do.ffdf <- function(.data, .f, ...) {
 #' @rdname manip_ffdf
 #' @export do.tbl_ffdf
 do.tbl_ffdf <- function(.data, .f, ...) {
-  list(.f(as.data.frame(.data$obj), ...))
+  list(.f(as.data.frame.ffdf(.data), ...))
 }
-
-

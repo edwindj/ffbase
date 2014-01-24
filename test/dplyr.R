@@ -1,0 +1,10 @@
+library(ffbase)
+library(dplyr)
+
+mtcars <- as.ffdf(mtcars)
+filter(mtcars, cyl == 8)
+select(mtcars, mpg, cyl, hp:vs)
+arrange(mtcars, cyl, disp)
+mutate(mtcars, displ_l = disp / 61.0237)
+summarise(mtcars, mean(disp))
+summarise(group_by(mtcars, cyl), mean(disp))
