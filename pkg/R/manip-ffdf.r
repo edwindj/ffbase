@@ -9,24 +9,13 @@
 #' # If you start with a ffdf, you end up with a ffdf
 #' diamonds <- as.ffdf(diamonds)
 #' filter(diamonds, color == 'E', cut == 'Good')
-#' head(select(hflights, Year:DayOfWeek))
-#' summarise(hflights, delay = mean(ArrDelay, na.rm = TRUE), n = length(ArrDelay))
-#' head(mutate(hflights, gained = ArrDelay - DepDelay))
-#' head(arrange(hflights, Dest, desc(ArrDelay)))
-#'
-#' # If you start with a tbl, you end up with a tbl
-#' hflights2 <- as.tbl(hflights)
-#' filter(hflights2, Month == 1, DayofMonth == 1, Dest == "DFW")
-#' head(select(hflights2, Year:DayOfWeek))
-#' summarise(hflights2, delay = mean(ArrDelay, na.rm = TRUE), n = length(ArrDelay))
-#' head(mutate(hflights2, gained = ArrDelay - DepDelay))
-#' head(arrange(hflights2, Dest, desc(ArrDelay)))
 #' }
 #' @name manip_ffdf
 NULL
 
 and_expr <- function(exprs) {
-  assert_that(is.list(exprs))
+  stopifnot(is.list(exprs))
+  
   if (length(exprs) == 0) return(TRUE)
   if (length(exprs) == 1) return(exprs[[1]])
 

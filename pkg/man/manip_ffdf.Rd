@@ -22,17 +22,17 @@
 
 \method{summarise}{tbl_ffdf}(.data, ...)
 
-mutate.ffdf(.data, ..., inplace = FALSE)
+\method{mutate}{ffdf}(.data, ..., inplace = FALSE)
 
-mutate.tbl_ffdf(.data, ...)
+\method{mutate}{tbl_ffdf}(.data, ...)
 
 \method{arrange}{ffdf}(.data, ...)
 
 \method{arrange}{tbl_ffdf}(.data, ...)
 
-select.ffdf(.data, ...)
+\method{select}{ffdf}(.data, ...)
 
-select.tbl_ffdf(.data, ...)
+\method{select}{tbl_ffdf}(.data, ...)
 
 \method{do}{ffdf}(.data, .f, ...)
 
@@ -56,18 +56,6 @@ if (require("ggplot2")) {
 # If you start with a ffdf, you end up with a ffdf
 diamonds <- as.ffdf(diamonds)
 filter(diamonds, color == 'E', cut == 'Good')
-head(select(hflights, Year:DayOfWeek))
-summarise(hflights, delay = mean(ArrDelay, na.rm = TRUE), n = length(ArrDelay))
-head(mutate(hflights, gained = ArrDelay - DepDelay))
-head(arrange(hflights, Dest, desc(ArrDelay)))
-
-# If you start with a tbl, you end up with a tbl
-hflights2 <- as.tbl(hflights)
-filter(hflights2, Month == 1, DayofMonth == 1, Dest == "DFW")
-head(select(hflights2, Year:DayOfWeek))
-summarise(hflights2, delay = mean(ArrDelay, na.rm = TRUE), n = length(ArrDelay))
-head(mutate(hflights2, gained = ArrDelay - DepDelay))
-head(arrange(hflights2, Dest, desc(ArrDelay)))
 }
 }
 

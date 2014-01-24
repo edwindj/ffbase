@@ -20,4 +20,4 @@ Suggests:
     parallel,
     LaF,
     biglm,
-    dplyr
+    dplyr, assertthat

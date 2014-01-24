@@ -20,10 +20,10 @@ grouped_ffdf <- function(data, vars) {
 
 #' @rdname grouped_ffdf
 #' @param x an object to check
-#' @export
+#' @export 
 is.grouped_ffdf <- function(x) inherits(x, "grouped_ffdf")
 
-#' @S3method print grouped_ffdf
+#' @export
 print.grouped_ffdf <- function(x, ...) {
   cat("Source: local ffdf ", dim_desc(x), "\n", sep = "")
   cat("Groups: ", commas(deparse_all(x)), "\n", sep = "")
@@ -51,8 +51,7 @@ regroup.grouped_ffdf <- function(x, value) {
   grouped_ffdf(x, unname(value))
 }
 
-#' @export ungroup grouped_ffdf
+#' @export ungroup.grouped_ffdf
 ungroup.grouped_ffdf <- function(x) {
   tbl_ffdf(x)
 }
-
