@@ -34,9 +34,9 @@ is.lang.list <- function(x) {
   
   is.list(x) && all_apply(x, is.lang)
 }
-on_failure(is.lang.list) <- function(call, env) {
-  paste0(call$x, " is not a list containing only names, calls and atomic vectors")
-}
+# on_failure(is.lang.list) <- function(call, env) {
+#   paste0(call$x, " is not a list containing only names, calls and atomic vectors")
+# }
 
 only_has_names <- function(x, nms) {
   all(names(x) %in% nms)
