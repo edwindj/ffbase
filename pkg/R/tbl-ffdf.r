@@ -36,8 +36,8 @@ tbl_vars.tbl_ffdf <- function(x) names(x)
 #' @export tbl_vars.ffdf
 tbl_vars.ffdf <- function(x) names(x)
 
-#' @export groups.tbl_ffdf
-groups.tbl_ffdf <- function(x) { NULL}
+#' @export groups.ffdf
+groups.ffdf <- function(x) { NULL}
 
 #' @export ungroup.tbl_ffdf
 ungroup.tbl_ffdf <- function(x) x

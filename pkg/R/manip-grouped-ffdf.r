@@ -24,8 +24,6 @@ filter.grouped_ffdf <- function(.data, ...) {
   expr <- and_expr(dots(...))
   stop("Not implemented")
   grouped_ffdf(
-    data = out,
-    vars = .data$vars
   )
 }
 

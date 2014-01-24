@@ -5,10 +5,14 @@
 #' @param inplace if \code{FALSE} (the default) the data frame will be copied
 #'   prior to modification to avoid changes propagating via reference.
 #' @examples
-#' if (require("ggplot2")) {
-#' # If you start with a ffdf, you end up with a ffdf
-#' diamonds <- as.ffdf(diamonds)
-#' filter(diamonds, color == 'E', cut == 'Good')
+#' if (require(dplyr)){
+#'    mtcars <- as.ffdf(mtcars)
+#'    filter(mtcars, cyl == 8)
+#'    select(mtcars, mpg, cyl, hp:vs)
+#'    arrange(mtcars, cyl, disp)
+#'    mutate(mtcars, displ_l = disp / 61.0237)
+#'    summarise(mtcars, mean(disp))
+#'    #summarise(group_by(mtcars, cyl), mean(disp))
 #' }
 #' @name manip_ffdf
 NULL
