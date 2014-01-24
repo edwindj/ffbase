@@ -6,18 +6,18 @@ Type: Package
 LazyLoad: yes
 Author: Edwin de Jonge, Jan Wijffels, Jan van der Laan
 Description: Basic (statistical) functionality for package ff
-Version: 0.11.1
+Version: 0.13
 URL: http://github.com/edwindj/ffbase
 Date: 2013-11-1
 Depends:
     ff (>= 2.2-11),
     bit,
-    R (>= 2.12.0),
-    dplyr
+    R (>= 2.12.0)
 Imports:
     fastmatch
 Suggests:
     testthat,
     parallel,
     LaF,
-    biglm
+    biglm,
+    dplyr

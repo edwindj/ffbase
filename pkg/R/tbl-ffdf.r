@@ -12,8 +12,8 @@
 #' ds
 #' }
 tbl_ffdf <- function(data) {
-  if (!require("ffbase")) {
-    stop("ffbase package required to use ffdf", call. = FALSE)
+  if (!require("dplyr")) {
+    stop("dplyr package required to use tbl_ffdf", call. = FALSE)
   }
   if (is.grouped_ffdf(data)) return(ungroup(data))
   
@@ -25,53 +25,53 @@ tbl_ffdf <- function(data) {
   structure(data, class = c("tbl_ffdf", "tbl", class(data)))
 }
 
-#' @export
+#' @export as.tbl.ffdf
 as.tbl.ffdf <- function(x, ...) {
   tbl_ffdf(x)
 }
 
-#' @export
+#' @export tbl_vars.tbl_ffdf
 tbl_vars.tbl_ffdf <- function(x) names(x)
 
-#' @export
+#' @export tbl_vars.ffdf
 tbl_vars.ffdf <- function(x) names(x)
 
-#' @export
+#' @export groups.tbl_ffdf
 groups.tbl_ffdf <- function(x) { NULL}
 
-#' @export
+#' @export ungroup.tbl_ffdf
 ungroup.tbl_ffdf <- function(x) x
 
-#' @export
+#' @export ungroup.ffdf
 ungroup.ffdf <- function(x) x
 
-#' @export
+#' @export same_src.tbl_ffdf
 same_src.tbl_ffdf <- function(x, y){
   ff::is.ffdf(y)
 }
 
 # Standard data frame methods --------------------------------------------------
 
-#' @export
+#' @export as.data.frame.tbl_ffdf
 as.data.frame.tbl_ffdf <- function(x, row.names = NULL, optional = FALSE, ...) {
   NextMethod()
 }
 
-#' @export
+#' @export print.tbl_ffdf
 print.tbl_ffdf <- function(x, ...) {
   cat("Source:       ffdf ", dim_desc(x), "\n", sep = "")
   cat("\n")
   trunc_mat(x)
 }
 
-#' @export
+#' @export dimnames.tbl_ffdf
 dimnames.tbl_ffdf <- function(x) dimnames.ffdf(x)
 
-#' @export
+#' @export dim.tbl_ffdf
 dim.tbl_ffdf <- function(x) dim.ffdf(x)
 
-#' @export
+#' @export head.tbl_ffdf
 head.tbl_ffdf <- function(x, n=6L, ...) x[seq_len(n), ] # NOTE no negative n supported!
 
-#' @export
+#' @export tail.tbl_ffdf
 tail.tbl_ffdf <- function(x, n=6L, ...) x[seq(from=(nrow(x)+1-n), to=nrow(x)),]

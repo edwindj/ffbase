@@ -1,6 +1,4 @@
 \name{grouped_ffdf}
-\alias{group_by.data.table}
-\alias{group_by.tbl_ffdf}
 \alias{grouped_ffdf}
 \alias{is.grouped_ffdf}
 \title{A grouped ffdf.}
@@ -8,10 +6,6 @@
 grouped_ffdf(data, vars)
 
 is.grouped_ffdf(x)
-
-\method{group_by}{data.table}(x, ...)
-
-\method{group_by}{tbl_ffdf}(x, ...)
 }
 \arguments{
   \item{data}{a data source or data frame.}
@@ -19,8 +13,6 @@ is.grouped_ffdf(x)
   \item{vars}{a list of quoted variables.}
 
   \item{x}{an object to check}
-
-  \item{...}{variables to group by}
 }
 \description{
 The easiest way to create a grouped ffdf is to call the

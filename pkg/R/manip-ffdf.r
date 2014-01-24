@@ -5,10 +5,10 @@
 #' @param inplace if \code{FALSE} (the default) the data frame will be copied
 #'   prior to modification to avoid changes propagating via reference.
 #' @examples
-#' if (require("ffbase") && require("hflights")) {
+#' if (require("ggplot2")) {
 #' # If you start with a ffdf, you end up with a ffdf
-#' hflights <- as.ffdf(hflights)
-#' filter(hflights, Month == 1, DayofMonth == 1, Dest == "DFW")
+#' diamonds <- as.ffdf(diamonds)
+#' filter(diamonds, color == 'E', cut == 'Good')
 #' head(select(hflights, Year:DayOfWeek))
 #' summarise(hflights, delay = mean(ArrDelay, na.rm = TRUE), n = length(ArrDelay))
 #' head(mutate(hflights, gained = ArrDelay - DepDelay))
@@ -38,7 +38,7 @@ and_expr <- function(exprs) {
 }
 
 #' @rdname manip_ffdf
-#' @export
+#' @export filter.ffdf
 filter.ffdf <- function(.data, ..., env=parent.frame()) {
   expr <- and_expr(dots(...))
   idx <- ffwhich(.data, as.expression(expr), envir=env)
@@ -46,7 +46,7 @@ filter.ffdf <- function(.data, ..., env=parent.frame()) {
 }
 
 #' @rdname manip_ffdf
-#' @export
+#' @export filter.tbl_ffdf
 filter.tbl_ffdf <- function(.data, ..., env=parent.frame()) {
   tbl_ffdf(
     filter.ffdf(.data, ..., env=env)
@@ -54,7 +54,7 @@ filter.tbl_ffdf <- function(.data, ..., env=parent.frame()) {
 }
 
 #' @rdname manip_ffdf
-#' @export
+#' @export summarise.ffdf
 summarise.ffdf <- function(.data, ...) {
   cols <- named_dots(...)
   
@@ -75,7 +75,7 @@ summarise.ffdf <- function(.data, ...) {
 }
 
 #' @rdname manip_ffdf
-#' @export
+#' @export summarise.tbl_ffdf
 summarise.tbl_ffdf <- function(.data, ...) {
   tbl_ffdf(
     summarise.ffdf(.data$obj, ...)
@@ -83,14 +83,14 @@ summarise.tbl_ffdf <- function(.data, ...) {
 }
 
 #' @rdname manip_ffdf
-#' @export
+#' @export mutate.ffdf
 mutate.ffdf <- function(.data, ..., inplace = FALSE) {
   if (!inplace) .data <- clone(.data)
   eval(substitute(transform.ffdf(.data, ...)))
 }
 
 #' @rdname manip_ffdf
-#' @export
+#' @export mutate.tbl_ffdf
 mutate.tbl_ffdf <- function(.data, ...) {
   tbl_ffdf(
     mutate.ffdf(.data, ...)
@@ -98,7 +98,7 @@ mutate.tbl_ffdf <- function(.data, ...) {
 }
 
 #' @rdname manip_ffdf
-#' @export
+#' @export arrange.ffdf
 arrange.ffdf <- function(.data, ...) {
   vars <- dots(...)
   vars <- sapply(vars, function(v){substitute(.data$v, list(v=v))})
@@ -107,7 +107,7 @@ arrange.ffdf <- function(.data, ...) {
 }
 
 #' @rdname manip_ffdf
-#' @export
+#' @export arrange.tbl_ffdf
 arrange.tbl_ffdf <- function(.data, ...) {
   tbl_ffdf(
     arrange.ffdf(.data, ...)
@@ -115,14 +115,14 @@ arrange.tbl_ffdf <- function(.data, ...) {
 }
 
 #' @rdname manip_ffdf
-#' @export
+#' @export select.ffdf
 select.ffdf <- function(.data, ...) {
   input <- var_eval(dots(...), .data, parent.frame())
   .data[input]
 }
 
 #' @rdname manip_ffdf
-#' @export
+#' @export select.tbl_ffdf
 select.tbl_ffdf <- function(.data, ...) {
   tbl_ffdf(
     select.ffdf(.data, ...)
@@ -130,13 +130,15 @@ select.tbl_ffdf <- function(.data, ...) {
 }
 
 #' @rdname manip_ffdf
-#' @export
+#' @export do.ffdf
 do.ffdf <- function(.data, .f, ...) {
   list(.f(as.data.frame(.data), ...))
 }
 
 #' @rdname manip_ffdf
-#' @export
+#' @export do.tbl_ffdf
 do.tbl_ffdf <- function(.data, .f, ...) {
   list(.f(as.data.frame(.data$obj), ...))
 }
+
+

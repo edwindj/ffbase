@@ -22,17 +22,17 @@
 
 \method{summarise}{tbl_ffdf}(.data, ...)
 
-\method{mutate}{ffdf}(.data, ..., inplace = FALSE)
+mutate.ffdf(.data, ..., inplace = FALSE)
 
-\method{mutate}{tbl_ffdf}(.data, ...)
+mutate.tbl_ffdf(.data, ...)
 
 \method{arrange}{ffdf}(.data, ...)
 
 \method{arrange}{tbl_ffdf}(.data, ...)
 
-\method{select}{ffdf}(.data, ...)
+select.ffdf(.data, ...)
 
-\method{select}{tbl_ffdf}(.data, ...)
+select.tbl_ffdf(.data, ...)
 
 \method{do}{ffdf}(.data, .f, ...)
 
@@ -52,10 +52,10 @@
 Data manipulation for ffdf.
 }
 \examples{
-if (require("ffbase") && require("hflights")) {
+if (require("ggplot2")) {
 # If you start with a ffdf, you end up with a ffdf
-hflights <- as.ffdf(hflights)
-filter(hflights, Month == 1, DayofMonth == 1, Dest == "DFW")
+diamonds <- as.ffdf(diamonds)
+filter(diamonds, color == 'E', cut == 'Good')
 head(select(hflights, Year:DayOfWeek))
 summarise(hflights, delay = mean(ArrDelay, na.rm = TRUE), n = length(ArrDelay))
 head(mutate(hflights, gained = ArrDelay - DepDelay))

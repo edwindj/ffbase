@@ -11,11 +11,11 @@
 
 \method{summarise}{grouped_ffdf}(.data, ...)
 
-\method{mutate}{grouped_ffdf}(.data, ..., inplace = FALSE)
+mutate.grouped_ffdf(.data, ..., inplace = FALSE)
 
 \method{arrange}{grouped_ffdf}(.data, ...)
 
-\method{select}{grouped_ffdf}(.data, ...)
+select.grouped_ffdf(.data, ...)
 }
 \arguments{
   \item{.data}{}

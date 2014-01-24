@@ -8,14 +8,14 @@
 #' @param vars a list of quoted variables.
 grouped_ffdf <- function(data, vars) {
   stopifnot(is.ffdf(data))
-
+  if (length(vars) == 0) return(tbl_ffdf(data))
+  
   is_name <- vapply(vars, is.name, logical(1))
   if (!all(is_name)) {
     stop("Data tables can only be grouped by variables, not expressions",
       call. = FALSE)
   }
-  data <- list(obj = data, vars = vars)
-  structure(data, class = c("grouped_ffdf", "tbl_ffdf", "source"))
+  structure(data, vars=vars, class = c("grouped_ffdf", "tbl_ffdf", "tbl", class(data)))
 }
 
 #' @rdname grouped_ffdf
@@ -26,30 +26,33 @@ is.grouped_ffdf <- function(x) inherits(x, "grouped_ffdf")
 #' @S3method print grouped_ffdf
 print.grouped_ffdf <- function(x, ...) {
   cat("Source: local ffdf ", dim_desc(x), "\n", sep = "")
-  #cat("Groups: ", dplyr:::commas(deparse_all(x$vars)), "\n", sep = "")
+  cat("Groups: ", commas(deparse_all(x)), "\n", sep = "")
   cat("\n")
   trunc_mat(x)
 }
 
-#' @method group_by data.table
-#' @export
-#' @rdname grouped_ffdf
-#' @param ... variables to group by
-group_by.data.table <- function(x, ...) {
-  vars <- dots(...)
-  grouped_ffdf(x, c(x$group_by, vars))
+#' @export group_size.grouped_ffdf
+group_size.grouped_ffdf <- function(x) {
+  summarise(x, n = n())$n
 }
 
-#' @method group_by tbl_ffdf
-#' @export
-#' @rdname grouped_ffdf
-group_by.tbl_ffdf <- function(x, ...) {
-  vars <- dots(...)
-  grouped_ffdf(x$obj, vars)
+#' @export regroup.ffdf
+regroup.ffdf <- function(x, value) {
+  grouped_ffdf(x, unname(value))
 }
 
-#' @S3method ungroup grouped_ffdf
+#' @export regroup.grouped_ffdf 
+regroup.tbl_ffdf <- function(x, value) {
+  grouped_ffdf(x, unname(value))
+}
+
+#' @export regroup.grouped_ffdf 
+regroup.grouped_ffdf <- function(x, value) {
+  grouped_ffdf(x, unname(value))
+}
+
+#' @export ungroup grouped_ffdf
 ungroup.grouped_ffdf <- function(x) {
-  tbl_ffdf(x$obj)
+  tbl_ffdf(x)
 }
 
