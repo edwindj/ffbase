@@ -14,29 +14,29 @@
 \alias{summarise.tbl_ffdf}
 \title{Data manipulation for ffdf.}
 \usage{
-\method{filter}{ffdf}(.data, ..., env = parent.frame())
+filter.ffdf(.data, ..., env = parent.frame())
 
-\method{filter}{tbl_ffdf}(.data, ..., env = parent.frame())
+filter.tbl_ffdf(.data, ..., env = parent.frame())
 
-\method{summarise}{ffdf}(.data, ...)
+summarise.ffdf(.data, ...)
 
-\method{summarise}{tbl_ffdf}(.data, ...)
+summarise.tbl_ffdf(.data, ...)
 
-\method{mutate}{ffdf}(.data, ..., inplace = FALSE)
+mutate.ffdf(.data, ..., inplace = FALSE)
 
-\method{mutate}{tbl_ffdf}(.data, ...)
+mutate.tbl_ffdf(.data, ...)
 
-\method{arrange}{ffdf}(.data, ...)
+arrange.ffdf(.data, ...)
 
-\method{arrange}{tbl_ffdf}(.data, ...)
+arrange.tbl_ffdf(.data, ...)
 
-\method{select}{ffdf}(.data, ...)
+select.ffdf(.data, ...)
 
-\method{select}{tbl_ffdf}(.data, ...)
+select.tbl_ffdf(.data, ...)
 
-\method{do}{ffdf}(.data, .f, ...)
+do.ffdf(.data, .f, ...)
 
-\method{do}{tbl_ffdf}(.data, .f, ...)
+do.tbl_ffdf(.data, .f, ...)
 }
 \arguments{
   \item{.data}{a ffdf}
@@ -52,10 +52,14 @@
 Data manipulation for ffdf.
 }
 \examples{
-if (require("ggplot2")) {
-# If you start with a ffdf, you end up with a ffdf
-diamonds <- as.ffdf(diamonds)
-filter(diamonds, color == 'E', cut == 'Good')
+if (require(dplyr)){
+   mtcars <- as.ffdf(mtcars)
+   filter(mtcars, cyl == 8)
+   select(mtcars, mpg, cyl, hp:vs)
+   arrange(mtcars, cyl, disp)
+   mutate(mtcars, displ_l = disp / 61.0237)
+   summarise(mtcars, mean(disp))
+   #summarise(group_by(mtcars, cyl), mean(disp))
 }
 }
 

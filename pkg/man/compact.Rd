@@ -4,7 +4,7 @@
 \alias{compact.ffdf}
 \title{Compact a ff vector or ffdf data frame}
 \usage{
-\method{compact}{ff}(x, use.na = TRUE, ...)
+\method{compact}{ff}(x)
 }
 \arguments{
   \item{x}{\code{ff} or \code{ffdf} object}
