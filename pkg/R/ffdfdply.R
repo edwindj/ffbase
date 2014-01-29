@@ -92,7 +92,7 @@ ffdfdply <- function (x, split, FUN, BATCHBYTES = getOption("ffbatchbytes"),
     open(fltr)
     if(trace) {
       message(sprintf("%s, working on split %s/%s, extracting data in RAM of %s split elements, totalling, %s GB, while max specified data specified using BATCHBYTES is %s GB", 
-                      Sys.time(), idx, splitpositions$nrsplits, length(splitgroups$tab[splitgroups$tab.groups == idx]), round(RECORDBYTES * length(fltr)/2^30, 5), round(BATCHBYTES/2^30, 5)))
+                      Sys.time(), idx, splitpositions$nrsplits, length(splitgroups$tab[splitgroups$tab.groups == idx]), round(as.numeric(RECORDBYTES) * as.numeric(length(fltr))/2^30, 5), round(BATCHBYTES/2^30, 5)))
     }
     inram <- ffdfget_columnwise(x, fltr)
     close(fltr)
