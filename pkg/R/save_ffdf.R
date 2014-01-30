@@ -93,6 +93,7 @@ save.ffdf <- function(..., dir="./ffdb", clone=FALSE, relativepath=TRUE, overwri
 #' @seealso \code{\link{load.ffdf}} \code{\link{save.ffdf}} 
 #' @export
 move.ffdf <- function(x, dir=".", name=as.character(substitute(x)), relativepath=FALSE){  
+  gc()
   dir.create(dir, showWarnings=FALSE, recursive=TRUE)
   for (colname in names(x)){
     ffcol <- x[[colname]]
