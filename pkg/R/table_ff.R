@@ -19,7 +19,7 @@
 #' @usage table(..., exclude = if (useNA == "no") c(NA, NaN), 
 #' useNA = c("no", "ifany", "always"), dnn = list.names(...), deparse.level = 1)
 #' @return \code{\link[base]{table}} object
-#' @export table.ff
+#' @export table
 table <- function( ...
                  , exclude = if (useNA == "no") c(NA, NaN)
                  , useNA = c("no","ifany", "always")
@@ -33,7 +33,7 @@ table <- function( ...
 table.default <- base::table
 
 #' @S3method table ff
-#' @export
+#' @export table.ff
 #' @usage table(..., exclude = if (useNA == "no") c(NA, NaN), 
 #' useNA = c("no", "ifany", "always"), dnn = list.names(...), deparse.level = 1)
 #' @rdname table
