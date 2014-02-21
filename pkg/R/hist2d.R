@@ -1,4 +1,4 @@
-#' comput and plot 2 dimensional histogram of ff data
+#' compute and plot 2 dimensional histogram of ff data
 #'
 #' function interface modeled after gplots::hist2d
 hist2d.ff <- function(x,y=NULL, nbins=100, show=TRUE){
