@@ -21,7 +21,7 @@ bigglm.ffdf<-function(formula, data, family = gaussian(), ..., chunksize=5000){
   }
   
   if (!is.null(data)) {
-    terms <- terms(formula, data = data)
+    terms <- terms(formula, data = data[1,,drop=FALSE])
   } else {
     terms <- terms(formula)
   }

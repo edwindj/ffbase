@@ -3,6 +3,7 @@ version 0.11.2
 - added ffdfrbind.fill (request #33)
 - added also table to export
 - fix for issue #15
+- fix for issue #35
 
 version 0.11-1
 - table.ff was not exported
