@@ -121,6 +121,7 @@ move.ffdf <- function(x, dir=".", name=as.character(substitute(x)), relativepath
 #' @param dir path from where the data should be loaded
 #' @param envir environment where the stored variables will be loaded into.
 #' @seealso \code{\link{load.ffdf}} 
+#' @importFrom tools file_path_as_absolute
 #' @export
 load.ffdf <- function(dir, envir=parent.frame()){
   if (!isTRUE(file.exists(dir))){
@@ -158,7 +159,8 @@ load.ffdf <- function(dir, envir=parent.frame()){
 #' @example ../examples/save_ffdf.R
 #' @param file packaged file, zipped or tar.gz.
 #' @param ... ff objects to be packed
-#' @seealso \code{\link{save.ffdf}} \code{\link{unpack.ffdf}} 
+#' @seealso \code{\link{save.ffdf}} \code{\link{unpack.ffdf}}
+#' @importFrom tools file_ext 
 #' @export
 pack.ffdf <- function(file, ...){
   td <- tempfile("pack")

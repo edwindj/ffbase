@@ -4,6 +4,7 @@ version 0.11.2
 - added also table to export
 - fix for issue #15
 - fix for issue #35
+- Added import tools::file_as_absolute_path and file_ext
 
 version 0.11-1
 - table.ff was not exported
