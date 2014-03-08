@@ -1,6 +1,7 @@
 #' compute and plot 2 dimensional histogram of ff data
 #'
 #' function interface modeled after gplots::hist2d
+#' @keywords internal
 hist2d.ff <- function(x,y=NULL, nbins=100, show=TRUE){
   if (length(nbins) == 1){
     nbins <- rep(nbins, 2)
