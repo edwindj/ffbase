@@ -1,0 +1,35 @@
+\name{ffdfrbind.fill}
+\alias{ffdfrbind.fill}
+\title{rbind for ffdf where missing columns are added if not available in one of the ffdf objects}
+\usage{
+ffdfrbind.fill(..., clone = TRUE)
+}
+\arguments{
+  \item{...}{2 or more ffdf objects}
+
+  \item{clone}{logical, indicating to clone the first ffdf
+  object in ... or not before appending the other objects.
+  Defaults to TRUE.}
+}
+\value{
+an ffdf where the ffdf objects are rbind-ed together.
+Missing columns in either one of the passed ffdf objects
+are set to NA values.
+}
+\description{
+rbind for ffdf where missing columns are added if not
+available in one of the ffdf objects. \cr Similarly as
+rbind.fill but for ffdf objects
+}
+\examples{
+x <- ffdfrbind.fill( as.ffdf(iris), 
+                     as.ffdf(iris[, c("Sepal.Length", "Sepal.Width"
+                                     , "Petal.Length")]))
+class(x)
+nrow(x)
+sum(is.na(x$Petal.Width))
+
+
+
+}
+
