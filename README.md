@@ -25,4 +25,4 @@ install_github("edwindj/ffbase", subdir="pkg")
 
 See also my presentation on ffbase on [UseR 2013](http://www.slideshare.net/EdwindeJonge1/ffbase)
 
-** Working on dplyr for ff in [ffbase2](../ffbase2) **
+**Working on dplyr for ff in [ffbase2](https://github.com/edwindj/ffbase2)**
