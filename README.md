@@ -22,3 +22,7 @@ To install the latest version from github
 library(devtools)
 install_github("edwindj/ffbase", subdir="pkg")
 ```
+
+See also my presentation on ffbase on [UseR 2013](http://www.slideshare.net/EdwindeJonge1/ffbase)
+
+** Working on dplyr for ff in [ffbase2](../ffbase2) **
