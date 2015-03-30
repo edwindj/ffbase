@@ -8,23 +8,21 @@
 #' @param ... not used
 #' @return \code{array} with dimensions of \code{by}
 #' @export
+#' @example ../examples/bySum.R
 bySum <- function(x, by, na.rm=FALSE, weight=NULL, ...){
-  
   if (!is.list(by)){
     index <- list(by)
     tdim <- sapply(index, nlevels)
     bin <- by
     nbins <- tdim
   } else {
-  
+    index <- by
     ndim <- length(index)
     tdim <- sapply(index, nlevels)
     
     ai <- do.call(cbind, index)
     dim(ai) <- c(nrow(ai), ndim)
-    
     nbins <- prod(tdim)
-    
     bin <- arrayIndex2vectorIndex(ai, tdim)
   }
   if (missing(weight) || is.null(weight)){
