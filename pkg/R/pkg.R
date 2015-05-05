@@ -66,5 +66,6 @@
 #' @example ../examples/pkg.R
 #' @name ffbase-package 
 #' @aliases ffbase ffbase-package
+#' @import bit
 #' @docType package 
 {}

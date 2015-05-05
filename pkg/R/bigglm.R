@@ -15,7 +15,7 @@
 #' @example ../examples/bigglm.R
 bigglm.ffdf<-function(formula, data, family = gaussian(), ..., chunksize=5000){
   
-  if (!requireNamespace(biglm)){
+  if (!requireNamespace("biglm")){
     stop("This function needs the package 'biglm', which can be installed from CRAN")
   }
   

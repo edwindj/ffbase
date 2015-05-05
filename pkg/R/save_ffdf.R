@@ -208,7 +208,7 @@ unpack.ffdf <- function(file, dir=NULL, envir=parent.frame()){
 }
 
 first <- function(){
-  if (!requireNamespace(ffbase)){
+  if (!requireNamespace("ffbase")){
     stop("Please install package ffbase, otherwise the files cannot be loaded.")
   }
   env <- load.ffdf(".", parent.frame())

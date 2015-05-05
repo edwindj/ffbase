@@ -9,7 +9,7 @@
 #' @param ... passed on to \code{next_block}
 #' @export
 laf_to_ffdf <- function(laf, x=NULL, nrows=1e5, transFUN=NULL, ...){
-  if (!requireNamespace(LaF)){
+  if (!requireNamespace("LaF")){
     stop("This function needs the package 'LaF', which can be installed from CRAN")
   }
   N <- 0

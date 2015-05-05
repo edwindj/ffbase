@@ -65,7 +65,7 @@ sum.ff <- function(x, ..., na.rm=FALSE, range=NULL){
 #' @method max ff
 #' @method range ff
 #' @example ../examples/minmaxrange.R
-#' @export min.ff max.ff range.ff
+#' @export
 #' @aliases min.ff max.ff range.ff
 #' @param x a \code{ff} object
 #' @param ... optional other (\code{ff}) objects
@@ -85,6 +85,7 @@ min.ff <- function(x, ..., na.rm=FALSE, range=NULL){
 	   )
 }
 
+#' @export
 max.ff <- function(x, ..., na.rm=FALSE, range=NULL){
    r <- checkRange(range, x)
    
@@ -97,6 +98,7 @@ max.ff <- function(x, ..., na.rm=FALSE, range=NULL){
 	   )
 }
 
+#' @export
 range.ff <- function(x, ..., na.rm=FALSE, range=NULL){
   r <- checkRange(range, x)
 	range( ...    #for all other ff's?
