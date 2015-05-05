@@ -9,7 +9,7 @@
 #' @param ... parameters that will be passed on to \code{\link{fforder}}. 
 #' @return The updated vector \code{x}
 #' @rdname ffordered
-#' @export addfforder ffordered ffsorted
+#' @export
 #' @aliases addfforder ffordered ffsorted
 addfforder <- function(x, addsorted=FALSE, ...){
   ordered <- fforder(x)
@@ -25,6 +25,7 @@ addfforder <- function(x, addsorted=FALSE, ...){
 }
 
 #' @rdname ffordered
+#' @export
 ffordered <- function(x){
   ordered <- attr(x, "ffordered")
   if (is.null(ordered)){
@@ -34,6 +35,7 @@ ffordered <- function(x){
 }
 
 #' @rdname ffordered
+#' @export
 ffsorted <- function(x){
   sorted <- attr(x, "ffsort")
   if (is.null(sorted)){

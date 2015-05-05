@@ -14,7 +14,7 @@ binned_sum <- function (x, bin, nbins=max(bin), ...){
 
 #' @rdname binned_sum
 #' @method binned_sum default
-#' @S3method binned_sum default
+#' @export
 binned_sum.default <- function (x, bin, nbins=max(bin), ...){
    stopifnot(length(x)==length(bin))
    if (is.factor(bin)){
@@ -30,8 +30,7 @@ binned_sum.default <- function (x, bin, nbins=max(bin), ...){
 
 #' @rdname binned_sum
 #' @method binned_sum default
-#' @S3method binned_sum ff
-#' @export binned_sum.ff
+#' @export
 binned_sum.ff <- function(x, bin, nbins=max(bin), ...){
   INDEX <- list(...)$INDEX
   if (!is.null(INDEX)){

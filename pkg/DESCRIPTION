@@ -1,20 +1,19 @@
 Package: ffbase
 Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
 License: GPL-3
-Title: Basic statistical functions for package ff
+Title: Basic Statistical Functions for Package 'ff'
 Type: Package
 LazyLoad: yes
 Author: Edwin de Jonge, Jan Wijffels, Jan van der Laan
-Description: Basic (statistical) functionality for package ff
-Version: 0.11.4
+Description: Extends the out of memory vectors of 'ff' with 
+  statistical functions and other utilities to ease their usage.
+Version: 0.12.0.2000
 URL: http://github.com/edwindj/ffbase
-Date: 2013-11-1
+Date: 2015-05-05
 Depends:
-    ff (>= 2.2-11),
-    bit,
-    R (>= 2.12.0)
+    R (>= 2.12.0), ff (>= 2.2-11)
 Imports:
-    fastmatch
+    fastmatch, bit
 Suggests:
     testthat,
     parallel,

@@ -1,4 +1,4 @@
-#' @S3method rbind ffdf
+#' @export
 rbind.ffdf <- function(..., deparse.level=1){
   a <- list(...)
   x <- clone(a[[1]])

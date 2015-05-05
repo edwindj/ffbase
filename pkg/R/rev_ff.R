@@ -1,4 +1,4 @@
-#' @S3method rev ff 
+#' @export 
 rev.ff <- function(x){
   y <- clone(x)
   N <- length(x) + 1L

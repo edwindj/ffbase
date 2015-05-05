@@ -6,7 +6,7 @@
 #' in case you want to have the exact same result as the result of the base package. See the example.
 #'
 #' @rdname duplicated.ff
-#' @export duplicated.ff duplicated.ffdf
+#' @export
 #' @method duplicated ff
 #' @example ../examples/duplicated.R
 #' @param x \code{ff} object or \code{ffdf} object
@@ -49,6 +49,7 @@ duplicated.ff <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALSE,
 
 #' @rdname duplicated.ff
 #' @method duplicated ffdf
+#' @export
 duplicated.ffdf <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALSE, ...){
   if (!identical(incomparables, FALSE)){
     .NotYetUsed("incomparables != FALSE")

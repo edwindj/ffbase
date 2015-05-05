@@ -1,4 +1,6 @@
-require(biglm)
+library(biglm)
+library(ff)
+
 data(trees)
 x <- as.ffdf(trees)
 a <- bigglm(log(Volume)~log(Girth)+log(Height), 

@@ -9,13 +9,13 @@
 #' @param ... passed on to \code{next_block}
 #' @export
 laf_to_ffdf <- function(laf, x=NULL, nrows=1e5, transFUN=NULL, ...){
-  if (!require(LaF)){
+  if (!requireNamespace(LaF)){
     stop("This function needs the package 'LaF', which can be installed from CRAN")
   }
   N <- 0
-  begin(laf)
+  LaF::begin(laf)
   Log$info("\n Adding laf to ffdf...")
-  while(nrow(block <- next_block(laf, nrows=nrows, ...))){
+  while(nrow(block <- LaF::next_block(laf, nrows=nrows, ...))){
     #TODO test if adding columns separately is faster/or that allocating the ff vectors first is faster
     if(!is.null(transFUN)){
       block <- transFUN(block)

@@ -11,12 +11,11 @@
 #' @param chunksize Size of chunks for processing the ffdf
 #' @return An object of class bigglm. See the bigglm package for a description: \code{\link[biglm]{bigglm}}
 #' @export 
-#' @importFrom bit chunk
 #' @seealso \code{\link[biglm]{bigglm}}
 #' @example ../examples/bigglm.R
 bigglm.ffdf<-function(formula, data, family = gaussian(), ..., chunksize=5000){
   
-  if (!require(biglm)){
+  if (!requireNamespace(biglm)){
     stop("This function needs the package 'biglm', which can be installed from CRAN")
   }
   

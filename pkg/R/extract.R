@@ -8,7 +8,7 @@
 #' Mark that all other functionality from the extractor functions \code{[.ff} and \code{[<-.ff} in package ff are retained. This is an extension 
 #' to handle logical \code{ff} vectors as indexes.  
 #'
-#' @export "[.ff"
+#' @export
 #' @rdname ffextract
 #' @example ../examples/extract.R
 #' @param x an \code{ff} object 
@@ -37,7 +37,7 @@
 
 #' @rdname ffextract
 #' @usage \method{[}{ff} (x, i, add = FALSE, pack = FALSE) <- value
-#' @export "[<-.ff"
+#' @export
 `[<-.ff` <- function(x, i, add = FALSE, pack = FALSE, value){
   if(!missing(i) && is.ff(i) && length(i) > 0 && is.logical(i[1])){
     idx <- ffwhich(i, i==TRUE)    

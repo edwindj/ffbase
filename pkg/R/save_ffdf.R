@@ -90,7 +90,7 @@ save.ffdf <- function(..., dir="./ffdb", clone=FALSE, relativepath=TRUE, overwri
 #' @param dir path were all of supplied \code{ffdf}'s, will be saved. It will be created if it doesn't exist.
 #' @param name name to be used as data.frame name
 #' @param relativepath If \code{TRUE} the \code{ffdf} will contain relativepaths. Use with care...
-#' @seealso \code{\link{load.ffdf}} \code{\link{save.ffdf}} 
+#' @seealso \code{\link{load.ffdf}} \code{\link{save.ffdf}}
 #' @export
 move.ffdf <- function(x, dir=".", name=as.character(substitute(x)), relativepath=FALSE){  
   gc()
@@ -208,7 +208,7 @@ unpack.ffdf <- function(file, dir=NULL, envir=parent.frame()){
 }
 
 first <- function(){
-  if (!require(ffbase)){
+  if (!requireNamespace(ffbase)){
     stop("Please install package ffbase, otherwise the files cannot be loaded.")
   }
   env <- load.ffdf(".", parent.frame())
