@@ -21,7 +21,6 @@ as.character.ff <- function(x, ...){
 	res		
 }
 
-
 as.ff_matrix <- function(x, ...){
   UseMethod("as.ff_matrix")
 }
@@ -75,13 +74,14 @@ as.ff_matrix.ffdf <- function(x, ...){
 #   return(y)
 # }
 
+
 #' Trivial implementation, but very handy
 #'
 #' Coerce a ffdf object to an ffdf object.
 #' @param x ffdf object
 #' @param ... not used.
-#' @importFrom ff as.ffdf
 #' @export
+#' @importFrom ff as.ffdf
 as.ffdf.ffdf <- function(x, ...){
   x
 }

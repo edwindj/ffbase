@@ -67,5 +67,9 @@
 #' @name ffbase-package 
 #' @aliases ffbase ffbase-package
 #' @import bit
+#' @importFrom ff ffdf ff is.ff is.ffdf fforder filename as.ff is.factor.ff vmode recodeLevels 
+#' @importFrom ff is.open ffdforder appendLevels ffvecapply 'filename<-' maxffmode
+#' @importFrom ff arrayIndex2vectorIndex nrow<- .rambytes set.ff hi ffindexordersize ffindexget
+#' @importFrom ff ffsort .vNA .vmax .vmin .vmode finalizer<- ffindexorder .vimplemented 
 #' @docType package 
 {}

@@ -13,7 +13,7 @@ bigglm.ffdf(formula, data, family = gaussian(), ..., chunksize = 5000)
 
 \item{family}{A glm family object}
 
-\item{...}{other parameters passed on to bigglm. See the bigglm package: \code{\link[biglm]{bigglm}}}
+\item{...}{other parameters passed on to bigglm. See the biglm package: \code{\link[biglm]{biglm}}}
 
 \item{chunksize}{Size of chunks for processing the ffdf}
 }

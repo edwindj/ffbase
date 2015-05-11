@@ -1,7 +1,7 @@
 #' Unique values for ff and ffdf objects
 #'
 #' @rdname unique.ff
-#' @export unique.ff unique.ffdf
+#' @export
 #' @method unique ff
 #' @example ../examples/unique.R
 #' @param x \code{ff} object or \code{ffdf} object
@@ -57,6 +57,7 @@ unique.ff <- function(x, incomparables = FALSE, fromLast = FALSE, trace=FALSE, .
 
 #' @rdname unique.ff
 #' @method unique ffdf
+#' @export
 unique.ffdf <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALSE, ...){
   if (!identical(incomparables, FALSE)){
     .NotYetUsed("incomparables != FALSE")

@@ -7,7 +7,7 @@
 #' @param formula a model formula
 #' @param data an object of class ffdf
 #' @param family A glm family object
-#' @param ... other parameters passed on to bigglm. See the bigglm package: \code{\link[biglm]{bigglm}}
+#' @param ... other parameters passed on to bigglm. See the biglm package: \code{\link[biglm]{biglm}}
 #' @param chunksize Size of chunks for processing the ffdf
 #' @return An object of class bigglm. See the bigglm package for a description: \code{\link[biglm]{bigglm}}
 #' @export 
@@ -15,7 +15,7 @@
 #' @example ../examples/bigglm.R
 bigglm.ffdf<-function(formula, data, family = gaussian(), ..., chunksize=5000){
   
-  if (!requireNamespace("biglm")){
+  if (!requireNamespace("biglm", quietly = TRUE)){
     stop("This function needs the package 'biglm', which can be installed from CRAN")
   }
   
@@ -45,7 +45,7 @@ bigglm.ffdf<-function(formula, data, family = gaussian(), ..., chunksize=5000){
     Log$chunk(got)
     data[chunks[[got]], tablevars, drop=FALSE]
   }
-  rval<-bigglm(formula, data=ffchunk, family=family, ...)
+  rval <- biglm::bigglm(formula, data=ffchunk, family=family, ...)
   rval$call<-sys.call()
   #rval$call[[1]]<-as.name(.Generic)
   rval$call[[1]]<-as.name("bigglm")

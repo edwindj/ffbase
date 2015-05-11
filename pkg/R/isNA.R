@@ -13,6 +13,7 @@
 #' @param value a suitable ff index vector for use with x
 #' @return A logical \code{ff} vector of the same length of x indicating if the ff vector contains missing values. 
 #' @export
+#' @export is.na.ff
 #' @seealso \code{\link[base]{is.na}, \link[ff]{ffvecapply}}
 is.na.ff <- function(x, ...){
 	res <- ff(vmode="logical", length=length(x))

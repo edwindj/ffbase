@@ -6,7 +6,7 @@
 #' @usage 
 #' \method{transform}{ffdf}(`_data`, \dots)
 #'
-#' @export transform.ffdf
+#' @export
 #'
 #' @example ../examples/transform.R
 #' @param _data \code{\link{ffdf}} data object to be transformed.

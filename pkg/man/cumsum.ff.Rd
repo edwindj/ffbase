@@ -29,16 +29,16 @@ Cumulative Sums, Products, and Extremes
 }
 \examples{
 x <- 1:10000
-tmp <- cumsum.ff(ff(x), BATCHBYTES=10000)
+tmp <- cumsum(ff(x))
 class(tmp)
 table(tmp[] == cumsum(x))
 
 x <- rnorm(1000)
-tmp <- cummax.ff(ff(x), BATCHBYTES=10000)
+tmp <- cummax(ff(x))
 table(tmp[] == cummax(x))
-tmp <- cummin.ff(ff(x), BATCHBYTES=10000)
+tmp <- cummin(ff(x))
 table(tmp[] == cummin(x))
-tmp <- cumprod.ff(ff(x), BATCHBYTES=10000)
+tmp <- cumprod(ff(x))
 table(tmp[] == cumprod(x))
 
 ## S3 type of calling
