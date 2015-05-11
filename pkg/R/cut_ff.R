@@ -15,18 +15,25 @@ cut.ff <- function(x, breaks, ...){
    f <- NULL
    
    #### borrowed code from cut.default
-	if (length(breaks) == 1) {
-		if (is.na(breaks) || breaks < 2) 
-			stop("invalid number of intervals")
-		nb <- as.integer(breaks + 1)
-		dx <- diff(rx <- range(x, na.rm = TRUE))
-		if (dx == 0) 
-			dx <- abs(rx[1])
-		breaks <- seq.int( rx[1] - dx/1000
-                     , rx[2L] + dx/1000
-                     , length.out = nb
-                     )
-	}
+   if (length(breaks) == 1L) {
+     if (is.na(breaks) || breaks < 2L) 
+       stop("invalid number of intervals")
+     nb <- as.integer(breaks + 1)
+     dx <- diff(rx <- range(x, na.rm = TRUE))
+     if (dx == 0) {
+       dx <- abs(rx[1L])
+       breaks <- seq.int(rx[1L] - dx/1000, rx[2L] + dx/1000, 
+                         length.out = nb)
+     }
+     else {
+       breaks <- seq.int(rx[1L], rx[2L], length.out = nb)
+       breaks[c(1L, nb)] <- c(rx[1L] - dx/1000, rx[2L] + 
+                                dx/1000)
+     }
+   }
+   else nb <- length(breaks <- sort.int(as.double(breaks)))
+   if (anyDuplicated(breaks)) 
+     stop("'breaks' are not unique")
    ####
    
    args <- list(...)
