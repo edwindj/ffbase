@@ -8,6 +8,7 @@
 #' @param differences an integer indicating the order of the difference
 #' @param ... other parameters will be passed on to diff
 #' @export
+#' @export diff.ff
 diff.ff <- function(x, lag=1L, differences = 1L, ...){
   
   d <- NULL  

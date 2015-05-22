@@ -2,6 +2,7 @@
 #' 
 #' @method mean ff
 #' @export
+#' @export mean.ff
 #' @example ../examples/mean.R
 #' @param x a ff vector
 #' @param trim percentage of robustness, between 0 and 1

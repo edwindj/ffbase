@@ -7,6 +7,7 @@
 #'
 #' @rdname duplicated.ff
 #' @export
+#' @export duplicated.ff
 #' @method duplicated ff
 #' @example ../examples/duplicated.R
 #' @param x \code{ff} object or \code{ffdf} object
@@ -50,6 +51,7 @@ duplicated.ff <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALSE,
 #' @rdname duplicated.ff
 #' @method duplicated ffdf
 #' @export
+#' @export duplicated.ffdf
 duplicated.ffdf <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALSE, ...){
   if (!identical(incomparables, FALSE)){
     .NotYetUsed("incomparables != FALSE")

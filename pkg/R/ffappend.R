@@ -1,6 +1,7 @@
 #' Concatenate \code{ff} vectors
 #' 
 #' @export
+#' @export c.ff
 #' @seealso \code{\link{ffappend}}
 #' @method c ff
 #' @param ... \code{ff} ff vectors to be concatenated

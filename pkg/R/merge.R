@@ -11,6 +11,7 @@
 #'
 #' @method merge ffdf
 #' @export
+#' @export merge.ffdf
 #' @example ../examples/merge.R
 #' @param x an ffdf
 #' @param y an ffdf

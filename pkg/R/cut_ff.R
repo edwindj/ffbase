@@ -3,6 +3,7 @@
 #' The \code{cut} method for ff with the behaviour of \code{link{cut}}
 #' @title Convert Numeric ff vector to factor ff
 #' @export
+#' @export cut.ff
 #' @seealso cut
 #' @method cut ff
 #' 

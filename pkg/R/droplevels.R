@@ -3,6 +3,7 @@
 #' 
 #' @seealso \code{\link{droplevels}} \code{\link{droplevels.ffdf}}
 #' @export
+#' @export droplevels.ff
 #' @method droplevels ff 
 #' @param x \code{ff} object
 #' @param ... not used
@@ -33,6 +34,7 @@ droplevels.ff <- function(x, ..., inplace=FALSE){
 #' 
 #' @seealso \code{\link{droplevels}} \code{\link{droplevels.ff}}
 #' @export
+#' @export droplevels.ffdf
 #' @method droplevels ffdf
 #' @param x \code{ffdf} object
 #' @param except specify which columns will be excluded from dropping levels

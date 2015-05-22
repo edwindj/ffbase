@@ -9,6 +9,7 @@
 #' @param ... other parameters passed on to chunk
 #' @return A factor \code{ff} vector of the same length of x.
 #' @export 
+#' @export as.character.ff
 #' @seealso \code{\link[base]{as.character}}
 as.character.ff <- function(x, ...){
 	levs <- unique(x)[]
@@ -81,6 +82,7 @@ as.ff_matrix.ffdf <- function(x, ...){
 #' @param x ffdf object
 #' @param ... not used.
 #' @export
+#' @export as.ffdf.ffdf
 #' @importFrom ff as.ffdf
 as.ffdf.ffdf <- function(x, ...){
   x
@@ -93,6 +95,7 @@ as.ffdf.ffdf <- function(x, ...){
 #' @param ... not used.
 #' @return a data.frame in RAM
 #' @export
+#' @export as.ram.ffdf
 #' @importFrom ff as.ram
 as.ram.ffdf <- function(x, ...){
   x[, , drop=FALSE]

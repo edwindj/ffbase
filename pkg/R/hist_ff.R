@@ -8,6 +8,7 @@
 #' @param ... further arguments supplied to plot.
 #' @return histogram object
 #' @export
+#' @export hist.ff
 hist.ff <- function(x, breaks=min(100, length(x)), plot=TRUE, ...){
   xname <- deparse(substitute(x))
   

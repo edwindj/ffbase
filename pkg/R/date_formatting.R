@@ -3,6 +3,7 @@
 #' Date Conversion Functions for \code{ff} vector.
 #'
 #' @export
+#' @export as.Date.ff_vector
 #' @method as.Date ff_vector
 #' @param x an object of class \code{ff_vector}
 #' @param ... other parameters passed on to \code{\link{as.Date}}
@@ -15,6 +16,7 @@ as.Date.ff_vector <- chunkify(fun = as.Date)
 #' Date Conversion Functions for \code{ff} vector.
 #'
 #' @export
+#' @export format.ff_vector
 #' @method format ff_vector
 #' @param x an object of class \code{ff_vector}
 #' @param ... other parameters passed on to \code{\link{format}}

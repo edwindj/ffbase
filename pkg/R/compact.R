@@ -13,6 +13,8 @@ compact <- function(x, use.na=TRUE, ...){
    UseMethod("compact")
 }
 
+#' @export
+#' @export compact.ff
 compact.ff <- function(x, use.na=TRUE,...){
    vm <- which(.vmode == vmode(x))[1]
    if (vm > 9){
@@ -39,6 +41,8 @@ compact.ff <- function(x, use.na=TRUE,...){
    }
 }
 
+#' @export
+#' @export compact.ffdf
 compact.ffdf <- function(x, use.na=TRUE, ...){
    ret <- lapply(physical(x), compact, use.na=use.na, ...)
    res <- do.call(ffdf, ret)
