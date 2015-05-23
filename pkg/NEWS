@@ -1,3 +1,7 @@
+version 0.12.0
+- exported (almost) all methods since some users depend upon them
+- removed CRAN warnings (stricter checking)
+
 version 0.11.2
 - fix for issue #32
 - added ffdfrbind.fill (request #33)
