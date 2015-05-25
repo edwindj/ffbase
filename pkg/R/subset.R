@@ -1,6 +1,7 @@
 #' Subsetting a ff vector or ffdfdata frame
 #'
 #' @export
+#' @export subset.ff
 #' @aliases subset.ff subset.ffdf
 #' @method subset ff
 #' @param x \code{ff} vector or \code{ffdf} data.frame to be subset
@@ -19,6 +20,7 @@ subset.ff <- function(x, subset, ...){
 }
 
 #' @export
+#' @export subset.ffdf
 subset.ffdf <- function(x, subset, select, drop = FALSE, ...){
   # remove rownames otherwise we have errors...
   rownames(x) <- NULL
