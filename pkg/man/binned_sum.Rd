@@ -10,7 +10,7 @@ binned_sum(x, bin, nbins = max(bin), ...)
 
 \method{binned_sum}{default}(x, bin, nbins = max(bin), ...)
 
-\method{binned_sum}{default}(x, bin, nbins = max(bin), ...)
+\method{binned_sum}{ff}(x, bin, nbins = max(bin), ...)
 }
 \arguments{
 \item{x}{\code{numeric} vector with the data to be summed}
