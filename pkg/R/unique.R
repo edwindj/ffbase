@@ -2,6 +2,7 @@
 #'
 #' @rdname unique.ff
 #' @export
+#' @export unique.ff
 #' @method unique ff
 #' @example ../examples/unique.R
 #' @param x \code{ff} object or \code{ffdf} object

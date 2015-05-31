@@ -8,6 +8,7 @@
 #' An NA value in x causes the corresponding and following elements of the return value to be NA, as does integer overflow in cumsum (with a warning). 
 #' @rdname cumsum.ff
 #' @export
+#' @export cumsum.ff
 #' @seealso \code{\link{cumsum}}, \code{\link{cumprod}}, \code{\link{cummax}}, \code{\link{cummin}}
 cumsum.ff <- function(x, ...){
   result <- clone(x, vmode = "double")

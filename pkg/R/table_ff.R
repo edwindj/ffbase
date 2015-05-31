@@ -33,10 +33,12 @@ table <- function( ...
 table.default <- base::table
 
 #' @export
+#' @export table.ff
 #' @usage table(..., exclude = if (useNA == "no") c(NA, NaN), 
 #' useNA = c("no", "ifany", "always"), dnn = list.names(...), deparse.level = 1)
 #' @rdname table
 #' @aliases table
+#' 
 table.ff <- function( ...
                      , exclude = if (useNA == "no") c(NA, NaN)
                      , useNA = c("no","ifany", "always")

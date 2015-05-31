@@ -11,6 +11,7 @@
 #' @param names logical; if true, the result has a names attribute. Set to FALSE for speedup with many probs.
 #' @param ... currently not used
 #' @export
+#' @export quantile.ff
 #' @importFrom stats quantile
 quantile.ff <- function(x, probs = seq(0, 1, 0.25), na.rm = FALSE, names = TRUE, ...){
   N <- length(x)

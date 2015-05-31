@@ -3,6 +3,7 @@
 #' Behaviour of \code{\link{tabulate}}
 #' @example ../examples/tabulate_ff.R
 #' @export
+#' @export tabulate.ff
 #'
 #' @title Tabulation for ff vectors
 #' @param bin factor to be binned.

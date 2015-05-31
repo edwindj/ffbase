@@ -12,6 +12,7 @@
 #' @seealso \code{\link{ffdfwith}}
 #' @method with ffdf 
 #' @export
+#' @export with.ffdf
 #'
 #' @example ../examples/with.R
 #' @param data \code{\link{ffdf}} data object used as an environment for evaluation.

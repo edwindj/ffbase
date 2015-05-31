@@ -1,6 +1,7 @@
 #' Summary methods for ff objects
 #'
 #' @export
+#' @export all.ff
 #' @method all ff
 #' @param x a \code{ff} object
 #' @param ... optional other (\code{ff}) objects
@@ -20,6 +21,7 @@ all.ff <- function(x,..., na.rm=FALSE, range=NULL){
 
 #' Summary methods for ff objects
 #' @export
+#' @export any.ff
 #' @method any ff
 #' @param x a \code{ff} object
 #' @param ... optional other (\code{ff}) objects
@@ -42,6 +44,7 @@ any.ff <- function(x, ..., na.rm=FALSE, range=NULL){
 #' @title Sum of \code{ff} vector Elements
 #' @method sum ff
 #' @export
+#' @export sum.ff
 #' @param x a \code{ff} object
 #' @param ... optional other (\code{ff}) objects
 #' @param na.rm should \code{NA} be removed?
@@ -66,6 +69,7 @@ sum.ff <- function(x, ..., na.rm=FALSE, range=NULL){
 #' @method range ff
 #' @example ../examples/minmaxrange.R
 #' @export
+#' @export min.ff
 #' @aliases min.ff max.ff range.ff
 #' @param x a \code{ff} object
 #' @param ... optional other (\code{ff}) objects
@@ -86,6 +90,7 @@ min.ff <- function(x, ..., na.rm=FALSE, range=NULL){
 }
 
 #' @export
+#' @export max.ff
 max.ff <- function(x, ..., na.rm=FALSE, range=NULL){
    r <- checkRange(range, x)
    
@@ -99,6 +104,7 @@ max.ff <- function(x, ..., na.rm=FALSE, range=NULL){
 }
 
 #' @export
+#' @export range.ff
 range.ff <- function(x, ..., na.rm=FALSE, range=NULL){
   r <- checkRange(range, x)
 	range( ...    #for all other ff's?
