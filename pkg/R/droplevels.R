@@ -16,7 +16,7 @@ droplevels.ff <- function(x, ..., inplace=FALSE){
    }
    
    if (!inplace){
-      x <- clone(x)
+      x <- ff::clone.ff(x)
    }
    
    levs <- levels(x)

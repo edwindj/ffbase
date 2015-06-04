@@ -29,7 +29,7 @@ c.ff <- function(...){
 ffappend <- function(x, y, adjustvmode=TRUE, ...){
    if (is.null(x)){
       if (is.ff(y)){
-		    return(clone(y))
+		    return(ff::clone.ff(y))
 	    } else {
         return (if (length(y)) as.ff(y))
 	    }

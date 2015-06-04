@@ -51,7 +51,7 @@ save.ffdf <- function(..., dir="./ffdb", clone=FALSE, relativepath=TRUE, overwri
      x = get(n, envir=parent.frame())
      if (is.ffdf(x)) {
        if (isTRUE(clone)){
-         x <- clone(x)
+         x <- ff::clone(x)
        }
        assign(n, move.ffdf(x, dir=".", name=n, relativepath=relativepath))
      }

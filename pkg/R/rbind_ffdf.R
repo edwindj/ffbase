@@ -1,6 +1,6 @@
 rbind.ffdf <- function(..., deparse.level=1){
   a <- list(...)
-  x <- clone(a[[1]])
+  x <- ff::clone.ffdf(a[[1]])
   for (l in tail(a, -1)){
     x <- ffdfappend(x, l)
   }
@@ -34,7 +34,7 @@ ffdfrbind.fill <- function(..., clone=TRUE){
     }
   }
   if(clone){
-    result <- clone(x[[1]][columns])
+    result <- ff::clone(x[[1]][columns])
   }else{
     result <- x[[1]][columns]
   }

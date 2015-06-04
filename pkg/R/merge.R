@@ -95,14 +95,14 @@ merge.ffdf <- function(x, y, by = intersect(names(x), names(y)), by.x = by, by.y
   	tocoerce <- coerce_to_allowNA(vmode(y[yvars]))  	
   	## First set everything to NA  	
   	for(i in 1:length(yvars)){
-  		x[[newyvars[i]]] <- clone(y[[yvars[i]]], initdata=NA, length = nrow(x), vmode = tocoerce$coerceto[[yvars[i]]])
+  		x[[newyvars[i]]] <- ff::clone(y[[yvars[i]]], initdata=NA, length = nrow(x), vmode = tocoerce$coerceto[[yvars[i]]])
   	} 
   	## Next coerce the right hand side if needed to allow NA values
   	tocoerce.yvars <- yvars[tocoerce$x != tocoerce$coerceto]
   	if(length(tocoerce.yvars) > 0){
   		warning(paste("coercing column ", paste(tocoerce.yvars, collapse=", "), " to a higher vmode to allow NA's"), sep="")
   		for(measure in tocoerce.yvars){
- 				y[[measure]] <- clone(y[[measure]], vmode = tocoerce$coerceto[[measure]])
+ 				y[[measure]] <- ff::clone(y[[measure]], vmode = tocoerce$coerceto[[measure]])
   		}
   	} 		
   	## Next update the existing x ffdf with the joined value if there is a match  	

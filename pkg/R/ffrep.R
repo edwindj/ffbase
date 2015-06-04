@@ -41,7 +41,7 @@ ffrep.int <- function(x, times){
     ##
     ## do the replication
     ##
-		result <- clone(x, initdata=NULL, length=sum(times, na.rm=TRUE))	
+		result <- ff::clone.ff(x, initdata=NULL, length=sum(times, na.rm=TRUE))	
 		from <- 1
 		for (i in ret){
 			## extract the ff data and replicate
