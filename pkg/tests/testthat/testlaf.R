@@ -25,8 +25,9 @@ test_that(
         stringsAsFactors=FALSE
       )
       
-      writeLines(lines, con="tmp.fwf", sep="\n")
-        laf <- laf_open_fwf(filename="tmp.fwf", 
+      tmp.fwf <- tempfile("tmp.fwf")
+      writeLines(lines, con=tmp.fwf, sep="\n")
+        laf <- laf_open_fwf(filename=tmp.fwf, 
             column_types=c("integer", "categorical", "double", "string"),
             column_widths=c(2,1,5,10)
             )
@@ -39,7 +40,7 @@ test_that(
         # Dus dit gaat goed: 
         bar <- laf_to_ffdf(laf, nrows=1, columns=c(1, 2, 3))
         # maar dit niet
-        laf2 <- laf_open_fwf(filename="tmp.fwf", 
+        laf2 <- laf_open_fwf(filename=tmp.fwf, 
             column_types=c("integer", "categorical", "double", "string"),
             column_widths=c(2,1,5,10)
             )

@@ -43,7 +43,7 @@ droplevels.ff <- function(x, ..., inplace=FALSE){
 #' otherwise (default) new \code{ff} vectors will be created
 #' @return \code{ffdf} object where levels of factors are dropped
 droplevels.ffdf <- function(x, except=NULL, ..., inplace=FALSE){
-   ffs <- physical(x)
+   ffs <- bit::physical(x)
    names(ffs) <- names(x)
    ix <- sapply(ffs, is.factor.ff)
    if (!is.null(except))
