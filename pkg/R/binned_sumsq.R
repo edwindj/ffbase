@@ -24,14 +24,14 @@ binned_sumsq <- function (x, mean=rep(0, nbins), bin, nbins=max(bin), ...){
 #' @export binned_sumsq.default
 binned_sumsq.default <- function (x, mean=rep(0, nbins), bin, nbins=max(bin), ...){
    stopifnot(length(x)==length(bin))
-   stopifnot(length(x)==length(mean))
    if (is.factor(bin)){
      bins <- levels(bin)
      nbins <- length(bins)
    } else {
      bins <- seq_len(nbins)
    }
-   res <- matrix(0, nrow=nbins, ncol=3, dimnames=list(bin=bins, c("count", "sumsq", "<NA>")))
+  stopifnot(nbins==length(mean))
+  res <- matrix(0, nrow=nbins, ncol=3, dimnames=list(bin=bins, c("count", "sumsq", "<NA>")))
    .Call("binned_sumsq", as.numeric(x), as.numeric(mean), as.integer(bin), as.integer(nbins), res, PACKAGE = "ffbase")
    res
 }

@@ -1,3 +1,9 @@
+version 0.12.2
+- fixed a bug in binned_sumsq.
+
+version 0.12.1
+- exported all methods and namespaced functions physical and clone
+
 version 0.12.0
 - exported (almost) all methods since some users depend upon them
 - removed CRAN warnings (stricter checking)

@@ -40,7 +40,7 @@ duplicated.ff <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALSE,
     i.x <- x[i.o]
     res[i.o] <- duplicated(i.x)
     if(min(i) > 1){
-      res[i.o[1]] <- duplicated(c(i.last, head(i.x, 1)))[2]
+      res[i.o[1]] <- duplicated(c(i.last, utils::head(i.x, 1)))[2]
     }
     i.last <- tail(i.x, 1)
   }
@@ -71,7 +71,7 @@ duplicated.ffdf <- function(x, incomparables = FALSE, fromLast=FALSE, trace=FALS
     i.x <- x[i.o, , drop=FALSE]
     res[i.o] <- duplicated(i.x)
     if(min(i) > 1){
-      res[i.o[1]] <- duplicated(rbind(i.last, head(i.x, 1)))[2]
+      res[i.o[1]] <- duplicated(rbind(i.last, utils::head(i.x, 1)))[2]
     }
     i.last <- tail(i.x, 1)
   }

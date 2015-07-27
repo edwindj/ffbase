@@ -13,7 +13,7 @@ SEXP binned_sumsq ( SEXP x, SEXP mean, SEXP bin, SEXP nbins, SEXP res) {
      double *rres = REAL(res);
      for (int i = 0; i < nx; i++){
         int b = ibin[i] - 1;
-        double val = rx[i] - rmean[i];
+        double val = (rx[i] - rmean[b]);
 		    if (-1 < b && b < nb){
   		    if (!ISNA(val)){
              rres[b] += 1;
