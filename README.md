@@ -1,4 +1,7 @@
-[![Build Status](https://travis-ci.org/edwindj/ffbase.png?branch=master)](https://travis-ci.org/edwindj/ffbase)
+[![Build Status](https://travis-ci.org/edwindj/ffbase.png?branch=master)](https://travis-ci.org/edwindj/f
+fbase)
+![version](http://www.r-pkg.org/badges/version/ffbase)
+![downloads](http://cranlogs.r-pkg.org/badges/ffbase)
 
 ffbase
 ======
