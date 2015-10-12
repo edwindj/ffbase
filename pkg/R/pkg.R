@@ -71,5 +71,8 @@
 #' @importFrom ff is.open ffdforder appendLevels ffvecapply 'filename<-' maxffmode
 #' @importFrom ff arrayIndex2vectorIndex nrow<- .rambytes set.ff hi ffindexordersize ffindexget
 #' @importFrom ff ffsort .vNA .vmax .vmin .vmode finalizer<- ffindexorder .vimplemented 
+#' @importFrom graphics image
+#' @importFrom stats gaussian na.omit runif
+#' @importFrom utils head tail tar untar unzip zip
 #' @docType package 
 {}

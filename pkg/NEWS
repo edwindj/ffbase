@@ -1,5 +1,7 @@
 version 0.12.3
 - allowed to index and overwrite ffdf objects based on logical ff vectors ("[.ffdf" and "[<-.ffdf" from the ff package are overwritten)
+- allowed users to use ffdfappend on 1 column ffdf objects
+- added importFrom graphics/stats/utils packages to comply to CRAN policy update
 
 version 0.12.2
 - fixed a bug in binned_sumsq.
