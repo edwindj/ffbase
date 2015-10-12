@@ -1,3 +1,6 @@
+version 0.12.3
+- allowed to index and overwrite ffdf objects based on logical ff vectors ("[.ffdf" and "[<-.ffdf" from the ff package are overwritten)
+
 version 0.12.2
 - fixed a bug in binned_sumsq.
 
