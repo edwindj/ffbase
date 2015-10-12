@@ -5,15 +5,16 @@ Title: Basic Statistical Functions for Package 'ff'
 Type: Package
 LazyLoad: yes
 Author: Edwin de Jonge, Jan Wijffels, Jan van der Laan
-Description: Extends the out of memory vectors of 'ff' with 
-  statistical functions and other utilities to ease their usage.
+Description: Extends the out of memory vectors of 'ff' with
+    statistical functions and other utilities to ease their usage.
 Version: 0.12.2
 URL: http://github.com/edwindj/ffbase
 Date: 2015-07-25
 Depends:
     R (>= 2.12.0),ff(>= 2.2-11)
 Imports:
-    fastmatch, bit
+    fastmatch,
+    bit
 Suggests:
     testthat,
     parallel,
