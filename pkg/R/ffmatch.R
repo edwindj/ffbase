@@ -71,7 +71,7 @@ ffdfmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, tra
   ## First work on looping over x, then over the table
   for (i in xchunk){
     Log$chunk(i)
-    xi <- x[i, ]   
+    xi <- x[i, , drop=FALSE]   
     unmatched <- TRUE
     
     if (trace){
@@ -83,7 +83,7 @@ ffdfmatch <- function(x, table, nomatch = NA_integer_, incomparables = NULL, tra
       if(trace) {
         message(sprintf("%s, working on table chunk %s:%s", Sys.time(), min(j), max(j)))      
       }
-      m[unmatched] <- fmatch(x=do.call(paste, xi[unmatched, ]), table=do.call(paste, table[j, ]), incomparables=incomparables) +  min(j) - 1L     
+      m[unmatched] <- fmatch(x=do.call(paste, xi[unmatched, , drop=FALSE]), table=do.call(paste, table[j, , drop=FALSE]), incomparables=incomparables) +  min(j) - 1L     
       unmatched <- is.na(m)
       if (!any(unmatched)) break
     }
