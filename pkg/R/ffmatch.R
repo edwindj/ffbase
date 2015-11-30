@@ -99,11 +99,11 @@ in.default <- get(x="%in%")
 #' @export
 #' @usage x \%in\% table
 "%in%" <- function(x, table){
-	if(inherits(x, "ff_vector") & inherits(table, "ff_vector")){
-		ffmatch(x=x, table=table, nomatch = 0L) > 0L
-	}else if(inherits(x, "ffdf") & inherits(table, "ffdf")){
-		ffdfmatch(x=x, table=table, nomatch = 0L) > 0L
-	}else{
+	if(inherits(x, "ff_vector")){
+		ffmatch(x=x, table=as.ff(table), nomatch = 0L) > 0L
+	} else if(inherits(x, "ffdf") && inherits(table, "ffdf")){
+		ffdfmatch(x=x, table=as.ffdf(table), nomatch = 0L) > 0L
+	} else{
 		in.default(x=x, table=table)
 	}	
 }
