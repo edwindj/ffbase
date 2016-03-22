@@ -1,4 +1,4 @@
-#' @title 'Not Available' / Missing Values for ff vectors
+#' 'Not Available' / Missing Values for ff vectors
 #'
 #' The generic function \code{is.na} indicates which elements are missing.\cr
 #' The generic function \code{is.na<-} sets elements to \code{NA}. 

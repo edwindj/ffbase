@@ -20,3 +20,4 @@ Suggests:
     parallel,
     LaF,
     biglm
+RoxygenNote: 5.0.1

@@ -1,4 +1,4 @@
-#' @title Character Vectors
+#' Character Vectors
 #'
 #' The generic function \code{as.character} converts \code{ff} vectors to characters.\cr
 #'
