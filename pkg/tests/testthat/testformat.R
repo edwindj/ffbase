@@ -10,7 +10,7 @@ test_that("format accepts positional parameters",{
 		  expect_equal(ff(factor(rep("2016", 3))), format(ffdatevec, "%Y"))
 })
 
-test_that("format accepts named parametest",{
+test_that("format accepts named parameters",{
 		  datevec <- rep(as.POSIXct("2016/08/02 18:12:54"), 3)
 		  ffdatevec <- ff(datevec)
 		  expect_equal(ff(factor(rep("2016", 3))), format(ffdatevec, format="%Y"))
