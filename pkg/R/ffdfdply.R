@@ -47,7 +47,9 @@ ffdfdply <- function (x, split, FUN, BATCHBYTES = getOption("ffbatchbytes"),
   }
   splitgroups <- list()
   splitgroups$tab <- binned_tabulate.ff(x = ff(factor("data", levels="data"), length = length(splitby)), bin = splitby, nbins = max(tmp), nlevels = 1)
+  rn <- rownames(splitgroups$tab)
   splitgroups$tab <- as.table(splitgroups$tab[,'data'])
+  names(splitgroups$tab) <- rn
   splitgroups$tab <- splitgroups$tab[order(splitgroups$tab, decreasing = TRUE)]
   if (max(splitgroups$tab) > MAXSIZE) {
     warning("single split does not fit into BATCHBYTES")

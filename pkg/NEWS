@@ -1,3 +1,6 @@
+version 0.12.4
+- make sure that if ffdfdply is used if there is only one split level, function executes fine also
+
 version 0.12.3
 - allowed to index and overwrite ffdf objects based on logical ff vectors ("[.ffdf" and "[<-.ffdf" from the ff package are overwritten)
 - allowed users to use ffdfappend on 1 column ffdf objects
