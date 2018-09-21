@@ -27,4 +27,3 @@ in a \code{\link{ffdf}}
 \seealso{
 \code{\link{droplevels}} \code{\link{droplevels.ff}}
 }
-

@@ -27,4 +27,3 @@ binned_sum(x, bin, nbins = max(bin), ...)
 \description{
 \code{binned_sum} implements fast summing for given bins by calling c-code.
 }
-

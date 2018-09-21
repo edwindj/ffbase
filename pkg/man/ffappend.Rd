@@ -25,4 +25,3 @@ Please note that the data of \code{x} will be coerced to the type of \code{y} if
 \seealso{
 \code{\link{c.ff}}
 }
-

@@ -24,4 +24,3 @@ probabilities. The smallest observation corresponds to a probability of 0 and th
 Current implementation doesn't use the \code{type} parameter of \code{\link{quantile}}. For large \code{ff} vectors the
 difference between the types is (very) small. If \code{x} has been \code{\link{ffordered}}, quantile is fast, otherwise it is $n log(n)$.
 }
-

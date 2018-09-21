@@ -45,4 +45,3 @@ unpack.ffdf(tf)
 \seealso{
 \code{\link{save.ffdf}} \code{\link{unpack.ffdf}}
 }
-

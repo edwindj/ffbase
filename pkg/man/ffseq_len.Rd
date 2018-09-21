@@ -36,4 +36,3 @@ ffseq(length.out=1000000)
 \seealso{
 \code{\link[base]{seq_len}}
 }
-

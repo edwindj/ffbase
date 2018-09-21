@@ -23,4 +23,3 @@ byMean(x, by, na.rm = FALSE, weight = NULL, ...)
 \description{
 \code{byMean} works like a very fast version of tapply with (weighted) \code{FUN=mean} or \code{FUN=weighted.mean}.
 }
-

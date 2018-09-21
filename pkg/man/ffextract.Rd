@@ -62,4 +62,3 @@ x
 \seealso{
 \code{\link[ff]{Extract.ff}}
 }
-

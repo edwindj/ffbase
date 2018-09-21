@@ -40,4 +40,3 @@ x
 \seealso{
 \code{\link[base]{is.na}, \link[ff]{ffvecapply}}
 }
-

@@ -21,4 +21,3 @@ compact cloned ff vector, or original if no compacting can be done
 \description{
 Compact takes a ff vector and tries to use the smallest binary data type for this vector.
 }
-

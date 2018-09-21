@@ -39,4 +39,3 @@ ffrep.int(x, times=ff(1:26))
 \seealso{
 \code{\link[base]{rep.int}}
 }
-

@@ -69,4 +69,3 @@ result <- ffdfdply( x = ffiris, split = ffiris$datekey
 \seealso{
 \code{\link{grouprunningcumsum}, \link{table}}
 }
-

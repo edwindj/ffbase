@@ -37,4 +37,3 @@ ffdfwith(ffdat, {
 #notice that x has been altered
 ffdat$x
 }
-

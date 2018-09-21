@@ -19,4 +19,3 @@ An \code{ff_vector} of length(x) containing the result of format applied to the 
 \description{
 Date Conversion Functions for \code{ff} vector.
 }
-

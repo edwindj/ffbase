@@ -21,4 +21,3 @@ This can be used for filtering and data transformations.}
 \description{
 Use \code{LaF} to import data into a \code{\link{ffdf}} data.frame
 }
-

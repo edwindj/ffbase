@@ -25,4 +25,3 @@ The \code{cut} method for ff with the behaviour of \code{link{cut}}
 \seealso{
 cut
 }
-

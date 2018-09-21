@@ -65,4 +65,3 @@ table(duplicated(ffiris$Sepal.Width, by=10)[], duplicated(ffiris$Sepal.Width[]))
 \seealso{
 \code{\link[base]{duplicated}, \link[ff]{ffdforder}, \link[ff]{fforder}}
 }
-

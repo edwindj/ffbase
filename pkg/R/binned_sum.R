@@ -1,7 +1,7 @@
 #' Fast summing in different bins
 #' 
 #' \code{binned_sum} implements fast summing for given bins by calling c-code.
-#' @useDynLib ffbase
+#' @useDynLib ffbase, .registration = TRUE, .fixes = "C_"
 #' @param x \code{numeric} vector with the data to be summed
 #' @param bin \code{integer} vector with the bin number for each data point
 #' @param nbins \code{integer} maximum bin number 

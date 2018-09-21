@@ -36,4 +36,3 @@ dat[idx,][,]
 \seealso{
 ffindexget ffindexset
 }
-

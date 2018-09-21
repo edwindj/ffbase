@@ -33,4 +33,3 @@ ffifelse( ffiris$Sepal.Length < 5, Sys.Date(), ff(seq.Date( Sys.Date()+1
 \seealso{
 \code{\link[base]{ifelse}}
 }
-

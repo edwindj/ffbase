@@ -21,4 +21,3 @@ It main use it to rewrite "normal" R expression into chunked versions
 that can be evaluated in a chunked-for-loop.
 }
 \keyword{internal}
-

@@ -44,4 +44,3 @@ b <- ffrandom(10, runif)
 identical(a, b[])
 
 }
-

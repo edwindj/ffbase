@@ -71,4 +71,3 @@ x[testpositions, ]
 \seealso{
 \code{\link[ff]{Extract.ffdf}}
 }
-

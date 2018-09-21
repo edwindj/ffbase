@@ -17,4 +17,3 @@ return a vector of the same \code{length}}
 Chunkify creates a new function that operates on a ff vector. 
 It creates chunks from the ff vector and calls the orginal function \code{fun} on each chunk.
 }
-

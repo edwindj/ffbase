@@ -20,4 +20,3 @@ An integer vector of the same length of x, indicating groups
 Groups the input integer vector into several groups if the running cumulative
 sum increases a certain maximum number
 }
-

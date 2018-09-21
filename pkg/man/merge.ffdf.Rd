@@ -4,9 +4,10 @@
 \alias{merge.ffdf}
 \title{Merge two ffdf by common columns, or do other versions of database join operations.}
 \usage{
-\method{merge}{ffdf}(x, y, by = intersect(names(x), names(y)), by.x = by,
-  by.y = by, all = FALSE, all.x = all, all.y = all, sort = FALSE,
-  suffixes = c(".x", ".y"), incomparables = NULL, trace = FALSE, ...)
+\method{merge}{ffdf}(x, y, by = intersect(names(x), names(y)),
+  by.x = by, by.y = by, all = FALSE, all.x = all, all.y = all,
+  sort = FALSE, suffixes = c(".x", ".y"), incomparables = NULL,
+  trace = FALSE, ...)
 }
 \arguments{
 \item{x}{an ffdf}
@@ -110,4 +111,3 @@ options(ffbatchbytes = oldffbatchbytes)
 \seealso{
 \code{\link{merge}}
 }
-

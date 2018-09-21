@@ -25,4 +25,3 @@ The function \code{droplevels} is used to drop unused levels from a \code{ff}
 \seealso{
 \code{\link{droplevels}} \code{\link{droplevels.ffdf}}
 }
-

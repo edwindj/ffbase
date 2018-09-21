@@ -28,4 +28,3 @@ unique(ffiris[c("key2","Petal.Width","Species")])[,]
 options(ffmaxbytes = oldffmaxbytes)
 
 }
-

@@ -27,4 +27,3 @@ bySum(x, by, na.rm = FALSE, weight = NULL, ...)
 bySum(warpbreaks$breaks, warpbreaks$wool)
 bySum(warpbreaks$breaks, warpbreaks[,-1])
 }
-

@@ -29,4 +29,3 @@ The resulting rle object is a memory object and must fit into memory.
 \seealso{
 \code{\link{rle}} for an implementation that runs on ordinary vectors.
 }
-

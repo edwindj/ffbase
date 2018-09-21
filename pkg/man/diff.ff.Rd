@@ -18,4 +18,3 @@
 \description{
 Returned suitably lagged and iterated differences
 }
-

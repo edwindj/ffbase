@@ -5,7 +5,7 @@
 #' Please note that incorrect use of this function may crash your R-session.
 #' the values of \code{bins} must be in between 1:\code{nbins} and \code{bin} may not 
 #' contain \code{NA}
-#' @useDynLib ffbase
+#' @useDynLib ffbase, .registration = TRUE, .fixes = "C_"
 #' @param x \code{numeric} vector with the data to be summed squared
 #' @param mean \code{numeric} vector with an optional mean to be subtracted from the data to be summed and squared
 #' @param bin \code{integer} vector with the bin number for each observation

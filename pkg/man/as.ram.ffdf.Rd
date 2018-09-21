@@ -17,4 +17,3 @@ a data.frame in RAM
 \description{
 Load your ffdf object in RAM into a data.frame.
 }
-

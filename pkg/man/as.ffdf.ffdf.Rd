@@ -14,4 +14,3 @@
 \description{
 Coerce a ffdf object to an ffdf object.
 }
-

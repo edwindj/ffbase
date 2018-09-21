@@ -38,4 +38,3 @@ with(ffdat, {x+y})
 \seealso{
 \code{\link{ffdfwith}}
 }
-

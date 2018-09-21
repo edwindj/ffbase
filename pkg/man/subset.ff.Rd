@@ -20,4 +20,3 @@ a new ff vector containing the subset, data is physically copied
 \description{
 Subsetting a ff vector or ffdfdata frame
 }
-

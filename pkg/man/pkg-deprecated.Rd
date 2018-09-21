@@ -18,4 +18,3 @@ will be named "<columnname>.ff".
 A saved ffdf data.frame is a .rdata file and can be loaded with the \code{load} function
 Deprecated, the preferred method is \code{\link{save.ffdf}}
 }
-

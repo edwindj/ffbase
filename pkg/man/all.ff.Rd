@@ -21,4 +21,3 @@
 \description{
 Summary methods for ff objects
 }
-

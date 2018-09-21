@@ -21,4 +21,3 @@ sum of elements
 \description{
 \code{sum} returns the sum of all the values present in its arguments.
 }
-

@@ -27,4 +27,3 @@ x <- ff(vmode="double", length=1e7)
 
 mean(x)
 }
-

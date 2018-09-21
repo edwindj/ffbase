@@ -21,4 +21,3 @@ condSum(x, index, na.rm = FALSE, ...)
 \description{
 \code{condSum} works like a very fast version of tapply with \code{FUN=sum}.
 }
-

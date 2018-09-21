@@ -11,8 +11,8 @@ binned_sumsq(x, mean = rep(0, nbins), bin, nbins = max(bin), ...)
 \method{binned_sumsq}{default}(x, mean = rep(0, nbins), bin,
   nbins = max(bin), ...)
 
-\method{binned_sumsq}{ff}(x, mean = rep(0, nbins), bin, nbins = max(bin),
-  ...)
+\method{binned_sumsq}{ff}(x, mean = rep(0, nbins), bin,
+  nbins = max(bin), ...)
 }
 \arguments{
 \item{x}{\code{numeric} vector with the data to be summed squared}
@@ -39,4 +39,3 @@ Please note that incorrect use of this function may crash your R-session.
 the values of \code{bins} must be in between 1:\code{nbins} and \code{bin} may not 
 contain \code{NA}
 }
-

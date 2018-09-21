@@ -28,7 +28,8 @@ byMean <- function(x, by, na.rm=FALSE, weight=NULL, ...){
     bin <- arrayIndex2vectorIndex(ai, tdim)
   }
   if (missing(weight) || is.null(weight)){
-    bs <- .Call("binned_sum", as.numeric(x), as.integer(bin), as.integer(nbins), PACKAGE = "ffbase")
+    res <- matrix(0, nrow=nbins, ncol=3, dimnames=list(bin=seq_len(nbins), c("count", "sum", "NA")))
+    bs <- .Call("binned_sum", as.numeric(x), as.integer(bin), as.integer(nbins), res, PACKAGE = "ffbase")
   } else {
     stopifnot(length(weight) == length(x))
     bs <- .Call("bySum", as.numeric(x), as.integer(bin), as.integer(nbins), as.numeric(weight), PACKAGE = "ffbase")    

@@ -18,4 +18,3 @@ Concatenate \code{ff} vectors
 \seealso{
 \code{\link{ffappend}}
 }
-

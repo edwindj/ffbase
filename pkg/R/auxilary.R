@@ -14,7 +14,7 @@ checkRange <- function(range, x){
 #' Groups the input integer vector into several groups if the running cumulative
 #' sum increases a certain maximum number
 #'
-#' @useDynLib ffbase
+#' @useDynLib ffbase, .registration = TRUE, .fixes = "C_"
 #' @param x an integer vector
 #' @param max the maximum running cumulative size before an extra grouping is 
 #' done

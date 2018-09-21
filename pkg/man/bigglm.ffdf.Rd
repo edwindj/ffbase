@@ -43,4 +43,3 @@ summary(b)
 \seealso{
 \code{\link[biglm]{bigglm}}
 }
-

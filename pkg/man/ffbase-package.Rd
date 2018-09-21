@@ -2,8 +2,8 @@
 % Please edit documentation in R/pkg.R
 \docType{package}
 \name{ffbase-package}
-\alias{ffbase}
 \alias{ffbase-package}
+\alias{ffbase}
 \title{Basic statistical functions for ff}
 \description{
 Basic statistical functions for \code{\link{ff}} vectors and \code{\link{ffdf}} data.frames. 
@@ -76,6 +76,7 @@ The aim of ffbase is to make working with ff vectors and ffdf data.frame a bit e
    \code{\link{laf_to_ffdf}} \tab Import csv and fixed width files through package LaF. \cr
 }
 }
+
 \examples{
 
 ffdat <- as.ffdf(data.frame(x=1:10, y=10:1))
@@ -90,4 +91,3 @@ cut(ffdat$x, breaks=3)[]
 
 tabulate.ff(ffdat$x)
 }
-

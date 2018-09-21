@@ -10,4 +10,3 @@ hist2d.ff(x, y = NULL, nbins = 100, show = TRUE)
 function interface modeled after gplots::hist2d
 }
 \keyword{internal}
-

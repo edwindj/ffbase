@@ -14,4 +14,3 @@ set_ffbase_logging(level = c("info"), logger = if (interactive()) cat)
 \description{
 sets the logging of ffbase
 }
-

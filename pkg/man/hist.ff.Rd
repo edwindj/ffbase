@@ -21,4 +21,3 @@ histogram object
 \description{
 Currently this is a simple version of \code{\link{hist}} functionality.
 }
-

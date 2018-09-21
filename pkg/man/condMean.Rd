@@ -21,4 +21,3 @@ condMean(x, index, na.rm = FALSE, ...)
 \description{
 \code{condMean} works like a very fast version of tapply with \code{FUN=mean}.
 }
-

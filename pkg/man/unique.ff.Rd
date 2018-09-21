@@ -62,4 +62,3 @@ dim(test)
 \seealso{
 \code{\link[base]{unique}}
 }
-

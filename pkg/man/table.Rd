@@ -39,4 +39,3 @@ attribute to the non-factors.
 \seealso{
 \code{\link[base]{table}}
 }
-

@@ -27,4 +27,3 @@ as.character(ff(c(Sys.time())))
 \seealso{
 \code{\link[base]{as.character}}
 }
-

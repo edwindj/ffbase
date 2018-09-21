@@ -47,4 +47,3 @@ unpack.ffdf(tf)
 \seealso{
 \code{\link{load.ffdf}} \code{\link{pack.ffdf}}
 }
-
