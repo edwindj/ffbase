@@ -35,7 +35,7 @@ compact.ff <- function(x, use.na=TRUE,...){
    
    m <- which(m[idx])[1]
    if (m < vm){
-     clone(x, vmode=.vmode[m])
+     ff:clone(x, vmode=.vmode[m])
    } else {
      x
    }

@@ -100,11 +100,11 @@ coerce_to_highest_vmode <- function(x, y, onlytest=TRUE){
   	if(inherits(x, "ffdf")){
   		for(i in which(needtocoerce$coerce == TRUE)){
   			column <- names(x)[i]
-  			x[[column]] <- clone(x[[column]], vmode = needtocoerce$coerceto[i])
+  			x[[column]] <- ff::clone(x[[column]], vmode = needtocoerce$coerceto[i])
   		}
       x <- x[names(x)]
   	}else{
-  		x <- clone(x, vmode = needtocoerce$coerceto)
+  		x <- ff::clone(x, vmode = needtocoerce$coerceto)
   	}
   }
   x  

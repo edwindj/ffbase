@@ -26,6 +26,8 @@ It uses the biglm package and is a simple wrapper to allow to work with an ffdf 
 Make sure that package is loaded.
 }
 \examples{
+\dontrun{
+  
 library(biglm)
 library(ff)
 
@@ -39,6 +41,7 @@ b <- bigglm(log(Volume)~log(Girth)+log(Height)+offset(2*log(Girth)+log(Height)),
             data=x, chunksize=10, sandwich=TRUE)
 summary(b)
 
+}
 }
 \seealso{
 \code{\link[biglm]{bigglm}}
