@@ -79,7 +79,9 @@ test_that("merge.ffdf left outer join works",{
 
   ## Show coercion to allow NA's
   authors$test <- ff(TRUE, length=nrow(authors), vmode = "boolean")
-  m3 <- merge(books, authors, by.x = "name", by.y = "surname", all.x=TRUE, all.y=FALSE)
+  expect_warning(
+    m3 <- merge(books, authors, by.x = "name", by.y = "surname", all.x=TRUE, all.y=FALSE)
+  )
   expect_true(vmode(m3$test) == "logical")
   expect_true(sum(m3$test[], na.rm=TRUE) == sum(!is.na(m3$nationality[])))
   options(ffbatchbytes = oldffbatchbytes)
