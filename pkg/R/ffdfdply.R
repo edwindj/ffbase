@@ -33,6 +33,7 @@ ffdfdply <- function (x, split, FUN, BATCHBYTES = getOption("ffbatchbytes"),
   ## Detect optimal split size -> 2 runs over the split data
   ##
   if(trace) message(sprintf("%s, calculating split sizes", Sys.time()))
+  #browser()
   if(!is.factor.ff(split)) {
     warning("split needs to be an ff factor, converting using as.character.ff to an ff factor")
     splitby <- as.character.ff(split)

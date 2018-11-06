@@ -54,14 +54,14 @@ dim(iris)
 result[1:10,]
 
 ffiris$integerkey <- with(ffiris, as.integer(Sepal.Length))
-result <- ffdfdply( x = ffiris, split = ffiris$integerkey
+result <- ffdfdply( x = ffiris, split = as.character(ffiris$integerkey)
                   , FUN = function(x) youraggregatorFUN(x), BATCHBYTES = 5000
                   , trace=TRUE
                   )
 
 ffiris$datekey <- ff( as.Date(ffiris$Sepal.Length[], origin = "1970-01-01"),
                       vmode = "integer")
-result <- ffdfdply( x = ffiris, split = ffiris$datekey 
+result <- ffdfdply( x = ffiris, split = as.character(ffiris$datekey) 
                   , FUN = function(x) youraggregatorFUN(x)
                   , BATCHBYTES = 5000, trace=TRUE
                   )
