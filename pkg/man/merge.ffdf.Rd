@@ -99,9 +99,8 @@ names(books)
 names(m1)
 unique(paste(m1$name[], m1$nationality[]))
 unique(paste(m1$name[], m1$deceased[]))
-## Show coercion to allow NA's
-authors$test <- ff(TRUE, length=nrow(authors), vmode = "boolean")
-vmode(authors$test)
+
+authors$test <- ff(TRUE, length=nrow(authors), vmode = "logical")
 m1 <- merge( books, authors, by.x = "name", by.y = "surname"
            , all.x=TRUE, all.y=FALSE, trace = TRUE)
 vmode(m1$test)
