@@ -8,11 +8,9 @@
 \usage{
 binned_tabulate(x, bin, nbins = max(bin), nlevels = nlevels(x), ...)
 
-\method{binned_tabulate}{default}(x, bin, nbins = max(bin),
-  nlevels = nlevels(x), ...)
+\method{binned_tabulate}{default}(x, bin, nbins = max(bin), nlevels = nlevels(x), ...)
 
-\method{binned_tabulate}{ff}(x, bin, nbins = max(bin),
-  nlevels = nlevels(x), ...)
+\method{binned_tabulate}{ff}(x, bin, nbins = max(bin), nlevels = nlevels(x), ...)
 }
 \arguments{
 \item{x}{\code{factor} or \code{integer} vector with the data to be tabulated}

@@ -109,9 +109,6 @@ export(as.character.ff)
 export(as.ffdf.ffdf)
 export(as.ram.ffdf)
 export(bigglm.ffdf)
-if(getRversion() >= "3.6.0"){
-  S3method(biglm::bigglm, ffdf)
-}
 export(binned_sum)
 export(binned_sum.default)
 export(binned_sum.ff)

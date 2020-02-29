@@ -4,8 +4,15 @@
 \alias{ffdfdply}
 \title{Performs a split-apply-combine on an ffdf}
 \usage{
-ffdfdply(x, split, FUN, BATCHBYTES = getOption("ffbatchbytes"),
-  RECORDBYTES = sum(.rambytes[vmode(x)]), trace = TRUE, ...)
+ffdfdply(
+  x,
+  split,
+  FUN,
+  BATCHBYTES = getOption("ffbatchbytes"),
+  RECORDBYTES = sum(.rambytes[vmode(x)]),
+  trace = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x}{an ffdf}

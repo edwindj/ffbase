@@ -4,8 +4,13 @@
 \alias{save.ffdf}
 \title{Save ffdf data.frames in a directory}
 \usage{
-save.ffdf(..., dir = "./ffdb", clone = FALSE, relativepath = TRUE,
-  overwrite = FALSE)
+save.ffdf(
+  ...,
+  dir = "./ffdb",
+  clone = FALSE,
+  relativepath = TRUE,
+  overwrite = FALSE
+)
 }
 \arguments{
 \item{...}{\code{ffdf} data.frames, \code{ff} vectors, or other variables to be saved in the directory}

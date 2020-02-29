@@ -5,11 +5,9 @@
 \alias{duplicated.ffdf}
 \title{Duplicated for ff and ffdf objects}
 \usage{
-\method{duplicated}{ff}(x, incomparables = FALSE, fromLast = FALSE,
-  trace = FALSE, ...)
+\method{duplicated}{ff}(x, incomparables = FALSE, fromLast = FALSE, trace = FALSE, ...)
 
-\method{duplicated}{ffdf}(x, incomparables = FALSE, fromLast = FALSE,
-  trace = FALSE, ...)
+\method{duplicated}{ffdf}(x, incomparables = FALSE, fromLast = FALSE, trace = FALSE, ...)
 }
 \arguments{
 \item{x}{\code{ff} object or \code{ffdf} object}

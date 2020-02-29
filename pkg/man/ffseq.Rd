@@ -4,8 +4,14 @@
 \alias{ffseq}
 \title{Sequence Generation of \code{ff} vectors.}
 \usage{
-ffseq(from = 1, to = 1, by = ((to - from)/(length.out - 1)),
-  length.out = NULL, along.with = NULL, ...)
+ffseq(
+  from = 1,
+  to = 1,
+  by = ((to - from)/(length.out - 1)),
+  length.out = NULL,
+  along.with = NULL,
+  ...
+)
 }
 \arguments{
 \item{from}{the starting value of the sequence}

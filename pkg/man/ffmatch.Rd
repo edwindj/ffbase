@@ -6,11 +6,23 @@
 \alias{\%in\%}
 \title{Value Matching for ff objects}
 \usage{
-ffmatch(x, table, nomatch = NA_integer_, incomparables = NULL,
-  trace = FALSE, ...)
+ffmatch(
+  x,
+  table,
+  nomatch = NA_integer_,
+  incomparables = NULL,
+  trace = FALSE,
+  ...
+)
 
-ffdfmatch(x, table, nomatch = NA_integer_, incomparables = NULL,
-  trace = FALSE, ...)
+ffdfmatch(
+  x,
+  table,
+  nomatch = NA_integer_,
+  incomparables = NULL,
+  trace = FALSE,
+  ...
+)
 
 x \%in\% table
 }

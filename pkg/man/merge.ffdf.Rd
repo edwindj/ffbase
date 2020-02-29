@@ -4,10 +4,21 @@
 \alias{merge.ffdf}
 \title{Merge two ffdf by common columns, or do other versions of database join operations.}
 \usage{
-\method{merge}{ffdf}(x, y, by = intersect(names(x), names(y)),
-  by.x = by, by.y = by, all = FALSE, all.x = all, all.y = all,
-  sort = FALSE, suffixes = c(".x", ".y"), incomparables = NULL,
-  trace = FALSE, ...)
+\method{merge}{ffdf}(
+  x,
+  y,
+  by = intersect(names(x), names(y)),
+  by.x = by,
+  by.y = by,
+  all = FALSE,
+  all.x = all,
+  all.y = all,
+  sort = FALSE,
+  suffixes = c(".x", ".y"),
+  incomparables = NULL,
+  trace = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{an ffdf}
@@ -55,7 +66,7 @@ coerced respectively to vmode 'logical', 'byte', 'byte', 'short', 'integer' to a
 authors <- data.frame(
     surname = c("Tukey", "Venables", "Tierney", "Ripley", "McNeil"),
     nationality = c("US", "Australia", "US", "UK", "Australia"),
-    deceased = c("yes", rep("no", 4)))
+    deceased = c("yes", rep("no", 4)), stringsAsFactors = TRUE)
 books <- data.frame(
     name = c("Tukey", "Venables", "Tierney",
              "Ripley", "Ripley", "McNeil", "R Core"),
@@ -66,7 +77,7 @@ books <- data.frame(
               "Interactive Data Analysis",
               "An Introduction to R"),
     other.author = c(NA, "Ripley", NA, NA, NA, NA,
-                     "Venables & Smith"))
+                     "Venables & Smith"), stringsAsFactors = TRUE)
 books <- lapply(1:100, FUN=function(x, books){
 	books$price <- rnorm(nrow(books))
 	books

@@ -14,3 +14,4 @@ b <- bigglm(log(Volume)~log(Girth)+log(Height)+offset(2*log(Girth)+log(Height)),
 summary(b)
 
 }
+

@@ -19,4 +19,4 @@ Suggests:
     parallel,
     LaF,
     biglm
-RoxygenNote: 6.1.0
+RoxygenNote: 7.0.2

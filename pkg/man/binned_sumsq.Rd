@@ -8,11 +8,9 @@
 \usage{
 binned_sumsq(x, mean = rep(0, nbins), bin, nbins = max(bin), ...)
 
-\method{binned_sumsq}{default}(x, mean = rep(0, nbins), bin,
-  nbins = max(bin), ...)
+\method{binned_sumsq}{default}(x, mean = rep(0, nbins), bin, nbins = max(bin), ...)
 
-\method{binned_sumsq}{ff}(x, mean = rep(0, nbins), bin,
-  nbins = max(bin), ...)
+\method{binned_sumsq}{ff}(x, mean = rep(0, nbins), bin, nbins = max(bin), ...)
 }
 \arguments{
 \item{x}{\code{numeric} vector with the data to be summed squared}

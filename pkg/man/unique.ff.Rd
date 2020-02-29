@@ -5,11 +5,9 @@
 \alias{unique.ffdf}
 \title{Unique values for ff and ffdf objects}
 \usage{
-\method{unique}{ff}(x, incomparables = FALSE, fromLast = FALSE,
-  trace = FALSE, ...)
+\method{unique}{ff}(x, incomparables = FALSE, fromLast = FALSE, trace = FALSE, ...)
 
-\method{unique}{ffdf}(x, incomparables = FALSE, fromLast = FALSE,
-  trace = FALSE, ...)
+\method{unique}{ffdf}(x, incomparables = FALSE, fromLast = FALSE, trace = FALSE, ...)
 }
 \arguments{
 \item{x}{\code{ff} object or \code{ffdf} object}

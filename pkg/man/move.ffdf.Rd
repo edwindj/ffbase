@@ -4,8 +4,12 @@
 \alias{move.ffdf}
 \title{Moves all the columns of ffdf data.frames into a directory}
 \usage{
-move.ffdf(x, dir = ".", name = as.character(substitute(x)),
-  relativepath = FALSE)
+move.ffdf(
+  x,
+  dir = ".",
+  name = as.character(substitute(x)),
+  relativepath = FALSE
+)
 }
 \arguments{
 \item{x}{\code{ffdf} data.frame to be moved}
