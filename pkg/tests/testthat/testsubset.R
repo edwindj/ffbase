@@ -46,6 +46,6 @@ test_that("Subsetting ffdf within a function works",{
     b <- 3
     subset(x, value > a & value < b)
   }
-  m <- as.ffdf(data.frame(name = letters[1:10], value = 1:10))
+  m <- as.ffdf(data.frame(name = letters[1:10], value = 1:10, stringsAsFactors = TRUE))
   test(m)
 })

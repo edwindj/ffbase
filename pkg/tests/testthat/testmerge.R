@@ -7,7 +7,7 @@ test_that("merge.ffdf inner join works",{
   authors <- data.frame(
     surname = c("Tukey", "Venables", NA, "Ripley", "McNeil"),
     nationality = c("US", "Australia", "US", "UK", "Australia"),
-    deceased = c("yes", rep("no", 4)))
+    deceased = c("yes", rep("no", 4)), stringsAsFactors = TRUE)
   books <- data.frame(
     name = c("Tukey", "Venables", "Tierney",
              "Ripley", "Ripley", NA, "R Core"),
@@ -18,7 +18,7 @@ test_that("merge.ffdf inner join works",{
               "Interactive Data Analysis",
               "An Introduction to R"),
     other.author = c(NA, "Ripley", NA, NA, NA, NA,
-                     "Venables & Smith"))
+                     "Venables & Smith"), stringsAsFactors = TRUE)
   books <- lapply(1:500, FUN=function(x, books){
     books$price <- rnorm(nrow(books))
     books
@@ -45,7 +45,7 @@ test_that("merge.ffdf left outer join works",{
   authors <- data.frame(
     surname = c("Tukey", "Venables", NA, "Ripley", "McNeil"),
     nationality = c("US", "Australia", "US", "UK", "Australia"),
-    deceased = c("yes", rep("no", 4)))
+    deceased = c("yes", rep("no", 4)),stringsAsFactors = TRUE)
   books <- data.frame(
     name = c("Tukey", "Venables", "Tierney",
              "Ripley", "Ripley", NA, "R Core"),
@@ -56,7 +56,7 @@ test_that("merge.ffdf left outer join works",{
               "Interactive Data Analysis",
               "An Introduction to R"),
     other.author = c(NA, "Ripley", NA, NA, NA, NA,
-                     "Venables & Smith"))
+                     "Venables & Smith"), stringsAsFactors = TRUE)
   books <- lapply(1:500, FUN=function(x, books){
     books$price <- rnorm(nrow(books))
     books
