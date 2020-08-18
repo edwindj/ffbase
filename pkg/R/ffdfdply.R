@@ -34,7 +34,7 @@ ffdfdply <- function (x, split, FUN, BATCHBYTES = getOption("ffbatchbytes"),
   ##
   if(trace) message(sprintf("%s, calculating split sizes", Sys.time()))
   #browser()
-  if(!is.factor.ff(split)) {
+  if(!ff::is.factor(split)) {
     warning("split needs to be an ff factor, converting using as.character.ff to an ff factor")
     splitby <- as.character.ff(split)
   }else{
@@ -47,7 +47,12 @@ ffdfdply <- function (x, split, FUN, BATCHBYTES = getOption("ffbatchbytes"),
     splitby <- splitby[!missings]
   }
   splitgroups <- list()
-  splitgroups$tab <- binned_tabulate.ff(x = ff(factor("data", levels="data"), length = length(splitby)), bin = splitby, nbins = max(tmp), nlevels = 1)
+  splitgroups$tab <- binned_tabulate.ff( x = ff(factor("data", levels="data"), length = length(splitby))
+                                       , bin = splitby
+                                       , nbins = max(tmp)
+                                       , nlevels = 1
+                                       )
+  #browser()
   rn <- rownames(splitgroups$tab)
   splitgroups$tab <- as.table(splitgroups$tab[,'data'])
   names(splitgroups$tab) <- rn
@@ -63,12 +68,13 @@ ffdfdply <- function (x, split, FUN, BATCHBYTES = getOption("ffbatchbytes"),
   if(trace) message(sprintf("%s, building up split locations", Sys.time()))
   splitpositions <- list()
   splitpositions$rowidxgroups <- ffdf(pos = ffseq_len(as.integer(length(split))), split = split)
-  splitpositions$rowidxgroups$group <- ffdfwith(splitpositions$rowidxgroups, splitgroups$tab.groups[fmatch(as.character(split), names(splitgroups$tab))])
+  splitpositions$rowidxgroups$group <- ffdfwith(splitpositions$rowidxgroups, splitgroups$tab.groups[fmatch(as.character(split[]), names(splitgroups$tab))])
   splitpositions$rowidxgroups <- splitpositions$rowidxgroups[c("pos","group")]  
   splitpositions$nrsplits <- max(splitgroups$tab.groups)
   
   splitpositions$grouprowidx <- list()  
   splitpositions$runninggrouppos <- list()
+  #browser()
   for(idx in 1:splitpositions$nrsplits){
     splitpositions$grouprowidx[[as.character(idx)]] <- ff(as.integer(NA), length = sum(splitgroups$tab[splitgroups$tab.groups == idx]), vmode = "integer")
     splitpositions$runninggrouppos[[as.character(idx)]] <- 0

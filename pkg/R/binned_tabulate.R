@@ -23,7 +23,7 @@ binned_tabulate <- function (x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
 #' @export binned_tabulate.default
 binned_tabulate.default <- function (x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
    stopifnot(length(x)==length(bin))
-   if (is.factor(bin)){
+   if (ff::is.factor(bin)){
      bins <- levels(bin)
      nbins <- length(bins)
    } else {
@@ -41,6 +41,7 @@ binned_tabulate.default <- function (x, bin, nbins=max(bin), nlevels=nlevels(x),
 #' @export
 #' @export binned_tabulate.ff
 binned_tabulate.ff <- function(x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
+  #browser()
   lev <- if (nlevels(x)) c("na", levels(x))
          else c("na", 1:nlevels)
 
@@ -56,7 +57,7 @@ binned_tabulate.ff <- function(x, bin, nbins=max(bin), nlevels=nlevels(x), ...){
     return(res)
   }
   
-  if (is.factor.ff(bin)){
+  if (ff::is.factor(bin)){
     bins <- levels(bin)
     nbins <- length(bins)
   } else {

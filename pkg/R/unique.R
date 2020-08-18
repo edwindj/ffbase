@@ -17,6 +17,7 @@
 #' @return An ffdf with unique values in \code{x} or an ff vector with unique values in \code{x} if x is a ff vector. 
 #' @seealso \code{\link[base]{unique}}
 unique.ff <- function(x, incomparables = FALSE, fromLast = FALSE, trace=FALSE, ...){
+  #browser()
   if (!identical(incomparables, FALSE)){
     .NotYetUsed("incomparables != FALSE")
   }

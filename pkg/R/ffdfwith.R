@@ -30,15 +30,15 @@ ffdfwith <- function(data, expr, ...){
    res <- eval(e, nl, parent.frame())
    
    fc <- FALSE
-   if (is.character(res) || is.factor(res)){
+   if (is.character(res) || ff::is.factor(res)){
      res <- as.factor(res)
      fc <- TRUE
    } else if (is.data.frame(res)){
-     fc <- sapply(res, function(x) is.factor(x) || is.character(x))
+     fc <- sapply(res, function(x) ff::is.factor(x) || is.character(x))
      res[fc] <- lapply(res[fc], as.factor)
    }
    
-   if (is.vector(res) || is.factor(res)){
+   if (is.vector(res) || ff::is.factor(res)){
       res <- as.ff(res)
       length(res) <- nrow(data)
       for (.i in chunks[-1]){

@@ -14,7 +14,7 @@ tabulate.ff <- function( bin
 #					        , FFRETURN = FALSE
 					        ){ 
    FFRETURN = FALSE
-   if (is.factor(bin)){
+   if (ff::is.factor(bin)){
       levels(bin) <- NULL
    }
    

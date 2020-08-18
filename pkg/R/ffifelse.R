@@ -20,11 +20,11 @@ ffifelse <- function(test, yes, no){
 		no <- ff(no, length=length(test))
 	}
 	dat <- ffdf(fftest = test, ffyes = yes, ffno = no)
-	if(is.factor.ff(dat$ffyes) && is.factor.ff(dat$ffno)){
+	if(ff::is.factor(dat$ffyes) && ff::is.factor(dat$ffno)){
 		result <- with(dat, ifelse(fftest, as.character(ffyes), as.character(ffno)))
-	}else if(is.factor.ff(dat$ffyes) && !is.factor.ff(dat$ffno)){
+	}else if(ff::is.factor(dat$ffyes) && !ff::is.factor(dat$ffno)){
 		result <- with(dat, ifelse(fftest, as.character(ffyes), ffno))	
-	}else if(!is.factor.ff(dat$ffyes) && is.factor.ff(dat$ffno)){
+	}else if(!ff::is.factor(dat$ffyes) && ff::is.factor(dat$ffno)){
 		result <- with(dat, ifelse(fftest, ffyes, as.character(ffno)))
 	}else{
 		result <- with(dat, ifelse(fftest, ffyes, ffno))	

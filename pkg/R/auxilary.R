@@ -96,15 +96,15 @@ coerce_to_highest_vmode <- function(x, y, onlytest=TRUE){
   if(onlytest){
   	return(needtocoerce)
   }
-  if(sum(needtocoerce$coerce) > 0){
+	if(sum(needtocoerce$coerce) > 0){
   	if(inherits(x, "ffdf")){
   		for(i in which(needtocoerce$coerce == TRUE)){
   			column <- names(x)[i]
-  			x[[column]] <- ff::clone(x[[column]], vmode = needtocoerce$coerceto[i])
+  			x[[column]] <- ff::clone.ff(x[[column]], vmode = needtocoerce$coerceto[i])
   		}
       x <- x[names(x)]
   	}else{
-  		x <- ff::clone(x, vmode = needtocoerce$coerceto)
+  		x <- ff::clone.ff(x, vmode = needtocoerce$coerceto)
   	}
   }
   x  
@@ -124,6 +124,7 @@ ffbaseffdfindexget <- function(x, index, indexorder = NULL, ...){
 }
 
 ffdfget_columnwise <- function(x, index=NULL){
+  #browser()
 	list_to_df <- function (list) {
     rows <- unique(unlist(lapply(list, NROW)))
     structure(list, class = "data.frame", row.names = seq_len(rows))

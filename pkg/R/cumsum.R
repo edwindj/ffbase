@@ -11,7 +11,8 @@
 #' @export cumsum.ff
 #' @seealso \code{\link{cumsum}}, \code{\link{cumprod}}, \code{\link{cummax}}, \code{\link{cummin}}
 cumsum.ff <- function(x, ...){
-  result <- ff::clone.ff(x, vmode = "double")
+  
+  result <- clone(x, vmode = "double")
   
   i.last <- 0
   for (i in chunk(x, ...)){

@@ -34,7 +34,7 @@ ffdfrbind.fill <- function(..., clone=TRUE){
     }
   }
   if(clone){
-    result <- ff::clone(x[[1]][columns])
+    result <- clone(x[[1]][columns])
   }else{
     result <- x[[1]][columns]
   }

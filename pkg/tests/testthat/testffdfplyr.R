@@ -15,7 +15,11 @@ test_that("ffdfplyr works",{
  		highestbypetalwidth$group <- factor(x= "highest", levels = c("lowest","highest"))
  		rbind(lowestbypetalwidth, highestbypetalwidth)
 	}
-	test.ff <- ffdfdply(x = ffiris, split = ffiris$Species, FUN = function(x) testFUN(x), BATCHBYTES = 5000, trace=TRUE)
+	test.ff <- ffdfdply( x = ffiris, split = ffiris$Species
+	                   , FUN = function(x) testFUN(x)
+	                   , BATCHBYTES = 5000
+	                   , trace=TRUE
+	                   )
 	test.ram <- split(iris, iris$Species)
 	test.ram <- lapply(test.ram, FUN=function(x) testFUN(x))
 	test.ram <- do.call(rbind, test.ram)

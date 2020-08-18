@@ -36,14 +36,14 @@ with.ffdf <- function(data, expr, ...){
 #      stop("'with.ffdf' only returns `ff` object of equal length of `nrow(data)`")
 #    }
    
-   if (is.character(res) || is.factor(res)){
+   if (is.character(res) || ff::is.factor(res)){
      res <- as.factor(res)
      fc <- TRUE
    } else if (is.data.frame(res)){
-     fc <- sapply(res, function(x) is.factor(x) || is.character(x))
+     fc <- sapply(res, function(x) ff::is.factor(x) || is.character(x))
      res[fc] <- lapply(res[fc], as.factor)
    }
-   if (is.vector(res) || is.factor(res) || inherits(res, "Date") || inherits(res, "POSIXct")){
+   if (is.vector(res) || ff::is.factor(res) || inherits(res, "Date") || inherits(res, "POSIXct")){
       res <- as.ff(res)
       length(res) <- nrow(data)
       for (i in chunks[-1]){
@@ -132,7 +132,7 @@ within.ffdf <- function(data, expr, ...){
        cdat[names(l)] <- l
        cdat[del] <- list()
 
-       for(f in names(cdat)[sapply(cdat, is.factor)]) {
+       for(f in names(cdat)[sapply(cdat, ff::is.factor)]) {
            levels(res[f]) <- appendLevels(levels(res[f]), levels(cdat[f]))
        }
 

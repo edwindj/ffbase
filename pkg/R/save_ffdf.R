@@ -51,7 +51,7 @@ save.ffdf <- function(..., dir="./ffdb", clone=FALSE, relativepath=TRUE, overwri
      x = get(n, envir=parent.frame())
      if (is.ffdf(x)) {
        if (isTRUE(clone)){
-         x <- ff::clone(x)
+         x <- ff::clone.ffdf(x)
        }
        assign(n, move.ffdf(x, dir=".", name=n, relativepath=relativepath))
      }
@@ -68,7 +68,7 @@ save.ffdf <- function(..., dir="./ffdb", clone=FALSE, relativepath=TRUE, overwri
      for (n in names){
        x = get(n, envir = parent.frame())
        if (is.ffdf(x)){
-         for (i in bit::physical(x)){
+         for (i in .physical(x)){
            filename(i) <- filename(i)
          }
          close(x)
@@ -105,7 +105,7 @@ move.ffdf <- function(x, dir=".", name=as.character(substitute(x)), relativepath
     
     # set path to relative path, BEWARE if wd is changed this should be reset!
     if (isTRUE(relativepath)){
-      bit::physical(ffcol)$filename <- ffcolname
+      physical(ffcol)$filename <- ffcolname
     }
   }
   close(x)
@@ -138,12 +138,12 @@ load.ffdf <- function(dir, envir=parent.frame()){
   for (n in names){
     x = get(n, envir=env)
     if (is.ffdf(x)){
-      for (i in bit::physical(x)){
-        bit::physical(i)$filename <- file_path_as_absolute(bit::physical(i)$filename)
+      for (i in physical(x)){
+        physical(i)$filename <- file_path_as_absolute(physical(i)$filename)
       }
       close(x)
     } else if (is.ff(x)){
-      bit::physical(x)$filename <- file_path_as_absolute(bit::physical(x)$filename)
+      physical(x)$filename <- file_path_as_absolute(physical(x)$filename)
       close(x)
     }
     assign(n, x, envir=envir)

@@ -24,7 +24,7 @@ The generic function \code{is.na} indicates which elements are missing.\cr
 The generic function \code{is.na<-} sets elements to \code{NA}.
 }
 \examples{
-is.na.ff(ff(c(NA, 1:100)), BATCHBYTES=20, VERBOSE=TRUE)
+is.na.ff(ff(c(NA, 1:100)), BATCHBYTES=20)
 ## S3 generic
 is.na(ff(c(NA, 1:100)))
 ## Assign a missing value

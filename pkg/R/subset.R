@@ -10,7 +10,7 @@
 #' @return a new ff vector containing the subset, data is physically copied
 subset.ff <- function(x, subset, ...){
   if (missing(subset)){
-    return(ff::clone(x))
+    return(clone(x))
   }
   ss <- as.expression(substitute(subset))
   try(ss <- subset, silent=TRUE)

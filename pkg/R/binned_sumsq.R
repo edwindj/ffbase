@@ -24,7 +24,7 @@ binned_sumsq <- function (x, mean=rep(0, nbins), bin, nbins=max(bin), ...){
 #' @export binned_sumsq.default
 binned_sumsq.default <- function (x, mean=rep(0, nbins), bin, nbins=max(bin), ...){
    stopifnot(length(x)==length(bin))
-   if (is.factor(bin)){
+   if (ff::is.factor(bin)){
      bins <- levels(bin)
      nbins <- length(bins)
    } else {
@@ -54,7 +54,7 @@ binned_sumsq.ff <- function(x, mean=rep(0, nbins), bin, nbins=max(bin), ...){
     return(res)
   }
   
-  if (is.factor.ff(bin)){
+  if (ff::is.factor(bin)){
     bins <- levels(bin)
     nbins <- length(bins)
   } else {

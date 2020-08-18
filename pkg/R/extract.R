@@ -1,3 +1,8 @@
+ff_get <- getS3method("[", "ff", getNamespace("ff"))
+ff_set <- getS3method("[<-", "ff", getNamespace("ff"))
+ffdf_get <- getS3method("[", "ffdf", getNamespace("ff"))
+ffdf_set <- getS3method("[<-", "ffdf", getNamespace("ff"))
+
 #' Reading and writing vectors extended to handle logical \code{ff} vectors as indexes
 #'
 #' Package \code{ff} does not allow to extract and set values of \code{ff} vectors based on logical \code{ff} vectors. For this reason
@@ -30,10 +35,9 @@
       return(NULL)
     }    
     finalizer(idx) <- "delete"
-    ff::`[.ff`(x=x, i=idx, pack=pack)
-  }else{
-    ff::`[.ff`(x=x, i=i, pack=pack)
-  }	
+    i <- idx
+  }
+  ff_get(x = x, i = i, pack = pack)
 }
 
 #' @rdname ffextract
@@ -47,10 +51,9 @@
       stop("no value for replacement")
     }    
     finalizer(idx) <- "delete"
-    ff::`[<-.ff`(x=x, i=idx, add=add, pack=pack, value=value)
-  }else{
-    ff::`[<-.ff`(x=x, i=i, add=add, pack=pack, value=value)
-  }	
+    i <- idx
+  }
+  ff_set(x=x, i=i, add=add, pack=pack, value=value)
 }
 
 
@@ -84,24 +87,24 @@
     }
     finalizer(idx) <- "delete"
     if(missing(j)){
-      ff::"[.ffdf"(x, i=idx, j=colnames(x), drop = drop)
+      ffdf_get(x, i=idx, j=colnames(x), drop = drop)
     }else{
-      ff::"[.ffdf"(x, i=idx, j=j, drop = drop)
+      ffdf_get(x, i=idx, j=j, drop = drop)
     }
   }else{
     if(missing(i) & missing(j)){
-      ff::"[.ffdf"(x, i=i, j=j, drop = drop) 
+      ffdf_get(x, i=i, j=j, drop = drop) 
     }else if(missing(j)){
       n.args <- nargs() - !missing(drop)
       if(n.args == 2){
-        ff::"[.ffdf"(x, i=i)              
+        ffdf_get(x, i=i)              
       }else{
-        ff::"[.ffdf"(x, i=i, j=colnames(x), drop=drop)
+        ffdf_get(x, i=i, j=colnames(x), drop=drop)
       }      
     }else if(missing(i)){
-      ff::"[.ffdf"(x, i=i, j=j, drop = drop)  
+      ffdf_get(x, i=i, j=j, drop = drop)  
     }else{
-      ff::"[.ffdf"(x, i=i, j=j, drop = drop)  
+      ffdf_get(x, i=i, j=j, drop = drop)  
     }    
   }
 }
@@ -119,19 +122,19 @@
     }
     finalizer(idx) <- "delete"
     if(missing(j)){
-      ff::"[<-.ffdf"(x, i=idx, j=colnames(x), value=value)
+      ffdf_set(x, i=idx, j=colnames(x), value=value)
     }else{
-      ff::"[<-.ffdf"(x, i=idx, j=j, value=value)
+      ffdf_set(x, i=idx, j=j, value=value)
     }
   }else{
     if(missing(i) & missing(j)){
-      ff::"[<-.ffdf"(x, value=value) 
+      ffdf_set(x, value=value) 
     }else if(missing(j)){
-      ff::"[<-.ffdf"(x, i=i, j = colnames(x), value=value)        
+      ffdf_set(x, i=i, j = colnames(x), value=value)        
     }else if(missing(i)){
-      ff::"[<-.ffdf"(x, i=i, j=j, value=value)  
+      ffdf_set(x, i=i, j=j, value=value)  
     }else{
-      ff::"[<-.ffdf"(x, i=i, j=j, value=value)
+      ffdf_set(x, i=i, j=j, value=value)
     }
   }
 }

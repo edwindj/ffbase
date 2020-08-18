@@ -18,7 +18,7 @@ binned_sum <- function (x, bin, nbins=max(bin), ...){
 #' @export binned_sum.default
 binned_sum.default <- function (x, bin, nbins=max(bin), ...){
    stopifnot(length(x)==length(bin))
-   if (is.factor(bin)){
+   if (ff::is.factor(bin)){
      bins <- levels(bin)
      nbins <- length(bins)
    } else {
@@ -46,7 +46,7 @@ binned_sum.ff <- function(x, bin, nbins=max(bin), ...){
   }
   
   stopifnot(length(x)==length(bin))
-  if (is.factor.ff(bin)){
+  if (ff::is.factor(bin)){
     bins <- levels(bin)
     nbins <- length(bins)
   } else {

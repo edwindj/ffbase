@@ -8,16 +8,14 @@
 #' @return An ff vector of integers with range from 1 to length.out
 #' @seealso \code{\link[base]{seq_len}}
 ffseq_len <- function(length.out){
-	BATCHBYTES <- getOption("ffbatchbytes")
 	length.out <- as.integer(length.out)
 	if(length.out < 1){
 		stop("length.out needs to be positive")
 	}
-	bysize <- floor(BATCHBYTES / .rambytes["integer"])
-	x <- ff(NA, length=length.out, vmode = "integer")
-	for (i in chunk(1, length.out, by=bysize)){
+	x <- ff(NA_integer_, length=length.out, vmode = "integer")
+	for (i in chunk(x)){
     Log$chunk(i)
-		idx <- as.integer(hi(from=min(i), to=max(i), by = 1L, maxindex = max(i)))
+		idx <- as.integer(ff::as.hi(i))
     x[idx] <- idx
   }
 	x

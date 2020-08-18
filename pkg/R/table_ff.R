@@ -57,7 +57,7 @@ table.ff <- function( ...
   if(sum(!vmode(dat) %in% c("byte", "short", "integer")) > 0){  	
     stop(sprintf("Only vmodes integer currently allowed - are you sure ... contains only factors or integers?"))
   }
-  nonfactors <- sapply(colnames(dat), FUN=function(column, dat) !is.factor.ff(dat[[column]]), dat=dat)
+  nonfactors <- sapply(colnames(dat), FUN=function(column, dat) !ff::is.factor(dat[[column]]), dat=dat)
   nonfactors <- names(nonfactors)[nonfactors == TRUE]
   if(length(nonfactors) > 0){
     for(column in nonfactors){

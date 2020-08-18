@@ -40,14 +40,14 @@ ffappend <- function(x, y, adjustvmode=TRUE, ...){
    if (!to) return(x)
    
    length(x) <- len + to 
-   if (is.factor.ff(x)){
+   if (ff::is.factor(x)){
       levels(x) <- appendLevels(levels(x), levels(y))  
    }
    ## Upgrade to a higher vmode if needed
    if(adjustvmode==TRUE){
 	   x <- coerce_to_highest_vmode(x=x, y=y, onlytest=FALSE)
    }
-   for (i in chunk(x, from=1, to=to, ...)){
+   for (i in chunk(y)){
      #Log$chunk(i)
      if (is.atomic(y)){
 			 i <- as.which(i)
@@ -77,13 +77,13 @@ ffdfappend <- function(  x
                        ){
   
   fc <- if (is.ffdf(dat)){ 
-    sapply(bit::physical(dat)[names(dat)], function(i) is.factor.ff(i))
+    sapply(names(dat), function(i) ff::is.factor(dat[[i]]))
   } else {
     sapply(dat, function(i) is.factor(i) || is.character(i))    
   }
 
   if (!is.null(x)){
-    fc <- fc | sapply(bit::physical(x)[names(fc)], is.factor.ff)
+    fc <- fc | sapply(names(fc), function(i) {ff::is.factor(x[[i]])})
   }
 
   if (any(fc) && !is.ffdf(dat)){
@@ -102,11 +102,11 @@ ffdfappend <- function(  x
    nrow(x) <- nff + n
   
    for (i in names(which(fc))){
-     if(!is.factor.ff(x[[i]])){
+     if(!ff::is.factor(x[[i]])){
        x[[i]] <- as.character.ff(x[[i]])
        #warning(sprintf("column %s of x is not a factor, column %s of dat is a factor, are you sure you want to ffdfappend", colnames(x)[i], colnames(dat)[i]))
      }
-     else if(!is.factor(dat[[i]])){
+     else if(!ff::is.factor(dat[[i]])){
             dat[[i]] <- as.character(dat[[i]])
      }
 

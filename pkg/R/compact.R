@@ -22,7 +22,7 @@ compact.ff <- function(x, use.na=TRUE,...){
    }
    
    idx <- seq_len(vm)
-   if (is.factor.ff(x)){
+   if (ff::is.factor(x)){
      r <- c(1, nlevels(x))
    } else {
      r <- range(x, na.rm=TRUE)
@@ -44,7 +44,7 @@ compact.ff <- function(x, use.na=TRUE,...){
 #' @export
 #' @export compact.ffdf
 compact.ffdf <- function(x, use.na=TRUE, ...){
-   ret <- lapply(bit::physical(x), compact, use.na=use.na, ...)
+   ret <- lapply(names(x), function(i){compact(x[[i]], use.na = use.na, ...)})
    res <- do.call(ffdf, ret)
    close(x)
    res

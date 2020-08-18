@@ -1,6 +1,6 @@
 #' @export 
 rev.ff <- function(x){
-  y <- ff::clone(x)
+  y <- ff::clone.ff(x)
   N <- length(x) + 1L
   for (i in chunk(x)){
     y[i] <- x[N-i]

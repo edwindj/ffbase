@@ -34,6 +34,7 @@ test_that("Concatenating ff vector works",{
 
    a <- ff(factor(LETTERS[1:5]))
    b <- ff(factor(LETTERS[5:7]))
+   res <- ffappend(a,b)
    expect_identical(c(as.character(a[]), as.character(b[])), as.character(ffappend(a, b)[]))
 
 })
