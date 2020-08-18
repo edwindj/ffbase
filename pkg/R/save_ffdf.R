@@ -36,7 +36,7 @@ save.ffdf <- function(..., dir="./ffdb", clone=FALSE, relativepath=TRUE, overwri
    
    oldwd <- setwd(dir)
    on.exit(setwd(oldwd))
-   if (!isTRUE(overwrite) && file.exists(".Rdata")){
+   if (!isTRUE(overwrite) && file.exists(".RData")){
      stop("Directory '",dir,"' contains existing '.Rdata' file. 
           To force saving use 'overwrite=TRUE'")
    }
