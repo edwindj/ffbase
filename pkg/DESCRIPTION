@@ -10,7 +10,7 @@ Description: Extends the out of memory vectors of 'ff' with
 Version: 0.13.0
 URL: http://github.com/edwindj/ffbase
 Depends:
-    R (>= 4.0),ff(>= 4.0)
+    R (>= 3.6),ff(>= 4.0)
 Imports:
     fastmatch,
     bit
