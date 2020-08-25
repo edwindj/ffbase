@@ -2,8 +2,6 @@
 ![version](http://www.r-pkg.org/badges/version/ffbase)
 ![downloads](http://cranlogs.r-pkg.org/badges/ffbase)
 
-## Latest version is in github (will be uploaded to CRAN on August 24)
-
 ffbase
 ======
 
