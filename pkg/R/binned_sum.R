@@ -53,7 +53,7 @@ binned_sum.ff <- function(x, bin, nbins=max(bin), ...){
     bins <- seq_len(nbins)
   }
   res <- matrix(0, nrow=nbins, ncol=3, dimnames=list(bin=bins, c("count", "sum", "NA")))
-  for (i in chunk(x, ...)){
+  for (i in chunk(x)){
     Log$chunk(i)
     .Call("binned_sum", as.numeric(x[i]), as.integer(bin[i]), as.integer(nbins), res, PACKAGE = "ffbase")
   }
