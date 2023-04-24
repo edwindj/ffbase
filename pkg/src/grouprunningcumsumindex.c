@@ -11,7 +11,7 @@
  */
 #include <R.h>
 
-void grouprunningcumsumindex(Sint *x, Sint *l, Sint *max, Sint *currentcumul) {   
+void grouprunningcumsumindex(int *x, int *l, int *max, int *currentcumul) {   
 		int i, size=*l, xinit=*x, maxsize, runningcumul;
 		maxsize = max[0];
 		runningcumul = currentcumul[0];
