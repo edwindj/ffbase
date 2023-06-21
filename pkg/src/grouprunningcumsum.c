@@ -10,7 +10,7 @@
  */
 #include <R.h>
 
-void grouprunningcumsum(Sint *x, Sint *l, Sint *max) {   
+void grouprunningcumsum(int *x, int *l, int *max) {   
 		int i, size=*l, xinit=*x, maxsize, runningcumul=0;
 		maxsize = max[0];
     for (i = 0; i < size; i++){
